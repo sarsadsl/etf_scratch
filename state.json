@@ -1,1 +1,188 @@
-{}
+{
+  "00981A": [
+    {
+      "stockCode": "2330",
+      "stockName": "台積電",
+      "shares": 5000,
+      "weight": 35.5
+    },
+    {
+      "stockCode": "2317",
+      "stockName": "鴻海",
+      "shares": 3200,
+      "weight": 8.2
+    },
+    {
+      "stockCode": "2454",
+      "stockName": "聯發科",
+      "shares": 1500,
+      "weight": 6.5
+    },
+    {
+      "stockCode": "2308",
+      "stockName": "台達電",
+      "shares": 2000,
+      "weight": 5
+    },
+    {
+      "stockCode": "2382",
+      "stockName": "廣達",
+      "shares": 1800,
+      "weight": 4.8
+    },
+    {
+      "stockCode": "2881",
+      "stockName": "富邦金",
+      "shares": 8000,
+      "weight": 4.5
+    },
+    {
+      "stockCode": "2882",
+      "stockName": "國泰金",
+      "shares": 7500,
+      "weight": 4
+    },
+    {
+      "stockCode": "3231",
+      "stockName": "緯創",
+      "shares": 4000,
+      "weight": 3.5
+    },
+    {
+      "stockCode": "2886",
+      "stockName": "兆豐金",
+      "shares": 6000,
+      "weight": 3
+    },
+    {
+      "stockCode": "1216",
+      "stockName": "統一",
+      "shares": 3000,
+      "weight": 2.8
+    }
+  ],
+  "00988A": [
+    {
+      "stockCode": "2330",
+      "stockName": "台積電",
+      "shares": 5000,
+      "weight": 35.5
+    },
+    {
+      "stockCode": "2317",
+      "stockName": "鴻海",
+      "shares": 3200,
+      "weight": 8.2
+    },
+    {
+      "stockCode": "2454",
+      "stockName": "聯發科",
+      "shares": 1500,
+      "weight": 6.5
+    },
+    {
+      "stockCode": "2308",
+      "stockName": "台達電",
+      "shares": 2000,
+      "weight": 5
+    },
+    {
+      "stockCode": "2382",
+      "stockName": "廣達",
+      "shares": 1800,
+      "weight": 4.8
+    },
+    {
+      "stockCode": "2881",
+      "stockName": "富邦金",
+      "shares": 8000,
+      "weight": 4.5
+    },
+    {
+      "stockCode": "2882",
+      "stockName": "國泰金",
+      "shares": 7500,
+      "weight": 4
+    },
+    {
+      "stockCode": "3231",
+      "stockName": "緯創",
+      "shares": 4000,
+      "weight": 3.5
+    },
+    {
+      "stockCode": "2886",
+      "stockName": "兆豐金",
+      "shares": 6000,
+      "weight": 3
+    },
+    {
+      "stockCode": "1216",
+      "stockName": "統一",
+      "shares": 3000,
+      "weight": 2.8
+    }
+  ],
+  "00991A": [
+    {
+      "stockCode": "2330",
+      "stockName": "台積電",
+      "shares": 4000,
+      "weight": 32.1
+    },
+    {
+      "stockCode": "2454",
+      "stockName": "聯發科",
+      "shares": 1200,
+      "weight": 5.5
+    },
+    {
+      "stockCode": "2317",
+      "stockName": "鴻海",
+      "shares": 2500,
+      "weight": 5
+    },
+    {
+      "stockCode": "2382",
+      "stockName": "廣達",
+      "shares": 2000,
+      "weight": 4.8
+    },
+    {
+      "stockCode": "2308",
+      "stockName": "台達電",
+      "shares": 1500,
+      "weight": 4.2
+    },
+    {
+      "stockCode": "3231",
+      "stockName": "緯創",
+      "shares": 3500,
+      "weight": 3.8
+    },
+    {
+      "stockCode": "2881",
+      "stockName": "富邦金",
+      "shares": 6500,
+      "weight": 3.5
+    },
+    {
+      "stockCode": "2891",
+      "stockName": "中信金",
+      "shares": 8000,
+      "weight": 3.2
+    },
+    {
+      "stockCode": "2882",
+      "stockName": "國泰金",
+      "shares": 6000,
+      "weight": 3
+    },
+    {
+      "stockCode": "3008",
+      "stockName": "大立光",
+      "shares": 200,
+      "weight": 2.9
+    }
+  ]
+}
