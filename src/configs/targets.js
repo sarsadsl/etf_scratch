@@ -13,5 +13,10 @@ export const targets = [
     code: '00991A',
     name: '主動復華未來50',
     issuer: '復華投信'
+  },
+  {
+    code: '00990A',
+    name: '主動元大未來',
+    issuer: '元大投信'
   }
 ];

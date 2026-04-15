@@ -3,116 +3,187 @@ import StealthPlugin from 'puppeteer-extra-plugin-stealth';
 
 puppeteer.use(StealthPlugin());
 
-/**
- * 通用表格解析器 (注入到瀏覽器端執行)
- * 自動尋找包含「代碼」與「權重」或「比例」關鍵字的表格，並提取前十大
- */
-function extractTableData() {
-  const tables = Array.from(document.querySelectorAll('table'));
-  for (const table of tables) {
-    const text = table.textContent || '';
-    // 尋找看起來像持股明細的表格
-    if (text.includes('代碼') && (text.includes('權重') || text.includes('比例') || text.includes('%'))) {
-      const rows = Array.from(table.querySelectorAll('tr'));
-      const results = [];
-      
-      // 假設第一列是 Header，從第二列開始解析
-      for (let i = 1; i < rows.length; i++) {
-        const cells = Array.from(rows[i].querySelectorAll('td, th')).map(td => td.textContent.trim());
-        if (cells.length >= 3) {
-          // 嘗試使用正則表達式從所有欄位中猜測出代碼、名稱與權重
-          const rowText = cells.join(' ');
-          const codeMatch = rowText.match(/\b\d{4}\b/); // 假設台股代碼是4碼數字
-          const weightMatch = rowText.match(/(\d+\.\d+)%?/); // 尋找小數點權重
-          const sharesMatch = rowText.match(/(\d{1,3}(,\d{3})*|\d+)/g); // 尋找最長的整數(可能是張數或股數)
+// 投信網站特定代碼映射表
+const fundCodeMapping = {
+  '00981A': '49YTW',
+  '00988A': '61YTW',
+  '00991A': 'ETF23'
+};
 
-          if (codeMatch && weightMatch) {
+const scrapers = {
+  '統一投信': async (page, etfCode) => {
+    const internalCode = fundCodeMapping[etfCode];
+    // 進入統一投信真實的基金資訊頁面
+    const url = `https://www.ezmoney.com.tw/ETF/Fund/Info?fundCode=${internalCode}`;
+    await page.goto(url, { waitUntil: 'networkidle2', timeout: 30000 });
+    
+    // 等待版面載入並切換到持股區塊 (可能需要等待動態載入)
+    await new Promise(resolve => setTimeout(resolve, 3000));
+    
+    // 針對統一個官方結構擷取
+    let data = await page.evaluate(() => {
+      const results = [];
+      // 根據子代理勘查，統一投信的表格位於 div#asset 下的 table.table_list
+      const rows = document.querySelectorAll('div#asset table.table_list tr');
+      if (!rows || rows.length === 0) return null;
+
+      // 跳過表頭，從資料列開始處理
+      for (let i = 1; i < rows.length; i++) {
+        const cells = rows[i].querySelectorAll('td');
+        if (cells.length >= 4) {
+          const stockCode = cells[0].textContent.trim();
+          const stockName = cells[1].textContent.trim();
+          const sharesText = cells[2].textContent.trim().replace(/,/g, '');
+          const weightText = cells[3].textContent.trim().replace('%', '');
+          
+          if (stockCode && stockCode.length >= 4) {
             results.push({
-              stockCode: codeMatch[0],
-              stockName: cells[1] || '未知', // 通常第二欄是名稱
-              shares: sharesMatch && sharesMatch.length > 2 ? parseInt(sharesMatch[2].replace(/,/g, ''), 10) : 0, 
-              weight: parseFloat(weightMatch[1])
+              stockCode: stockCode,
+              stockName: stockName,
+              shares: parseInt(sharesText, 10) || 0,
+              weight: parseFloat(weightText) || 0
             });
           }
         }
       }
-      
-      if (results.length > 0) return results;
-    }
-  }
-  return null;
-}
-
-const scrapers = {
-  '統一投信': async (page, etfCode) => {
-    // 預設前往統一投信 ETF 專區
-    const url = `https://www.ezmoney.com.tw/ETF/Portfolio/${etfCode}`;
-    await page.goto(url, { waitUntil: 'networkidle2', timeout: 30000 });
+      return results;
+    });
     
-    // 可能會有 Cookie 同意視窗或是延遲載入的圖表
-    await new Promise(resolve => setTimeout(resolve, 3000));
-    
-    // 嘗試通用的表格抓取
-    let data = await page.evaluate(extractTableData);
-    
-    // 防錯機制：若無真實資料，回傳 Fallback
-    if (!data || data.length === 0) {
-       console.warn(`[Scraper] 無法於統一投信找到 ${etfCode} 的標準表格，可能是網頁已改版或正在載入動態內容。`);
-       return null;
-    }
     return data;
   },
   
   '復華投信': async (page, etfCode) => {
-    // 預設前往復華投信
-    const url = `https://www.fhtrust.com.tw/ETF/Detail/${etfCode}`;
+    const internalCode = fundCodeMapping[etfCode];
+    // 進入復華投信真實的基金資訊頁面
+    const url = `https://www.fhtrust.com.tw/ETF/etf_detail/${internalCode}#stockhold`;
     await page.goto(url, { waitUntil: 'networkidle2', timeout: 30000 });
     
     await new Promise(resolve => setTimeout(resolve, 3000));
-    let data = await page.evaluate(extractTableData);
     
+    let data = await page.evaluate(() => {
+      const results = [];
+      // 根據子代理勘查，復華投信並非傳統 table，而是 div 組成的 .table-hold
+      const container = document.querySelector('div#stockhold .table-hold');
+      if (!container) return null;
+
+      // 假設它底下有特定 .row_list，或者透過純文字正則暴力解譯
+      const textContent = container.innerText;
+      const lines = textContent.split('\n');
+      
+      for (let i = 0; i < lines.length; i++) {
+        const line = lines[i].trim();
+        // 尋找符合「四碼數字 名稱 數字 權重」格式，復華的結構可能因排版被切分在此
+        const parts = line.split(/\s+/);
+        
+        // 由於 div table 經常把不同欄位斷在不同行，我們嘗試用正則抓取所有符合的股號與權重對應關係
+        const codeMatch = line.match(/^(\d{4})$/);
+        const codeInlineMatch = line.match(/\b(\d{4})\b.*\b(\d+\.\d+)%?/);
+        
+        if (codeInlineMatch) {
+            // 在同一行內找到代碼與權重
+             results.push({
+              stockCode: codeInlineMatch[1],
+              stockName: '依代碼',
+              shares: 0, // 復華可能不公佈股數或難以擷取
+              weight: parseFloat(codeInlineMatch[2]) || 0
+            });
+        }
+      }
+      return results;
+    });
+    
+    // 如果復華解析失敗，啟動備用：全域搜尋
     if (!data || data.length === 0) {
-       console.warn(`[Scraper] 無法於復華投信找到 ${etfCode} 的標準表格。`);
-       return null;
+        data = await page.evaluate(() => {
+            const tableText = document.querySelector('div#stockhold') ? document.querySelector('div#stockhold').innerText : '';
+            const matches = [...tableText.matchAll(/(\d{4})\s+([^\s]+)\s+([\d,]+)?\s*(\d+\.\d+)/g)];
+            return matches.map(m => ({
+                stockCode: m[1],
+                stockName: m[2],
+                shares: m[3] ? parseInt(m[3].replace(/,/g, ''), 10) : 0,
+                weight: parseFloat(m[4])
+            }));
+        });
     }
+
+    return data;
+  },
+  
+  '元大投信': async (page, etfCode) => {
+    const url = `https://www.yuantaetfs.com/product/detail/${etfCode}/ratio`;
+    await page.goto(url, { waitUntil: 'networkidle2', timeout: 30000 });
+    
+    // 預留渲染時間
+    await new Promise(resolve => setTimeout(resolve, 3000));
+    
+    const data = await page.evaluate(() => {
+      const results = [];
+      // 根據子代理解析，表格位於第二個 .table-list 內的 table
+      // querySelectorAll 無法直接使用 nth-of-type 抓取父層特定類別，改用索引
+      const lists = document.querySelectorAll('div.table-list');
+      if (lists.length < 2) return null;
+      
+      const rows = lists[1].querySelectorAll('table tr');
+      if (!rows || rows.length === 0) return null;
+
+      // 略過表頭 (th)
+      for (let i = 1; i < rows.length; i++) {
+        const cells = rows[i].querySelectorAll('td');
+        // 元大表格通常有三或四欄（代碼、名稱、可能無張數、權重）
+        if (cells.length >= 3) {
+          const stockCode = cells[0].textContent.trim();
+          const stockName = cells[1].textContent.trim();
+          
+          // 若缺乏張數欄位，取最後一欄為權重
+          const weightText = cells[cells.length - 1].textContent.trim().replace('%', '');
+          const sharesText = cells.length > 3 ? cells[2].textContent.trim().replace(/,/g, '') : '0';
+
+          // 放寬過濾條件：海外股票代碼包含字母與空格，長度可能逾 4 碼
+          if (stockCode && stockCode.length >= 2) {
+            results.push({
+              stockCode: stockCode,
+              stockName: stockName,
+              shares: parseInt(sharesText, 10) || 0,
+              weight: parseFloat(weightText) || 0
+            });
+          }
+        }
+      }
+      return results;
+    });
+    
     return data;
   }
 };
 
-/**
- * 抓取指定 ETF 的前十大持股明細
- */
 export async function fetchHoldings(target) {
   let browser = null;
   try {
-    // 啟動無頭瀏覽器，加入必要的沙盒取消參數以相容 GitHub Actions 的 Ubuntu 環境
     browser = await puppeteer.launch({
       headless: "new",
       args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
     });
     
     const page = await browser.newPage();
-    // 偽裝為正常使用者的瀏覽器 User-Agent
     await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36');
     await page.setViewport({ width: 1280, height: 800 });
 
     const handler = scrapers[target.issuer];
     if (!handler) {
-      throw new Error(`尚無對應 ${target.issuer} 的爬蟲邏輯`);
+      throw new Error(`尚無 ${target.issuer} 的對應邏輯`);
     }
 
     const holdings = await handler(page, target.code);
     
-    if (!holdings) return null;
+    if (!holdings || holdings.length === 0) return null;
 
-    // 確保只取前十大，並依照權重排序
     const top10 = holdings
       .sort((a, b) => b.weight - a.weight)
       .slice(0, 10);
       
     return top10;
   } catch (error) {
-    console.error(`[Scraper] 抓取 ${target.code} 發生例外錯誤:`, error.message);
+    console.error(`[Scraper] 抓取 ${target.code} 發生錯誤:`, error.message);
     return null;
   } finally {
     if (browser) {
