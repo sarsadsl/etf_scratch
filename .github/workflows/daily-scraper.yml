@@ -1,0 +1,47 @@
+name: Daily ETF Holdings Scraper
+
+on:
+  schedule:
+    # 台灣時間 18:30 (10:30 UTC) 每日執行，此時通常已經公告盤後淨值與持股
+    - cron: '30 10 * * *'
+  # 允許手動觸發工作流
+  workflow_dispatch:
+
+jobs:
+  scrape-and-notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          # 必須使用 Personal Access Token 或設定權限允許 push
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci || npm install
+
+      - name: Run Scraper and Send Telegram
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: npm start
+
+      - name: Commit state.json changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add state.json
+          # 如果 state.json 有變動才 commit
+          git diff --quiet && git diff --staged --quiet || git commit -m "chore: update ETF state [skip ci]"
+
+      - name: Push new state to repository
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
