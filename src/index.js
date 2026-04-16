@@ -32,7 +32,7 @@ async function main() {
     console.log(`[System] 正在抓取: ${target.code} ${target.name}`);
     const currentHoldings = await fetchHoldings(target);
     
-    if (currentHoldings) {
+    if (currentHoldings && !currentHoldings.error) {
       // 比對差額
       const prevHoldings = previousState[target.code] || [];
       const comparedHoldings = compareHoldings(currentHoldings, prevHoldings);
@@ -50,7 +50,9 @@ async function main() {
       
       notificationResults.push({
         target,
-        holdings: null // 代表失敗
+        holdings: null, // 代表失敗
+        debugError: currentHoldings ? currentHoldings.message : 'Unknown exception / Promise failed',
+        debugPayload: currentHoldings ? currentHoldings.debugInfo : null
       });
     }
   }

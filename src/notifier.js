@@ -20,7 +20,14 @@ export async function sendTelegramNotification(results) {
     message += `🔹 *${result.target.code} ${result.target.name}*\n`;
     
     if (!result.holdings || result.holdings.length === 0) {
-      message += `  ⚠️ 抓取失敗或無資料\n\n`;
+      message += `  ⚠️ 抓取失敗或無資料\n`;
+      if (result.debugError) {
+        message += `  🔴 *Debug*: \`${result.debugError}\`\n`;
+      }
+      if (result.debugPayload && result.debugPayload.title) {
+        message += `  💬 *Page Title*: ${result.debugPayload.title}\n`;
+      }
+      message += '\n';
       return;
     }
 

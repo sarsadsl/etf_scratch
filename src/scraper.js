@@ -56,7 +56,18 @@ export async function fetchHoldings(target) {
     
     if (!holdings || holdings.length === 0) {
       console.warn(`[Scraper] 未能在 MoneyDJ 找到 ${target.code} 的持股資料`);
-      return null;
+      
+      let debugInfo = { title: "未知", bodyData: "無" };
+      try {
+        debugInfo = await page.evaluate(() => {
+          return {
+            title: document.title,
+            bodyData: document.body ? document.body.innerText.replace(/\n+/g, ' ').substring(0, 150) : "No body"
+          };
+        });
+      } catch(e) {}
+      
+      return { error: true, message: "解析不到目標表格結構 (table.datalist tr)", debugInfo };
     }
 
     const top10 = holdings
