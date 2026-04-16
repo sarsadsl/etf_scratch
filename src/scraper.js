@@ -23,7 +23,7 @@ export async function fetchHoldings(target) {
 
     const holdings = await page.evaluate(() => {
       const results = [];
-      const rows = document.querySelectorAll('table.table-0 tr');
+      const rows = document.querySelectorAll('table.datalist tr');
       if (!rows || rows.length === 0) return null;
 
       for (let i = 1; i < rows.length; i++) { // 跳過表頭
