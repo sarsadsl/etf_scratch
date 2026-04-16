@@ -16,7 +16,19 @@ export async function fetchHoldings(target) {
     await page.setViewport({ width: 1280, height: 800 });
 
     const url = `https://www.moneydj.com/ETF/X/Basic/Basic0007.xdjhtm?etfid=${target.code}.TW`;
-    await page.goto(url, { waitUntil: 'networkidle2', timeout: 30000 });
+    await page.setExtraHTTPHeaders({
+       'Accept-Language': 'zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7',
+       'sec-ch-ua': '"Google Chrome";v="114", "Chromium";v="114", "Not=A?Brand";v="24"',
+       'sec-ch-ua-mobile': '?0',
+       'sec-ch-ua-platform': '"Windows"'
+    });
+    // Set a decoy webdriver property and override language settings
+    await page.evaluateOnNewDocument(() => {
+        Object.defineProperty(navigator, 'webdriver', {get: () => undefined});
+        Object.defineProperty(navigator, 'languages', {get: () => ['zh-TW', 'zh', 'en-US', 'en']});
+    });
+
+    await page.goto(url, { waitUntil: 'networkidle2', timeout: 60000 });
 
     // 等待版面或可能的動態載入
     await new Promise(resolve => setTimeout(resolve, 3000));
