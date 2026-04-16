@@ -77,7 +77,7 @@ export async function fetchHoldings(target) {
     return top10;
   } catch (error) {
     console.error(`[Scraper] 抓取 ${target.code} 發生錯誤:`, error.message);
-    return null;
+    return { error: true, message: `Exception: ${error.message}` };
   } finally {
     if (browser) {
       await browser.close();
