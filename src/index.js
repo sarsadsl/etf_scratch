@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { targets } from './configs/targets.js';
-import { fetchHoldings } from './scraper.js';
+import { fetchHoldings, closeBrowser } from './scraper.js';
 import { compareHoldings } from './comparator.js';
 import { sendTelegramNotification } from './notifier.js';
 
@@ -57,10 +57,13 @@ async function main() {
     }
   }
 
-  // 3. 發送推播
+  // 3. 關閉共用瀏覽器
+  await closeBrowser();
+
+  // 4. 發送推播
   await sendTelegramNotification(notificationResults);
 
-  // 4. 將今日抓取結果覆寫回狀態檔
+  // 5. 將今日抓取結果覆寫回狀態檔
   fs.writeFileSync(STATE_FILE, JSON.stringify(newState, null, 2), 'utf-8');
   console.log('[System] 狀態已更新至 state.json。任務完成。');
 }
