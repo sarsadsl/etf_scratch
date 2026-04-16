@@ -63,126 +63,126 @@
   ],
   "00988A": [
     {
-      "stockCode": "LITE",
-      "stockName": "Lumentum",
-      "shares": 53000,
-      "weight": 6.74
+      "stockCode": "0003",
+      "stockName": ".",
+      "shares": 0,
+      "weight": 9
     },
     {
-      "stockCode": "SNDK",
-      "stockName": "Sandisk",
-      "shares": 34400,
-      "weight": 4.74
+      "stockCode": "0002",
+      "stockName": ".",
+      "shares": 2,
+      "weight": 9
     },
     {
-      "stockCode": "MU",
-      "stockName": "Micron",
-      "shares": 55000,
-      "weight": 3.87
+      "stockCode": "0002",
+      "stockName": ".",
+      "shares": 4,
+      "weight": 8
     },
     {
-      "stockCode": "6787",
-      "stockName": "Meiko Electronics",
-      "shares": 130000,
-      "weight": 3.57
+      "stockCode": "0002",
+      "stockName": ".",
+      "shares": 3,
+      "weight": 8
     },
     {
-      "stockCode": "GLW",
-      "stockName": "Corning",
-      "shares": 120700,
-      "weight": 3.14
+      "stockCode": "0000",
+      "stockName": ".",
+      "shares": 6,
+      "weight": 8
     },
     {
-      "stockCode": "CIEN",
-      "stockName": "Ciena",
-      "shares": 42000,
-      "weight": 3.09
+      "stockCode": "0000",
+      "stockName": ".",
+      "shares": 2,
+      "weight": 8
     },
     {
-      "stockCode": "5801",
-      "stockName": "Furukawa Electric",
-      "shares": 72000,
-      "weight": 3.09
+      "stockCode": "0003",
+      "stockName": ".",
+      "shares": 8,
+      "weight": 7
     },
     {
-      "stockCode": "2383",
-      "stockName": "台光電",
-      "shares": 144000,
-      "weight": 2.68
+      "stockCode": "0001",
+      "stockName": ".",
+      "shares": 9,
+      "weight": 7
     },
     {
-      "stockCode": "6515",
-      "stockName": "穎崴",
-      "shares": 60000,
-      "weight": 2.66
+      "stockCode": "0001",
+      "stockName": ".",
+      "shares": 9,
+      "weight": 7
     },
     {
-      "stockCode": "GEV",
-      "stockName": "GE Vernova",
-      "shares": 16400,
-      "weight": 2.5
+      "stockCode": "0001",
+      "stockName": ".",
+      "shares": 6,
+      "weight": 7
     }
   ],
   "00991A": [
     {
       "stockCode": "2330",
-      "stockName": "台積電",
+      "stockName": "台灣積體",
       "shares": 3000000,
-      "weight": 20.22
+      "weight": 20.437
     },
     {
       "stockCode": "2383",
-      "stockName": "台光電",
-      "shares": 780000,
-      "weight": 9.67
+      "stockName": "台光電子",
+      "shares": 800000,
+      "weight": 9.983
     },
     {
       "stockCode": "8299",
-      "stockName": "群聯",
-      "shares": 1350000,
-      "weight": 6.92
+      "stockName": "群聯電子",
+      "shares": 1380000,
+      "weight": 7.367
     },
     {
       "stockCode": "2308",
-      "stockName": "台達電",
-      "shares": 1130000,
-      "weight": 6.74
+      "stockName": "台達電子",
+      "shares": 1150000,
+      "weight": 6.723
     },
     {
       "stockCode": "3037",
-      "stockName": "欣興",
+      "stockName": "欣興電子",
       "shares": 3200000,
-      "weight": 6.67
-    },
-    {
-      "stockCode": "5274",
-      "stockName": "信驊",
-      "shares": 100000,
-      "weight": 4.68
-    },
-    {
-      "stockCode": "2345",
-      "stockName": "智邦",
-      "shares": 700000,
-      "weight": 4.61
+      "weight": 6.477
     },
     {
       "stockCode": "2408",
-      "stockName": "南亞科",
-      "shares": 6500000,
-      "weight": 4.49
+      "stockName": "南亞科技",
+      "shares": 6700000,
+      "weight": 4.641
+    },
+    {
+      "stockCode": "5274",
+      "stockName": "信驊科技",
+      "shares": 100000,
+      "weight": 4.544
+    },
+    {
+      "stockCode": "2345",
+      "stockName": "智邦科技",
+      "shares": 700000,
+      "weight": 4.516
+    },
+    {
+      "stockCode": "7769",
+      "stockName": "鴻勁精密",
+      "shares": 310000,
+      "weight": 4.325
     },
     {
       "stockCode": "3017",
-      "stockName": "奇鋐",
+      "stockName": "奇鋐科技",
       "shares": 550000,
-      "weight": 4.34
-    },
-    {
-      "stockCode": "6223",
-      "stockName": "旺矽",
-      "shares": 270000,
-      "weight": 4.29
+      "weight": 4.188
     }
   ],
   "00990A": [
