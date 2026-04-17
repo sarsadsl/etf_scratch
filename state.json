@@ -3,62 +3,62 @@
     {
       "stockCode": "2330",
       "stockName": "台積電",
-      "shares": 6256000,
-      "weight": 9.01
+      "shares": 6556000,
+      "weight": 8.67
     },
     {
       "stockCode": "2383",
       "stockName": "台光電",
       "shares": 3012000,
-      "weight": 7.98
+      "weight": 7.46
     },
     {
       "stockCode": "2308",
       "stockName": "台達電",
-      "shares": 4711000,
-      "weight": 6
+      "shares": 5103000,
+      "weight": 6.12
     },
     {
       "stockCode": "3653",
       "stockName": "健策",
-      "shares": 1906000,
-      "weight": 5.77
-    },
-    {
-      "stockCode": "2368",
-      "stockName": "金像電",
-      "shares": 6971000,
-      "weight": 5.61
+      "shares": 1986000,
+      "weight": 5.91
     },
     {
       "stockCode": "2345",
       "stockName": "智邦",
-      "shares": 3963000,
-      "weight": 5.57
+      "shares": 4253000,
+      "weight": 5.73
     },
     {
-      "stockCode": "3017",
-      "stockName": "奇鋐",
-      "shares": 3272000,
-      "weight": 5.52
-    },
-    {
-      "stockCode": "3665",
-      "stockName": "貿聯-KY",
-      "shares": 3332848,
-      "weight": 5.51
+      "stockCode": "2368",
+      "stockName": "金像電",
+      "shares": 7091000,
+      "weight": 5.43
     },
     {
       "stockCode": "6223",
       "stockName": "旺矽",
-      "shares": 1521000,
-      "weight": 5.16
+      "shares": 1582000,
+      "weight": 5.35
+    },
+    {
+      "stockCode": "3665",
+      "stockName": "貿聯-KY",
+      "shares": 3467848,
+      "weight": 5.34
+    },
+    {
+      "stockCode": "3017",
+      "stockName": "奇鋐",
+      "shares": 3405000,
+      "weight": 5.32
     },
     {
       "stockCode": "8046",
       "stockName": "南電",
-      "shares": 8389000,
-      "weight": 4.18
+      "shares": 8609000,
+      "weight": 4.06
     }
   ],
   "00988A": [
@@ -69,120 +69,120 @@
       "weight": 9
     },
     {
-      "stockCode": "0002",
+      "stockCode": "0001",
       "stockName": ".",
-      "shares": 2,
+      "shares": 9,
       "weight": 9
     },
     {
-      "stockCode": "0002",
+      "stockCode": "0001",
+      "stockName": ".",
+      "shares": 5,
+      "weight": 9
+    },
+    {
+      "stockCode": "0000",
       "stockName": ".",
       "shares": 4,
+      "weight": 9
+    },
+    {
+      "stockCode": "0000",
+      "stockName": ".",
+      "shares": 4,
+      "weight": 9
+    },
+    {
+      "stockCode": "7002",
+      "stockName": ".",
+      "shares": 9,
       "weight": 8
     },
     {
-      "stockCode": "0002",
+      "stockCode": "4002",
       "stockName": ".",
       "shares": 3,
       "weight": 8
     },
     {
-      "stockCode": "0000",
+      "stockCode": "0001",
       "stockName": ".",
-      "shares": 6,
+      "shares": 9,
       "weight": 8
     },
     {
-      "stockCode": "0000",
-      "stockName": ".",
-      "shares": 2,
-      "weight": 8
-    },
-    {
-      "stockCode": "0003",
+      "stockCode": "0001",
       "stockName": ".",
       "shares": 8,
-      "weight": 7
+      "weight": 8
     },
     {
       "stockCode": "0001",
       "stockName": ".",
-      "shares": 9,
-      "weight": 7
-    },
-    {
-      "stockCode": "0001",
-      "stockName": ".",
-      "shares": 9,
-      "weight": 7
-    },
-    {
-      "stockCode": "0001",
-      "stockName": ".",
-      "shares": 6,
-      "weight": 7
+      "shares": 4,
+      "weight": 8
     }
   ],
   "00991A": [
     {
       "stockCode": "2330",
       "stockName": "台灣積體",
-      "shares": 3000000,
-      "weight": 20.437
+      "shares": 2500000,
+      "weight": 16.567
     },
     {
       "stockCode": "2383",
       "stockName": "台光電子",
-      "shares": 800000,
-      "weight": 9.983
-    },
-    {
-      "stockCode": "8299",
-      "stockName": "群聯電子",
-      "shares": 1380000,
-      "weight": 7.367
+      "shares": 780000,
+      "weight": 9.676
     },
     {
       "stockCode": "2308",
       "stockName": "台達電子",
-      "shares": 1150000,
-      "weight": 6.723
+      "shares": 1130000,
+      "weight": 6.787
     },
     {
       "stockCode": "3037",
       "stockName": "欣興電子",
       "shares": 3200000,
-      "weight": 6.477
+      "weight": 6.717
     },
     {
-      "stockCode": "2408",
-      "stockName": "南亞科技",
-      "shares": 6700000,
-      "weight": 4.641
-    },
-    {
-      "stockCode": "5274",
-      "stockName": "信驊科技",
-      "shares": 100000,
-      "weight": 4.544
+      "stockCode": "8299",
+      "stockName": "群聯電子",
+      "shares": 1300000,
+      "weight": 6.663
     },
     {
       "stockCode": "2345",
       "stockName": "智邦科技",
       "shares": 700000,
-      "weight": 4.516
+      "weight": 4.73
+    },
+    {
+      "stockCode": "6223",
+      "stockName": "旺矽科技",
+      "shares": 270000,
+      "weight": 4.579
+    },
+    {
+      "stockCode": "5274",
+      "stockName": "信驊科技",
+      "shares": 100000,
+      "weight": 4.506
     },
     {
       "stockCode": "7769",
       "stockName": "鴻勁精密",
-      "shares": 310000,
-      "weight": 4.325
+      "shares": 300000,
+      "weight": 4.407
     },
     {
       "stockCode": "3017",
       "stockName": "奇鋐科技",
       "shares": 550000,
-      "weight": 4.188
+      "weight": 4.309
     }
   ],
   "00990A": [
