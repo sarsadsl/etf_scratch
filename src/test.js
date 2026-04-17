@@ -1,32 +1,32 @@
 import puppeteer from 'puppeteer-extra';
 import StealthPlugin from 'puppeteer-extra-plugin-stealth';
-import fs from 'fs';
 
 puppeteer.use(StealthPlugin());
 
-async function run() {
-  let browser = null;
-  try {
-    browser = await puppeteer.launch({ headless: 'new', args: ['--no-sandbox'] });
-    const page = await browser.newPage();
-    await page.setViewport({ width: 1280, height: 800 });
-    // Go to Basic0007.xdjhtm
-    await page.goto('https://www.moneydj.com/ETF/X/Basic/Basic0007.xdjhtm?etfid=00981A.TW', { waitUntil: 'networkidle2' });
-    await new Promise(r => setTimeout(r, 4000));
-    await page.screenshot({ path: 'src/screenshot.png' });
-    
-    // Dump frames
-    for (const frame of page.frames()) {
-      const html = await frame.content();
-      if (html.includes('2330.TW') || html.includes('台積電')) {
-         console.log("Found in frame:", frame.url());
-         fs.writeFileSync('src/found_frame.html', html);
-      }
-    }
-  } catch(e) {
-    console.error(e);
-  } finally {
-    if (browser) await browser.close();
-  }
+const browser = await puppeteer.launch({ headless: 'new', args: ['--no-sandbox'] });
+const page = await browser.newPage();
+await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36');
+
+// 統一投信
+await page.goto('https://www.ezmoney.com.tw/ETF/Fund/Info?fundCode=49YTW', { waitUntil: 'networkidle2', timeout: 60000 });
+await new Promise(r => setTimeout(r, 5000));
+
+const debug = await page.evaluate(() => {
+  const assetEl = document.querySelector('#assetBody');
+  if (!assetEl) return { error: '#assetBody not found' };
+  return { 
+    found: true,
+    // Get the inner text as-is to see the exact structure
+    text: assetEl.innerText
+  };
+});
+
+console.log('FSITC assetBody found:', debug.found);
+if (debug.text) {
+  // Focus on the stock section
+  const stockIdx = debug.text.indexOf('股票代號');
+  console.log('Stock section:');
+  console.log(debug.text.substring(stockIdx, stockIdx + 600));
 }
-run();
+
+await browser.close();

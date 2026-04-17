@@ -41,9 +41,12 @@ export async function sendTelegramNotification(results) {
       
       const newTag = stock.isNew ? ' 🆕' : '';
       
-      // 格式: 1. 2330 台積電 35.5% (🔺0.5%) | 5000張 (+100張) 🆕
+      const sharesLot = Math.round(stock.shares / 1000);
+      const diffSharesLot = Math.round(stock.diffShares / 1000);
+      
+      // 格式: 1. 2330 台積電 35.5% (🔺0.5%) | 5000張 (+100) 🆕
       message += `  ${index + 1}. \`${stock.stockCode}\` ${stock.stockName}${newTag}\n`;
-      message += `     ${stock.weight}% (${weightIcon}${stock.diffWeight > 0 ? '+' : ''}${stock.diffWeight}%) | ${stock.shares}張 (${sharesIcon}${stock.diffShares})\n`;
+      message += `     ${stock.weight}% (${weightIcon}${stock.diffWeight > 0 ? '+' : ''}${stock.diffWeight}%) | ${sharesLot}張 (${sharesIcon}${diffSharesLot})\n`;
     });
     message += '\n';
   });

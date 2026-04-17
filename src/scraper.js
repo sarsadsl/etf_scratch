@@ -76,27 +76,23 @@ async function fetchFsitcSpa(page, fundCode) {
   await new Promise(r => setTimeout(r, 5000));
 
   return await page.evaluate(() => {
-    const assetEl = document.querySelector('#assetBody');
-    if (!assetEl) return null;
-
-    const text = assetEl.innerText;
-    const stockIdx = text.indexOf('股票代號');
-    if (stockIdx === -1) return null;
-    const stockText = text.substring(stockIdx + '股票代號股票名稱股數持股權重'.length);
-
-    // 格式：「2330台積電6,256,0009.01%...」全部連在一起
-    // 用正則：(4+ 位數字)(中文/英文名稱)(數字,數字 = 股數)(數字.xx%)
-    const pattern = /(\d{4}[A-Z0-9]*)([^\d]+?)([\d,]+)(\d+\.?\d*)%/g;
-    const results = [];
-    let m;
-    while ((m = pattern.exec(stockText)) !== null) {
-      const stockCode = m[1];
-      const stockName = m[2].replace(/\*/g, '').trim(); // 有些名稱帶 * 號
-      const shares = parseInt(m[3].replace(/,/g, ''), 10) || 0;
-      const weight = parseFloat(m[4]) || 0;
-      if (weight > 0) results.push({ stockCode, stockName, shares, weight });
-    }
-    return results.length > 0 ? results : null;
+    const rows = [];
+    const trs = document.querySelectorAll('#assetBody tr');
+    trs.forEach(tr => {
+      const tds = Array.from(tr.querySelectorAll('td')).map(td => td.innerText.trim());
+      // Check if row has exactly 4 columns and the last column looks like a percentage (e.g., '9.01%')
+      // and it's not the header row.
+      if (tds.length === 4 && tds[3].endsWith('%') && tds[0] !== '股票代號' && tds[0] !== '期貨(名目本金)') {
+        const stockCode = tds[0];
+        const stockName = tds[1].replace(/\*/g, '').trim(); // Remove asterisks if any
+        const shares = parseInt(tds[2].replace(/,/g, ''), 10) || 0;
+        const weight = parseFloat(tds[3].replace('%', '')) || 0;
+        if (weight > 0) {
+          rows.push({ stockCode, stockName, shares, weight });
+        }
+      }
+    });
+    return rows.length > 0 ? rows : null;
   });
 }
 
@@ -108,7 +104,12 @@ async function fetchYuantaSpa(page, etfCode) {
   console.log(`[Yuanta] Fetching: ${url}`);
 
   await page.goto(url, { waitUntil: 'networkidle2', timeout: 60000 });
-  await new Promise(r => setTimeout(r, 5000));
+  try {
+    await page.waitForSelector('table.datalist, .table-list table', { timeout: 15000 });
+  } catch (e) {
+    // fallback wait
+    await new Promise(r => setTimeout(r, 5000));
+  }
 
   return await page.evaluate(() => {
     const results = [];
@@ -210,8 +211,8 @@ export async function fetchHoldings(target) {
     }
 
     return holdings
-      .sort((a, b) => b.weight - a.weight)
-      .slice(0, 10);
+      .sort((a, b) => b.weight - a.weight);
+      //.slice(0, 10);
 
   } catch (error) {
     console.error(`[Scraper] 抓取 ${target.code} 發生錯誤:`, error.message);
