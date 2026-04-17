@@ -114,6 +114,8 @@ function App() {
     });
   }, [activeHoldings]);
 
+  const isMockData = ['20260416', '20260418', '2026416'].includes(selectedDate);
+
   return (
     <div className="app-container">
       <header className="header">
@@ -131,6 +133,22 @@ function App() {
           </select>
         </div>
       </header>
+
+      {isMockData && (
+        <div style={{ 
+          background: 'rgba(239, 68, 68, 0.15)', 
+          color: '#f87171', 
+          padding: '0.85rem', 
+          borderRadius: '8px', 
+          marginBottom: '1.5rem', 
+          border: '1px solid rgba(239, 68, 68, 0.3)', 
+          textAlign: 'center', 
+          fontWeight: '600',
+          letterSpacing: '0.05em'
+        }}>
+          ⚠️ 此為系統壓力測試用的【模擬資料】。待未來接收到真實持股盤後數據，可直接刪除這些測試紀錄。
+        </div>
+      )}
 
       <div style={{ display: 'flex', gap: '1rem', overflowX: 'auto', paddingBottom: '0.5rem' }}>
         {Object.keys(ETF_META).map(etf => (
