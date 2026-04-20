@@ -1333,12 +1333,6 @@
       "weight": 6.03
     },
     {
-      "stockCode": "9998",
-      "stockName": "模擬賣出股A",
-      "shares": 5000000,
-      "weight": 5.5
-    },
-    {
       "stockCode": "2308",
       "stockName": "台達電",
       "shares": 554237,
@@ -1373,12 +1367,6 @@
       "stockName": "Corning",
       "shares": 119383,
       "weight": 2.55
-    },
-    {
-      "stockCode": "9999",
-      "stockName": "模擬賣出股B",
-      "shares": 2500000,
-      "weight": 2.3
     }
   ]
 }

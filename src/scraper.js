@@ -97,51 +97,37 @@ async function fetchFsitcSpa(page, fundCode) {
 }
 
 // ============================================================
-// 策略 C：元大投信 yuantaetfs — SPA，等待 table.datalist 渲染
+// 策略 C：MoneyDJ (原元大投信 Yuanta 回退方案)
 // ============================================================
-async function fetchYuantaSpa(page, etfCode) {
-  const url = `https://www.yuantaetfs.com/product/detail/${etfCode}/ratio`;
-  console.log(`[Yuanta] Fetching: ${url}`);
+async function fetchMoneyDjHoldings(page, etfCode) {
+  const url = `https://www.moneydj.com/ETF/X/Basic/Basic0007.xdjhtm?etfid=${etfCode}.TW`;
+  console.log(`[MoneyDJ] Fetching fallback: ${url}`);
 
-  await page.goto(url, { waitUntil: 'networkidle2', timeout: 60000 });
-  try {
-    await page.waitForSelector('table.datalist, .table-list table', { timeout: 15000 });
-  } catch (e) {
-    // fallback wait
-    await new Promise(r => setTimeout(r, 5000));
-  }
+  await page.goto(url, { waitUntil: 'networkidle2', timeout: 30000 });
+  await new Promise(resolve => setTimeout(resolve, 3000));
 
   return await page.evaluate(() => {
     const results = [];
     const rows = document.querySelectorAll('table.datalist tr');
-    if (!rows || rows.length === 0) {
-      // fallback: try table-list div
-      const lists = document.querySelectorAll('div.table-list');
-      if (lists.length >= 2) {
-        const trs = lists[1].querySelectorAll('table tr');
-        for (let i = 1; i < trs.length; i++) {
-          const cells = trs[i].querySelectorAll('td');
-          if (cells.length >= 3) {
-            const stockCode = cells[0].innerText.trim();
-            const stockName = cells[1].innerText.trim();
-            const weight = parseFloat(cells[cells.length - 1].innerText.trim().replace('%', '')) || 0;
-            const shares = cells.length > 3 ? parseInt(cells[2].innerText.trim().replace(/,/g, ''), 10) || 0 : 0;
-            if (weight > 0) results.push({ stockCode, stockName, shares, weight });
-          }
-        }
-      }
-      return results.length > 0 ? results : null;
-    }
-    for (let i = 1; i < rows.length; i++) {
+    if (!rows || rows.length === 0) return null;
+
+    for (let i = 1; i < rows.length; i++) { // 跳過表頭
       const cells = rows[i].querySelectorAll('td');
       if (cells.length >= 3) {
         const nameHtml = cells[0].innerText.trim();
+        const weightText = cells[1].innerText.trim();
+        const sharesText = cells[2].innerText.trim().replace(/,/g, '');
+
         const codeMatch = nameHtml.match(/\((.*?)\)/);
-        const stockCode = codeMatch ? codeMatch[1].split('.')[0] : nameHtml;
+        const stockCode = codeMatch ? codeMatch[1].split('.')[0].trim() : nameHtml; 
         const stockName = nameHtml.split('(')[0].trim();
-        const weight = parseFloat(cells[1].innerText.trim()) || 0;
-        const shares = parseInt(cells[2].innerText.trim().replace(/,/g, ''), 10) || 0;
-        if (weight > 0) results.push({ stockCode, stockName, shares, weight });
+
+        const weight = parseFloat(weightText) || 0;
+        const shares = parseInt(sharesText, 10) || 0;
+
+        if (stockCode && weight > 0) {
+          results.push({ stockCode, stockName, shares, weight });
+        }
       }
     }
     return results.length > 0 ? results : null;
@@ -282,7 +268,7 @@ export async function fetchHoldings(target) {
 
     } else if (target.issuer === '元大投信') {
       const page = await getSharedPage();
-      holdings = await fetchYuantaSpa(page, target.code);
+      holdings = await fetchMoneyDjHoldings(page, target.code);
 
     } else if (target.issuer === '野村投信') {
       holdings = await fetchNomuraApi(target.code);
