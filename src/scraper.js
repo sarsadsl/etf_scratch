@@ -149,6 +149,91 @@ async function fetchYuantaSpa(page, etfCode) {
 }
 
 // ============================================================
+// 策略 D：野村投信 — 直接 API (POST)
+// ============================================================
+async function fetchNomuraApi(fundCode) {
+  // 取最近交易日，格式 YYYY/MM/DD
+  const d = new Date();
+  const hourTW = (d.getUTCHours() + 8) % 24;
+  if (hourTW < 18) d.setDate(d.getDate() - 1);
+  while (d.getDay() === 0 || d.getDay() === 6) d.setDate(d.getDate() - 1);
+  const dateStr = `${d.getFullYear()}/${String(d.getMonth()+1).padStart(2,'0')}/${String(d.getDate()).padStart(2,'0')}`;
+
+  const url = 'https://www.nomurafunds.com.tw/API/ETFAPI/api/Fund/GetFundTradeInfo';
+  console.log(`[Nomura] POST API: fundCode=${fundCode}, date=${dateStr}`);
+
+  const res = await axios.post(url, { FundNo: fundCode, Date: dateStr }, {
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36',
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Referer': 'https://www.nomurafunds.com.tw/'
+    },
+    timeout: 30000
+  });
+
+  // API returns top-level array of stocks or entries
+  const stocks = res.data?.Entries?.Stocks ?? (Array.isArray(res.data) ? res.data : null);
+  if (!stocks || stocks.length === 0) {
+    console.warn(`[Nomura] Stocks empty for date ${dateStr}`);
+    return null;
+  }
+
+  return stocks
+    .filter(s => (s.CStockCode || s.CStocNo) && (parseFloat(s.CWeightsPct ?? s.CProportion) > 0))
+    .map(s => ({
+      stockCode: String(s.CStockCode ?? s.CStocNo ?? '').trim(),
+      stockName: String(s.CStockName ?? s.CStocName ?? '').trim(),
+      shares: parseInt(String(s.CQuantity ?? s.CShares ?? '0').replace(/,/g, ''), 10) || 0,
+      weight: parseFloat(s.CWeightsPct ?? s.CProportion) || 0
+    }));
+}
+
+// ============================================================
+// 策略 E：群益投信 — 直接 API (POST)
+// ============================================================
+// 群益 fundId 對照表
+const CAPITAL_FUND_ID_MAP = {
+  '00982A': 399,
+};
+
+async function fetchCapitalApi(fundCode) {
+  const fundId = CAPITAL_FUND_ID_MAP[fundCode];
+  if (!fundId) {
+    console.warn(`[Capital] No fundId mapping for ${fundCode}`);
+    return null;
+  }
+
+  const url = 'https://www.capitalfund.com.tw/CFWeb/api/etf/buyback';
+  console.log(`[Capital] POST API: fundCode=${fundCode}, fundId=${fundId}`);
+
+  const res = await axios.post(url, { fundId }, {
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36',
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Referer': `https://www.capitalfund.com.tw/etf/product/detail/${fundId}/portfolio`
+    },
+    timeout: 30000
+  });
+
+  const stocks = res.data?.data?.stocks;
+  if (!stocks || stocks.length === 0) {
+    console.warn(`[Capital] stocks empty for fundId ${fundId}`);
+    return null;
+  }
+
+  return stocks
+    .filter(s => s.stocNo && s.weight > 0)
+    .map(s => ({
+      stockCode: String(s.stocNo).trim(),
+      stockName: String(s.stocName || '').trim(),
+      shares: parseInt(String(s.share || '0').replace(/,/g, ''), 10) || 0,
+      weight: parseFloat(s.weight) || 0
+    }));
+}
+
+// ============================================================
 // 主要 fetchHoldings (export)
 // ============================================================
 const ISSUER_MAP = {
@@ -189,18 +274,21 @@ export async function fetchHoldings(target) {
     let holdings = null;
 
     if (target.issuer === '復華投信' && target.fhtrustCode) {
-      // 策略 A：無頭瀏覽器，直接 xlsx
       holdings = await fetchFhtrustXlsx(target.fhtrustCode);
 
     } else if (target.issuer === '統一投信' && target.ezmoneyCCode) {
-      // 策略 B：SPA
       const page = await getSharedPage();
       holdings = await fetchFsitcSpa(page, target.ezmoneyCCode);
 
     } else if (target.issuer === '元大投信') {
-      // 策略 C：SPA
       const page = await getSharedPage();
       holdings = await fetchYuantaSpa(page, target.code);
+
+    } else if (target.issuer === '野村投信') {
+      holdings = await fetchNomuraApi(target.code);
+
+    } else if (target.issuer === '群益投信') {
+      holdings = await fetchCapitalApi(target.code);
 
     } else {
       return { error: true, message: `未知發行商: ${target.issuer}` };

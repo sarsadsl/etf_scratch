@@ -21,5 +21,20 @@ export const targets = [
     code: '00990A',
     name: '主動元大未來',
     issuer: '元大投信'
+  },
+  {
+    code: '00980A',
+    name: '主動野村台灣優選',
+    issuer: '野村投信'
+  },
+  {
+    code: '00985A',
+    name: '主動野村台灣50',
+    issuer: '野村投信'
+  },
+  {
+    code: '00982A',
+    name: '主動群益台灣強棒',
+    issuer: '群益投信'
   }
 ];
