@@ -178,6 +178,28 @@ function App() {
     });
   }, [activeHoldings, activeEtf]);
 
+  // 新增張數百分比排行 (變動差異排行榜)，抓全體資料取前十名增加最劇烈的標的
+  const diffChartData = useMemo(() => {
+    if (!activeHoldings.length) return [];
+    const mapped = activeHoldings.map(item => {
+      const diff = item.diffWeight || 0;
+      const shares = item.shares || 0;
+      const diffShares = item.diffShares || 0;
+      const prevShares = shares - diffShares;
+      const computedPct = prevShares > 0 ? parseFloat(((diffShares / prevShares) * 100).toFixed(2)) : (diffShares > 0 ? 100 : 0);
+      const finalPct = item.diffSharesPercent !== undefined ? item.diffSharesPercent : computedPct;
+      return {
+        name: formatStockLabel(item.stockCode, item.stockName, activeEtf),
+        diffSharesPercent: finalPct,
+        diffShares: diffShares,
+        weight: item.weight
+      };
+    });
+    // 過濾出有「新增」的標的，依照新增比例降冪排序，取前十名
+    const sorted = mapped.filter(m => m.diffSharesPercent > 0).sort((a, b) => b.diffSharesPercent - a.diffSharesPercent);
+    return sorted.slice(0, 10);
+  }, [activeHoldings, activeEtf]);
+
   // ── 聚合視圖：跨 ETF 股票資金吸收 ──
   // 對 visibleEtfs 中有資料的 ETF，加總同一股票的持股比例與持股數量
   const aggregatedData = useMemo(() => {
@@ -471,6 +493,30 @@ function App() {
                     </ResponsiveContainer>
                   </div>
                 </div>
+
+                {/* 第三區塊：變動差異排行榜 */}
+                {diffChartData.length > 0 && (
+                  <div className="glass-panel">
+                    <h3 style={{ marginBottom: '1.5rem', fontSize: '1.25rem', color: '#10b981' }}>新增張數佔比排行榜 (Top 10 加碼)</h3>
+                    <div style={{ height: '350px' }}>
+                      <ResponsiveContainer width="100%" height="100%">
+                        <BarChart data={diffChartData} layout="vertical" margin={{ top: 5, right: 40, left: 20, bottom: 20 }}>
+                          <XAxis type="number" stroke="var(--text-secondary)" fontSize={12} tickLine={false} axisLine={false} tickFormatter={val => `${val}%`} label={{ value: '新增佔比 (%)', position: 'bottom', fill: 'var(--text-secondary)', fontSize: 13 }} />
+                          <YAxis type="category" dataKey="name" stroke="var(--text-secondary)" fontSize={15} fontWeight={600} tickLine={false} axisLine={false} width={120} />
+                          <Tooltip cursor={{ fill: 'rgba(255,255,255,0.08)' }} contentStyle={{ backgroundColor: 'var(--bg-surface)', borderColor: 'var(--border-light)', borderRadius: '8px', color: '#fff' }} itemStyle={{ color: '#fff', fontWeight: 600 }} formatter={(value, name, props) => {
+                            if (name === '新增張數百分比') {
+                              return [`+${value}%`, name];
+                            }
+                            return [value, name];
+                          }} />
+                          <Bar dataKey="diffSharesPercent" name="新增張數百分比" fill="var(--tw-up)" radius={[0, 4, 4, 0]} barSize={16}>
+                            <LabelList dataKey="diffSharesPercent" position="right" formatter={(val) => `+${val}%`} fill="var(--tw-up)" fontSize={14} fontWeight={700} />
+                          </Bar>
+                        </BarChart>
+                      </ResponsiveContainer>
+                    </div>
+                  </div>
+                )}
               </div>
 
               <div className="glass-panel">
