@@ -299,8 +299,8 @@ export async function fetchHoldings(target) {
     }
 
     return holdings
-      .sort((a, b) => b.weight - a.weight);
-      //.slice(0, 10);
+      .sort((a, b) => b.weight - a.weight)
+      .slice(0, 10);
 
   } catch (error) {
     console.error(`[Scraper] 抓取 ${target.code} 發生錯誤:`, error.message);

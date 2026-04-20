@@ -64,9 +64,8 @@ async function main() {
   // 3. 關閉共用瀏覽器
   await closeBrowser();
 
-  // 4. 發送推播 (目前預設只傳送 00981A 測試)
-  const filteredResults = notificationResults.filter(r => r.target.code === '00981A');
-  await sendTelegramNotification(filteredResults);
+  // 4. 發送推播
+  await sendTelegramNotification(notificationResults);
 
   // 5. 將今日抓取結果覆寫回狀態檔
   fs.writeFileSync(STATE_FILE, JSON.stringify(newState, null, 2), 'utf-8');
