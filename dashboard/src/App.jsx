@@ -468,6 +468,18 @@ function App() {
       {/* ══════════ 單檔 ETF 視圖 ══════════ */}
       {viewMode === 'single' && (
         <>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '1.5rem', borderBottom: '1px solid var(--border-light)', paddingBottom: '0.8rem' }}>
+            <div>
+              <h2 style={{ margin: 0, fontSize: '1.6rem', fontWeight: 700, color: ETF_META[activeEtf].color }}>
+                {ETF_META[activeEtf].name}
+              </h2>
+              <span style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>{activeEtf}</span>
+            </div>
+            <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', background: 'rgba(255,255,255,0.04)', padding: '0.4rem 0.8rem', borderRadius: '8px', border: '1px solid var(--border-light)' }}>
+              資料更新日期：<span style={{ color: '#e2e8f0', fontWeight: 600, letterSpacing: '0.05em' }}>{selectedDate === 'latest' ? (historyDates[0] || '讀取中') : selectedDate}</span>
+            </div>
+          </div>
+
           {(!activeHoldings || activeHoldings.length === 0) ? (
             <div className="glass-panel" style={{ textAlign: 'center', padding: '4rem' }}>
               <Activity size={48} color="var(--text-secondary)" style={{ marginBottom: '1rem' }} />
