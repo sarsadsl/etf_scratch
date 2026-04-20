@@ -516,20 +516,20 @@ function App() {
                 </div>
 
                 {/* 第三區塊：變動差異排行榜 */}
-                {diffChartInfo.data.length > 0 && (
-                  <div className="glass-panel" style={{ display: 'flex', flexDirection: 'column' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
-                      <h3 style={{ margin: 0, fontSize: '1.25rem', color: diffChartInfo.color }}>
-                        {diffChartInfo.title}
-                      </h3>
-                      <div style={{ display: 'flex', gap: '0.4rem', background: 'rgba(255,255,255,0.05)', padding: '4px', borderRadius: '8px' }}>
-                        <button onClick={() => setDiffSort('addPct')} style={{ padding: '0.3rem 0.6rem', fontSize: '0.75rem', borderRadius: '6px', cursor: 'pointer', border: 'none', background: diffSort === 'addPct' ? 'rgba(16,185,129,0.2)' : 'transparent', color: diffSort === 'addPct' ? '#10b981' : 'var(--text-secondary)' }}>加碼%</button>
-                        <button onClick={() => setDiffSort('addAbs')} style={{ padding: '0.3rem 0.6rem', fontSize: '0.75rem', borderRadius: '6px', cursor: 'pointer', border: 'none', background: diffSort === 'addAbs' ? 'rgba(16,185,129,0.2)' : 'transparent', color: diffSort === 'addAbs' ? '#10b981' : 'var(--text-secondary)' }}>加碼張數</button>
-                        <button onClick={() => setDiffSort('subPct')} style={{ padding: '0.3rem 0.6rem', fontSize: '0.75rem', borderRadius: '6px', cursor: 'pointer', border: 'none', background: diffSort === 'subPct' ? 'rgba(239,68,68,0.2)' : 'transparent', color: diffSort === 'subPct' ? '#ef4444' : 'var(--text-secondary)' }}>減碼%</button>
-                        <button onClick={() => setDiffSort('subAbs')} style={{ padding: '0.3rem 0.6rem', fontSize: '0.75rem', borderRadius: '6px', cursor: 'pointer', border: 'none', background: diffSort === 'subAbs' ? 'rgba(239,68,68,0.2)' : 'transparent', color: diffSort === 'subAbs' ? '#ef4444' : 'var(--text-secondary)' }}>減碼張數</button>
-                      </div>
+                <div className="glass-panel" style={{ display: 'flex', flexDirection: 'column' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
+                    <h3 style={{ margin: 0, fontSize: '1.25rem', color: diffChartInfo.color || '#94a3b8' }}>
+                      {diffChartInfo.title || '變動差異排行榜'}
+                    </h3>
+                    <div style={{ display: 'flex', gap: '0.4rem', background: 'rgba(255,255,255,0.05)', padding: '4px', borderRadius: '8px' }}>
+                      <button onClick={() => setDiffSort('addPct')} style={{ padding: '0.3rem 0.6rem', fontSize: '0.75rem', borderRadius: '6px', cursor: 'pointer', border: 'none', background: diffSort === 'addPct' ? 'rgba(16,185,129,0.2)' : 'transparent', color: diffSort === 'addPct' ? '#10b981' : 'var(--text-secondary)' }}>加碼%</button>
+                      <button onClick={() => setDiffSort('addAbs')} style={{ padding: '0.3rem 0.6rem', fontSize: '0.75rem', borderRadius: '6px', cursor: 'pointer', border: 'none', background: diffSort === 'addAbs' ? 'rgba(16,185,129,0.2)' : 'transparent', color: diffSort === 'addAbs' ? '#10b981' : 'var(--text-secondary)' }}>加碼張數</button>
+                      <button onClick={() => setDiffSort('subPct')} style={{ padding: '0.3rem 0.6rem', fontSize: '0.75rem', borderRadius: '6px', cursor: 'pointer', border: 'none', background: diffSort === 'subPct' ? 'rgba(239,68,68,0.2)' : 'transparent', color: diffSort === 'subPct' ? '#ef4444' : 'var(--text-secondary)' }}>減碼%</button>
+                      <button onClick={() => setDiffSort('subAbs')} style={{ padding: '0.3rem 0.6rem', fontSize: '0.75rem', borderRadius: '6px', cursor: 'pointer', border: 'none', background: diffSort === 'subAbs' ? 'rgba(239,68,68,0.2)' : 'transparent', color: diffSort === 'subAbs' ? '#ef4444' : 'var(--text-secondary)' }}>減碼張數</button>
                     </div>
-                    <div style={{ flex: 1, minHeight: '350px' }}>
+                  </div>
+                  <div style={{ flex: 1, minHeight: '350px', position: 'relative' }}>
+                    {diffChartInfo.data && diffChartInfo.data.length > 0 ? (
                       <ResponsiveContainer width="100%" height="100%">
                         <BarChart data={diffChartInfo.data} layout="vertical" margin={{ top: 5, right: 40, left: 20, bottom: 20 }}>
                           <XAxis type="number" stroke="var(--text-secondary)" fontSize={12} tickLine={false} axisLine={false} tickFormatter={val => diffSort.includes('Pct') ? `${val}%` : `${val}張`} label={{ value: diffSort.includes('Pct') ? '佔比 (%)' : '張數 (千股)', position: 'bottom', fill: 'var(--text-secondary)', fontSize: 13 }} />
@@ -542,9 +542,14 @@ function App() {
                           </Bar>
                         </BarChart>
                       </ResponsiveContainer>
-                    </div>
+                    ) : (
+                      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', color: 'var(--text-secondary)' }}>
+                        <Activity size={40} style={{ marginBottom: '1rem', opacity: 0.5 }} />
+                        <span style={{ fontWeight: 600 }}>本作日未偵測到此類型的實質異動</span>
+                      </div>
+                    )}
                   </div>
-                )}
+                </div>
               </div>
 
               <div className="glass-panel">
