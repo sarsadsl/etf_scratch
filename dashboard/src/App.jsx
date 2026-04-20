@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, PieChart, Pie } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, PieChart, Pie, LabelList } from 'recharts';
 import { Activity, RefreshCw, Send, Lock, LogOut, User, ShieldCheck, Filter, BarChart2 } from 'lucide-react';
 import './index.css';
 
@@ -162,11 +162,18 @@ function App() {
     const sorted = [...activeHoldings].sort((a, b) => b.weight - a.weight);
     return sorted.slice(0, 10).map(item => {
       const diff = item.diffWeight || 0;
+      const shares = item.shares || 0;
+      const diffShares = item.diffShares || 0;
+      const prevShares = shares - diffShares;
+      const computedPct = prevShares > 0 ? parseFloat(((diffShares / prevShares) * 100).toFixed(2)) : 0;
+      const finalPct = item.diffSharesPercent !== undefined ? item.diffSharesPercent : computedPct;
       return {
         name: formatStockLabel(item.stockCode, item.stockName, activeEtf),
         weight: item.weight,
         prevWeight: Math.max(Number((item.weight - diff).toFixed(2)), 0),
-        diff
+        diff,
+        diffSharesPercent: finalPct,
+        diffShares: diffShares
       };
     });
   }, [activeHoldings, activeEtf]);
@@ -447,9 +454,17 @@ function App() {
                       <BarChart data={chartData} layout="vertical" margin={{ top: 5, right: 30, left: 20, bottom: 20 }}>
                         <XAxis type="number" stroke="var(--text-secondary)" fontSize={12} tickLine={false} axisLine={false} tickFormatter={val => `${val}%`} label={{ value: '權重 (%)', position: 'bottom', fill: 'var(--text-secondary)', fontSize: 13 }} />
                         <YAxis type="category" dataKey="name" stroke="var(--text-secondary)" fontSize={15} fontWeight={600} tickLine={false} axisLine={false} width={120} />
-                        <Tooltip cursor={{ fill: 'rgba(255,255,255,0.08)' }} contentStyle={{ backgroundColor: 'var(--bg-surface)', borderColor: 'var(--border-light)', borderRadius: '8px', color: '#fff' }} itemStyle={{ color: '#fff', fontWeight: 600 }} formatter={(value, name) => [`${value}%`, name]} />
+                        <Tooltip cursor={{ fill: 'rgba(255,255,255,0.08)' }} contentStyle={{ backgroundColor: 'var(--bg-surface)', borderColor: 'var(--border-light)', borderRadius: '8px', color: '#fff' }} itemStyle={{ color: '#fff', fontWeight: 600 }} formatter={(value, name, props) => {
+                          if (name === '今日權重') {
+                            const pct = props.payload.diffSharesPercent;
+                            const ext = pct ? ` (新增張數 ${pct > 0 ? '+' : ''}${pct}%)` : '';
+                            return [`${value}%${ext}`, name];
+                          }
+                          return [`${value}%`, name];
+                        }} />
                         <Bar dataKey="prevWeight" name="前日權重" fill="var(--text-secondary)" radius={[0, 4, 4, 0]} barSize={8} />
                         <Bar dataKey="weight" name="今日權重" radius={[0, 4, 4, 0]} barSize={12}>
+                          <LabelList dataKey="diffSharesPercent" position="right" formatter={(val) => val ? `${val > 0 ? '+' : ''}${val}%` : ''} fill="var(--text-secondary)" fontSize={12} fontWeight={600} />
                           {chartData.map((entry, index) => <Cell key={`cell-${index}`} fill={entry.diff > 0 ? 'var(--tw-up)' : (entry.diff < 0 ? 'var(--tw-down)' : 'var(--accent-blue)')} />)}
                         </Bar>
                       </BarChart>
@@ -477,6 +492,9 @@ function App() {
                       {sortedHoldings.map((hold, idx) => {
                         const sharesLot = Math.round(hold.shares / 1000).toLocaleString();
                         const diffLot = Math.round((hold.diffShares || 0) / 1000);
+                        const prevShares = (hold.shares || 0) - (hold.diffShares || 0);
+                        const computedPct = prevShares > 0 ? parseFloat((((hold.diffShares || 0) / prevShares) * 100).toFixed(2)) : 0;
+                        const finalPct = hold.diffSharesPercent !== undefined ? hold.diffSharesPercent : computedPct;
                         return (
                           <tr key={hold.stockCode}>
                             <td style={{ color: 'var(--text-secondary)' }}>{idx + 1}</td>
@@ -488,7 +506,8 @@ function App() {
                             <td>
                               {sharesLot}
                               <span className={diffLot > 0 ? 'text-success' : (diffLot < 0 ? 'text-danger' : 'text-neutral')} style={{ fontWeight: 800, fontSize: '1.1rem', marginLeft: '8px' }}>
-                                ({diffLot > 0 ? '+' : ''}{diffLot})
+                                {diffLot !== 0 ? `(${diffLot > 0 ? '+' : ''}${diffLot})` : ''}
+                                {finalPct ? ` [${finalPct > 0 ? '+' : ''}${finalPct}%]` : ''}
                               </span>
                             </td>
                             <td>{hold.isNew && <span className="badge new">新進榜</span>}</td>

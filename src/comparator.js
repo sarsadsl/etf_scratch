@@ -38,10 +38,12 @@ export function compareHoldings(currentHoldings, previousHoldings) {
     // 計算差額 (保留到小數第二位)
     const diffShares = current.shares - prev.shares;
     const diffWeight = parseFloat((current.weight - prev.weight).toFixed(2));
+    const diffSharesPercent = prev.shares > 0 ? parseFloat(((diffShares / prev.shares) * 100).toFixed(2)) : 0;
 
     return {
       ...current,
       diffShares,
+      diffSharesPercent,
       diffWeight,
       isNew: false
     };
