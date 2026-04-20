@@ -54,8 +54,9 @@ function App() {
   });
   const [showFilter, setShowFilter] = useState(false);
 
-  // ── 排序 ──
+  // ── 排序與榜單 ──
   const [tableSort, setTableSort] = useState('weight');
+  const [diffSort, setDiffSort] = useState('addPct'); // 'addPct' | 'addAbs' | 'subPct' | 'subAbs'
 
   // ── 身分狀態 ──
   const [currentUser, setCurrentUser] = useState(() => {
@@ -178,11 +179,11 @@ function App() {
     });
   }, [activeHoldings, activeEtf]);
 
-  // 新增張數百分比排行 (變動差異排行榜)，抓全體資料取前十名增加最劇烈的標的
-  const diffChartData = useMemo(() => {
-    if (!activeHoldings.length) return [];
+  // 第三圖表：變動差異排行榜 (支援新增佔比、新增張數、減少佔比、減少張數)
+  const diffChartInfo = useMemo(() => {
+    if (!activeHoldings.length) return { data: [], dataKey: '', color: '', formatter: null, title: '' };
+    
     const mapped = activeHoldings.map(item => {
-      const diff = item.diffWeight || 0;
       const shares = item.shares || 0;
       const diffShares = item.diffShares || 0;
       const prevShares = shares - diffShares;
@@ -192,13 +193,33 @@ function App() {
         name: formatStockLabel(item.stockCode, item.stockName, activeEtf),
         diffSharesPercent: finalPct,
         diffShares: diffShares,
-        weight: item.weight
+        diffSharesLot: Math.round(diffShares / 1000)
       };
     });
-    // 過濾出有「新增」的標的，依照新增比例降冪排序，取前十名
-    const sorted = mapped.filter(m => m.diffSharesPercent > 0).sort((a, b) => b.diffSharesPercent - a.diffSharesPercent);
-    return sorted.slice(0, 10);
-  }, [activeHoldings, activeEtf]);
+
+    let filtered = [];
+    let config = { dataKey: 'diffSharesPercent', color: 'var(--tw-up)', formatter: (v) => `+${v}%`, title: '新增張數佔比排行榜' };
+
+    switch (diffSort) {
+      case 'addPct':
+        filtered = mapped.filter(m => m.diffSharesPercent > 0).sort((a, b) => b.diffSharesPercent - a.diffSharesPercent);
+        break;
+      case 'addAbs':
+        filtered = mapped.filter(m => m.diffSharesLot > 0).sort((a, b) => b.diffSharesLot - a.diffSharesLot);
+        config = { dataKey: 'diffSharesLot', color: 'var(--tw-up)', formatter: (v) => `+${v} 張`, title: '總加碼張數排行榜' };
+        break;
+      case 'subPct':
+        filtered = mapped.filter(m => m.diffSharesPercent < 0).sort((a, b) => a.diffSharesPercent - b.diffSharesPercent);
+        config = { dataKey: 'diffSharesPercent', color: 'var(--tw-down)', formatter: (v) => `${v}%`, title: '大砍張數佔比排行榜' };
+        break;
+      case 'subAbs':
+        filtered = mapped.filter(m => m.diffSharesLot < 0).sort((a, b) => a.diffSharesLot - b.diffSharesLot);
+        config = { dataKey: 'diffSharesLot', color: 'var(--tw-down)', formatter: (v) => `${v} 張`, title: '總減碼張數排行榜' };
+        break;
+    }
+
+    return { data: filtered.slice(0, 10), ...config };
+  }, [activeHoldings, activeEtf, diffSort]);
 
   // ── 聚合視圖：跨 ETF 股票資金吸收 ──
   // 對 visibleEtfs 中有資料的 ETF，加總同一股票的持股比例與持股數量
@@ -495,22 +516,29 @@ function App() {
                 </div>
 
                 {/* 第三區塊：變動差異排行榜 */}
-                {diffChartData.length > 0 && (
-                  <div className="glass-panel">
-                    <h3 style={{ marginBottom: '1.5rem', fontSize: '1.25rem', color: '#10b981' }}>新增張數佔比排行榜 (Top 10 加碼)</h3>
-                    <div style={{ height: '350px' }}>
+                {diffChartInfo.data.length > 0 && (
+                  <div className="glass-panel" style={{ display: 'flex', flexDirection: 'column' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
+                      <h3 style={{ margin: 0, fontSize: '1.25rem', color: diffChartInfo.color }}>
+                        {diffChartInfo.title}
+                      </h3>
+                      <div style={{ display: 'flex', gap: '0.4rem', background: 'rgba(255,255,255,0.05)', padding: '4px', borderRadius: '8px' }}>
+                        <button onClick={() => setDiffSort('addPct')} style={{ padding: '0.3rem 0.6rem', fontSize: '0.75rem', borderRadius: '6px', cursor: 'pointer', border: 'none', background: diffSort === 'addPct' ? 'rgba(16,185,129,0.2)' : 'transparent', color: diffSort === 'addPct' ? '#10b981' : 'var(--text-secondary)' }}>加碼%</button>
+                        <button onClick={() => setDiffSort('addAbs')} style={{ padding: '0.3rem 0.6rem', fontSize: '0.75rem', borderRadius: '6px', cursor: 'pointer', border: 'none', background: diffSort === 'addAbs' ? 'rgba(16,185,129,0.2)' : 'transparent', color: diffSort === 'addAbs' ? '#10b981' : 'var(--text-secondary)' }}>加碼張數</button>
+                        <button onClick={() => setDiffSort('subPct')} style={{ padding: '0.3rem 0.6rem', fontSize: '0.75rem', borderRadius: '6px', cursor: 'pointer', border: 'none', background: diffSort === 'subPct' ? 'rgba(239,68,68,0.2)' : 'transparent', color: diffSort === 'subPct' ? '#ef4444' : 'var(--text-secondary)' }}>減碼%</button>
+                        <button onClick={() => setDiffSort('subAbs')} style={{ padding: '0.3rem 0.6rem', fontSize: '0.75rem', borderRadius: '6px', cursor: 'pointer', border: 'none', background: diffSort === 'subAbs' ? 'rgba(239,68,68,0.2)' : 'transparent', color: diffSort === 'subAbs' ? '#ef4444' : 'var(--text-secondary)' }}>減碼張數</button>
+                      </div>
+                    </div>
+                    <div style={{ flex: 1, minHeight: '350px' }}>
                       <ResponsiveContainer width="100%" height="100%">
-                        <BarChart data={diffChartData} layout="vertical" margin={{ top: 5, right: 40, left: 20, bottom: 20 }}>
-                          <XAxis type="number" stroke="var(--text-secondary)" fontSize={12} tickLine={false} axisLine={false} tickFormatter={val => `${val}%`} label={{ value: '新增佔比 (%)', position: 'bottom', fill: 'var(--text-secondary)', fontSize: 13 }} />
+                        <BarChart data={diffChartInfo.data} layout="vertical" margin={{ top: 5, right: 40, left: 20, bottom: 20 }}>
+                          <XAxis type="number" stroke="var(--text-secondary)" fontSize={12} tickLine={false} axisLine={false} tickFormatter={val => diffSort.includes('Pct') ? `${val}%` : `${val}張`} label={{ value: diffSort.includes('Pct') ? '佔比 (%)' : '張數 (千股)', position: 'bottom', fill: 'var(--text-secondary)', fontSize: 13 }} />
                           <YAxis type="category" dataKey="name" stroke="var(--text-secondary)" fontSize={15} fontWeight={600} tickLine={false} axisLine={false} width={120} />
-                          <Tooltip cursor={{ fill: 'rgba(255,255,255,0.08)' }} contentStyle={{ backgroundColor: 'var(--bg-surface)', borderColor: 'var(--border-light)', borderRadius: '8px', color: '#fff' }} itemStyle={{ color: '#fff', fontWeight: 600 }} formatter={(value, name, props) => {
-                            if (name === '新增張數百分比') {
-                              return [`+${value}%`, name];
-                            }
-                            return [value, name];
+                          <Tooltip cursor={{ fill: 'rgba(255,255,255,0.08)' }} contentStyle={{ backgroundColor: 'var(--bg-surface)', borderColor: 'var(--border-light)', borderRadius: '8px', color: '#fff' }} itemStyle={{ color: '#fff', fontWeight: 600 }} formatter={(value, name) => {
+                            return [diffChartInfo.formatter(value), diffChartInfo.title];
                           }} />
-                          <Bar dataKey="diffSharesPercent" name="新增張數百分比" fill="var(--tw-up)" radius={[0, 4, 4, 0]} barSize={16}>
-                            <LabelList dataKey="diffSharesPercent" position="right" formatter={(val) => `+${val}%`} fill="var(--tw-up)" fontSize={14} fontWeight={700} />
+                          <Bar dataKey={diffChartInfo.dataKey} name={diffChartInfo.title} fill={diffChartInfo.color} radius={[0, 4, 4, 0]} barSize={16}>
+                            <LabelList dataKey={diffChartInfo.dataKey} position="right" formatter={diffChartInfo.formatter} fill={diffChartInfo.color} fontSize={14} fontWeight={700} />
                           </Bar>
                         </BarChart>
                       </ResponsiveContainer>
