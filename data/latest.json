@@ -1490,9 +1490,10 @@
       "stockName": "Micron",
       "shares": 83471,
       "weight": 4.71,
-      "diffShares": 83471,
-      "diffWeight": 4.71,
-      "isNew": true
+      "diffShares": 0,
+      "diffSharesPercent": 0,
+      "diffWeight": -0.13,
+      "isNew": false
     },
     {
       "stockCode": "2308",
