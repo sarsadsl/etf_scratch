@@ -1367,6 +1367,18 @@
       "stockName": "Corning",
       "shares": 119383,
       "weight": 2.55
+    },
+    {
+      "stockCode": "MU",
+      "stockName": "Micron",
+      "shares": 83471,
+      "weight": 4.84
+    },
+    {
+      "stockCode": "CIEN",
+      "stockName": "Ciena",
+      "shares": 47242,
+      "weight": 2.86
     }
   ]
 }
