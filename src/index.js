@@ -95,15 +95,21 @@ async function main() {
   fs.writeFileSync(path.join(dashboardDataDir, `${dateStr}.json`), JSON.stringify(dashboardState, null, 2), 'utf-8');
 
   // 生成歷史日期選單 (index.json)
-  const historyListPath = path.join(dashboardDataDir, 'index.json');
-  let historyList = [];
-  if (fs.existsSync(historyListPath)) {
-    try { historyList = JSON.parse(fs.readFileSync(historyListPath, 'utf-8')); } catch(e){}
-  }
-  if (!historyList.includes(dateStr)) {
-    historyList.push(dateStr);
-    historyList.sort((a, b) => b.localeCompare(a)); // Descending
-    fs.writeFileSync(historyListPath, JSON.stringify(historyList, null, 2), 'utf-8');
+  // 防護：只有實際成功抓到至少一個 ETF 資料時，才將此日期登錄至選單
+  const hasAnySuccess = Object.values(dashboardState).some(holdings => Array.isArray(holdings) && holdings.length > 0);
+  if (hasAnySuccess) {
+    const historyListPath = path.join(dashboardDataDir, 'index.json');
+    let historyList = [];
+    if (fs.existsSync(historyListPath)) {
+      try { historyList = JSON.parse(fs.readFileSync(historyListPath, 'utf-8')); } catch(e){}
+    }
+    if (!historyList.includes(dateStr)) {
+      historyList.push(dateStr);
+      historyList.sort((a, b) => b.localeCompare(a)); // Descending
+      fs.writeFileSync(historyListPath, JSON.stringify(historyList, null, 2), 'utf-8');
+    }
+  } else {
+    console.warn('[System] 所有 ETF 均抓取失敗，跳過 index.json 日期登錄，避免產生空殼日期選單。');
   }
 
   console.log('[System] 狀態已更新至 state.json, data 資料夾，並已同步至 Dashboard。任務完成。');
