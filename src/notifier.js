@@ -31,7 +31,18 @@ export async function sendTelegramNotification(results) {
       return;
     }
 
-    result.holdings.forEach((stock, index) => {
+    // 為所有股票加上原始排行名次，再過濾出有實質異動的股票
+    const mappedHoldings = result.holdings.map((stock, i) => ({ ...stock, rank: i + 1 }));
+    const changedHoldings = mappedHoldings.filter(stock => 
+      stock.isNew || stock.diffShares !== 0 || stock.diffWeight !== 0
+    );
+
+    if (changedHoldings.length === 0) {
+      message += `  💤 今日前十大持股無任何增減變化\n\n`;
+      return;
+    }
+
+    changedHoldings.forEach((stock) => {
       // 判斷增減符號
       let weightIcon = '➖';
       let sharesIcon = '';
@@ -44,9 +55,9 @@ export async function sendTelegramNotification(results) {
       const sharesLot = Math.round(stock.shares / 1000);
       const diffSharesLot = Math.round(stock.diffShares / 1000);
       
-      // 格式: 1. 2330 台積電 35.5% (🔺0.5%) | 5000張 (+100) 🆕
+      // 格式: #5 2330 台積電 35.5% (🔺0.5%) | 5000張 (+100) 🆕
       const safeStockName = stock.stockName.replace(/([_*\[\]()~`>#+\-=|{}.!])/g, '\\$1');
-      message += `  ${index + 1}. \`${stock.stockCode}\` ${safeStockName}${newTag}\n`;
+      message += `  #${stock.rank} \`${stock.stockCode}\` ${safeStockName}${newTag}\n`;
       message += `     ${stock.weight}% (${weightIcon}${stock.diffWeight > 0 ? '+' : ''}${stock.diffWeight}%) | ${sharesLot}張 (${sharesIcon}${diffSharesLot})\n`;
     });
     message += '\n';
