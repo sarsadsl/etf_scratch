@@ -891,62 +891,62 @@
     {
       "stockCode": "LITE",
       "stockName": "Lumentum",
-      "shares": 72785,
-      "weight": 8.08
+      "shares": 70985,
+      "weight": 7.87
     },
     {
       "stockCode": "SNDK",
       "stockName": "Sandisk",
-      "shares": 53293,
-      "weight": 6.09
-    },
-    {
-      "stockCode": "MU",
-      "stockName": "Micron",
-      "shares": 83471,
-      "weight": 4.71
+      "shares": 44593,
+      "weight": 5.05
     },
     {
       "stockCode": "2308",
       "stockName": "台達電",
       "shares": 628000,
-      "weight": 4.54
+      "weight": 4.69
+    },
+    {
+      "stockCode": "MU",
+      "stockName": "Micron",
+      "shares": 71171,
+      "weight": 3.96
     },
     {
       "stockCode": "2330",
       "stockName": "台積電",
       "shares": 497000,
-      "weight": 3.96
+      "weight": 3.95
     },
     {
       "stockCode": "TSEM",
       "stockName": "Tower Semiconductor",
       "shares": 118182,
-      "weight": 3.32
-    },
-    {
-      "stockCode": "5801",
-      "stockName": "Furukawa Electric",
-      "shares": 87400,
-      "weight": 3.06
+      "weight": 3.29
     },
     {
       "stockCode": "GLW",
       "stockName": "Corning",
       "shares": 145895,
-      "weight": 2.98
+      "weight": 2.99
     },
     {
       "stockCode": "BE",
       "stockName": "Bloom Energy",
       "shares": 109100,
-      "weight": 2.81
+      "weight": 2.95
     },
     {
       "stockCode": "TER",
       "stockName": "Teradyne",
       "shares": 58500,
-      "weight": 2.76
+      "weight": 2.72
+    },
+    {
+      "stockCode": "CIEN",
+      "stockName": "Ciena",
+      "shares": 42342,
+      "weight": 2.64
     }
   ],
   "00980A": [
