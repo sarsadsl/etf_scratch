@@ -64,8 +64,8 @@ async function main() {
   // 3. 關閉共用瀏覽器
   await closeBrowser();
 
-  // 4. 發送推播 (已停用，因應測試與重構期間，避免干擾)
-  // await sendTelegramNotification(notificationResults);
+  // 4. 發送推播
+  await sendTelegramNotification(notificationResults);
 
   // 5. 將今日抓取結果覆寫回狀態檔
   fs.writeFileSync(STATE_FILE, JSON.stringify(newState, null, 2), 'utf-8');
