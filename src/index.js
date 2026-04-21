@@ -75,7 +75,13 @@ async function main() {
   if (!fs.existsSync(dataDir)) {
     fs.mkdirSync(dataDir);
   }
-  const dateStr = new Date().toLocaleDateString('zh-TW', { timeZone: 'Asia/Taipei' }).replace(/\//g, '');
+  // 取最近有效交易日（與 scraper.js 邏輯同步：18:00 前取前一交易日）
+  const now = new Date();
+  const hourTW = (now.getUTCHours() + 8) % 24;
+  const d = new Date(now);
+  if (hourTW < 18) d.setDate(d.getDate() - 1);
+  while (d.getDay() === 0 || d.getDay() === 6) d.setDate(d.getDate() - 1);
+  const dateStr = `${d.getFullYear()}${d.getMonth() + 1}${d.getDate()}`;
   const historyFile = path.join(dataDir, `${dateStr}.json`);
   fs.writeFileSync(historyFile, JSON.stringify(dashboardState, null, 2), 'utf-8');
 
