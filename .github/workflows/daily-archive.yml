@@ -1,0 +1,92 @@
+name: Daily ETF Holdings Archive (GitHub Releases)
+
+on:
+  schedule:
+    # 台灣時間 18:45 (10:45 UTC) 每日執行，確保各投信官網資料已更新
+    - cron: '45 10 * * 1-5'
+  workflow_dispatch:
+
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies (root)
+        run: npm ci || npm install
+
+      - name: Install Chromium for Puppeteer
+        run: npx puppeteer browsers install chrome
+
+      - name: Run Archiver
+        id: run_archiver
+        run: node src/archiver.js
+
+      - name: Get today's trading date
+        id: get_date
+        run: |
+          # 與 archiver.js 相同邏輯：台灣時間 18:00 前取前一交易日
+          HOUR_TW=$(( ($(date -u +%H) + 8) % 24 ))
+          DATE_REF=$(date -u +%Y%m%d)
+          if [ $HOUR_TW -lt 18 ]; then
+            DATE_REF=$(date -u -d "yesterday" +%Y%m%d)
+          fi
+          # 跳過週末
+          DAY_OF_WEEK=$(date -d "$DATE_REF" +%u)
+          if [ $DAY_OF_WEEK -eq 6 ]; then DATE_REF=$(date -d "$DATE_REF - 1 day" +%Y%m%d); fi
+          if [ $DAY_OF_WEEK -eq 7 ]; then DATE_REF=$(date -d "$DATE_REF - 2 days" +%Y%m%d); fi
+          echo "DATE=$DATE_REF" >> $GITHUB_OUTPUT
+          echo "Trading date: $DATE_REF"
+
+      - name: Check archive files exist
+        id: check_files
+        run: |
+          ARCHIVE_DIR="archives/${{ steps.get_date.outputs.DATE }}"
+          if [ -d "$ARCHIVE_DIR" ] && [ "$(ls -A $ARCHIVE_DIR/*.xlsx $ARCHIVE_DIR/*.csv 2>/dev/null | wc -l)" -gt 0 ]; then
+            echo "HAS_FILES=true" >> $GITHUB_OUTPUT
+            echo "Files found in $ARCHIVE_DIR:"
+            ls -lh "$ARCHIVE_DIR"
+          else
+            echo "HAS_FILES=false" >> $GITHUB_OUTPUT
+            echo "No archive files found, skipping release."
+          fi
+
+      - name: Create GitHub Release and upload files
+        if: steps.check_files.outputs.HAS_FILES == 'true'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: "archive-${{ steps.get_date.outputs.DATE }}"
+          name: "📊 ETF 持股封存 ${{ steps.get_date.outputs.DATE }}"
+          body: |
+            ## 📦 主動式 ETF 每日持股原始檔案封存
+
+            **封存日期**: ${{ steps.get_date.outputs.DATE }}
+            **包含投信**: 復華 / 統一 / 元大 / 群益 / 野村（共 7 檔 ETF）
+
+            ### 檔案說明
+            | 檔案 | 投信 | ETF |
+            |------|------|-----|
+            | `00991A_復華投信.xlsx` | 復華投信 | 00991A 主動復華未來50 |
+            | `00981A_統一投信.xlsx` | 統一投信 | 00981A 主動統一台股增長 |
+            | `00988A_統一投信.xlsx` | 統一投信 | 00988A 主動統一全球創新 |
+            | `00990A_元大投信.xlsx` | 元大投信 | 00990A 主動元大未來 |
+            | `00982A_群益投信.xlsx` | 群益投信 | 00982A 主動群益台灣強棒 |
+            | `00980A_野村投信.csv`  | 野村投信 | 00980A 主動野村台灣優選 |
+            | `00985A_野村投信.csv`  | 野村投信 | 00985A 主動野村台灣50 |
+
+            > 野村投信官網無提供檔案下載功能，由系統自動從 API 轉換為 CSV 格式。
+          files: |
+            archives/${{ steps.get_date.outputs.DATE }}/*.xlsx
+            archives/${{ steps.get_date.outputs.DATE }}/*.csv
+          fail_on_unmatched_files: false
+          make_latest: false
+          token: ${{ secrets.GITHUB_TOKEN }}
