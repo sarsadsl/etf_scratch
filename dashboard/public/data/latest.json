@@ -515,8 +515,13 @@
       "stockName": "華碩",
       "shares": 15000,
       "weight": 0,
+<<<<<<< HEAD
       "diffShares": 1000,
       "diffSharesPercent": 7.14,
+=======
+      "diffShares": 0,
+      "diffSharesPercent": 0,
+>>>>>>> 6000eac1e4857495deace7a02706b91ce2f75dd1
       "diffWeight": 0,
       "isNew": false
     },
@@ -525,8 +530,13 @@
       "stockName": "美律",
       "shares": 15000,
       "weight": 0,
+<<<<<<< HEAD
       "diffShares": 1000,
       "diffSharesPercent": 7.14,
+=======
+      "diffShares": 0,
+      "diffSharesPercent": 0,
+>>>>>>> 6000eac1e4857495deace7a02706b91ce2f75dd1
       "diffWeight": 0,
       "isNew": false
     },
