@@ -498,6 +498,36 @@
       "diffSharesPercent": 0,
       "diffWeight": 0,
       "isNew": false
+    },
+    {
+      "stockCode": "2357",
+      "stockName": "華碩",
+      "shares": 14000,
+      "weight": 0,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
+      "diffWeight": 0,
+      "isNew": false
+    },
+    {
+      "stockCode": "2439",
+      "stockName": "美律",
+      "shares": 14000,
+      "weight": 0,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
+      "diffWeight": 0,
+      "isNew": false
+    },
+    {
+      "stockCode": "5347",
+      "stockName": "世界",
+      "shares": 11000,
+      "weight": 0,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
+      "diffWeight": 0,
+      "isNew": false
     }
   ],
   "00988A": [
