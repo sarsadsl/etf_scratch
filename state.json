@@ -305,6 +305,24 @@
       "stockName": "富喬",
       "shares": 107000,
       "weight": 0.01
+    },
+    {
+      "stockCode": "2357",
+      "stockName": "華碩",
+      "shares": 15000,
+      "weight": 0
+    },
+    {
+      "stockCode": "2439",
+      "stockName": "美律",
+      "shares": 15000,
+      "weight": 0
+    },
+    {
+      "stockCode": "5347",
+      "stockName": "世界",
+      "shares": 61000,
+      "weight": 0
     }
   ],
   "00988A": [
@@ -601,6 +619,12 @@
       "stockName": "NEBIUS GROUP NV",
       "shares": 20000,
       "weight": 0.45
+    },
+    {
+      "stockCode": "SMHN GY",
+      "stockName": "SUSS MICROTEC SE",
+      "shares": 100,
+      "weight": 0
     }
   ],
   "00991A": [
@@ -879,6 +903,30 @@
       "stockName": "長榮航太",
       "shares": 1000,
       "weight": 0.001
+    },
+    {
+      "stockCode": "2412",
+      "stockName": "中華電信",
+      "shares": 1000,
+      "weight": 0
+    },
+    {
+      "stockCode": "3045",
+      "stockName": "台灣大哥",
+      "shares": 1000,
+      "weight": 0
+    },
+    {
+      "stockCode": "1303",
+      "stockName": "南亞塑膠",
+      "shares": 1000,
+      "weight": 0
+    },
+    {
+      "stockCode": "6505",
+      "stockName": "台塑石化",
+      "shares": 1000,
+      "weight": 0
     }
   ],
   "00990A": [
@@ -1889,6 +1937,12 @@
       "stockName": "兆豐金",
       "shares": 1000,
       "weight": 0.0001
+    },
+    {
+      "stockCode": "2881",
+      "stockName": "富邦金",
+      "shares": 250,
+      "weight": 0
     }
   ]
 }
