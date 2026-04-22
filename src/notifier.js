@@ -59,7 +59,7 @@ export async function sendTelegramNotification(results) {
     // 根據張數異動由大到小排序
     changedHoldings.sort((a, b) => b.diffShares - a.diffShares);
 
-    changedHoldings.forEach((stock) => {
+    changedHoldings.forEach((stock, idx) => {
       // 判斷增減符號
       let weightIcon = '➖';
       let sharesIcon = '';
@@ -79,9 +79,9 @@ export async function sendTelegramNotification(results) {
          sharesStr = `${sharesLot}張 (${sharesIcon}${diffSharesLot})`;
       }
       
-      // 格式: #5 2330 台積電 35.5% (🔺0.5%) | 5000張 (+100) 🆕
+      // 格式: #1 2330 台積電 35.5% (🔺0.5%) | 5000張 (+100) 🆕新進榜
       const safeStockName = stock.stockName.replace(/([_*\[\]()~`>#+\-=|{}.!])/g, '\\$1');
-      message += `  #${stock.rank} \`${stock.stockCode}\` ${safeStockName}${newTag}\n`;
+      message += `  #${idx + 1} \`${stock.stockCode}\` ${safeStockName}${newTag}\n`;
       message += `     ${stock.weight}% (${weightIcon}${stock.diffWeight > 0 ? '+' : ''}${stock.diffWeight}%) | ${sharesStr}\n`;
     });
     message += '\n';
