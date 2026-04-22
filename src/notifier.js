@@ -24,6 +24,10 @@ export async function sendTelegramNotification(results) {
   results.forEach(result => {
     message += `🔹 *${result.target.code} ${result.target.name}*\n`;
     
+    const BLACKLIST = {
+      "00981A": ["2357", "2439", "5347"]
+    };
+    
     if (!result.holdings || result.holdings.length === 0) {
       message += `  ⚠️ 抓取失敗或無資料\n`;
       if (result.debugError) {
@@ -38,9 +42,14 @@ export async function sendTelegramNotification(results) {
 
     // 為所有股票加上原始排行名次，再過濾出有實質異動的股票
     const mappedHoldings = result.holdings.map((stock, i) => ({ ...stock, rank: i + 1 }));
-    const changedHoldings = mappedHoldings.filter(stock => 
+    let changedHoldings = mappedHoldings.filter(stock => 
       stock.isNew || (stock.diffShares !== undefined && stock.diffShares !== 0)
     );
+
+    // 套用黑名單過濾
+    if (BLACKLIST[result.target.code]) {
+      changedHoldings = changedHoldings.filter(s => !BLACKLIST[result.target.code].includes(s.stockCode));
+    }
 
     if (changedHoldings.length === 0) {
       message += `  💤 今日前十大持股無任何增減變化\n\n`;
