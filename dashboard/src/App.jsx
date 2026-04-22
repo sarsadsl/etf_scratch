@@ -261,66 +261,84 @@ function App() {
 
   // ── Telegram 推播 ──
   const handleSendTelegram = async () => {
+    if (!data) return;
     setIsSending(true);
     setSendResult(null);
     const workerUrl = 'https://etf-telegram-proxy.sarsadsl.workers.dev/';
     try {
-      // 找出所有有異動的持股 (包含新進榜)
-      let changedHoldings = activeHoldings.filter(h => 
-        h.isNew || (h.diffShares !== undefined && h.diffShares !== 0)
-      );
+      let reportText = `📊 *主動式 ETF 持股異動報告 (手動廣播)* (${selectedDate})\n\n`;
+      let hasAnyChange = false;
 
-      // 排除黑名單
       const BLACKLIST = { "00981A": ["2357", "2439", "5347"] };
-      if (BLACKLIST[activeEtf]) {
-        changedHoldings = changedHoldings.filter(s => !BLACKLIST[activeEtf].includes(s.stockCode));
-      }
 
-      if (changedHoldings.length === 0) {
-        setSendResult({ status: 'success', text: '今日無異動' });
+      ALL_ETF_CODES.forEach(etfCode => {
+        const holdings = data[etfCode] || [];
+        // 找出有異動的持股
+        let changedHoldings = holdings.filter(h => 
+          h.isNew || (h.diffShares !== undefined && h.diffShares !== 0)
+        );
+
+        // 排除黑名單
+        if (BLACKLIST[etfCode]) {
+          changedHoldings = changedHoldings.filter(s => !BLACKLIST[etfCode].includes(s.stockCode));
+        }
+
+        if (changedHoldings.length > 0) {
+          hasAnyChange = true;
+          reportText += `🔹 *${etfCode} ${ETF_META[etfCode]?.name.replace('主動', '')}*\n`;
+          
+          // 根據張數異動排序
+          changedHoldings.sort((a, b) => (b.diffShares || 0) - (a.diffShares || 0));
+
+          changedHoldings.forEach((hold, idx) => {
+            let weightIcon = '➖';
+            let sharesIcon = '';
+            if (hold.diffWeight > 0) weightIcon = '🔺';
+            if (hold.diffWeight < 0) weightIcon = '🔻';
+            if (hold.diffShares > 0) sharesIcon = '+';
+            
+            const newTag = hold.isNew ? ' 🆕新進榜' : '';
+            const sharesLot = Math.round(hold.shares / 1000);
+            const diffSharesLot = Math.round(hold.diffShares / 1000);
+            
+            let sharesStr = '';
+            if (diffSharesLot === 0 && hold.diffShares !== 0) {
+               sharesStr = `${(hold.shares / 1000).toFixed(1)}張 (${sharesIcon}${(hold.diffShares / 1000).toFixed(1)})`;
+            } else {
+               sharesStr = `${sharesLot}張 (${sharesIcon}${diffSharesLot})`;
+            }
+            
+            reportText += `  #${idx + 1} \`${hold.stockCode}\` ${hold.stockName}${newTag}\n`;
+            reportText += `     ${hold.weight}% (${weightIcon}${hold.diffWeight > 0 ? '+' : ''}${hold.diffWeight}%) | ${sharesStr}\n`;
+          });
+          reportText += '\n';
+        }
+      });
+
+      if (!hasAnyChange) {
+        setSendResult({ status: 'success', text: '當日無任何異動' });
         setTimeout(() => setSendResult(null), 2000);
         return;
       }
 
-      // 根據張數異動排序
-      changedHoldings.sort((a, b) => (b.diffShares || 0) - (a.diffShares || 0));
+      reportText += `🌐 發送自 ETF Monitor 儀表板`;
 
-      let reportText = `📊 *【${ETF_META[activeEtf]?.name} (${activeEtf}) 異動日報】*\n`;
-      reportText += `📅 資料日期：${selectedDate}\n\n`;
-
-      changedHoldings.forEach((hold, idx) => {
-        let weightIcon = '➖';
-        let sharesIcon = '';
-        if (hold.diffWeight > 0) weightIcon = '🔺';
-        if (hold.diffWeight < 0) weightIcon = '🔻';
-        if (hold.diffShares > 0) sharesIcon = '+';
-        
-        const newTag = hold.isNew ? ' 🆕新進榜' : '';
-        const sharesLot = Math.round(hold.shares / 1000);
-        const diffSharesLot = Math.round(hold.diffShares / 1000);
-        
-        let sharesStr = '';
-        if (diffSharesLot === 0 && hold.diffShares !== 0) {
-           sharesStr = `${(hold.shares / 1000).toFixed(1)}張 (${sharesIcon}${(hold.diffShares / 1000).toFixed(1)})`;
-        } else {
-           sharesStr = `${sharesLot}張 (${sharesIcon}${diffSharesLot})`;
-        }
-        
-        reportText += `  #${idx + 1} \`${hold.stockCode}\` ${hold.stockName}${newTag}\n`;
-        reportText += `     ${hold.weight}% (${weightIcon}${hold.diffWeight > 0 ? '+' : ''}${hold.diffWeight}%) | ${sharesStr}\n`;
-      });
-
-      reportText += `\n🌐 發送自 ETF Monitor 儀表板`;
       const response = await fetch(workerUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: reportText, password: adminToken })
       });
+      
       if (!response.ok) throw new Error('API 無效狀態');
-      setSendResult({ status: 'success', text: '頻道推播成功' });
+      setSendResult({ status: 'success', text: '全頻道廣播成功' });
       setTimeout(() => setSendResult(null), 3000);
-    } catch { setSendResult({ status: 'error', text: '連線 Cloudflare 失敗' }); setTimeout(() => setSendResult(null), 3000); }
-    finally { setIsSending(false); }
+    } catch (err) { 
+      console.error('Send Error:', err);
+      setSendResult({ status: 'error', text: '廣播失敗' }); 
+      setTimeout(() => setSendResult(null), 3000); 
+    } finally { 
+      setIsSending(false); 
+    }
   };
 
   const isMockData = ['20260416', '20260418', '2026416'].includes(selectedDate);
