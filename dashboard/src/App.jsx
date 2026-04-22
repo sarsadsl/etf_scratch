@@ -580,7 +580,7 @@ function App() {
                   <table>
                     <thead style={{ position: 'sticky', top: 0, zIndex: 20 }}>
                       <tr>
-                        <th>排名</th><th>標的</th><th>權重 (%)</th><th>權重異動</th><th>張數</th><th>狀態</th>
+                        <th>排名</th><th>代號</th><th>名稱</th><th>權重 (%)</th><th>權重異動</th><th>張數</th><th>狀態</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -593,7 +593,8 @@ function App() {
                         return (
                           <tr key={hold.stockCode}>
                             <td style={{ color: 'var(--text-secondary)' }}>{idx + 1}</td>
-                            <td style={{ fontWeight: 500 }}>{formatStockLabel(hold.stockCode, hold.stockName, activeEtf)}</td>
+                            <td style={{ fontWeight: 600, color: '#94a3b8' }}>{hold.stockCode}</td>
+                            <td style={{ fontWeight: 500 }}>{hold.stockName}</td>
                             <td>{hold.weight}%</td>
                             <td className={hold.diffWeight > 0 ? 'text-success' : (hold.diffWeight < 0 ? 'text-danger' : 'text-neutral')} style={{ fontWeight: 800, fontSize: '1.1rem' }}>
                               {hold.diffWeight > 0 ? '+' : ''}{hold.diffWeight || 0}%
