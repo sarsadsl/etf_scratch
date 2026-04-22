@@ -515,27 +515,30 @@
       "stockName": "華碩",
       "shares": 15000,
       "weight": 0,
-      "diffShares": 15000,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
       "diffWeight": 0,
-      "isNew": true
+      "isNew": false
     },
     {
       "stockCode": "2439",
       "stockName": "美律",
       "shares": 15000,
       "weight": 0,
-      "diffShares": 15000,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
       "diffWeight": 0,
-      "isNew": true
+      "isNew": false
     },
     {
       "stockCode": "5347",
       "stockName": "世界",
       "shares": 61000,
       "weight": 0,
-      "diffShares": 61000,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
       "diffWeight": 0,
-      "isNew": true
+      "isNew": false
     }
   ],
   "00988A": [
@@ -1034,9 +1037,10 @@
       "stockName": "SUSS MICROTEC SE",
       "shares": 100,
       "weight": 0,
-      "diffShares": 100,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
       "diffWeight": 0,
-      "isNew": true
+      "isNew": false
     }
   ],
   "00991A": [
@@ -1505,36 +1509,40 @@
       "stockName": "中華電信",
       "shares": 1000,
       "weight": 0,
-      "diffShares": 1000,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
       "diffWeight": 0,
-      "isNew": true
+      "isNew": false
     },
     {
       "stockCode": "3045",
       "stockName": "台灣大哥",
       "shares": 1000,
       "weight": 0,
-      "diffShares": 1000,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
       "diffWeight": 0,
-      "isNew": true
+      "isNew": false
     },
     {
       "stockCode": "1303",
       "stockName": "南亞塑膠",
       "shares": 1000,
       "weight": 0,
-      "diffShares": 1000,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
       "diffWeight": 0,
-      "isNew": true
+      "isNew": false
     },
     {
       "stockCode": "6505",
       "stockName": "台塑石化",
       "shares": 1000,
       "weight": 0,
-      "diffShares": 1000,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
       "diffWeight": 0,
-      "isNew": true
+      "isNew": false
     }
   ],
   "00990A": [
@@ -3179,9 +3187,10 @@
       "stockName": "富邦金",
       "shares": 250,
       "weight": 0,
-      "diffShares": 250,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
       "diffWeight": 0,
-      "isNew": true
+      "isNew": false
     }
   ]
 }
