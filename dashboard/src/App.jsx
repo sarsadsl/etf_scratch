@@ -205,16 +205,16 @@ function App() {
         filtered = mapped.filter(m => m.diffSharesPercent > 0).sort((a, b) => b.diffSharesPercent - a.diffSharesPercent);
         break;
       case 'addAbs':
-        filtered = mapped.filter(m => m.diffSharesLot > 0).sort((a, b) => b.diffSharesLot - a.diffSharesLot);
-        config = { dataKey: 'diffSharesLot', color: 'var(--tw-up)', formatter: (v) => `+${v} 張`, title: '總加碼張數排行榜' };
+        filtered = mapped.filter(m => m.diffShares > 0).sort((a, b) => b.diffShares - a.diffShares);
+        config = { dataKey: 'diffShares', color: 'var(--tw-up)', formatter: (v) => `+${(v / 1000).toFixed(1).replace(/\.0$/, '')} 張`, title: '總加碼張數排行榜' };
         break;
       case 'subPct':
         filtered = mapped.filter(m => m.diffSharesPercent < 0).sort((a, b) => a.diffSharesPercent - b.diffSharesPercent);
         config = { dataKey: 'diffSharesPercent', color: 'var(--tw-down)', formatter: (v) => `${v}%`, title: '大砍張數佔比排行榜' };
         break;
       case 'subAbs':
-        filtered = mapped.filter(m => m.diffSharesLot < 0).sort((a, b) => a.diffSharesLot - b.diffSharesLot);
-        config = { dataKey: 'diffSharesLot', color: 'var(--tw-down)', formatter: (v) => `${v} 張`, title: '總減碼張數排行榜' };
+        filtered = mapped.filter(m => m.diffShares < 0).sort((a, b) => a.diffShares - b.diffShares);
+        config = { dataKey: 'diffShares', color: 'var(--tw-down)', formatter: (v) => `${(v / 1000).toFixed(1).replace(/\.0$/, '')} 張`, title: '總減碼張數排行榜' };
         break;
     }
 
@@ -544,7 +544,7 @@ function App() {
                     {diffChartInfo.data && diffChartInfo.data.length > 0 ? (
                       <ResponsiveContainer width="100%" height="100%">
                         <BarChart data={diffChartInfo.data} layout="vertical" margin={{ top: 5, right: 40, left: 20, bottom: 20 }}>
-                          <XAxis type="number" stroke="var(--text-secondary)" fontSize={12} tickLine={false} axisLine={false} tickFormatter={val => diffSort.includes('Pct') ? `${val}%` : `${val}張`} label={{ value: diffSort.includes('Pct') ? '佔比 (%)' : '張數 (千股)', position: 'bottom', fill: 'var(--text-secondary)', fontSize: 13 }} />
+                          <XAxis type="number" stroke="var(--text-secondary)" fontSize={12} tickLine={false} axisLine={false} tickFormatter={val => diffSort.includes('Pct') ? `${val}%` : `${val / 1000}張`} label={{ value: diffSort.includes('Pct') ? '佔比 (%)' : '張數 (千股)', position: 'bottom', fill: 'var(--text-secondary)', fontSize: 13 }} />
                           <YAxis type="category" dataKey="name" stroke="var(--text-secondary)" fontSize={15} fontWeight={600} tickLine={false} axisLine={false} width={120} />
                           <Tooltip cursor={{ fill: 'rgba(255,255,255,0.08)' }} contentStyle={{ backgroundColor: 'var(--bg-surface)', borderColor: 'var(--border-light)', borderRadius: '8px', color: '#fff' }} itemStyle={{ color: '#fff', fontWeight: 600 }} formatter={(value, name) => {
                             return [diffChartInfo.formatter(value), diffChartInfo.title];
