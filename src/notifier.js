@@ -13,6 +13,11 @@ export async function sendTelegramNotification(results) {
     return;
   }
 
+  if (process.env.SKIP_TELEGRAM === 'true') {
+    console.log('[Notifier] 偵測到 SKIP_TELEGRAM 設定，跳過推播發送。');
+    return;
+  }
+
   const today = new Date().toLocaleDateString('zh-TW', { timeZone: 'Asia/Taipei' });
   let message = `📊 *主動式 ETF 持股異動報告* (${today})\n\n`;
 
