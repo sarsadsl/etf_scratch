@@ -24,6 +24,9 @@ for (const [etfCode, holdings] of Object.entries(data)) {
     continue;
   }
 
+  // 根據張數異動由大到小排序
+  changedHoldings.sort((a, b) => b.diffShares - a.diffShares);
+
   changedHoldings.forEach((stock) => {
     let weightIcon = '➖';
     let sharesIcon = '';
@@ -31,7 +34,7 @@ for (const [etfCode, holdings] of Object.entries(data)) {
     if (stock.diffWeight < 0) weightIcon = '🔻';
     if (stock.diffShares > 0) sharesIcon = '+';
     
-    const newTag = stock.isNew ? ' 🆕' : '';
+    const newTag = stock.isNew ? ' 🆕新進榜' : '';
     
     // To handle small shares logic fixed recently
     let sharesStr = '';

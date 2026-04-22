@@ -42,6 +42,9 @@ export async function sendTelegramNotification(results) {
       return;
     }
 
+    // 根據張數異動由大到小排序
+    changedHoldings.sort((a, b) => b.diffShares - a.diffShares);
+
     changedHoldings.forEach((stock) => {
       // 判斷增減符號
       let weightIcon = '➖';
@@ -50,7 +53,7 @@ export async function sendTelegramNotification(results) {
       if (stock.diffWeight < 0) weightIcon = '🔻';
       if (stock.diffShares > 0) sharesIcon = '+';
       
-      const newTag = stock.isNew ? ' 🆕' : '';
+      const newTag = stock.isNew ? ' 🆕新進榜' : '';
       
       const sharesLot = Math.round(stock.shares / 1000);
       const diffSharesLot = Math.round(stock.diffShares / 1000);
