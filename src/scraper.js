@@ -58,7 +58,7 @@ async function fetchFhtrustXlsx(fundCode) {
     // row[3] 是金額，row[4] 是權重
     const weightRaw = String(row[4] || '0').replace('%', '').trim();
     const weight = parseFloat(weightRaw) || 0;
-    if (stockCode && weight > 0) {
+    if (stockCode && (weight > 0 || shares > 0)) {
       results.push({ stockCode, stockName, shares, weight });
     }
   }
@@ -87,7 +87,7 @@ async function fetchFsitcSpa(page, fundCode) {
         const stockName = tds[1].replace(/\*/g, '').trim(); // Remove asterisks if any
         const shares = parseInt(tds[2].replace(/,/g, ''), 10) || 0;
         const weight = parseFloat(tds[3].replace('%', '')) || 0;
-        if (weight > 0) {
+        if (weight > 0 || shares > 0) {
           rows.push({ stockCode, stockName, shares, weight });
         }
       }
@@ -125,7 +125,7 @@ async function fetchMoneyDjHoldings(page, etfCode) {
         const weight = parseFloat(weightText) || 0;
         const shares = parseInt(sharesText, 10) || 0;
 
-        if (stockCode && weight > 0) {
+        if (stockCode && (weight > 0 || shares > 0)) {
           results.push({ stockCode, stockName, shares, weight });
         }
       }
@@ -166,13 +166,13 @@ async function fetchNomuraApi(fundCode) {
   }
 
   return stocks
-    .filter(s => (s.CStockCode || s.CStocNo) && (parseFloat(s.CWeightsPct ?? s.CProportion) > 0))
     .map(s => ({
       stockCode: String(s.CStockCode ?? s.CStocNo ?? '').trim(),
       stockName: String(s.CStockName ?? s.CStocName ?? '').trim(),
       shares: parseInt(String(s.CQuantity ?? s.CShares ?? '0').replace(/,/g, ''), 10) || 0,
       weight: parseFloat(s.CWeightsPct ?? s.CProportion) || 0
-    }));
+    }))
+    .filter(s => s.stockCode && (s.weight > 0 || s.shares > 0));
 }
 
 // ============================================================
@@ -210,13 +210,13 @@ async function fetchCapitalApi(fundCode) {
   }
 
   return stocks
-    .filter(s => s.stocNo && s.weight > 0)
     .map(s => ({
       stockCode: String(s.stocNo).trim(),
       stockName: String(s.stocName || '').trim(),
       shares: parseInt(String(s.share || '0').replace(/,/g, ''), 10) || 0,
       weight: parseFloat(s.weight) || 0
-    }));
+    }))
+    .filter(s => s.stockCode && (s.weight > 0 || s.shares > 0));
 }
 
 // ============================================================
