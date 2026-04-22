@@ -515,7 +515,7 @@
       "stockName": "華碩",
       "shares": 15000,
       "weight": 0,
-      "diffShares": 1000,
+      "diffShares": 0,
       "diffSharesPercent": 0,
       "diffWeight": 0,
       "isNew": false
@@ -525,7 +525,7 @@
       "stockName": "美律",
       "shares": 15000,
       "weight": 0,
-      "diffShares": 1000,
+      "diffShares": 0,
       "diffSharesPercent": 0,
       "diffWeight": 0,
       "isNew": false
