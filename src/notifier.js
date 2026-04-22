@@ -34,7 +34,7 @@ export async function sendTelegramNotification(results) {
     // 為所有股票加上原始排行名次，再過濾出有實質異動的股票
     const mappedHoldings = result.holdings.map((stock, i) => ({ ...stock, rank: i + 1 }));
     const changedHoldings = mappedHoldings.filter(stock => 
-      stock.isNew || stock.diffShares !== 0 || stock.diffWeight !== 0
+      stock.isNew || (stock.diffShares !== undefined && stock.diffShares !== 0)
     );
 
     if (changedHoldings.length === 0) {
@@ -55,10 +55,17 @@ export async function sendTelegramNotification(results) {
       const sharesLot = Math.round(stock.shares / 1000);
       const diffSharesLot = Math.round(stock.diffShares / 1000);
       
+      let sharesStr = '';
+      if (diffSharesLot === 0 && stock.diffShares !== 0) {
+         sharesStr = `${(stock.shares / 1000).toFixed(1)}張 (${sharesIcon}${(stock.diffShares / 1000).toFixed(1)})`;
+      } else {
+         sharesStr = `${sharesLot}張 (${sharesIcon}${diffSharesLot})`;
+      }
+      
       // 格式: #5 2330 台積電 35.5% (🔺0.5%) | 5000張 (+100) 🆕
       const safeStockName = stock.stockName.replace(/([_*\[\]()~`>#+\-=|{}.!])/g, '\\$1');
       message += `  #${stock.rank} \`${stock.stockCode}\` ${safeStockName}${newTag}\n`;
-      message += `     ${stock.weight}% (${weightIcon}${stock.diffWeight > 0 ? '+' : ''}${stock.diffWeight}%) | ${sharesLot}張 (${sharesIcon}${diffSharesLot})\n`;
+      message += `     ${stock.weight}% (${weightIcon}${stock.diffWeight > 0 ? '+' : ''}${stock.diffWeight}%) | ${sharesStr}\n`;
     });
     message += '\n';
   });
