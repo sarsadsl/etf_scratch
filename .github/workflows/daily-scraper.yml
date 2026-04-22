@@ -1,6 +1,9 @@
 name: Daily ETF Holdings Scraper
 
 on:
+  push:
+    branches:
+      - main
   schedule:
     # 台灣時間 18:30 (10:30 UTC) 每日執行，此時通常已經公告盤後淨值與持股
     - cron: '30 10 * * *'
