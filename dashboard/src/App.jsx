@@ -209,12 +209,16 @@ function App() {
         config = { dataKey: 'diffShares', color: 'var(--tw-up)', formatter: (v) => `+${(v / 1000).toFixed(1).replace(/\.0$/, '')} 張`, title: '總加碼張數排行榜' };
         break;
       case 'subPct':
-        filtered = mapped.filter(m => m.diffSharesPercent < 0).sort((a, b) => a.diffSharesPercent - b.diffSharesPercent);
-        config = { dataKey: 'diffSharesPercent', color: 'var(--tw-down)', formatter: (v) => `${v}%`, title: '大砍張數佔比排行榜' };
+        filtered = mapped.filter(m => m.diffSharesPercent < 0)
+          .map(m => ({ ...m, diffSharesPercentAbs: Math.abs(m.diffSharesPercent) }))
+          .sort((a, b) => b.diffSharesPercentAbs - a.diffSharesPercentAbs);
+        config = { dataKey: 'diffSharesPercentAbs', color: 'var(--tw-down)', formatter: (v) => `-${v}%`, title: '大砍張數佔比排行榜' };
         break;
       case 'subAbs':
-        filtered = mapped.filter(m => m.diffShares < 0).sort((a, b) => a.diffShares - b.diffShares);
-        config = { dataKey: 'diffShares', color: 'var(--tw-down)', formatter: (v) => `${(v / 1000).toFixed(1).replace(/\.0$/, '')} 張`, title: '總減碼張數排行榜' };
+        filtered = mapped.filter(m => m.diffShares < 0)
+          .map(m => ({ ...m, diffSharesAbs: Math.abs(m.diffShares) }))
+          .sort((a, b) => b.diffSharesAbs - a.diffSharesAbs);
+        config = { dataKey: 'diffSharesAbs', color: 'var(--tw-down)', formatter: (v) => `-${(v / 1000).toFixed(1).replace(/\.0$/, '')} 張`, title: '總減碼張數排行榜' };
         break;
     }
 
