@@ -106,106 +106,98 @@ async function fetchYuantaOfficial(page, fundCode) {
   console.log(`[Yuanta Official] Fetching PCF: ${url}`);
 
   try {
-    await page.goto(url, { waitUntil: 'networkidle2', timeout: 60000 });
-    
-    // 等待表格或容器載入 (PCF 頁面特有的標籤)
-    try {
-      await page.waitForFunction(() => 
-        document.body.innerText.includes('基金成分') || document.body.innerText.includes('基金權重') || document.querySelector('.table'), 
-        { timeout: 15000 }
-      );
-    } catch (e) {
-      console.log(`[Yuanta Official] ${fundCode} 等待 PCF 表格逾時。`);
-    }
-    
-    // 捲動頁面
-    await page.evaluate(() => window.scrollBy(0, 800));
-    await new Promise(r => setTimeout(r, 2000));
+    await page.goto(url, { waitUntil: 'networkidle0', timeout: 60000 });
 
-    // 嘗試點擊「展開/More」按鈕 (持股清單的展開按鈕通常在第一個區塊)
+    // 步驟 1：等待 .expandBtn 出現（Headless 模式下元大使用 .expandBtn）
     try {
-      await page.evaluate(() => {
-        // 尋找包含 "展開" 的按鈕，且是在持股表格附近的
-        const btns = Array.from(document.querySelectorAll('div, span, button'))
-          .filter(el => (el.innerText.trim() === '展開' || el.innerText.includes('More')) && el.offsetParent !== null);
-        
-        // 通常第一個是持股展開
-        if (btns.length > 0) {
-          btns[0].click();
-          return true;
+      await page.waitForSelector('.expandBtn', { timeout: 20000 });
+      console.log(`[Yuanta Official] ${fundCode} .expandBtn 已就緒。`);
+    } catch (e) {
+      console.log(`[Yuanta Official] ${fundCode} 等待 .expandBtn 逾時，嘗試繼續。`);
+    }
+
+    // 步驟 2：點擊所有 .expandBtn（icon-only 按鈕，無文字，直接全部點擊）
+    try {
+      const clickResult = await page.evaluate(() => {
+        const btns = Array.from(document.querySelectorAll('.expandBtn'));
+        let clicked = 0;
+        for (const btn of btns) {
+          btn.scrollIntoView();
+          btn.click();
+          clicked++;
         }
-        return false;
+        return clicked;
       });
-      console.log(`[Yuanta Official] ${fundCode} 已點擊展開按鈕。`);
-      await new Promise(r => setTimeout(r, 3000)); // 等待展開動畫與渲染
+      console.log(`[Yuanta Official] ${fundCode} 點擊 .expandBtn 次數: ${clickResult}`);
     } catch (e) {
-      console.log(`[Yuanta Official] ${fundCode} 點擊展開按鈕失敗或按鈕不存在。`);
+      console.log(`[Yuanta Official] ${fundCode} expandBtn 點擊異常: ${e.message}`);
     }
 
+    // 步驟 3：等待股票資料列出現（展開後 .tr 應有 4 個以上子欄）
+    try {
+      await page.waitForFunction(
+        () => Array.from(document.querySelectorAll('.tr')).some(r => r.children.length >= 4),
+        { timeout: 12000 }
+      );
+      console.log(`[Yuanta Official] ${fundCode} 股票資料列已出現。`);
+    } catch (e) {
+      console.log(`[Yuanta Official] ${fundCode} 等待股票資料列逾時，提取現有資料。`);
+    }
+
+    // 步驟 4：提取持股資料
     const holdings = await page.evaluate(() => {
       const results = [];
-      
-      // 1. 先定位「基金成分」或相關標題，縮小範圍避免抓到下方的「匯率」
-      const containers = Array.from(document.querySelectorAll('div, section'))
-        .filter(el => el.innerText.includes('基金成分') || el.innerText.includes('基金權重-股票'));
-      
-      // 如果沒找到特定標題，就用全域，但要更嚴格過濾
-      const searchScope = containers.length > 0 ? containers[0] : document.body;
+      const rows = Array.from(document.querySelectorAll('.tr'));
 
-      // 2. 抓取所有可能包含資料列的 div 或 tr
-      const elements = Array.from(searchScope.querySelectorAll('div, tr'))
-        .filter(el => {
-          // 資料列特徵：有 4 個子欄位 (代號, 名稱, 數量, 權重)
-          // 且該元素本身不是容器（通常資料列的子元素就是文字）
-          const directChildren = Array.from(el.children);
-          return directChildren.length >= 4 && directChildren.length <= 6;
-        });
-      
-      elements.forEach(el => {
-        const text = el.innerText || '';
-        const parts = text.split(/\n|\t/).map(s => s.trim()).filter(s => s.length > 0);
-        
-        // 格式 [代號, 名稱, 數量, 權重]
-        if (parts.length >= 4) {
-          const stockCode = parts[0];
-          const stockName = parts[1];
-          const sharesRaw = parts[2].replace(/,/g, '');
-          const weightRaw = parts[3].replace('%', '');
-          
+      rows.forEach(row => {
+        const cells = Array.from(row.children)
+          .map(c => c.innerText.trim())
+          .filter(t => t.length > 0);
+
+        // 需要至少 4 個欄位：[代號, 名稱, 張數, 權重]
+        if (cells.length >= 4) {
+          const stockCode = cells[0];
+          const stockName = cells[1];
+          const sharesRaw = cells[2].replace(/,/g, '');
+          const weightRaw = cells[3].replace('%', '');
+
           const shares = parseInt(sharesRaw, 10);
           const weight = parseFloat(weightRaw);
-          
-          // 過濾條件：
-          // - 代號長度合理 (台股 4 碼, 美股 LITE US 等)
-          // - 權重是有效數字且在合理範圍
-          // - 排除標頭字眼
-          const isValidCode = /^[A-Z0-9.\s]+$/.test(stockCode);
-          const isNotHeader = !stockCode.includes('代碼') && !stockCode.includes('名稱');
-          
-          if (stockCode && isValidCode && isNotHeader && !isNaN(weight) && weight > 0 && weight < 100) {
-            // 避免重複加入
+
+          // 過濾非數據列：精確匹配標頭行
+          const isHeader = stockCode === '商品代碼' || stockCode === '股票代號' || stockCode === '代號';
+          const isSummary = ['基金', '小計', '合計'].some(kw => stockCode.includes(kw));
+          // 純浮點數（如 31.488）是分類小計，不是代號
+          const isPureDecimal = /^\d+\.\d+$/.test(stockCode);
+
+          const isValidCode = stockCode
+            && !isHeader
+            && !isSummary
+            && !isPureDecimal
+            && /^[A-Z0-9.\s]+$/.test(stockCode)
+            && stockCode.length <= 15;
+
+          if (isValidCode && !isNaN(weight) && weight > 0 && weight < 100) {
             if (!results.find(r => r.stockCode === stockCode)) {
               results.push({ stockCode, stockName, shares: shares || 0, weight });
             }
           }
         }
       });
-      
-      return results.length > 0 ? results : { debugMsg: '未解析出有效持股資料列' };
+
+      return results;
     });
 
-    if (holdings && Array.isArray(holdings)) {
+    console.log(`[Yuanta Official] ${fundCode} 提取持股數量: ${holdings ? holdings.length : 0}`);
+
+    if (holdings && Array.isArray(holdings) && holdings.length > 0) {
       console.log(`[Yuanta Official] ${fundCode} 成功抓取 ${holdings.length} 筆資料。`);
       return holdings;
     }
-    
-    if (holdings && holdings.debugMsg) {
-       console.log(`[Yuanta Official] Debug Info: ${holdings.debugMsg}`);
-    }
-    
-    throw new Error('官網解析無資料');
+
+    throw new Error('官網解析無足夠資料');
   } catch (error) {
-    console.error(`[Yuanta Official] ${fundCode} 抓取失敗: ${error.message}，嘗試回退至 MoneyDJ`);
+    console.error(`[Yuanta Official] ${fundCode} 抓取失敗: ${error.message}，回退至 MoneyDJ`);
     return await fetchMoneyDjHoldings(page, fundCode);
   }
 }
