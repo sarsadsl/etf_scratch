@@ -550,7 +550,7 @@ function App() {
                     <ResponsiveContainer width="100%" height="100%">
                       <PieChart>
                         <Tooltip contentStyle={{ backgroundColor: 'var(--bg-base)', borderColor: 'var(--border-light)' }} itemStyle={{ color: 'var(--text-primary)' }} />
-                        <Pie data={chartData} dataKey="weight" nameKey="name" cx="50%" cy="50%" outerRadius={80} fill={ETF_META[activeEtf].color} label={({ name, percent }) => `${name} ${(percent * 100).toFixed(1)}%`} labelStyle={{ fontSize: '13px', fontWeight: 500 }}>
+                        <Pie data={chartData} dataKey="weight" nameKey="name" cx="50%" cy="50%" outerRadius={80} fill={ETF_META[activeEtf].color} label={({ name, value }) => `${name} ${Number(value).toFixed(1)}%`} labelStyle={{ fontSize: '13px', fontWeight: 500 }}>
                           {chartData.map((_, index) => <Cell key={`cell-${index}`} fill={ETF_META[activeEtf].color} fillOpacity={1 - index * 0.08} />)}
                         </Pie>
                       </PieChart>
