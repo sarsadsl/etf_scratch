@@ -75,13 +75,16 @@ async function main() {
   if (!fs.existsSync(dataDir)) {
     fs.mkdirSync(dataDir);
   }
-  // 取最近有效交易日（與 scraper.js 邏輯同步：18:00 前取前一交易日）
+  // 取最近有效交易日（與 scraper.js 邏輯同步：15:00 前取前一交易日）
   const now = new Date();
-  const hourTW = (now.getUTCHours() + 8) % 24;
-  const d = new Date(now);
-  if (hourTW < 18) d.setDate(d.getDate() - 1);
-  while (d.getDay() === 0 || d.getDay() === 6) d.setDate(d.getDate() - 1);
-  const dateStr = `${d.getFullYear()}${d.getMonth() + 1}${d.getDate()}`;
+  const twTime = new Date(now.getTime() + 8 * 60 * 60 * 1000); // 轉換為台灣時間 (UTC+8)
+  if (twTime.getUTCHours() < 15) {
+    twTime.setUTCDate(twTime.getUTCDate() - 1);
+  }
+  while (twTime.getUTCDay() === 0 || twTime.getUTCDay() === 6) {
+    twTime.setUTCDate(twTime.getUTCDate() - 1);
+  }
+  const dateStr = `${twTime.getUTCFullYear()}${twTime.getUTCMonth() + 1}${twTime.getUTCDate()}`;
   const historyFile = path.join(dataDir, `${dateStr}.json`);
   fs.writeFileSync(historyFile, JSON.stringify(dashboardState, null, 2), 'utf-8');
 

@@ -24,13 +24,16 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // ─── 日期工具 ─────────────────────────────────────────────────
 function getTradingDate() {
   const now = new Date();
-  const hourTW = (now.getUTCHours() + 8) % 24;
-  const d = new Date(now);
-  if (hourTW < 18) d.setDate(d.getDate() - 1);
-  while (d.getDay() === 0 || d.getDay() === 6) d.setDate(d.getDate() - 1);
-  const yyyy = d.getFullYear();
-  const mm = String(d.getMonth() + 1).padStart(2, '0');
-  const dd = String(d.getDate()).padStart(2, '0');
+  const twTime = new Date(now.getTime() + 8 * 60 * 60 * 1000); // 轉換為台灣時間 (UTC+8)
+  if (twTime.getUTCHours() < 15) {
+    twTime.setUTCDate(twTime.getUTCDate() - 1);
+  }
+  while (twTime.getUTCDay() === 0 || twTime.getUTCDay() === 6) {
+    twTime.setUTCDate(twTime.getUTCDate() - 1);
+  }
+  const yyyy = twTime.getUTCFullYear();
+  const mm = String(twTime.getUTCMonth() + 1).padStart(2, '0');
+  const dd = String(twTime.getUTCDate()).padStart(2, '0');
   return { yyyymmdd: `${yyyy}${mm}${dd}`, label: `${yyyy}/${mm}/${dd}`, yyyymmdd_pad: `${yyyy}${mm}${dd}` };
 }
 
