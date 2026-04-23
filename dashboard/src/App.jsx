@@ -647,31 +647,43 @@ function App() {
                   <table>
                     <thead style={{ position: 'sticky', top: 0, zIndex: 20 }}>
                       <tr>
-                        <th>排名</th><th>代號</th><th>名稱</th><th>權重 (%)</th><th>權重異動</th><th>張數</th><th>狀態</th>
+                        <th>排名</th><th>代號</th><th>名稱</th><th>權重 (%)</th><th>張數</th><th>狀態</th>
                       </tr>
                     </thead>
                     <tbody>
                       {sortedHoldings.map((hold, idx) => {
-                        const sharesLot = Math.round(hold.shares / 1000).toLocaleString();
-                        const diffLot = Math.round((hold.diffShares || 0) / 1000);
+                        const sharesLotNum = Math.round(hold.shares / 1000);
+                        const diffLotNum = Math.round((hold.diffShares || 0) / 1000);
+                        const prevSharesLotNum = sharesLotNum - diffLotNum;
+
+                        const sharesLotStr = sharesLotNum.toLocaleString();
+                        const prevSharesLotStr = prevSharesLotNum.toLocaleString();
+                        const diffLotStr = diffLotNum > 0 ? `+${diffLotNum.toLocaleString()}` : diffLotNum.toLocaleString();
+
                         const prevShares = (hold.shares || 0) - (hold.diffShares || 0);
                         const computedPct = prevShares > 0 ? parseFloat((((hold.diffShares || 0) / prevShares) * 100).toFixed(2)) : 0;
                         const finalPct = hold.diffSharesPercent !== undefined ? hold.diffSharesPercent : computedPct;
+                        const pctStr = finalPct > 0 ? `+${finalPct}%` : `${finalPct}%`;
+
                         return (
                           <tr key={hold.stockCode}>
                             <td style={{ color: 'var(--text-secondary)' }}>{idx + 1}</td>
                             <td style={{ fontWeight: 600, color: '#94a3b8' }}>{hold.stockCode}</td>
                             <td style={{ fontWeight: 500 }}>{hold.stockName}</td>
                             <td>{hold.weight}%</td>
-                            <td className={hold.diffWeight > 0 ? 'text-success' : (hold.diffWeight < 0 ? 'text-danger' : 'text-neutral')} style={{ fontWeight: 800, fontSize: '1.1rem' }}>
-                              {hold.diffWeight > 0 ? '+' : ''}{hold.diffWeight || 0}%
-                            </td>
                             <td>
-                              {sharesLot}
-                              <span className={diffLot > 0 ? 'text-success' : (diffLot < 0 ? 'text-danger' : 'text-neutral')} style={{ fontWeight: 800, fontSize: '1.1rem', marginLeft: '8px' }}>
-                                {diffLot !== 0 ? `(${diffLot > 0 ? '+' : ''}${diffLot})` : ''}
-                                {finalPct ? ` [${finalPct > 0 ? '+' : ''}${finalPct}%]` : ''}
-                              </span>
+                              {diffLotNum !== 0 ? (
+                                <span>
+                                  <span style={{ color: 'var(--text-secondary)' }}>{prevSharesLotStr}</span>
+                                  <span style={{ margin: '0 6px', color: 'var(--text-secondary)' }}>➔</span>
+                                  <span style={{ fontWeight: 600 }}>{sharesLotStr}</span>
+                                  <span className={diffLotNum > 0 ? 'text-success' : 'text-danger'} style={{ fontWeight: 800, fontSize: '1.05rem', marginLeft: '8px' }}>
+                                    ({diffLotStr}) ({pctStr})
+                                  </span>
+                                </span>
+                              ) : (
+                                <span style={{ fontWeight: 600 }}>{sharesLotStr}</span>
+                              )}
                             </td>
                             <td>{hold.isNew && <span className="badge new">新進榜</span>}</td>
                           </tr>
