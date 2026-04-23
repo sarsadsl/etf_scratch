@@ -3,370 +3,420 @@
     {
       "stockCode": "2330",
       "stockName": "台積電",
-      "shares": 9113000,
-      "weight": 9.49,
-      "diffShares": 895000,
-      "diffSharesPercent": 10.89,
-      "diffWeight": 0.74,
+      "shares": 8218000,
+      "weight": 8.75,
+      "diffShares": 150000,
+      "diffSharesPercent": 1.86,
+      "diffWeight": -0.27,
       "isNew": false
     },
     {
       "stockCode": "2383",
       "stockName": "台光電",
-      "shares": 3904000,
-      "weight": 8.02,
-      "diffShares": 223000,
-      "diffSharesPercent": 6.06,
-      "diffWeight": 0.25,
+      "shares": 3681000,
+      "weight": 7.77,
+      "diffShares": 323000,
+      "diffSharesPercent": 9.62,
+      "diffWeight": 0.53,
       "isNew": false
     },
     {
       "stockCode": "3653",
       "stockName": "健策",
-      "shares": 2267000,
-      "weight": 6.03,
-      "diffShares": 69000,
-      "diffSharesPercent": 3.14,
-      "diffWeight": -0.15,
+      "shares": 2198000,
+      "weight": 6.18,
+      "diffShares": 30000,
+      "diffSharesPercent": 1.38,
+      "diffWeight": -0.17,
       "isNew": false
     },
     {
       "stockCode": "2308",
       "stockName": "台達電",
-      "shares": 6024000,
-      "weight": 5.97,
-      "diffShares": 185000,
-      "diffSharesPercent": 3.17,
-      "diffWeight": -0.14,
-      "isNew": false
-    },
-    {
-      "stockCode": "3665",
-      "stockName": "貿聯-KY",
-      "shares": 3933848,
-      "weight": 5.43,
-      "diffShares": 121000,
-      "diffSharesPercent": 3.17,
-      "diffWeight": 0.37,
+      "shares": 5839000,
+      "weight": 6.11,
+      "diffShares": 20000,
+      "diffSharesPercent": 0.34,
+      "diffWeight": -0.29,
       "isNew": false
     },
     {
       "stockCode": "2345",
       "stockName": "智邦",
-      "shares": 5057000,
-      "weight": 5.27,
-      "diffShares": 155000,
-      "diffSharesPercent": 3.16,
-      "diffWeight": -0.33,
+      "shares": 4902000,
+      "weight": 5.6,
+      "diffShares": 62000,
+      "diffSharesPercent": 1.28,
+      "diffWeight": -0.18,
       "isNew": false
     },
     {
       "stockCode": "3017",
       "stockName": "奇鋐",
-      "shares": 3845000,
-      "weight": 5.16,
-      "diffShares": 118000,
-      "diffSharesPercent": 3.17,
-      "diffWeight": -0.06,
+      "shares": 3727000,
+      "weight": 5.22,
+      "diffShares": 60000,
+      "diffSharesPercent": 1.64,
+      "diffWeight": 0.09,
+      "isNew": false
+    },
+    {
+      "stockCode": "3665",
+      "stockName": "貿聯-KY",
+      "shares": 3812848,
+      "weight": 5.06,
+      "diffShares": 120000,
+      "diffSharesPercent": 3.25,
+      "diffWeight": 0.17,
       "isNew": false
     },
     {
       "stockCode": "2368",
       "stockName": "金像電",
       "shares": 7389000,
-      "weight": 4.68,
+      "weight": 4.8,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": -0.12,
+      "diffWeight": -0.14,
       "isNew": false
     },
     {
       "stockCode": "6223",
       "stockName": "旺矽",
-      "shares": 1774000,
-      "weight": 4.26,
-      "diffShares": 54000,
-      "diffSharesPercent": 3.14,
-      "diffWeight": -0.05,
-      "isNew": false
-    },
-    {
-      "stockCode": "8046",
-      "stockName": "南電",
-      "shares": 9256000,
-      "weight": 3.69,
-      "diffShares": 284000,
-      "diffSharesPercent": 3.17,
-      "diffWeight": -0.05,
+      "shares": 1720000,
+      "weight": 4.31,
+      "diffShares": 22000,
+      "diffSharesPercent": 1.3,
+      "diffWeight": -0.27,
       "isNew": false
     },
     {
       "stockCode": "2454",
       "stockName": "聯發科",
-      "shares": 3295000,
-      "weight": 3.66,
-      "diffShares": 101000,
-      "diffSharesPercent": 3.16,
-      "diffWeight": -0.15,
+      "shares": 3194000,
+      "weight": 3.81,
+      "diffShares": 520000,
+      "diffSharesPercent": 19.45,
+      "diffWeight": 0.76,
+      "isNew": false
+    },
+    {
+      "stockCode": "8046",
+      "stockName": "南電",
+      "shares": 8972000,
+      "weight": 3.74,
+      "diffShares": 120000,
+      "diffSharesPercent": 1.36,
+      "diffWeight": -0.07,
       "isNew": false
     },
     {
       "stockCode": "3037",
       "stockName": "欣興",
       "shares": 9287000,
-      "weight": 3.39,
+      "weight": 3.45,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": -0.06,
+      "diffWeight": -0.15,
       "isNew": false
     },
     {
       "stockCode": "5274",
       "stockName": "信驊",
       "shares": 351000,
-      "weight": 2.75,
+      "weight": 2.93,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": -0.18,
+      "diffWeight": 0.01,
       "isNew": false
     },
     {
       "stockCode": "2327",
       "stockName": "國巨",
       "shares": 14288000,
-      "weight": 2.11,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": -0.23,
+      "weight": 2.34,
+      "diffShares": 50000,
+      "diffSharesPercent": 0.35,
+      "diffWeight": -0.17,
       "isNew": false
     },
     {
       "stockCode": "6669",
       "stockName": "緯穎",
-      "shares": 952000,
-      "weight": 2.03,
-      "diffShares": 29000,
-      "diffSharesPercent": 3.14,
-      "diffWeight": -0.06,
+      "shares": 923000,
+      "weight": 2.09,
+      "diffShares": 129000,
+      "diffSharesPercent": 16.25,
+      "diffWeight": 0.26,
       "isNew": false
     },
     {
       "stockCode": "6515",
       "stockName": "穎崴",
-      "shares": 368000,
-      "weight": 1.98,
-      "diffShares": 11000,
-      "diffSharesPercent": 3.08,
-      "diffWeight": -0.01,
+      "shares": 357000,
+      "weight": 1.99,
+      "diffShares": 4000,
+      "diffSharesPercent": 1.13,
+      "diffWeight": -0.07,
       "isNew": false
     },
     {
       "stockCode": "3711",
       "stockName": "日月光投控",
-      "shares": 7654000,
-      "weight": 1.78,
-      "diffShares": 235000,
-      "diffSharesPercent": 3.17,
-      "diffWeight": -0.01,
+      "shares": 7419000,
+      "weight": 1.79,
+      "diffShares": 50000,
+      "diffSharesPercent": 0.68,
+      "diffWeight": -0.11,
       "isNew": false
     },
     {
       "stockCode": "6805",
       "stockName": "富世達",
-      "shares": 1698000,
-      "weight": 1.62,
-      "diffShares": 52000,
-      "diffSharesPercent": 3.16,
-      "diffWeight": -0.08,
+      "shares": 1646000,
+      "weight": 1.7,
+      "diffShares": 50000,
+      "diffSharesPercent": 3.13,
+      "diffWeight": 0.03,
       "isNew": false
     },
     {
       "stockCode": "6510",
       "stockName": "精測",
       "shares": 781000,
-      "weight": 1.51,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": -0.19,
-      "isNew": false
-    },
-    {
-      "stockCode": "2449",
-      "stockName": "京元電子",
-      "shares": 10503000,
-      "weight": 1.46,
-      "diffShares": 323000,
-      "diffSharesPercent": 3.17,
-      "diffWeight": -0.06,
-      "isNew": false
-    },
-    {
-      "stockCode": "6274",
-      "stockName": "台燿",
-      "shares": 3019000,
-      "weight": 1.44,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": -0.09,
-      "isNew": false
-    },
-    {
-      "stockCode": "3661",
-      "stockName": "世芯-KY",
-      "shares": 694000,
-      "weight": 1.38,
-      "diffShares": 21000,
-      "diffSharesPercent": 3.12,
-      "diffWeight": -0.04,
-      "isNew": false
-    },
-    {
-      "stockCode": "2303",
-      "stockName": "聯電",
-      "shares": 30837000,
-      "weight": 1.14,
-      "diffShares": 948000,
-      "diffSharesPercent": 3.17,
-      "diffWeight": -0.08,
-      "isNew": false
-    },
-    {
-      "stockCode": "8358",
-      "stockName": "金居",
-      "shares": 5558000,
-      "weight": 1.03,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": -0.11,
-      "isNew": false
-    },
-    {
-      "stockCode": "2317",
-      "stockName": "鴻海",
-      "shares": 6927000,
-      "weight": 0.78,
-      "diffShares": 212000,
-      "diffSharesPercent": 3.16,
-      "diffWeight": 0.01,
-      "isNew": false
-    },
-    {
-      "stockCode": "3189",
-      "stockName": "景碩",
-      "shares": 2952000,
-      "weight": 0.71,
-      "diffShares": 90000,
-      "diffSharesPercent": 3.14,
-      "diffWeight": -0.02,
-      "isNew": false
-    },
-    {
-      "stockCode": "8210",
-      "stockName": "勤誠",
-      "shares": 1051000,
-      "weight": 0.58,
-      "diffShares": 32000,
-      "diffSharesPercent": 3.14,
-      "diffWeight": 0.03,
-      "isNew": false
-    },
-    {
-      "stockCode": "5439",
-      "stockName": "高技",
-      "shares": 2880000,
-      "weight": 0.54,
-      "diffShares": 89000,
-      "diffSharesPercent": 3.19,
-      "diffWeight": -0.07,
-      "isNew": false
-    },
-    {
-      "stockCode": "3443",
-      "stockName": "創意",
-      "shares": 271000,
-      "weight": 0.53,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": 0.01,
-      "isNew": false
-    },
-    {
-      "stockCode": "6147",
-      "stockName": "頎邦",
-      "shares": 7884000,
-      "weight": 0.53,
+      "weight": 1.7,
       "diffShares": 0,
       "diffSharesPercent": 0,
       "diffWeight": -0.05,
       "isNew": false
     },
     {
+      "stockCode": "6274",
+      "stockName": "台燿",
+      "shares": 3019000,
+      "weight": 1.53,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
+      "diffWeight": -0.06,
+      "isNew": false
+    },
+    {
+      "stockCode": "2449",
+      "stockName": "京元電子",
+      "shares": 10180000,
+      "weight": 1.52,
+      "diffShares": 130000,
+      "diffSharesPercent": 1.29,
+      "diffWeight": -0.02,
+      "isNew": false
+    },
+    {
+      "stockCode": "3661",
+      "stockName": "世芯-KY",
+      "shares": 673000,
+      "weight": 1.42,
+      "diffShares": 8000,
+      "diffSharesPercent": 1.2,
+      "diffWeight": -0.03,
+      "isNew": false
+    },
+    {
+      "stockCode": "2303",
+      "stockName": "聯電",
+      "shares": 29889000,
+      "weight": 1.22,
+      "diffShares": 384000,
+      "diffSharesPercent": 1.3,
+      "diffWeight": -0.01,
+      "isNew": false
+    },
+    {
+      "stockCode": "8358",
+      "stockName": "金居",
+      "shares": 5558000,
+      "weight": 1.14,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
+      "diffWeight": -0.05,
+      "isNew": false
+    },
+    {
+      "stockCode": "3211",
+      "stockName": "順達",
+      "shares": 3880000,
+      "weight": 0.84,
+      "diffShares": 20000,
+      "diffSharesPercent": 0.52,
+      "diffWeight": 0.04,
+      "isNew": false
+    },
+    {
+      "stockCode": "2317",
+      "stockName": "鴻海",
+      "shares": 6715000,
+      "weight": 0.77,
+      "diffShares": 6715000,
+      "diffSharesPercent": 0,
+      "diffWeight": 0.77,
+      "isNew": true
+    },
+    {
+      "stockCode": "3189",
+      "stockName": "景碩",
+      "shares": 2862000,
+      "weight": 0.73,
+      "diffShares": 36000,
+      "diffSharesPercent": 1.27,
+      "diffWeight": 0,
+      "isNew": false
+    },
+    {
+      "stockCode": "5439",
+      "stockName": "高技",
+      "shares": 2791000,
+      "weight": 0.61,
+      "diffShares": 35000,
+      "diffSharesPercent": 1.27,
+      "diffWeight": -0.05,
+      "isNew": false
+    },
+    {
+      "stockCode": "6147",
+      "stockName": "頎邦",
+      "shares": 7884000,
+      "weight": 0.58,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
+      "diffWeight": 0,
+      "isNew": false
+    },
+    {
+      "stockCode": "8210",
+      "stockName": "勤誠",
+      "shares": 1019000,
+      "weight": 0.55,
+      "diffShares": 13000,
+      "diffSharesPercent": 1.29,
+      "diffWeight": -0.01,
+      "isNew": false
+    },
+    {
       "stockCode": "2404",
       "stockName": "漢唐",
-      "shares": 1091000,
-      "weight": 0.53,
-      "diffShares": 33000,
-      "diffSharesPercent": 3.12,
-      "diffWeight": -0.02,
+      "shares": 1058000,
+      "weight": 0.55,
+      "diffShares": 1000,
+      "diffSharesPercent": 0.09,
+      "diffWeight": -0.03,
       "isNew": false
     },
     {
       "stockCode": "3264",
       "stockName": "欣銓",
-      "shares": 4896000,
-      "weight": 0.48,
-      "diffShares": 151000,
-      "diffSharesPercent": 3.18,
-      "diffWeight": -0.04,
+      "shares": 4745000,
+      "weight": 0.52,
+      "diffShares": 30000,
+      "diffSharesPercent": 0.64,
+      "diffWeight": -0.01,
+      "isNew": false
+    },
+    {
+      "stockCode": "3443",
+      "stockName": "創意",
+      "shares": 271000,
+      "weight": 0.52,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
+      "diffWeight": -0.03,
+      "isNew": false
+    },
+    {
+      "stockCode": "1303",
+      "stockName": "南亞",
+      "shares": 8015000,
+      "weight": 0.37,
+      "diffShares": 1000,
+      "diffSharesPercent": 0.01,
+      "diffWeight": -0.02,
+      "isNew": false
+    },
+    {
+      "stockCode": "4979",
+      "stockName": "華星光",
+      "shares": 1037000,
+      "weight": 0.34,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
+      "diffWeight": -0.03,
       "isNew": false
     },
     {
       "stockCode": "8996",
       "stockName": "高力",
       "shares": 535000,
-      "weight": 0.32,
+      "weight": 0.33,
       "diffShares": 0,
       "diffSharesPercent": 0,
+      "diffWeight": -0.02,
+      "isNew": false
+    },
+    {
+      "stockCode": "6187",
+      "stockName": "萬潤",
+      "shares": 461000,
+      "weight": 0.33,
+      "diffShares": 5000,
+      "diffSharesPercent": 1.1,
+      "diffWeight": 0,
+      "isNew": false
+    },
+    {
+      "stockCode": "6488",
+      "stockName": "環球晶",
+      "shares": 949000,
+      "weight": 0.3,
+      "diffShares": 1000,
+      "diffSharesPercent": 0.11,
       "diffWeight": -0.01,
+      "isNew": false
+    },
+    {
+      "stockCode": "3583",
+      "stockName": "辛耘",
+      "shares": 527000,
+      "weight": 0.23,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
+      "diffWeight": 0.01,
       "isNew": false
     },
     {
       "stockCode": "7769",
       "stockName": "鴻勁",
-      "shares": 97000,
+      "shares": 95000,
       "weight": 0.23,
-      "diffShares": 2000,
-      "diffSharesPercent": 2.11,
+      "diffShares": 1000,
+      "diffSharesPercent": 1.06,
       "diffWeight": 0,
       "isNew": false
     },
     {
       "stockCode": "6191",
       "stockName": "精成科",
-      "shares": 3985000,
-      "weight": 0.21,
-      "diffShares": 120000,
-      "diffSharesPercent": 3.1,
-      "diffWeight": -0.01,
-      "isNew": false
-    },
-    {
-      "stockCode": "3211",
-      "stockName": "順達",
-      "shares": 916000,
-      "weight": 0.18,
-      "diffShares": -2964000,
-      "diffSharesPercent": -76.39,
-      "diffWeight": -0.66,
+      "shares": 3865000,
+      "weight": 0.22,
+      "diffShares": 1000,
+      "diffSharesPercent": 0.03,
+      "diffWeight": -0.02,
       "isNew": false
     },
     {
       "stockCode": "2481",
       "stockName": "強茂",
       "shares": 3651000,
-      "weight": 0.18,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
+      "weight": 0.2,
+      "diffShares": 1000,
+      "diffSharesPercent": 0.03,
       "diffWeight": -0.02,
       "isNew": false
     },
@@ -374,9 +424,9 @@
       "stockCode": "3376",
       "stockName": "新日興",
       "shares": 1561000,
-      "weight": 0.17,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
+      "weight": 0.18,
+      "diffShares": 1000,
+      "diffSharesPercent": 0.06,
       "diffWeight": -0.01,
       "isNew": false
     },
@@ -385,48 +435,29 @@
       "stockName": "矽力-KY",
       "shares": 660000,
       "weight": 0.14,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
+      "diffShares": 30000,
+      "diffSharesPercent": 4.76,
       "diffWeight": 0,
-      "isNew": false
-    },
-    {
-      "stockCode": "4966",
-      "stockName": "譜瑞-KY",
-      "shares": 370000,
-      "weight": 0.11,
-      "diffShares": 370000,
-      "diffWeight": 0.11,
-      "isNew": true
-    },
-    {
-      "stockCode": "6488",
-      "stockName": "環球晶",
-      "shares": 332000,
-      "weight": 0.1,
-      "diffShares": -617000,
-      "diffSharesPercent": -65.02,
-      "diffWeight": -0.2,
       "isNew": false
     },
     {
       "stockCode": "3324",
       "stockName": "雙鴻",
       "shares": 170000,
-      "weight": 0.09,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": -0.01,
+      "weight": 0.1,
+      "diffShares": 1000,
+      "diffSharesPercent": 0.59,
+      "diffWeight": 0,
       "isNew": false
     },
     {
       "stockCode": "2313",
       "stockName": "華通",
       "shares": 764000,
-      "weight": 0.09,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": -0.01,
+      "weight": 0.1,
+      "diffShares": 50000,
+      "diffSharesPercent": 7,
+      "diffWeight": 0,
       "isNew": false
     },
     {
@@ -434,19 +465,9 @@
       "stockName": "優群",
       "shares": 780000,
       "weight": 0.07,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": 0,
-      "isNew": false
-    },
-    {
-      "stockCode": "1303",
-      "stockName": "南亞",
-      "shares": 1373000,
-      "weight": 0.06,
-      "diffShares": -6642000,
-      "diffSharesPercent": -82.87,
-      "diffWeight": -0.31,
+      "diffShares": 150000,
+      "diffSharesPercent": 23.81,
+      "diffWeight": 0.01,
       "isNew": false
     },
     {
@@ -454,19 +475,19 @@
       "stockName": "中鋼",
       "shares": 5160000,
       "weight": 0.05,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffShares": 1000,
+      "diffSharesPercent": 0.02,
+      "diffWeight": -0.01,
       "isNew": false
     },
     {
-      "stockCode": "3583",
-      "stockName": "辛耘",
-      "shares": 57000,
-      "weight": 0.03,
-      "diffShares": -470000,
-      "diffSharesPercent": -89.18,
-      "diffWeight": -0.2,
+      "stockCode": "3008",
+      "stockName": "大立光",
+      "shares": 15000,
+      "weight": 0.02,
+      "diffShares": 1000,
+      "diffSharesPercent": 7.14,
+      "diffWeight": 0,
       "isNew": false
     },
     {
@@ -474,8 +495,8 @@
       "stockName": "東陽",
       "shares": 508000,
       "weight": 0.02,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
+      "diffShares": 1000,
+      "diffSharesPercent": 0.2,
       "diffWeight": 0,
       "isNew": false
     },
@@ -484,8 +505,8 @@
       "stockName": "富喬",
       "shares": 107000,
       "weight": 0.01,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
+      "diffShares": 1000,
+      "diffSharesPercent": 0.94,
       "diffWeight": 0,
       "isNew": false
     },
@@ -494,8 +515,8 @@
       "stockName": "華碩",
       "shares": 15000,
       "weight": 0,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
+      "diffShares": 1000,
+      "diffSharesPercent": 7.14,
       "diffWeight": 0,
       "isNew": false
     },
@@ -504,19 +525,9 @@
       "stockName": "美律",
       "shares": 15000,
       "weight": 0,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
+      "diffShares": 1000,
+      "diffSharesPercent": 7.14,
       "diffWeight": 0,
-      "isNew": false
-    },
-    {
-      "stockCode": "4979",
-      "stockName": "華星光",
-      "shares": 1000,
-      "weight": 0,
-      "diffShares": -1036000,
-      "diffSharesPercent": -99.9,
-      "diffWeight": -0.34,
       "isNew": false
     },
     {
@@ -524,8 +535,8 @@
       "stockName": "世界",
       "shares": 61000,
       "weight": 0,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
+      "diffShares": 50000,
+      "diffSharesPercent": 454.55,
       "diffWeight": 0,
       "isNew": false
     }
@@ -535,150 +546,120 @@
       "stockCode": "LITE US",
       "stockName": "LUMENTUM HOLDINGS INC.lite us",
       "shares": 53000,
-      "weight": 6.3,
+      "weight": 6.34,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": -0.04,
+      "diffWeight": -0.54,
       "isNew": false
     },
     {
       "stockCode": "SNDK US",
       "stockName": "SANDISK CORP",
       "shares": 34400,
-      "weight": 4.58,
+      "weight": 4.44,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0.14,
-      "isNew": false
-    },
-    {
-      "stockCode": "BE US",
-      "stockName": "BLOOM ENERGY CORP- A",
-      "shares": 115000,
-      "weight": 3.6,
-      "diffShares": 15000,
-      "diffSharesPercent": 15,
-      "diffWeight": 0.44,
-      "isNew": false
-    },
-    {
-      "stockCode": "6787 JP",
-      "stockName": "MEIKO ELECTRONICS CO LTD",
-      "shares": 130000,
-      "weight": 3.26,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": 0.01,
+      "diffWeight": -0.12,
       "isNew": false
     },
     {
       "stockCode": "CIEN US",
       "stockName": "CIENA CORP",
       "shares": 47000,
-      "weight": 3.19,
+      "weight": 3.4,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": -0.21,
+      "diffWeight": -0.03,
+      "isNew": false
+    },
+    {
+      "stockCode": "6787 JP",
+      "stockName": "MEIKO ELECTRONICS CO LTD",
+      "shares": 130000,
+      "weight": 3.25,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
+      "diffWeight": 0.01,
+      "isNew": false
+    },
+    {
+      "stockCode": "BE US",
+      "stockName": "BLOOM ENERGY CORP- A",
+      "shares": 100000,
+      "weight": 3.16,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
+      "diffWeight": -0.01,
       "isNew": false
     },
     {
       "stockCode": "009150 KS",
       "stockName": "Samsung Electro-Mechanics co(009150 ks)",
       "shares": 41177,
-      "weight": 3.14,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": 0.03,
+      "weight": 3.11,
+      "diffShares": 1177,
+      "diffSharesPercent": 2.94,
+      "diffWeight": 0.42,
       "isNew": false
     },
     {
       "stockCode": "MU US",
       "stockName": "MICRON TECHNOLOGY INC",
       "shares": 47000,
-      "weight": 3.12,
+      "weight": 3.02,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0.1,
-      "isNew": false
-    },
-    {
-      "stockCode": "MRVL US",
-      "stockName": "MARVELL TECHNOLOGY INC",
-      "shares": 140000,
-      "weight": 3,
-      "diffShares": 25000,
-      "diffSharesPercent": 21.74,
-      "diffWeight": 0.51,
-      "isNew": false
-    },
-    {
-      "stockCode": "AMD US",
-      "stockName": "ADVANCED MICRO DEVICES.amd us(超微半導體公司)",
-      "shares": 68000,
-      "weight": 2.81,
-      "diffShares": 8000,
-      "diffSharesPercent": 13.33,
-      "diffWeight": 0.37,
+      "diffWeight": -0.04,
       "isNew": false
     },
     {
       "stockCode": "6515",
       "stockName": "穎崴",
       "shares": 60000,
-      "weight": 2.78,
+      "weight": 2.92,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": -0.14,
-      "isNew": false
-    },
-    {
-      "stockCode": "GLW US",
-      "stockName": "CORNING INC",
-      "shares": 120700,
-      "weight": 2.77,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": -0.08,
-      "isNew": false
-    },
-    {
-      "stockCode": "COHR US",
-      "stockName": "COHERENT INC",
-      "shares": 57000,
-      "weight": 2.72,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": -0.08,
+      "diffWeight": -0.06,
       "isNew": false
     },
     {
       "stockCode": "5801 JP",
       "stockName": "FURUKAWA ELECTRIC CO LTD",
       "shares": 72000,
-      "weight": 2.71,
+      "weight": 2.87,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": -0.16,
+      "diffWeight": 0.04,
+      "isNew": false
+    },
+    {
+      "stockCode": "GLW US",
+      "stockName": "CORNING INC",
+      "shares": 120700,
+      "weight": 2.85,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
+      "diffWeight": -0.04,
+      "isNew": false
+    },
+    {
+      "stockCode": "COHR US",
+      "stockName": "COHERENT INC",
+      "shares": 57000,
+      "weight": 2.8,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
+      "diffWeight": -0.07,
       "isNew": false
     },
     {
       "stockCode": "2383",
       "stockName": "台光電",
       "shares": 144000,
-      "weight": 2.53,
+      "weight": 2.58,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": -0.05,
-      "isNew": false
-    },
-    {
-      "stockCode": "GEV US",
-      "stockName": "GE VERNOVA INC",
-      "shares": 16400,
-      "weight": 2.52,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": 0.2,
+      "diffWeight": 0.03,
       "isNew": false
     },
     {
@@ -688,57 +669,97 @@
       "weight": 2.5,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.03,
       "isNew": false
     },
     {
-      "stockCode": "2454",
-      "stockName": "聯發科",
-      "shares": 250000,
-      "weight": 2.48,
-      "diffShares": 28000,
-      "diffSharesPercent": 12.61,
-      "diffWeight": 0.37,
+      "stockCode": "MRVL US",
+      "stockName": "MARVELL TECHNOLOGY INC",
+      "shares": 115000,
+      "weight": 2.49,
+      "diffShares": 15000,
+      "diffSharesPercent": 15,
+      "diffWeight": 0.35,
+      "isNew": false
+    },
+    {
+      "stockCode": "AMD US",
+      "stockName": "ADVANCED MICRO DEVICES.amd us(超微半導體公司)",
+      "shares": 60000,
+      "weight": 2.44,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
+      "diffWeight": 0.05,
       "isNew": false
     },
     {
       "stockCode": "3037",
       "stockName": "欣興",
       "shares": 750000,
-      "weight": 2.32,
+      "weight": 2.42,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": -0.1,
+      "diffWeight": 0.08,
       "isNew": false
     },
     {
       "stockCode": "2308",
       "stockName": "台達電",
       "shares": 257000,
-      "weight": 2.24,
+      "weight": 2.35,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": -0.11,
+      "diffWeight": 0.1,
       "isNew": false
     },
     {
-      "stockCode": "ENR GY",
-      "stockName": "SIEMENS ENERGY AG",
-      "shares": 75000,
-      "weight": 2.14,
+      "stockCode": "GEV US",
+      "stockName": "GE VERNOVA INC",
+      "shares": 16400,
+      "weight": 2.32,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0.03,
+      "diffWeight": -0.04,
       "isNew": false
     },
     {
       "stockCode": "FORM US",
       "stockName": "FORMFACTOR INC",
       "shares": 105000,
+      "weight": 2.13,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
+      "diffWeight": -0.06,
+      "isNew": false
+    },
+    {
+      "stockCode": "ENR GY",
+      "stockName": "SIEMENS ENERGY AG",
+      "shares": 75000,
+      "weight": 2.11,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
+      "diffWeight": -0.05,
+      "isNew": false
+    },
+    {
+      "stockCode": "2454",
+      "stockName": "聯發科",
+      "shares": 222000,
+      "weight": 2.11,
+      "diffShares": 22000,
+      "diffSharesPercent": 11,
+      "diffWeight": 0.36,
+      "isNew": false
+    },
+    {
+      "stockCode": "GOOGL US",
+      "stockName": "ALPHABET INC-CL A(Alphabet公司)",
+      "shares": 44000,
       "weight": 2.09,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": -0.04,
+      "diffWeight": -0.06,
       "isNew": false
     },
     {
@@ -748,107 +769,107 @@
       "weight": 2.08,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.09,
       "isNew": false
     },
     {
       "stockCode": "3110 JP",
       "stockName": "NITTO BOSEKI CO LTD",
       "shares": 87000,
-      "weight": 2.04,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": -0.03,
-      "isNew": false
-    },
-    {
-      "stockCode": "GOOGL US",
-      "stockName": "ALPHABET INC-CL A(Alphabet公司)",
-      "shares": 44000,
-      "weight": 2.03,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": -0.06,
-      "isNew": false
-    },
-    {
-      "stockCode": "5706 JP",
-      "stockName": "Mitsui Mining ＆ Smelting Co",
-      "shares": 60000,
-      "weight": 1.96,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": -0.06,
-      "isNew": false
-    },
-    {
-      "stockCode": "WDC US",
-      "stockName": "WESTERN DIGITAL CORP",
-      "shares": 35000,
-      "weight": 1.85,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": -0.07,
-      "isNew": false
-    },
-    {
-      "stockCode": "TER US",
-      "stockName": "TERADYNE INC",
-      "shares": 35000,
-      "weight": 1.83,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": -0.07,
-      "isNew": false
-    },
-    {
-      "stockCode": "7826 JP",
-      "stockName": "FURUYA METAL CO LTD",
-      "shares": 280000,
-      "weight": 1.75,
-      "diffShares": 20000,
-      "diffSharesPercent": 7.69,
-      "diffWeight": 0.02,
-      "isNew": false
-    },
-    {
-      "stockCode": "2330",
-      "stockName": "台積電",
-      "shares": 177000,
-      "weight": 1.57,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": -0.08,
-      "isNew": false
-    },
-    {
-      "stockCode": "285A JP",
-      "stockName": "KIOXIA HOLDINGS CORP",
-      "shares": 50000,
-      "weight": 1.49,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": 0.02,
-      "isNew": false
-    },
-    {
-      "stockCode": "HOT GY",
-      "stockName": "HOCHTIEF AG",
-      "shares": 20000,
-      "weight": 1.47,
+      "weight": 2.07,
       "diffShares": 0,
       "diffSharesPercent": 0,
       "diffWeight": -0.05,
       "isNew": false
     },
     {
+      "stockCode": "005930 KS",
+      "stockName": "samsung electronics co ltd(005930 KS)",
+      "shares": 95000,
+      "weight": 2.04,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
+      "diffWeight": 0.02,
+      "isNew": false
+    },
+    {
+      "stockCode": "5706 JP",
+      "stockName": "Mitsui Mining ＆ Smelting Co",
+      "shares": 60000,
+      "weight": 2.02,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
+      "diffWeight": 0.08,
+      "isNew": false
+    },
+    {
+      "stockCode": "WDC US",
+      "stockName": "WESTERN DIGITAL CORP",
+      "shares": 35000,
+      "weight": 1.92,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
+      "diffWeight": 0.02,
+      "isNew": false
+    },
+    {
+      "stockCode": "TER US",
+      "stockName": "TERADYNE INC",
+      "shares": 35000,
+      "weight": 1.9,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
+      "diffWeight": 0,
+      "isNew": false
+    },
+    {
+      "stockCode": "7826 JP",
+      "stockName": "FURUYA METAL CO LTD",
+      "shares": 260000,
+      "weight": 1.73,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
+      "diffWeight": 0.01,
+      "isNew": false
+    },
+    {
+      "stockCode": "2330",
+      "stockName": "台積電",
+      "shares": 177000,
+      "weight": 1.65,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
+      "diffWeight": 0,
+      "isNew": false
+    },
+    {
+      "stockCode": "HOT GY",
+      "stockName": "HOCHTIEF AG",
+      "shares": 20000,
+      "weight": 1.52,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
+      "diffWeight": -0.06,
+      "isNew": false
+    },
+    {
+      "stockCode": "285A JP",
+      "stockName": "KIOXIA HOLDINGS CORP",
+      "shares": 50000,
+      "weight": 1.47,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
+      "diffWeight": 0.08,
+      "isNew": false
+    },
+    {
       "stockCode": "AIXA GY",
       "stockName": "AIXTRON SE",
       "shares": 192539,
-      "weight": 1.44,
+      "weight": 1.46,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": -0.02,
+      "diffWeight": 0.03,
       "isNew": false
     },
     {
@@ -858,166 +879,167 @@
       "weight": 1.44,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
-      "isNew": false
-    },
-    {
-      "stockCode": "SOI FP",
-      "stockName": "S.O.I.T.E.C.",
-      "shares": 68198,
-      "weight": 1.2,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": 0.04,
+      "diffWeight": -0.01,
       "isNew": false
     },
     {
       "stockCode": "3711",
       "stockName": "日月光投控",
       "shares": 600000,
-      "weight": 1.2,
+      "weight": 1.29,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": -0.09,
+      "diffWeight": 0.01,
+      "isNew": false
+    },
+    {
+      "stockCode": "SOI FP",
+      "stockName": "S.O.I.T.E.C.",
+      "shares": 68198,
+      "weight": 1.16,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
+      "diffWeight": 0,
       "isNew": false
     },
     {
       "stockCode": "5803 JP",
       "stockName": "FUJIKURA LTD",
       "shares": 210000,
-      "weight": 1.07,
+      "weight": 1.11,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": -0.04,
+      "diffWeight": 0.05,
       "isNew": false
     },
     {
       "stockCode": "2360",
       "stockName": "致茂",
       "shares": 120000,
-      "weight": 1.05,
+      "weight": 1.1,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": -0.05,
-      "isNew": false
-    },
-    {
-      "stockCode": "6997 JP",
-      "stockName": "NIPPON CHEMI-CON CORP",
-      "shares": 471300,
-      "weight": 0.99,
-      "diffShares": 41300,
-      "diffSharesPercent": 9.6,
-      "diffWeight": 0.08,
-      "isNew": false
-    },
-    {
-      "stockCode": "6869 HK",
-      "stockName": "YANGTZE OPTICAL FIBRE AND-H",
-      "shares": 220000,
-      "weight": 0.95,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": 0.1,
+      "diffWeight": -0.03,
       "isNew": false
     },
     {
       "stockCode": "VIAV US",
       "stockName": "VIAVI SOLUTIONS INC",
       "shares": 150000,
-      "weight": 0.9,
+      "weight": 0.95,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": -0.05,
+      "diffWeight": -0.02,
+      "isNew": false
+    },
+    {
+      "stockCode": "6997 JP",
+      "stockName": "NIPPON CHEMI-CON CORP",
+      "shares": 430000,
+      "weight": 0.91,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
+      "diffWeight": -0.03,
       "isNew": false
     },
     {
       "stockCode": "HOOD US",
       "stockName": "ROBINHOOD MARKETS INC - A",
       "shares": 70000,
-      "weight": 0.84,
+      "weight": 0.86,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": -0.02,
+      "diffWeight": -0.07,
       "isNew": false
     },
     {
       "stockCode": "NVDA US",
       "stockName": "NVIDIA CORP(輝達公司)",
       "shares": 30000,
-      "weight": 0.83,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": -0.03,
-      "isNew": false
-    },
-    {
-      "stockCode": "ONTO US",
-      "stockName": "ONTO INNOVATION INC",
-      "shares": 20000,
-      "weight": 0.81,
+      "weight": 0.86,
       "diffShares": 0,
       "diffSharesPercent": 0,
       "diffWeight": -0.02,
       "isNew": false
     },
     {
-      "stockCode": "AXTI US",
-      "stockName": "AXT INC",
-      "shares": 68000,
-      "weight": 0.8,
+      "stockCode": "6869 HK",
+      "stockName": "YANGTZE OPTICAL FIBRE AND-H",
+      "shares": 220000,
+      "weight": 0.85,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0.07,
+      "diffWeight": -0.01,
+      "isNew": false
+    },
+    {
+      "stockCode": "ONTO US",
+      "stockName": "ONTO INNOVATION INC",
+      "shares": 20000,
+      "weight": 0.83,
+      "diffShares": 10000,
+      "diffSharesPercent": 100,
+      "diffWeight": 0.4,
       "isNew": false
     },
     {
       "stockCode": "268A JP",
       "stockName": "RIGAKU HOLDINGS CORP",
       "shares": 300000,
-      "weight": 0.67,
+      "weight": 0.75,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": -0.08,
+      "diffWeight": 0.13,
+      "isNew": false
+    },
+    {
+      "stockCode": "AXTI US",
+      "stockName": "AXT INC",
+      "shares": 68000,
+      "weight": 0.73,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
+      "diffWeight": -0.05,
       "isNew": false
     },
     {
       "stockCode": "BKSY US",
       "stockName": "BLACKSKY TECHNOLOGY INC",
       "shares": 105224,
-      "weight": 0.58,
+      "weight": 0.59,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": -0.01,
+      "diffWeight": 0.02,
       "isNew": false
-    },
-    {
-      "stockCode": "006400 KS",
-      "stockName": "Samsung SDI Co Ltd",
-      "shares": 8000,
-      "weight": 0.49,
-      "diffShares": 8000,
-      "diffWeight": 0.49,
-      "isNew": true
     },
     {
       "stockCode": "RKLB US",
       "stockName": "ROCKET LAB USA INC",
       "shares": 40000,
-      "weight": 0.49,
+      "weight": 0.5,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": -0.01,
+      "diffWeight": -0.02,
       "isNew": false
     },
     {
       "stockCode": "NBIS US",
       "stockName": "NEBIUS GROUP NV",
       "shares": 20000,
-      "weight": 0.42,
+      "weight": 0.45,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": -0.03,
+      "diffWeight": -0.01,
+      "isNew": false
+    },
+    {
+      "stockCode": "SMHN GY",
+      "stockName": "SUSS MICROTEC SE",
+      "shares": 100,
+      "weight": 0,
+      "diffShares": -12400,
+      "diffSharesPercent": -99.2,
+      "diffWeight": -0.14,
       "isNew": false
     }
   ],
@@ -1027,9 +1049,9 @@
       "stockName": "台灣積體",
       "shares": 2300000,
       "weight": 14.447,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffShares": -50000,
+      "diffSharesPercent": -2.13,
+      "diffWeight": -0.56,
       "isNew": false
     },
     {
@@ -1039,7 +1061,7 @@
       "weight": 9.591,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.117,
       "isNew": false
     },
     {
@@ -1049,7 +1071,7 @@
       "weight": 7.07,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.077,
       "isNew": false
     },
     {
@@ -1059,7 +1081,7 @@
       "weight": 7.021,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.056,
       "isNew": false
     },
     {
@@ -1067,9 +1089,9 @@
       "stockName": "台達電子",
       "shares": 1020000,
       "weight": 6.298,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffShares": -80000,
+      "diffSharesPercent": -7.27,
+      "diffWeight": -0.606,
       "isNew": false
     },
     {
@@ -1079,7 +1101,7 @@
       "weight": 4.929,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.18,
       "isNew": false
     },
     {
@@ -1089,7 +1111,7 @@
       "weight": 4.719,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.056,
       "isNew": false
     },
     {
@@ -1099,7 +1121,7 @@
       "weight": 4.542,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.147,
       "isNew": false
     },
     {
@@ -1109,7 +1131,7 @@
       "weight": 4.362,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.189,
       "isNew": false
     },
     {
@@ -1119,7 +1141,7 @@
       "weight": 4.16,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.089,
       "isNew": false
     },
     {
@@ -1129,7 +1151,7 @@
       "weight": 4.06,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.005,
       "isNew": false
     },
     {
@@ -1139,7 +1161,7 @@
       "weight": 3.844,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.157,
       "isNew": false
     },
     {
@@ -1149,7 +1171,7 @@
       "weight": 3.83,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.014,
       "isNew": false
     },
     {
@@ -1157,9 +1179,9 @@
       "stockName": "聯發科技",
       "shares": 500000,
       "weight": 3.516,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffShares": 30000,
+      "diffSharesPercent": 6.38,
+      "diffWeight": 0.456,
       "isNew": false
     },
     {
@@ -1169,7 +1191,7 @@
       "weight": 3.315,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.031,
       "isNew": false
     },
     {
@@ -1179,7 +1201,7 @@
       "weight": 3.313,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.068,
       "isNew": false
     },
     {
@@ -1189,7 +1211,7 @@
       "weight": 2.897,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.102,
       "isNew": false
     },
     {
@@ -1199,7 +1221,7 @@
       "weight": 2.861,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.041,
       "isNew": false
     },
     {
@@ -1209,7 +1231,7 @@
       "weight": 2.608,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.162,
       "isNew": false
     },
     {
@@ -1217,9 +1239,9 @@
       "stockName": "亞德客-KY",
       "shares": 135000,
       "weight": 0.548,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffShares": 134000,
+      "diffSharesPercent": 13400,
+      "diffWeight": 0.544,
       "isNew": false
     },
     {
@@ -1227,9 +1249,9 @@
       "stockName": "漢唐集成",
       "shares": 170000,
       "weight": 0.521,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffShares": 169000,
+      "diffSharesPercent": 16900,
+      "diffWeight": 0.518,
       "isNew": false
     },
     {
@@ -1279,7 +1301,7 @@
       "weight": 0.009,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.001,
       "isNew": false
     },
     {
@@ -1399,7 +1421,7 @@
       "weight": 0.002,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.001,
       "isNew": false
     },
     {
@@ -1487,40 +1509,40 @@
       "stockName": "中華電信",
       "shares": 1000,
       "weight": 0,
-      "diffShares": 0,
+      "diffShares": 1000,
       "diffSharesPercent": 0,
       "diffWeight": 0,
-      "isNew": false
+      "isNew": true
     },
     {
       "stockCode": "3045",
       "stockName": "台灣大哥",
       "shares": 1000,
       "weight": 0,
-      "diffShares": 0,
+      "diffShares": 1000,
       "diffSharesPercent": 0,
       "diffWeight": 0,
-      "isNew": false
+      "isNew": true
     },
     {
       "stockCode": "1303",
       "stockName": "南亞塑膠",
       "shares": 1000,
       "weight": 0,
-      "diffShares": 0,
+      "diffShares": 1000,
       "diffSharesPercent": 0,
       "diffWeight": 0,
-      "isNew": false
+      "isNew": true
     },
     {
       "stockCode": "6505",
       "stockName": "台塑石化",
       "shares": 1000,
       "weight": 0,
-      "diffShares": 0,
+      "diffShares": 1000,
       "diffSharesPercent": 0,
       "diffWeight": 0,
-      "isNew": false
+      "isNew": true
     }
   ],
   "00990A": [
@@ -1528,61 +1550,101 @@
       "stockCode": "LITE",
       "stockName": "Lumentum",
       "shares": 70985,
-      "weight": 7.87
+      "weight": 7.87,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
+      "diffWeight": 0,
+      "isNew": false
     },
     {
       "stockCode": "SNDK",
       "stockName": "Sandisk",
       "shares": 44593,
-      "weight": 5.05
+      "weight": 5.05,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
+      "diffWeight": 0,
+      "isNew": false
     },
     {
       "stockCode": "2308",
       "stockName": "台達電",
       "shares": 628000,
-      "weight": 4.69
+      "weight": 4.69,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
+      "diffWeight": 0,
+      "isNew": false
     },
     {
       "stockCode": "MU",
       "stockName": "Micron",
       "shares": 71171,
-      "weight": 3.96
+      "weight": 3.96,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
+      "diffWeight": 0,
+      "isNew": false
     },
     {
       "stockCode": "2330",
       "stockName": "台積電",
       "shares": 497000,
-      "weight": 3.95
+      "weight": 3.95,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
+      "diffWeight": 0,
+      "isNew": false
     },
     {
       "stockCode": "TSEM",
       "stockName": "Tower Semiconductor",
       "shares": 118182,
-      "weight": 3.29
+      "weight": 3.29,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
+      "diffWeight": 0,
+      "isNew": false
     },
     {
       "stockCode": "GLW",
       "stockName": "Corning",
       "shares": 145895,
-      "weight": 2.99
+      "weight": 2.99,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
+      "diffWeight": 0,
+      "isNew": false
     },
     {
       "stockCode": "BE",
       "stockName": "Bloom Energy",
       "shares": 109100,
-      "weight": 2.95
+      "weight": 2.95,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
+      "diffWeight": 0,
+      "isNew": false
     },
     {
       "stockCode": "TER",
       "stockName": "Teradyne",
       "shares": 58500,
-      "weight": 2.72
+      "weight": 2.72,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
+      "diffWeight": 0,
+      "isNew": false
     },
     {
       "stockCode": "CIEN",
       "stockName": "Ciena",
       "shares": 42342,
-      "weight": 2.64
+      "weight": 2.64,
+      "diffShares": 0,
+      "diffSharesPercent": 0,
+      "diffWeight": 0,
+      "isNew": false
     }
   ],
   "00980A": [
@@ -1593,7 +1655,7 @@
       "weight": 8.5,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.1,
       "isNew": false
     },
     {
@@ -1603,7 +1665,7 @@
       "weight": 5.4,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.18,
       "isNew": false
     },
     {
@@ -1623,7 +1685,7 @@
       "weight": 3.24,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.2,
       "isNew": false
     },
     {
@@ -1633,7 +1695,7 @@
       "weight": 2.93,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.02,
       "isNew": false
     },
     {
@@ -1643,7 +1705,7 @@
       "weight": 2.86,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.01,
       "isNew": false
     },
     {
@@ -1653,7 +1715,7 @@
       "weight": 2.86,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.02,
       "isNew": false
     },
     {
@@ -1663,7 +1725,7 @@
       "weight": 2.82,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.09,
       "isNew": false
     },
     {
@@ -1673,7 +1735,7 @@
       "weight": 2.79,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.19,
       "isNew": false
     },
     {
@@ -1683,7 +1745,7 @@
       "weight": 2.73,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.05,
       "isNew": false
     },
     {
@@ -1693,7 +1755,7 @@
       "weight": 2.6,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.04,
       "isNew": false
     },
     {
@@ -1703,7 +1765,7 @@
       "weight": 2.52,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.11,
       "isNew": false
     },
     {
@@ -1713,7 +1775,7 @@
       "weight": 2.49,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.08,
       "isNew": false
     },
     {
@@ -1723,7 +1785,7 @@
       "weight": 2.49,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.17,
       "isNew": false
     },
     {
@@ -1733,7 +1795,7 @@
       "weight": 2.43,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.09,
       "isNew": false
     },
     {
@@ -1743,7 +1805,7 @@
       "weight": 2.36,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.08,
       "isNew": false
     },
     {
@@ -1753,7 +1815,7 @@
       "weight": 2.25,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.01,
       "isNew": false
     },
     {
@@ -1763,7 +1825,7 @@
       "weight": 2.25,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.09,
       "isNew": false
     },
     {
@@ -1773,7 +1835,7 @@
       "weight": 2.17,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.07,
       "isNew": false
     },
     {
@@ -1783,7 +1845,7 @@
       "weight": 1.94,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.05,
       "isNew": false
     },
     {
@@ -1793,7 +1855,7 @@
       "weight": 1.88,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.09,
       "isNew": false
     },
     {
@@ -1803,7 +1865,7 @@
       "weight": 1.87,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.06,
       "isNew": false
     },
     {
@@ -1823,7 +1885,7 @@
       "weight": 1.52,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.02,
       "isNew": false
     },
     {
@@ -1833,7 +1895,7 @@
       "weight": 1.51,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.02,
       "isNew": false
     },
     {
@@ -1843,7 +1905,7 @@
       "weight": 1.51,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.01,
       "isNew": false
     },
     {
@@ -1853,7 +1915,7 @@
       "weight": 1.47,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.03,
       "isNew": false
     },
     {
@@ -1863,7 +1925,7 @@
       "weight": 1.46,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.07,
       "isNew": false
     },
     {
@@ -1873,7 +1935,7 @@
       "weight": 1.43,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.01,
       "isNew": false
     },
     {
@@ -1883,7 +1945,7 @@
       "weight": 1.33,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.03,
       "isNew": false
     },
     {
@@ -1893,7 +1955,7 @@
       "weight": 1.31,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.02,
       "isNew": false
     },
     {
@@ -1903,7 +1965,7 @@
       "weight": 1.28,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.03,
       "isNew": false
     },
     {
@@ -1913,7 +1975,7 @@
       "weight": 1.18,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.05,
       "isNew": false
     },
     {
@@ -1923,7 +1985,7 @@
       "weight": 1.15,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.02,
       "isNew": false
     },
     {
@@ -1933,7 +1995,7 @@
       "weight": 1.15,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.01,
       "isNew": false
     },
     {
@@ -1943,7 +2005,7 @@
       "weight": 1.07,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.03,
       "isNew": false
     },
     {
@@ -1953,7 +2015,7 @@
       "weight": 1.02,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.07,
       "isNew": false
     },
     {
@@ -1963,7 +2025,7 @@
       "weight": 1.02,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.05,
       "isNew": false
     },
     {
@@ -1973,7 +2035,7 @@
       "weight": 1.01,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.02,
       "isNew": false
     },
     {
@@ -1983,7 +2045,7 @@
       "weight": 0.91,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.01,
       "isNew": false
     },
     {
@@ -1993,7 +2055,7 @@
       "weight": 0.82,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.03,
       "isNew": false
     },
     {
@@ -2003,7 +2065,7 @@
       "weight": 0.8,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.04,
       "isNew": false
     },
     {
@@ -2013,7 +2075,7 @@
       "weight": 0.8,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.01,
       "isNew": false
     },
     {
@@ -2023,7 +2085,7 @@
       "weight": 0.71,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.03,
       "isNew": false
     },
     {
@@ -2033,7 +2095,7 @@
       "weight": 0.7,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.01,
       "isNew": false
     },
     {
@@ -2043,7 +2105,7 @@
       "weight": 0.59,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.01,
       "isNew": false
     },
     {
@@ -2073,7 +2135,7 @@
       "weight": 0.43,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.01,
       "isNew": false
     },
     {
@@ -2083,7 +2145,7 @@
       "weight": 0.29,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.01,
       "isNew": false
     }
   ],
@@ -2093,9 +2155,9 @@
       "stockName": "台灣積體電路製造",
       "shares": 1239000,
       "weight": 25.83,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffShares": 95000,
+      "diffSharesPercent": 8.3,
+      "diffWeight": 1.6,
       "isNew": false
     },
     {
@@ -2105,7 +2167,7 @@
       "weight": 4.64,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.18,
       "isNew": false
     },
     {
@@ -2113,9 +2175,9 @@
       "stockName": "台達電子工業",
       "shares": 195000,
       "weight": 4,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffShares": 35000,
+      "diffSharesPercent": 21.88,
+      "diffWeight": 0.82,
       "isNew": false
     },
     {
@@ -2125,7 +2187,7 @@
       "weight": 3.81,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.01,
       "isNew": false
     },
     {
@@ -2133,9 +2195,9 @@
       "stockName": "南亞電路板",
       "shares": 396000,
       "weight": 3.18,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffShares": -116000,
+      "diffSharesPercent": -22.66,
+      "diffWeight": -1.08,
       "isNew": false
     },
     {
@@ -2143,9 +2205,9 @@
       "stockName": "貿聯控股（BizLink Holding In",
       "shares": 127000,
       "weight": 3.13,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffShares": -27000,
+      "diffSharesPercent": -17.53,
+      "diffWeight": -0.83,
       "isNew": false
     },
     {
@@ -2153,9 +2215,9 @@
       "stockName": "穩懋半導體",
       "shares": 475000,
       "weight": 2.98,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffShares": -84000,
+      "diffSharesPercent": -15.03,
+      "diffWeight": -0.48,
       "isNew": false
     },
     {
@@ -2163,9 +2225,9 @@
       "stockName": "富世達",
       "shares": 137000,
       "weight": 2.67,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffShares": -18000,
+      "diffSharesPercent": -11.61,
+      "diffWeight": -0.4,
       "isNew": false
     },
     {
@@ -2175,7 +2237,7 @@
       "weight": 2.64,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.04,
       "isNew": false
     },
     {
@@ -2185,7 +2247,7 @@
       "weight": 2.51,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.17,
       "isNew": false
     },
     {
@@ -2195,7 +2257,7 @@
       "weight": 2.38,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.14,
       "isNew": false
     },
     {
@@ -2205,7 +2267,7 @@
       "weight": 2.19,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.06,
       "isNew": false
     },
     {
@@ -2213,9 +2275,9 @@
       "stockName": "日月光投資控股",
       "shares": 455000,
       "weight": 2.18,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffShares": 332000,
+      "diffSharesPercent": 269.92,
+      "diffWeight": 1.59,
       "isNew": false
     },
     {
@@ -2225,7 +2287,7 @@
       "weight": 2.16,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.01,
       "isNew": false
     },
     {
@@ -2235,7 +2297,7 @@
       "weight": 2.06,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.08,
       "isNew": false
     },
     {
@@ -2243,9 +2305,9 @@
       "stockName": "采鈺科技",
       "shares": 396000,
       "weight": 2.03,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffShares": -329000,
+      "diffSharesPercent": -45.38,
+      "diffWeight": -1.56,
       "isNew": false
     },
     {
@@ -2253,9 +2315,9 @@
       "stockName": "景碩科技",
       "shares": 414000,
       "weight": 1.99,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffShares": -245000,
+      "diffSharesPercent": -37.18,
+      "diffWeight": -0.98,
       "isNew": false
     },
     {
@@ -2263,9 +2325,9 @@
       "stockName": "環球晶圓",
       "shares": 294000,
       "weight": 1.79,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffShares": 229000,
+      "diffSharesPercent": 352.31,
+      "diffWeight": 1.42,
       "isNew": false
     },
     {
@@ -2275,7 +2337,7 @@
       "weight": 1.65,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.08,
       "isNew": false
     },
     {
@@ -2285,7 +2347,7 @@
       "weight": 1.58,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.1,
       "isNew": false
     },
     {
@@ -2295,7 +2357,7 @@
       "weight": 1.52,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.07,
       "isNew": false
     },
     {
@@ -2303,9 +2365,9 @@
       "stockName": "旺矽科技",
       "shares": 30000,
       "weight": 1.51,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffShares": -15000,
+      "diffSharesPercent": -33.33,
+      "diffWeight": -0.91,
       "isNew": false
     },
     {
@@ -2325,7 +2387,7 @@
       "weight": 1.27,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.03,
       "isNew": false
     },
     {
@@ -2335,7 +2397,7 @@
       "weight": 1.24,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.04,
       "isNew": false
     },
     {
@@ -2345,7 +2407,7 @@
       "weight": 1.19,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.01,
       "isNew": false
     },
     {
@@ -2355,7 +2417,7 @@
       "weight": 1.09,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.04,
       "isNew": false
     },
     {
@@ -2365,7 +2427,7 @@
       "weight": 0.99,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.03,
       "isNew": false
     },
     {
@@ -2375,7 +2437,7 @@
       "weight": 0.94,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.02,
       "isNew": false
     },
     {
@@ -2385,7 +2447,7 @@
       "weight": 0.82,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.03,
       "isNew": false
     },
     {
@@ -2395,7 +2457,7 @@
       "weight": 0.78,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.02,
       "isNew": false
     },
     {
@@ -2405,7 +2467,7 @@
       "weight": 0.72,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.01,
       "isNew": false
     },
     {
@@ -2415,7 +2477,7 @@
       "weight": 0.57,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.02,
       "isNew": false
     },
     {
@@ -2425,7 +2487,7 @@
       "weight": 0.49,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.01,
       "isNew": false
     },
     {
@@ -2435,7 +2497,7 @@
       "weight": 0.39,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.01,
       "isNew": false
     },
     {
@@ -2455,7 +2517,7 @@
       "weight": 0.33,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.01,
       "isNew": false
     },
     {
@@ -2465,7 +2527,7 @@
       "weight": 0.28,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.01,
       "isNew": false
     },
     {
@@ -2475,7 +2537,7 @@
       "weight": 0.27,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.01,
       "isNew": false
     },
     {
@@ -2485,7 +2547,7 @@
       "weight": 0.26,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.02,
       "isNew": false
     },
     {
@@ -2535,7 +2597,7 @@
       "weight": 0.18,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.01,
       "isNew": false
     },
     {
@@ -2545,7 +2607,7 @@
       "weight": 0.13,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.01,
       "isNew": false
     },
     {
@@ -2597,7 +2659,7 @@
       "weight": 7.7981,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.105,
       "isNew": false
     },
     {
@@ -2607,7 +2669,7 @@
       "weight": 7.7895,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.052,
       "isNew": false
     },
     {
@@ -2617,7 +2679,7 @@
       "weight": 6.135,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.2588,
       "isNew": false
     },
     {
@@ -2627,7 +2689,7 @@
       "weight": 5.1963,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.0874,
       "isNew": false
     },
     {
@@ -2637,7 +2699,7 @@
       "weight": 4.8138,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.0733,
       "isNew": false
     },
     {
@@ -2647,7 +2709,7 @@
       "weight": 4.4975,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.0493,
       "isNew": false
     },
     {
@@ -2657,7 +2719,7 @@
       "weight": 4.3957,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.0257,
       "isNew": false
     },
     {
@@ -2667,7 +2729,7 @@
       "weight": 4.2559,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.0813,
       "isNew": false
     },
     {
@@ -2677,7 +2739,7 @@
       "weight": 4.0988,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.0363,
       "isNew": false
     },
     {
@@ -2687,7 +2749,7 @@
       "weight": 3.7571,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.1332,
       "isNew": false
     },
     {
@@ -2697,7 +2759,7 @@
       "weight": 3.6027,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.0485,
       "isNew": false
     },
     {
@@ -2707,7 +2769,7 @@
       "weight": 3.4507,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.1298,
       "isNew": false
     },
     {
@@ -2715,9 +2777,9 @@
       "stockName": "聯發科",
       "shares": 563000,
       "weight": 3.3481,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffShares": 120000,
+      "diffSharesPercent": 27.09,
+      "diffWeight": 0.9167,
       "isNew": false
     },
     {
@@ -2727,7 +2789,7 @@
       "weight": 3.0629,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.0496,
       "isNew": false
     },
     {
@@ -2737,7 +2799,7 @@
       "weight": 2.5769,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.0574,
       "isNew": false
     },
     {
@@ -2747,7 +2809,7 @@
       "weight": 2.4023,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.1101,
       "isNew": false
     },
     {
@@ -2757,7 +2819,7 @@
       "weight": 2.4001,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.0708,
       "isNew": false
     },
     {
@@ -2767,7 +2829,7 @@
       "weight": 2.1663,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.0291,
       "isNew": false
     },
     {
@@ -2777,7 +2839,7 @@
       "weight": 1.8773,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.0883,
       "isNew": false
     },
     {
@@ -2787,7 +2849,7 @@
       "weight": 1.8699,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.007,
       "isNew": false
     },
     {
@@ -2797,7 +2859,7 @@
       "weight": 1.8238,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.09,
       "isNew": false
     },
     {
@@ -2805,9 +2867,9 @@
       "stockName": "精測",
       "shares": 121000,
       "weight": 1.3168,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffShares": 120000,
+      "diffSharesPercent": 12000,
+      "diffWeight": 1.3061,
       "isNew": false
     },
     {
@@ -2817,7 +2879,7 @@
       "weight": 1.155,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.0351,
       "isNew": false
     },
     {
@@ -2827,7 +2889,7 @@
       "weight": 1.0808,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.0077,
       "isNew": false
     },
     {
@@ -2837,7 +2899,7 @@
       "weight": 1.0619,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.0089,
       "isNew": false
     },
     {
@@ -2847,7 +2909,7 @@
       "weight": 1.0529,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.0365,
       "isNew": false
     },
     {
@@ -2857,7 +2919,7 @@
       "weight": 0.9535,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.0129,
       "isNew": false
     },
     {
@@ -2867,7 +2929,7 @@
       "weight": 0.8387,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.0614,
       "isNew": false
     },
     {
@@ -2877,7 +2939,7 @@
       "weight": 0.8271,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.0212,
       "isNew": false
     },
     {
@@ -2887,7 +2949,7 @@
       "weight": 0.812,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.0639,
       "isNew": false
     },
     {
@@ -2897,7 +2959,7 @@
       "weight": 0.8038,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.0186,
       "isNew": false
     },
     {
@@ -2907,7 +2969,7 @@
       "weight": 0.7841,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.0175,
       "isNew": false
     },
     {
@@ -2917,7 +2979,7 @@
       "weight": 0.7622,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.0059,
       "isNew": false
     },
     {
@@ -2927,7 +2989,7 @@
       "weight": 0.6611,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.0293,
       "isNew": false
     },
     {
@@ -2937,7 +2999,7 @@
       "weight": 0.6201,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.0108,
       "isNew": false
     },
     {
@@ -2947,7 +3009,7 @@
       "weight": 0.5769,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.0204,
       "isNew": false
     },
     {
@@ -2957,7 +3019,7 @@
       "weight": 0.5622,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.0017,
       "isNew": false
     },
     {
@@ -2967,7 +3029,7 @@
       "weight": 0.502,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.0034,
       "isNew": false
     },
     {
@@ -2977,7 +3039,7 @@
       "weight": 0.4205,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.012,
       "isNew": false
     },
     {
@@ -2987,7 +3049,7 @@
       "weight": 0.3849,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.0147,
       "isNew": false
     },
     {
@@ -2997,7 +3059,7 @@
       "weight": 0.2818,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.0008,
       "isNew": false
     },
     {
@@ -3007,7 +3069,7 @@
       "weight": 0.2712,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.0014,
       "isNew": false
     },
     {
@@ -3017,7 +3079,7 @@
       "weight": 0.25,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.0098,
       "isNew": false
     },
     {
@@ -3027,7 +3089,7 @@
       "weight": 0.2416,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.0241,
       "isNew": false
     },
     {
@@ -3037,7 +3099,7 @@
       "weight": 0.2143,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": 0.0009,
       "isNew": false
     },
     {
@@ -3047,7 +3109,7 @@
       "weight": 0.2096,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.0007,
       "isNew": false
     },
     {
@@ -3057,7 +3119,7 @@
       "weight": 0.2046,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.0042,
       "isNew": false
     },
     {
@@ -3067,7 +3129,7 @@
       "weight": 0.1431,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.0045,
       "isNew": false
     },
     {
@@ -3077,7 +3139,7 @@
       "weight": 0.1368,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.0043,
       "isNew": false
     },
     {
@@ -3087,7 +3149,7 @@
       "weight": 0.0718,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.0018,
       "isNew": false
     },
     {
@@ -3097,7 +3159,7 @@
       "weight": 0.0298,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.0001,
       "isNew": false
     },
     {
@@ -3117,7 +3179,7 @@
       "weight": 0.0095,
       "diffShares": 0,
       "diffSharesPercent": 0,
-      "diffWeight": 0,
+      "diffWeight": -0.0003,
       "isNew": false
     },
     {
@@ -3165,10 +3227,10 @@
       "stockName": "富邦金",
       "shares": 250,
       "weight": 0,
-      "diffShares": 0,
+      "diffShares": 250,
       "diffSharesPercent": 0,
       "diffWeight": 0,
-      "isNew": false
+      "isNew": true
     }
   ]
 }
