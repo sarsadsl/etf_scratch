@@ -154,7 +154,23 @@ function App() {
 
   const sortedHoldings = useMemo(() => {
     const arr = [...activeHoldings];
-    if (tableSort === 'diffShares') arr.sort((a, b) => (b.diffShares || 0) - (a.diffShares || 0));
+    if (tableSort === 'diffShares') {
+      arr.sort((a, b) => {
+        const diffA = a.diffShares || 0;
+        const diffB = b.diffShares || 0;
+        
+        if (diffA > 0 && diffB > 0) return diffB - diffA; // 加碼：多到少 (降冪)
+        if (diffA < 0 && diffB < 0) return diffA - diffB; // 減碼：減多到減少 (升冪)
+        
+        if (diffA > 0 && diffB <= 0) return -1; // 加碼排最前
+        if (diffB > 0 && diffA <= 0) return 1;
+        
+        if (diffA < 0 && diffB === 0) return -1; // 減碼排中間
+        if (diffB < 0 && diffA === 0) return 1;
+        
+        return 0; // 無變動排最後
+      });
+    }
     return arr;
   }, [activeHoldings, tableSort]);
 
