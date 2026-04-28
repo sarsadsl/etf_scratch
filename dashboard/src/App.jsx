@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, PieChart, Pie, LabelList } from 'recharts';
-import { Activity, RefreshCw, Send, Lock, LogOut, User, ShieldCheck, Filter, BarChart2, BarChart as BarChartIcon, BookOpen, ArrowLeft } from 'lucide-react';
+import { Activity, RefreshCw, Send, Lock, LogOut, User, ShieldCheck, Filter, BarChart2, BookOpen, ArrowLeft } from 'lucide-react';
 import IndustryIndex from './pages/IndustryIndex';
 import BmcPage from './pages/BmcPage';
 import './index.css';
@@ -39,16 +40,12 @@ const NAV_TABS = [
   { id: 'industry', label: '產業分析',   icon: BookOpen },
 ];
 
-// ─── 文章 ID → 元件對應表 ────────────────────────────────
-const ARTICLE_COMPONENTS = {
-  bmc: BmcPage,
-};
-
 // ─── 主元件 ──────────────────────────────────────────────
 function App() {
-  // ── 頂層分頁 ──
-  const [section, setSection] = useState('etf');       // 'etf' | 'industry'
-  const [articleId, setArticleId] = useState(null);    // null = 文章列表, string = 文章詳情
+  // ── 路由 ──
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isIndustry = location.pathname.startsWith('/industry');
   // ── 資料狀態 ──
   const [historyDates, setHistoryDates] = useState([]);
   const [selectedDate, setSelectedDate] = useState('');
@@ -419,9 +416,6 @@ function App() {
     </div>
   );
 
-  // ── 產業分析文章詳情 ──
-  const ArticleComponent = articleId ? ARTICLE_COMPONENTS[articleId] : null;
-
   return (
     <div className="app-container">
       {/* ── 頂層導航 ── */}
@@ -432,11 +426,11 @@ function App() {
       }}>
         {NAV_TABS.map(tab => {
           const Icon = tab.icon;
-          const isActive = section === tab.id;
+          const isActive = tab.id === 'industry' ? isIndustry : !isIndustry;
           return (
             <button
               key={tab.id}
-              onClick={() => { setSection(tab.id); setArticleId(null); }}
+              onClick={() => navigate(tab.id === 'industry' ? '/industry' : '/')}
               style={{
                 display: 'flex', alignItems: 'center', gap: '6px',
                 padding: '0.45rem 1.1rem', borderRadius: '8px',
@@ -454,32 +448,31 @@ function App() {
         })}
       </nav>
 
-      {/* ══════════ 產業分析分頁 ══════════ */}
-      {section === 'industry' && (
-        <>
-          {ArticleComponent ? (
-            <div>
-              <button
-                onClick={() => setArticleId(null)}
-                style={{
-                  display: 'flex', alignItems: 'center', gap: '6px',
-                  padding: '0.4rem 0.9rem', borderRadius: '8px', marginBottom: '1.5rem',
-                  border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(255,255,255,0.04)',
-                  color: '#94a3b8', cursor: 'pointer', fontSize: '0.875rem', fontWeight: 600,
-                }}
-              >
-                <ArrowLeft size={15} /> 返回產業分析列表
-              </button>
-              <ArticleComponent />
-            </div>
-          ) : (
-            <IndustryIndex onSelectArticle={(id) => setArticleId(id)} />
-          )}
-        </>
-      )}
+      {/* ══════════ 路由渲染 ══════════ */}
+      <Routes>
+        {/* 產業分析：文章列表 */}
+        <Route path="/industry" element={<IndustryIndex />} />
 
-      {/* ══════════ ETF 追蹤分頁 ══════════ */}
-      {section === 'etf' && (
+        {/* 產業分析：各文章 */}
+        <Route path="/industry/bmc" element={
+          <div>
+            <button
+              onClick={() => navigate('/industry')}
+              style={{
+                display: 'flex', alignItems: 'center', gap: '6px',
+                padding: '0.4rem 0.9rem', borderRadius: '8px', marginBottom: '1.5rem',
+                border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(255,255,255,0.04)',
+                color: '#94a3b8', cursor: 'pointer', fontSize: '0.875rem', fontWeight: 600,
+              }}
+            >
+              <ArrowLeft size={15} /> 返回產業分析列表
+            </button>
+            <BmcPage />
+          </div>
+        } />
+
+        {/* ETF 追蹤（預設路由）*/}
+        <Route path="/*" element={
       <>
       {/* ── Header ── */}
       <header className="header">
@@ -867,7 +860,8 @@ function App() {
       </div>
 
       </>
-      )}{/* end ETF section */}
+        } />
+      </Routes>
 
     </div>
   );

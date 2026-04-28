@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { BookOpen, TrendingUp, ChevronRight } from 'lucide-react';
 
 // 文章清單（未來持續新增）
@@ -14,7 +15,9 @@ const ARTICLES = [
   // 未來在此新增更多文章
 ];
 
-export default function IndustryIndex({ onSelectArticle }) {
+export default function IndustryIndex() {
+  const navigate = useNavigate();
+
   return (
     <div style={{ maxWidth: 1100, margin: '0 auto', paddingBottom: '4rem' }}>
 
@@ -38,7 +41,7 @@ export default function IndustryIndex({ onSelectArticle }) {
         {ARTICLES.map(article => (
           <button
             key={article.id}
-            onClick={() => onSelectArticle(article.id)}
+            onClick={() => navigate(`/industry/${article.id}`)}
             style={{
               width: '100%', textAlign: 'left', cursor: 'pointer',
               background: 'rgba(17,24,39,0.6)', backdropFilter: 'blur(20px)',
