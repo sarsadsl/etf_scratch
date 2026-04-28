@@ -101,125 +101,52 @@ async function fetchFsitcSpa(page, fundCode) {
 // 策略 C：元大投信官網 (取代 MoneyDJ)
 // ============================================================
 async function fetchYuantaOfficial(page, fundCode) {
-  // 對於 00990A 這類主動型 ETF，PCF 頁面通常提供最完整的每日持股明細
+  // 對於 00990A 這類主動型 ETF，PCF 頁面的 DOM 只顯示前 5 名
+  // 完整持股（53 筆）儲存在 window.__NUXT__.data[].pcfData.FundWeights.StockWeights
   const url = `https://www.yuantaetfs.com/tradeInfo/pcf/${fundCode}`;
   console.log(`[Yuanta Official] Fetching PCF: ${url}`);
 
   try {
     await page.goto(url, { waitUntil: 'networkidle0', timeout: 60000 });
-
-    // 步驟 1：等待 .expandBtn 出現（Headless 模式下元大使用 .expandBtn）
-    try {
-      await page.waitForSelector('.expandBtn', { timeout: 20000 });
-      console.log(`[Yuanta Official] ${fundCode} .expandBtn 已就緒。`);
-    } catch (e) {
-      console.log(`[Yuanta Official] ${fundCode} 等待 .expandBtn 逾時，嘗試繼續。`);
-    }
-
-    // 步驟 2：點擊所有 .expandBtn（icon-only 按鈕，無文字，直接全部點擊）
-    try {
-      const clickResult = await page.evaluate(() => {
-        const btns = Array.from(document.querySelectorAll('.expandBtn'));
-        let clicked = 0;
-        for (const btn of btns) {
-          btn.scrollIntoView();
-          btn.click();
-          clicked++;
-        }
-        return clicked;
-      });
-      console.log(`[Yuanta Official] ${fundCode} 點擊 .expandBtn 次數: ${clickResult}`);
-    } catch (e) {
-      console.log(`[Yuanta Official] ${fundCode} expandBtn 點擊異常: ${e.message}`);
-    }
-
-    // 步驟 3：等待股票資料列出現（展開後 .tr 應有 4 個以上子欄）
-    try {
-      await page.waitForFunction(
-        () => Array.from(document.querySelectorAll('.tr')).some(r => r.children.length >= 4),
-        { timeout: 12000 }
-      );
-      console.log(`[Yuanta Official] ${fundCode} 股票資料列已出現。`);
-    } catch (e) {
-      console.log(`[Yuanta Official] ${fundCode} 等待股票資料列逾時，提取現有資料。`);
-    }
-
-    // 步驟 3.5：額外等待 3 秒，確保 SPA DOM 完整渲染
     await new Promise(r => setTimeout(r, 3000));
 
-    // 步驟 4：提取持股資料
+    // 直接從 __NUXT__ state 讀取完整持股，不依賴 DOM .tr（DOM 只顯示前 5 名）
     const holdings = await page.evaluate(() => {
-      const results = [];
-      const rows = Array.from(document.querySelectorAll('.tr'));
+      if (!window.__NUXT__) return null;
 
-      rows.forEach(row => {
-        const cells = Array.from(row.children)
-          .map(c => c.innerText.trim())
-          .filter(t => t.length > 0);
+      const data = window.__NUXT__.data;
+      if (!Array.isArray(data)) return null;
 
-        // 需要至少 4 個欄位
-        if (cells.length < 4) return;
+      // 找 pcfData
+      let pcfData = null;
+      for (const item of data) {
+        if (item && item.pcfData) { pcfData = item.pcfData; break; }
+      }
+      if (!pcfData) return null;
 
-        const stockCodeRaw = cells[0];
-        const stockName = cells[1];
+      // 完整持股在 FundWeights.StockWeights
+      const stockWeights = pcfData.FundWeights?.StockWeights;
+      if (!stockWeights || !Array.isArray(stockWeights) || stockWeights.length === 0) return null;
 
-        // 過濾標頭列
-        const isHeader = ['商品代碼', '股票代號', '代號', 'Stock Code'].includes(stockCodeRaw);
-        if (isHeader) return;
-
-        // 過濾小計 / 合計列
-        const isSummary = ['基金', '小計', '合計', '現金'].some(kw => stockCodeRaw.includes(kw));
-        if (isSummary) return;
-
-        // 純浮點數是分類小計列，不是代號
-        if (/^\d+\.\d+$/.test(stockCodeRaw)) return;
-
-        // 清理交易所後綴：如 "LITE US" → "LITE"，"2308 TW" → "2308"
-        const stockCode = stockCodeRaw.replace(/\s+(US|TW|HK|JP|GB|KR|SG)$/i, '').trim();
-
-        // 驗證代號格式：純英文+數字，或純 4-5 位台股代號
-        const isValidCode = stockCode
-          && /^[A-Z0-9.]+$/.test(stockCode)
-          && stockCode.length <= 12;
-        if (!isValidCode) return;
-
-        // 動態識別 weight 欄：優先找以 '%' 結尾的 cell，fallback 到 cells[3]
-        let weight = NaN;
-        let sharesRaw = '';
-        const percentIdx = cells.findIndex((c, i) => i >= 2 && c.endsWith('%'));
-        if (percentIdx !== -1) {
-          weight = parseFloat(cells[percentIdx].replace('%', ''));
-          // 股數欄：取 percentIdx 之前最後一個含數字的欄位
-          for (let i = percentIdx - 1; i >= 2; i--) {
-            if (/[\d,]+/.test(cells[i])) { sharesRaw = cells[i]; break; }
-          }
-        } else {
-          // fallback：cells[3] 為 weight，cells[2] 為 shares
-          sharesRaw = cells[2];
-          weight = parseFloat(cells[3].replace('%', '').replace(/,/g, ''));
-        }
-
-        const shares = parseInt(sharesRaw.replace(/,/g, ''), 10) || 0;
-
-        if (!isNaN(weight) && weight > 0 && weight < 100) {
-          if (!results.find(r => r.stockCode === stockCode)) {
-            results.push({ stockCode, stockName, shares, weight });
-          }
-        }
-      });
-
-      return results;
+      return stockWeights.map(s => {
+        // 清理交易所後綴：如 "LITE US" → "LITE"，"285A JP" → "285A"，"005930 KP" → "005930"
+        const codeRaw = String(s.code || '').trim();
+        const stockCode = codeRaw.replace(/\s+(US|TW|HK|JP|KP|GR|FP|SG|KR|GB)$/i, '').trim();
+        const stockName = String(s.name || s.ename || '').trim();
+        const shares = parseInt(String(s.qty || '0').replace(/,/g, ''), 10) || 0;
+        const weight = parseFloat(s.weights) || 0;
+        return { stockCode, stockName, shares, weight };
+      }).filter(s => s.stockCode && s.weight > 0);
     });
 
-    console.log(`[Yuanta Official] ${fundCode} 提取持股數量: ${holdings ? holdings.length : 0}`);
+    console.log(`[Yuanta Official] ${fundCode} __NUXT__ 持股數量: ${holdings ? holdings.length : 0}`);
 
-    // 至少 3 筆才視為成功（避免僅抓到分類標頭）
-    if (holdings && Array.isArray(holdings) && holdings.length >= 3) {
+    if (holdings && holdings.length >= 3) {
       console.log(`[Yuanta Official] ${fundCode} 成功抓取 ${holdings.length} 筆資料。`);
       return holdings;
     }
 
-    throw new Error(`官網解析資料不足（僅 ${holdings?.length ?? 0} 筆），回退至 MoneyDJ`);
+    throw new Error(`__NUXT__ 持股不足（${holdings?.length ?? 0} 筆），回退至 MoneyDJ`);
   } catch (error) {
     console.error(`[Yuanta Official] ${fundCode} 抓取失敗: ${error.message}，回退至 MoneyDJ`);
     return await fetchMoneyDjHoldings(page, fundCode);
@@ -229,6 +156,7 @@ async function fetchYuantaOfficial(page, fundCode) {
 // ============================================================
 // 策略 C-Fallback：MoneyDJ
 // ============================================================
+
 async function fetchMoneyDjHoldings(page, etfCode) {
   const url = `https://www.moneydj.com/ETF/X/Basic/Basic0007.xdjhtm?etfid=${etfCode}.TW`;
   console.log(`[MoneyDJ] Fetching fallback: ${url}`);
