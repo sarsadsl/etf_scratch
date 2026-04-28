@@ -144,6 +144,9 @@ async function fetchYuantaOfficial(page, fundCode) {
       console.log(`[Yuanta Official] ${fundCode} 等待股票資料列逾時，提取現有資料。`);
     }
 
+    // 步驟 3.5：額外等待 3 秒，確保 SPA DOM 完整渲染
+    await new Promise(r => setTimeout(r, 3000));
+
     // 步驟 4：提取持股資料
     const holdings = await page.evaluate(() => {
       const results = [];
@@ -154,33 +157,53 @@ async function fetchYuantaOfficial(page, fundCode) {
           .map(c => c.innerText.trim())
           .filter(t => t.length > 0);
 
-        // 需要至少 4 個欄位：[代號, 名稱, 張數, 權重]
-        if (cells.length >= 4) {
-          const stockCode = cells[0];
-          const stockName = cells[1];
-          const sharesRaw = cells[2].replace(/,/g, '');
-          const weightRaw = cells[3].replace('%', '');
+        // 需要至少 4 個欄位
+        if (cells.length < 4) return;
 
-          const shares = parseInt(sharesRaw, 10);
-          const weight = parseFloat(weightRaw);
+        const stockCodeRaw = cells[0];
+        const stockName = cells[1];
 
-          // 過濾非數據列：精確匹配標頭行
-          const isHeader = stockCode === '商品代碼' || stockCode === '股票代號' || stockCode === '代號';
-          const isSummary = ['基金', '小計', '合計'].some(kw => stockCode.includes(kw));
-          // 純浮點數（如 31.488）是分類小計，不是代號
-          const isPureDecimal = /^\d+\.\d+$/.test(stockCode);
+        // 過濾標頭列
+        const isHeader = ['商品代碼', '股票代號', '代號', 'Stock Code'].includes(stockCodeRaw);
+        if (isHeader) return;
 
-          const isValidCode = stockCode
-            && !isHeader
-            && !isSummary
-            && !isPureDecimal
-            && /^[A-Z0-9.\s]+$/.test(stockCode)
-            && stockCode.length <= 15;
+        // 過濾小計 / 合計列
+        const isSummary = ['基金', '小計', '合計', '現金'].some(kw => stockCodeRaw.includes(kw));
+        if (isSummary) return;
 
-          if (isValidCode && !isNaN(weight) && weight > 0 && weight < 100) {
-            if (!results.find(r => r.stockCode === stockCode)) {
-              results.push({ stockCode, stockName, shares: shares || 0, weight });
-            }
+        // 純浮點數是分類小計列，不是代號
+        if (/^\d+\.\d+$/.test(stockCodeRaw)) return;
+
+        // 清理交易所後綴：如 "LITE US" → "LITE"，"2308 TW" → "2308"
+        const stockCode = stockCodeRaw.replace(/\s+(US|TW|HK|JP|GB|KR|SG)$/i, '').trim();
+
+        // 驗證代號格式：純英文+數字，或純 4-5 位台股代號
+        const isValidCode = stockCode
+          && /^[A-Z0-9.]+$/.test(stockCode)
+          && stockCode.length <= 12;
+        if (!isValidCode) return;
+
+        // 動態識別 weight 欄：優先找以 '%' 結尾的 cell，fallback 到 cells[3]
+        let weight = NaN;
+        let sharesRaw = '';
+        const percentIdx = cells.findIndex((c, i) => i >= 2 && c.endsWith('%'));
+        if (percentIdx !== -1) {
+          weight = parseFloat(cells[percentIdx].replace('%', ''));
+          // 股數欄：取 percentIdx 之前最後一個含數字的欄位
+          for (let i = percentIdx - 1; i >= 2; i--) {
+            if (/[\d,]+/.test(cells[i])) { sharesRaw = cells[i]; break; }
+          }
+        } else {
+          // fallback：cells[3] 為 weight，cells[2] 為 shares
+          sharesRaw = cells[2];
+          weight = parseFloat(cells[3].replace('%', '').replace(/,/g, ''));
+        }
+
+        const shares = parseInt(sharesRaw.replace(/,/g, ''), 10) || 0;
+
+        if (!isNaN(weight) && weight > 0 && weight < 100) {
+          if (!results.find(r => r.stockCode === stockCode)) {
+            results.push({ stockCode, stockName, shares, weight });
           }
         }
       });
@@ -190,12 +213,13 @@ async function fetchYuantaOfficial(page, fundCode) {
 
     console.log(`[Yuanta Official] ${fundCode} 提取持股數量: ${holdings ? holdings.length : 0}`);
 
-    if (holdings && Array.isArray(holdings) && holdings.length > 0) {
+    // 至少 3 筆才視為成功（避免僅抓到分類標頭）
+    if (holdings && Array.isArray(holdings) && holdings.length >= 3) {
       console.log(`[Yuanta Official] ${fundCode} 成功抓取 ${holdings.length} 筆資料。`);
       return holdings;
     }
 
-    throw new Error('官網解析無足夠資料');
+    throw new Error(`官網解析資料不足（僅 ${holdings?.length ?? 0} 筆），回退至 MoneyDJ`);
   } catch (error) {
     console.error(`[Yuanta Official] ${fundCode} 抓取失敗: ${error.message}，回退至 MoneyDJ`);
     return await fetchMoneyDjHoldings(page, fundCode);
