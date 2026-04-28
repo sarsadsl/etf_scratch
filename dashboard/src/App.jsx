@@ -1,6 +1,8 @@
 import { useState, useEffect, useMemo } from 'react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, PieChart, Pie, LabelList } from 'recharts';
-import { Activity, RefreshCw, Send, Lock, LogOut, User, ShieldCheck, Filter, BarChart2 } from 'lucide-react';
+import { Activity, RefreshCw, Send, Lock, LogOut, User, ShieldCheck, Filter, BarChart2, BarChart as BarChartIcon, BookOpen, ArrowLeft } from 'lucide-react';
+import IndustryIndex from './pages/IndustryIndex';
+import BmcPage from './pages/BmcPage';
 import './index.css';
 
 const ETF_META = {
@@ -31,8 +33,22 @@ const formatStockLabel = (code, name, etfCode) => {
 
 const ALL_ETF_CODES = Object.keys(ETF_META);
 
+// ─── 頂層導航 Tab ─────────────────────────────────────────
+const NAV_TABS = [
+  { id: 'etf',      label: 'ETF 追蹤',   icon: Activity },
+  { id: 'industry', label: '產業分析',   icon: BookOpen },
+];
+
+// ─── 文章 ID → 元件對應表 ────────────────────────────────
+const ARTICLE_COMPONENTS = {
+  bmc: BmcPage,
+};
+
 // ─── 主元件 ──────────────────────────────────────────────
 function App() {
+  // ── 頂層分頁 ──
+  const [section, setSection] = useState('etf');       // 'etf' | 'industry'
+  const [articleId, setArticleId] = useState(null);    // null = 文章列表, string = 文章詳情
   // ── 資料狀態 ──
   const [historyDates, setHistoryDates] = useState([]);
   const [selectedDate, setSelectedDate] = useState('');
@@ -403,8 +419,68 @@ function App() {
     </div>
   );
 
+  // ── 產業分析文章詳情 ──
+  const ArticleComponent = articleId ? ARTICLE_COMPONENTS[articleId] : null;
+
   return (
     <div className="app-container">
+      {/* ── 頂層導航 ── */}
+      <nav style={{
+        display: 'flex', alignItems: 'center', gap: '0.5rem',
+        paddingBottom: '1rem', borderBottom: '1px solid rgba(255,255,255,0.08)',
+        marginBottom: '0.5rem',
+      }}>
+        {NAV_TABS.map(tab => {
+          const Icon = tab.icon;
+          const isActive = section === tab.id;
+          return (
+            <button
+              key={tab.id}
+              onClick={() => { setSection(tab.id); setArticleId(null); }}
+              style={{
+                display: 'flex', alignItems: 'center', gap: '6px',
+                padding: '0.45rem 1.1rem', borderRadius: '8px',
+                fontWeight: 700, fontSize: '0.9rem', cursor: 'pointer',
+                transition: 'all 0.2s',
+                border: isActive ? '1px solid var(--accent-blue)' : '1px solid transparent',
+                background: isActive ? 'rgba(59,130,246,0.15)' : 'transparent',
+                color: isActive ? '#60a5fa' : 'var(--text-secondary)',
+              }}
+            >
+              <Icon size={15} />
+              {tab.label}
+            </button>
+          );
+        })}
+      </nav>
+
+      {/* ══════════ 產業分析分頁 ══════════ */}
+      {section === 'industry' && (
+        <>
+          {ArticleComponent ? (
+            <div>
+              <button
+                onClick={() => setArticleId(null)}
+                style={{
+                  display: 'flex', alignItems: 'center', gap: '6px',
+                  padding: '0.4rem 0.9rem', borderRadius: '8px', marginBottom: '1.5rem',
+                  border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(255,255,255,0.04)',
+                  color: '#94a3b8', cursor: 'pointer', fontSize: '0.875rem', fontWeight: 600,
+                }}
+              >
+                <ArrowLeft size={15} /> 返回產業分析列表
+              </button>
+              <ArticleComponent />
+            </div>
+          ) : (
+            <IndustryIndex onSelectArticle={(id) => setArticleId(id)} />
+          )}
+        </>
+      )}
+
+      {/* ══════════ ETF 追蹤分頁 ══════════ */}
+      {section === 'etf' && (
+      <>
       {/* ── Header ── */}
       <header className="header">
         <div>
@@ -789,6 +865,9 @@ function App() {
           <button onClick={() => { setCurrentUser({ role: 'admin', name: '系統站長' }); setAdminToken(adminToken || 'devtools-bypass'); }} style={{ background: currentUser.role === 'admin' ? '#ef4444' : 'rgba(255,255,255,0.1)', color: '#fff', border: 'none', padding: '6px 12px', borderRadius: '6px', fontSize: '12px', cursor: 'pointer' }}>👑 管理員</button>
         </div>
       </div>
+
+      </>
+      )}{/* end ETF section */}
 
     </div>
   );
