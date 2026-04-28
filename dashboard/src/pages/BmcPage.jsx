@@ -1,12 +1,35 @@
+import React from 'react';
 import {
   Chart as ChartJS,
   ArcElement, Tooltip, Legend,
   CategoryScale, LinearScale,
   BarElement, LineElement, PointElement,
+  LineController, BarController,
 } from 'chart.js';
-import { Doughnut, Bar } from 'react-chartjs-2';
+import { Doughnut, Bar, Chart } from 'react-chartjs-2';
 
-ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement, LineElement, PointElement);
+ChartJS.register(
+  ArcElement, Tooltip, Legend,
+  CategoryScale, LinearScale,
+  BarElement, LineElement, PointElement,
+  LineController, BarController,
+);
+
+// ── Error Boundary：防止圖表渲染失敗導致整頁空白 ────────────
+class ErrorBoundary extends React.Component {
+  constructor(props) { super(props); this.state = { hasError: false, error: null }; }
+  static getDerivedStateFromError(error) { return { hasError: true, error }; }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div style={{ padding: '2rem', background: 'rgba(239,68,68,0.1)', border: '1px solid rgba(239,68,68,0.3)', borderRadius: '8px', color: '#f87171', fontSize: '0.875rem' }}>
+          <strong>圖表渲染錯誤：</strong> {this.state.error?.message || '未知錯誤'}
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
 
 // ── 共用 style 物件 ──────────────────────────────────────────
 const S = {
@@ -187,6 +210,7 @@ export default function BmcPage() {
       </div>
 
       {/* Section 1: What is BMC */}
+      <ErrorBoundary>
       <div style={S.glassCard}>
         <h4 style={S.sectionTitle('#22D3EE')}>1. 什麼是 BMC (Baseboard Management Controller)?</h4>
         <p style={S.bodyText}>
@@ -195,8 +219,10 @@ export default function BmcPage() {
         <BmcDiagram />
         <p style={S.caption}>▲ 圖示：BMC 獨立運作並監控伺服器各大核心元件</p>
       </div>
+      </ErrorBoundary>
 
       {/* Section 2: Market dominance */}
+      <ErrorBoundary>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
         <div style={{ ...S.glassCard, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
           <div>
@@ -223,20 +249,24 @@ export default function BmcPage() {
           <p style={S.caption}>▲ 數據顯示信驊在市場中的絕對領先優勢</p>
         </div>
       </div>
+      </ErrorBoundary>
 
       {/* Section 3: Financial moat */}
+      <ErrorBoundary>
       <div style={S.glassCard}>
         <h4 style={S.sectionTitle('#22D3EE')}>3. 財務護城河：為何享有千金股王估值？</h4>
         <p style={S.bodyText}>
           信驊之所以能成為台股股王，並享有極高的本益比，在於其「輕資產、高毛利、高成長」的 IC 設計特性。由於 BMC 韌體開發門檻高，客戶一旦採用便極難更換 (Switching Cost 巨大)。這使得信驊能維持極其穩定的高毛利率，並隨著全球雲端伺服器建置量穩定成長。
         </p>
         <div style={{ height: 380 }}>
-          <Bar data={financialData} options={financialOptions} />
+          <Chart type='bar' data={financialData} options={financialOptions} />
         </div>
         <p style={S.caption}>▲ 營收規模雖受庫存週期波動，但毛利率長期穩居高檔</p>
       </div>
+      </ErrorBoundary>
 
       {/* Section 4: AI multiplier */}
+      <ErrorBoundary>
       <div style={S.glassCard}>
         <h4 style={S.sectionTitle('#A78BFA')}>4. AI 伺服器爆發帶來的「乘數效應」</h4>
         <p style={S.bodyText}>
@@ -247,6 +277,7 @@ export default function BmcPage() {
         </div>
         <p style={S.caption}>▲ AI 伺服器架構複雜度提升，帶動單機 BMC 及管理晶片搭載量翻倍成長</p>
       </div>
+      </ErrorBoundary>
 
       {/* Section 5: Tech roadmap */}
       <div style={S.glassCard}>
