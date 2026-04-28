@@ -1492,58 +1492,6 @@
       "isNew": false
     }
   ],
-  "00990A": [
-    {
-      "stockCode": "LITE US",
-      "stockName": "LUMENTUM HOLDINGS INC",
-      "shares": 70985,
-      "weight": 7,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": -0.22,
-      "isNew": false
-    },
-    {
-      "stockCode": "SNDK US",
-      "stockName": "SANDISK CORP",
-      "shares": 40093,
-      "weight": 4.92,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": 0.34,
-      "isNew": false
-    },
-    {
-      "stockCode": "2308",
-      "stockName": "台達電",
-      "shares": 628000,
-      "weight": 4.62,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": -0.15,
-      "isNew": false
-    },
-    {
-      "stockCode": "MU US",
-      "stockName": "MICRON TECHNOLOGY INC",
-      "shares": 62071,
-      "weight": 3.73,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": 0.17,
-      "isNew": false
-    },
-    {
-      "stockCode": "2330",
-      "stockName": "台積電",
-      "shares": 433000,
-      "weight": 3.57,
-      "diffShares": 0,
-      "diffSharesPercent": 0,
-      "diffWeight": 0.11,
-      "isNew": false
-    }
-  ],
   "00980A": [
     {
       "stockCode": "2330",
