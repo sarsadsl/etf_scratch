@@ -119,59 +119,65 @@ function SwotMatrix() {
   const data = active ? SWOT_DATA[active] : null;
 
   return (
-    <div style={{ position: 'relative', overflow: 'hidden', minHeight: 520 }}>
+    <div>
       <h3 style={{ fontSize: '1.6rem', fontWeight: 800, borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '0.75rem', marginBottom: '0.5rem' }}>
         五、信驊 (ASPEED) 互動式 SWOT 象限矩陣
       </h3>
       <p style={{ color: '#94A3B8', fontSize: '0.85rem', marginBottom: '1.5rem' }}>點擊任一象限，即可深入探索「萬金股王」的基本面與隱形威脅數據。</p>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', height: 360 }}>
-        {Object.entries(SWOT_DATA).map(([key, d]) => (
-          <div
-            key={key}
-            onClick={() => setActive(key)}
-            style={{
-              background: d.bg, border: `2px solid ${d.border}`, borderRadius: '1rem',
-              display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-              textAlign: 'center', padding: '1.5rem', cursor: 'pointer', position: 'relative',
-              transition: 'transform 0.15s, box-shadow 0.15s',
-            }}
-            onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.02)'; e.currentTarget.style.boxShadow = `0 0 20px ${d.color}40`; }}
-            onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = 'none'; }}
-          >
-            <span style={{ position: 'absolute', top: 12, left: key === 'S' || key === 'O' ? 16 : 'auto', right: key === 'W' || key === 'T' ? 16 : 'auto', fontSize: '3rem', fontWeight: 900, color: d.color, opacity: 0.15 }}>{key}</span>
-            <h4 style={{ fontSize: '1.75rem', fontWeight: 800, color: d.color }}>{d.label}</h4>
-            <p style={{ fontSize: '0.8rem', color: d.color, opacity: 0.7, marginBottom: '0.5rem' }}>{d.sub}</p>
-            <p style={{ fontSize: '0.7rem', color: '#94A3B8' }}>{d.preview}</p>
-          </div>
-        ))}
-      </div>
+      {/* 象限格子 */}
+      {!active && (
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+          {Object.entries(SWOT_DATA).map(([key, d]) => (
+            <div
+              key={key}
+              onClick={() => setActive(key)}
+              style={{
+                background: d.bg, border: `2px solid ${d.border}`, borderRadius: '1rem',
+                display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+                textAlign: 'center', padding: '2rem 1.5rem', cursor: 'pointer', position: 'relative',
+                minHeight: 160, transition: 'transform 0.15s, box-shadow 0.15s',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.02)'; e.currentTarget.style.boxShadow = `0 0 20px ${d.color}40`; }}
+              onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = 'none'; }}
+            >
+              <span style={{ position: 'absolute', top: 10, left: (key === 'S' || key === 'O') ? 14 : 'auto', right: (key === 'W' || key === 'T') ? 14 : 'auto', fontSize: '2.5rem', fontWeight: 900, color: d.color, opacity: 0.15 }}>{key}</span>
+              <h4 style={{ fontSize: '1.6rem', fontWeight: 800, color: d.color, margin: 0 }}>{d.label}</h4>
+              <p style={{ fontSize: '0.8rem', color: d.color, opacity: 0.7, margin: '0.4rem 0 0.5rem' }}>{d.sub}</p>
+              <p style={{ fontSize: '0.7rem', color: '#94A3B8', margin: 0 }}>{d.preview}</p>
+            </div>
+          ))}
+        </div>
+      )}
 
-      {/* Detail Overlay */}
+      {/* 詳細資訊（取代格子，不疊加） */}
       {data && (
-        <div style={{
-          position: 'absolute', inset: 0, background: 'rgba(15,23,42,0.97)', backdropFilter: 'blur(16px)',
-          borderRadius: '1.5rem', border: `1px solid ${data.border}`, zIndex: 50,
-          padding: '2rem', display: 'flex', flexDirection: 'column',
-        }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '1rem', marginBottom: '1.5rem' }}>
-            <h4 style={{ fontSize: '1.5rem', fontWeight: 800, color: data.color }}>{data.label} — {data.sub}</h4>
-            <button
-              onClick={() => setActive(null)}
-              style={{ background: 'rgba(255,255,255,0.08)', border: 'none', color: '#94A3B8', width: 36, height: 36, borderRadius: '50%', cursor: 'pointer', fontSize: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-            >✕</button>
-          </div>
-          <div style={{ flex: 1, overflowY: 'auto' }}>
-            {data.items.map((item, i) => (
-              <div key={i} style={{ display: 'flex', gap: '0.75rem', marginBottom: '1.25rem', alignItems: 'flex-start' }}>
-                <div style={{ width: 8, height: 8, borderRadius: '50%', background: data.color, flexShrink: 0, marginTop: 7 }} />
-                <div>
-                  <strong style={{ color: data.color, display: 'block', marginBottom: '0.25rem' }}>{item.title}</strong>
-                  <span style={{ color: '#CBD5E1', fontSize: '0.9rem', lineHeight: 1.65 }}>{item.desc}</span>
-                </div>
-              </div>
+        <div style={{ background: 'rgba(15,23,42,0.5)', borderRadius: '1rem', border: `1px solid ${data.border}`, padding: '1.75rem' }}>
+          {/* 切換列 */}
+          <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1.25rem', flexWrap: 'wrap' }}>
+            {Object.entries(SWOT_DATA).map(([key, d]) => (
+              <button key={key} onClick={() => setActive(key)} style={{
+                padding: '4px 12px', borderRadius: 6, fontSize: '0.78rem', fontWeight: 700, cursor: 'pointer',
+                border: `1px solid ${d.border}`, background: active === key ? d.bg : 'transparent', color: d.color,
+              }}>{d.label}</button>
             ))}
+            <button onClick={() => setActive(null)} style={{
+              marginLeft: 'auto', padding: '4px 12px', borderRadius: 6, fontSize: '0.78rem', fontWeight: 600,
+              border: '1px solid rgba(255,255,255,0.1)', background: 'transparent', color: '#94A3B8', cursor: 'pointer',
+            }}>← 返回象限</button>
           </div>
+          <h4 style={{ fontSize: '1.3rem', fontWeight: 800, color: data.color, marginBottom: '1.25rem', borderBottom: `1px solid ${data.border}`, paddingBottom: '0.75rem' }}>
+            {data.label} — {data.sub}
+          </h4>
+          {data.items.map((item, i) => (
+            <div key={i} style={{ display: 'flex', gap: '0.75rem', marginBottom: '1.25rem', alignItems: 'flex-start' }}>
+              <div style={{ width: 8, height: 8, borderRadius: '50%', background: data.color, flexShrink: 0, marginTop: 7 }} />
+              <div>
+                <strong style={{ color: data.color, display: 'block', marginBottom: '0.3rem' }}>{item.title}</strong>
+                <span style={{ color: '#CBD5E1', fontSize: '0.9rem', lineHeight: 1.7 }}>{item.desc}</span>
+              </div>
+            </div>
+          ))}
         </div>
       )}
     </div>
