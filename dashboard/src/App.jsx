@@ -61,9 +61,9 @@ function App() {
   // ── ETF 過濾清單（多選，預設全選，持久化）──
   const [visibleEtfs, setVisibleEtfs] = useState(() => {
     try {
-      const saved = localStorage.getItem('etf_visible_list');
-      return saved ? JSON.parse(saved) : ALL_ETF_CODES;
-    } catch { return ALL_ETF_CODES; }
+      const saved = localStorage.getItem('etf_visible_list_v2');
+      return saved ? JSON.parse(saved) : ['00981A', '00991A'];
+    } catch { return ['00981A', '00991A']; }
   });
   const [showFilter, setShowFilter] = useState(false);
 
@@ -86,7 +86,7 @@ function App() {
 
   // ── 持久化 visibleEtfs ──
   useEffect(() => {
-    localStorage.setItem('etf_visible_list', JSON.stringify(visibleEtfs));
+    localStorage.setItem('etf_visible_list_v2', JSON.stringify(visibleEtfs));
   }, [visibleEtfs]);
 
   // ── 確保 activeEtf 總在可見清單內 ──
@@ -131,11 +131,6 @@ function App() {
     }
   };
 
-  const handleMockUserLogin = () => {
-    const userRole = { role: 'user', name: '付費會員 (測試中)' };
-    setCurrentUser(userRole);
-    localStorage.setItem('etf_mock_user', JSON.stringify(userRole));
-  };
 
   // ── 資料載入 ──
   useEffect(() => {
@@ -510,9 +505,6 @@ function App() {
             </div>
           ) : (
             <div style={{ display: 'flex', gap: '0.5rem' }}>
-              <button onClick={handleMockUserLogin} style={{ padding: '0.5rem 1rem', fontSize: '0.9rem', fontWeight: 600, borderRadius: '8px', background: 'var(--accent-blue)', color: '#fff', border: 'none', cursor: 'pointer' }}>
-                註冊 / 登入
-              </button>
               <div style={{ position: 'relative' }}>
                 <button onClick={() => setShowLogin(!showLogin)} title="站長專用通道"
                   style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', padding: '0.5rem', borderRadius: '8px', background: 'rgba(255,255,255,0.05)', color: 'var(--text-secondary)', border: '1px solid rgba(255,255,255,0.1)', cursor: 'pointer' }}>
