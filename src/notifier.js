@@ -59,7 +59,10 @@ export async function sendTelegramNotification(results) {
     // 根據張數異動由大到小排序
     changedHoldings.sort((a, b) => b.diffShares - a.diffShares);
 
-    changedHoldings.forEach((stock, idx) => {
+    const MAX_CHANGES = 10;
+    const isTruncated = changedHoldings.length > MAX_CHANGES;
+
+    changedHoldings.slice(0, MAX_CHANGES).forEach((stock, idx) => {
       // 判斷增減符號
       let weightIcon = '➖';
       let sharesIcon = '';
@@ -84,6 +87,11 @@ export async function sendTelegramNotification(results) {
       message += `  #${idx + 1} \`${stock.stockCode}\` ${safeStockName}${newTag}\n`;
       message += `     ${stock.weight}% (${weightIcon}${stock.diffWeight > 0 ? '+' : ''}${stock.diffWeight}%) | ${sharesStr}\n`;
     });
+
+    if (isTruncated) {
+      message += `  ... 以及其他 ${changedHoldings.length - MAX_CHANGES} 筆異動\n`;
+    }
+    
     message += '\n';
   });
 
