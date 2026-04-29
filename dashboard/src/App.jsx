@@ -467,8 +467,7 @@ function App() {
       {/* ── Header ── */}
       <header className="header">
         <div>
-          <h1>Active ETF Monitor</h1>
-          <p>主動式 ETF 持股追蹤 Dashboard</p>
+          <h1>主動式 ETF 持股追蹤</h1>
         </div>
         <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
 
