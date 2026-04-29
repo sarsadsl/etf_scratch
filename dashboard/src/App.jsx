@@ -829,15 +829,6 @@ function App() {
         </div>
       )}
 
-      {/* DevTools */}
-      <div style={{ position: 'fixed', bottom: 20, right: 20, background: '#1e293b', padding: '12px 16px', borderRadius: '12px', zIndex: 9999, border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 10px 25px rgba(0,0,0,0.8)', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-        <div style={{ fontSize: '11px', color: '#94a3b8', fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase' }}>🛠 DevTools 角色模擬</div>
-        <div style={{ display: 'flex', gap: '8px' }}>
-          <button onClick={() => { setCurrentUser({ role: 'guest', name: '訪客' }); setAdminToken(''); }} style={{ background: currentUser.role === 'guest' ? '#3b82f6' : 'rgba(255,255,255,0.1)', color: '#fff', border: 'none', padding: '6px 12px', borderRadius: '6px', fontSize: '12px', cursor: 'pointer' }}>🌍 訪客</button>
-          <button onClick={() => { setCurrentUser({ role: 'user', name: '付費訂閱戶' }); setAdminToken(''); }} style={{ background: currentUser.role === 'user' ? '#10b981' : 'rgba(255,255,255,0.1)', color: '#fff', border: 'none', padding: '6px 12px', borderRadius: '6px', fontSize: '12px', cursor: 'pointer' }}>✨ 一般會員</button>
-          <button onClick={() => { setCurrentUser({ role: 'admin', name: '系統站長' }); setAdminToken(adminToken || 'devtools-bypass'); }} style={{ background: currentUser.role === 'admin' ? '#ef4444' : 'rgba(255,255,255,0.1)', color: '#fff', border: 'none', padding: '6px 12px', borderRadius: '6px', fontSize: '12px', cursor: 'pointer' }}>👑 管理員</button>
-        </div>
-      </div>
 
       </>
         } />
