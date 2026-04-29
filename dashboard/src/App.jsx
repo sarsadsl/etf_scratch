@@ -71,11 +71,10 @@ function App() {
   const [tableSort, setTableSort] = useState('weight');
   const [diffSort, setDiffSort] = useState('addPct'); // 'addPct' | 'addAbs' | 'subPct' | 'subAbs'
 
-  // ── 身分狀態 ──
   const [currentUser, setCurrentUser] = useState(() => {
     try {
-      const saved = localStorage.getItem('etf_mock_user');
-      return saved ? JSON.parse(saved) : { role: 'guest', name: '訪客' };
+      const saved = localStorage.getItem('etf_admin_pwd');
+      return saved ? { role: 'admin', name: '系統站長' } : { role: 'guest', name: '訪客' };
     } catch { return { role: 'guest', name: '訪客' }; }
   });
   const [adminToken, setAdminToken] = useState(() => localStorage.getItem('etf_admin_pwd') || '');
@@ -114,18 +113,14 @@ function App() {
     if (!passwordInput.trim()) return;
     setAdminToken(passwordInput);
     localStorage.setItem('etf_admin_pwd', passwordInput);
-    const adminRole = { role: 'admin', name: '系統站長' };
-    setCurrentUser(adminRole);
-    localStorage.setItem('etf_mock_user', JSON.stringify(adminRole));
+    setCurrentUser({ role: 'admin', name: '系統站長' });
     setShowLogin(false);
     setPasswordInput('');
   };
 
   const handleLogout = () => {
     if (window.confirm(`確定要登出 ${currentUser.name}？`)) {
-      const guestRole = { role: 'guest', name: '訪客' };
-      setCurrentUser(guestRole);
-      localStorage.setItem('etf_mock_user', JSON.stringify(guestRole));
+      setCurrentUser({ role: 'guest', name: '訪客' });
       setAdminToken('');
       localStorage.removeItem('etf_admin_pwd');
     }
@@ -477,13 +472,6 @@ function App() {
         </div>
         <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
 
-          {currentUser.role === 'user' && (
-            <a href="https://t.me/+KDAKgrTXv9QyYjFl" target="_blank" rel="noopener noreferrer"
-              style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '0.4rem 0.8rem', background: 'rgba(52,211,153,0.1)', border: '1px solid rgba(52,211,153,0.3)', borderRadius: '6px', textDecoration: 'none' }}>
-              <ShieldCheck size={14} color="#34d399" />
-              <span style={{ fontSize: '0.85rem', color: '#34d399', fontWeight: 600 }}>進入專屬 Telegram 頻道</span>
-            </a>
-          )}
 
           {currentUser.role === 'admin' && (
             <button onClick={handleSendTelegram} disabled={isSending || !adminToken}
@@ -493,11 +481,11 @@ function App() {
             </button>
           )}
 
-          {currentUser.role !== 'guest' ? (
+          {currentUser.role === 'admin' ? (
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '0.4rem 0.8rem', background: 'rgba(255,255,255,0.05)', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)' }}>
                 <User size={14} color="#94a3b8" />
-                <span style={{ fontSize: '0.9rem', color: '#e2e8f0', fontWeight: 500 }}>{currentUser.name}</span>
+                <span style={{ fontSize: '0.9rem', color: '#e2e8f0', fontWeight: 500 }}>系統站長</span>
               </div>
               <button onClick={handleLogout} title="登出" style={{ display: 'flex', alignItems: 'center', padding: '0.5rem', borderRadius: '8px', background: 'rgba(239,68,68,0.1)', color: '#ef4444', border: 'none', cursor: 'pointer' }}>
                 <LogOut size={16} />
