@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import {
   Chart as ChartJS,
   CategoryScale, LinearScale,
-  BarElement, BarController,
+  BarElement, BarController, LineElement, PointElement, LineController,
   Tooltip, Legend,
 } from 'chart.js';
-import { Bar } from 'react-chartjs-2';
+import { Bar, Chart } from 'react-chartjs-2';
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, BarController, Tooltip, Legend);
+ChartJS.register(CategoryScale, LinearScale, BarElement, BarController, LineElement, PointElement, LineController, Tooltip, Legend);
 
 // ── Error Boundary ──────────────────────────────────────────
 class ErrorBoundary extends React.Component {
@@ -90,6 +90,63 @@ const SWOT_DATA = {
       { title: '競爭者反攻', desc: '新唐 (Nuvoton) 固守企業級市場，加上中國本土 RISC-V 晶片在政策保護下的崛起威脅。' },
     ],
   },
+};
+
+// ── Timeline Chart (Mixed) ──────────────────────────────────
+const timelineChartData = {
+  labels: ['(3/5) 元大', '(3/5) 大和', '(3/18) 富邦', '(4/21) 永豐'],
+  datasets: [
+    {
+      type: 'line',
+      label: '2027年 EPS 預估 (TWD)',
+      data: [214.61, 264.76, 230.27, 263.95],
+      borderColor: '#06B6D4',
+      backgroundColor: '#06B6D4',
+      borderWidth: 3,
+      pointRadius: 6,
+      pointBackgroundColor: '#fff',
+      yAxisID: 'yEps',
+      tension: 0.2
+    },
+    {
+      type: 'bar',
+      label: '給定目標價 (TWD)',
+      data: [11000, 11800, 14000, 17160],
+      backgroundColor: [
+        'rgba(139, 92, 246, 0.4)', 
+        'rgba(139, 92, 246, 0.4)', 
+        'rgba(139, 92, 246, 0.4)', 
+        'rgba(245, 158, 11, 0.7)' 
+      ],
+      borderColor: [
+        '#8B5CF6', '#8B5CF6', '#8B5CF6', '#F59E0B'
+      ],
+      borderWidth: 2,
+      borderRadius: 6,
+      yAxisID: 'yPrice'
+    }
+  ]
+};
+const timelineChartOptions = {
+  maintainAspectRatio: false,
+  interaction: { mode: 'index', intersect: false },
+  plugins: {
+    legend: { position: 'bottom', labels: { color: '#F8FAFC' } },
+  },
+  scales: {
+    yPrice: {
+      type: 'linear', display: true, position: 'left',
+      title: { display: true, text: '目標價 (TWD)', color: '#C4B5FD' },
+      grid: { color: 'rgba(255,255,255,0.05)' }
+    },
+    yEps: {
+      type: 'linear', display: true, position: 'right',
+      title: { display: true, text: '2027 EPS (TWD)', color: '#67E8F9' },
+      grid: { drawOnChartArea: false },
+      min: 150, max: 300
+    },
+    x: { grid: { display: false } }
+  }
 };
 
 // ── BMC Multiplier Chart ─────────────────────────────────────
@@ -304,25 +361,82 @@ export default function BmcPage() {
         </div>
       </div>
 
-      {/* ── Section 4: 81x Multiplier Chart ── */}
+      {/* ── Section 4: 時序拆解與 81 倍乘數效應 ── */}
       <div style={glassCard}>
-        <h3 style={{ fontSize: '1.5rem', fontWeight: 800, marginBottom: '0.75rem', ...gradientText('#FDE68A', '#D97706') }}>
-          四、高估值密碼：AI 伺服器的 81 倍乘數效應
+        <h3 style={{ fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem', ...gradientText('#FDE68A', '#F59E0B'), borderBottom: '1px solid rgba(255,255,255,0.08)', paddingBottom: '0.75rem' }}>
+          四、時序拆解：各大投顧如何推演「萬金股王」的估值躍升？
         </h3>
         <p style={{ ...bodyText, fontSize: '0.875rem' }}>
-          為什麼信驊享有極高本益比？因為「資本支出效率 (Capex Efficiency)」反轉。過往 10 萬美元才產生 1 顆 BMC 需求；在 Blackwell NVL72 世代，造價數百萬的機櫃被切分為 18 個運算匣與 9 個交換匣，降至每 3.7 萬美元就需要 1 顆，整櫃晶片用量呈幾何級數暴增。
+          信驊的股價之所以能在 2026 年初突破萬元大關，並非市場盲目追高，而是隨著 AI 伺服器規格（尤其是 GB200）的逐漸明朗，以及財報繳出超預期表現，引發了法人圈<strong style={{color:'#FDE68A'}}>兩階段的「目標價上修潮」</strong>。
         </p>
-        <ErrorBoundary>
-          <div style={{ height: 380 }}>
-            <Bar data={rackChartData} options={rackChartOptions} />
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem', marginBottom: '2rem' }}>
+          <div style={{ background: 'rgba(15,23,42,0.4)', padding: '1.5rem', borderRadius: '1rem', border: '1px solid rgba(255,255,255,0.08)' }}>
+            <h4 style={{ fontSize: '1.1rem', fontWeight: 800, color: '#fff', marginBottom: '1rem', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '0.5rem' }}>
+              📅 階段一：3月份外資與投顧初步共識
+            </h4>
+            <p style={{ fontSize: '0.78rem', color: '#94A3B8', marginBottom: '1rem' }}>
+              <strong>時空背景：</strong> 輝達 GB200 架構細節確立，市場首度認知到 AI 機櫃對 BMC 的龐大消耗量。
+            </p>
+            <ul style={{ paddingLeft: '1rem', color: '#CBD5E1', fontSize: '0.85rem', borderLeft: '2px solid rgba(255,255,255,0.1)', display: 'flex', flexDirection: 'column', gap: '0.5rem', margin: 0 }}>
+              <li><strong style={{ color: '#22D3EE' }}>元大 (3/5)：</strong> 給予目標價 $11,000 (基於 55x PE)。</li>
+              <li><strong style={{ color: '#22D3EE' }}>大和 (3/5)：</strong> AST2700 放量在即，給予目標價 $11,800。</li>
+              <li><strong style={{ color: '#22D3EE' }}>富邦 (3/18)：</strong> 上修 2030 年 BMC 總市場規模，給予目標價 $14,000。</li>
+            </ul>
+
+            <h4 style={{ fontSize: '1.1rem', fontWeight: 800, color: '#FBBF24', marginTop: '1.5rem', marginBottom: '1rem', borderBottom: '1px solid rgba(245,158,11,0.3)', paddingBottom: '0.5rem' }}>
+              🚀 階段二：4月份終極催化劑 (財報驚喜)
+            </h4>
+            <p style={{ fontSize: '0.78rem', color: '#94A3B8', marginBottom: '1rem' }}>
+              <strong>時空背景：</strong> 1Q26 營收達 31.47 億大幅擊敗預期，訂單滿載至年底。
+            </p>
+            <ul style={{ paddingLeft: '1rem', color: '#CBD5E1', fontSize: '0.85rem', borderLeft: '2px solid rgba(245,158,11,0.5)', display: 'flex', flexDirection: 'column', gap: '0.5rem', margin: 0 }}>
+              <li><strong style={{ color: '#FBBF24' }}>永豐 (4/21) 關鍵解讀：</strong> 確認「載板缺料」瓶頸即將解除，導入 E-Glass 釋放龐大產能。</li>
+              <li><strong style={{ color: '#FBBF24' }}>估值重塑：</strong> 上修 2027 年 EPS 至 263.95 元。由於成長極高 (PEG 0.41)，市場給予 65x PE，喊出 $17,160 目標價。</li>
+            </ul>
           </div>
-        </ErrorBoundary>
-        <p style={caption}>NVIDIA 各世代架構對 BMC 與相關管理晶片之需求量對比</p>
+
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <ErrorBoundary>
+              <div style={{ height: 350, flex: 1 }}>
+                <Chart type="bar" data={timelineChartData} options={timelineChartOptions} />
+              </div>
+            </ErrorBoundary>
+            <p style={caption}>目標價上修時序：3月共識 vs 4月財報與載板突破</p>
+          </div>
+        </div>
+
+        <div style={{ marginTop: '2.5rem', borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '2rem' }}>
+          <h4 style={{ fontSize: '1.3rem', fontWeight: 900, color: '#fff', marginBottom: '1rem', textAlign: 'center' }}>
+            NVIDIA 架構演進：BMC 管理晶片的「81倍」幾何暴增效應
+          </h4>
+          <p style={{ ...bodyText, fontSize: '0.875rem', textAlign: 'center', maxWidth: 800, margin: '0 auto 1.5rem' }}>
+            這張圖表完美解釋了為何外資願意給予信驊極高本益比：過去 10 萬美元僅產生 1 顆需求；但在 NVL72 世代，<strong style={{color:'#FBBF24'}}>每 3.7 萬美元就需要 1 顆</strong>。這不僅是技術升級，更是「資本支出效率」的反轉。
+          </p>
+          <ErrorBoundary>
+            <div style={{ height: 300, maxWidth: 800, margin: '0 auto' }}>
+              <Bar data={rackChartData} options={rackChartOptions} />
+            </div>
+          </ErrorBoundary>
+          <p style={caption}>NVIDIA 各世代架構對 BMC 與相關管理晶片之需求量對比</p>
+        </div>
       </div>
 
       {/* ── Section 5: SWOT ── */}
       <div style={glassCard}>
         <SwotMatrix />
+      </div>
+
+      {/* ── 免責聲明 ── */}
+      <div style={{ marginTop: '3rem', textAlign: 'center' }}>
+        <div style={{ background: 'rgba(239,68,68,0.1)', border: '1px solid rgba(239,68,68,0.3)', borderRadius: '0.75rem', padding: '1rem 1.5rem', display: 'inline-block', maxWidth: 800 }}>
+          <h5 style={{ color: '#F87171', fontWeight: 700, fontSize: '0.85rem', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
+            <span>⚠️</span> 免責聲明與風險提示
+          </h5>
+          <p style={{ color: '#94A3B8', fontSize: '0.7rem', lineHeight: 1.6, textAlign: 'justify' }}>
+            本網頁 / 單頁應用程式 (SPA) 內所提及之所有公司資訊、投顧報告數據（含永豐、富邦、元大、大和等）、目標價及產業趨勢分析，<strong>皆僅供學術研究與教育展示用途，絕不構成任何有價證券之買賣要約、招攬或投資建議。</strong> 投資人應自行審慎評估市場風險、財務狀況及特殊需求，並對自身之投資決策自負盈虧。<strong>此份報告中所有資訊皆合法取得。</strong>
+          </p>
+        </div>
       </div>
 
     </div>
