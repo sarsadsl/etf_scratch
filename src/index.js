@@ -84,7 +84,9 @@ async function main() {
   while (twTime.getUTCDay() === 0 || twTime.getUTCDay() === 6) {
     twTime.setUTCDate(twTime.getUTCDate() - 1);
   }
-  const dateStr = `${twTime.getUTCFullYear()}${twTime.getUTCMonth() + 1}${twTime.getUTCDate()}`;
+  const dateStr = twTime.getUTCFullYear().toString()
+    + String(twTime.getUTCMonth() + 1).padStart(2, '0')
+    + String(twTime.getUTCDate()).padStart(2, '0');
   const historyFile = path.join(dataDir, `${dateStr}.json`);
   fs.writeFileSync(historyFile, JSON.stringify(dashboardState, null, 2), 'utf-8');
 
