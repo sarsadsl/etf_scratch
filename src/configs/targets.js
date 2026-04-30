@@ -36,5 +36,15 @@ export const targets = [
     code: '00982A',
     name: '主動群益台灣強棒',
     issuer: '群益投信'
+  },
+  {
+    code: '00992A',
+    name: '主動群益科技創新',
+    issuer: '群益投信'
+  },
+  {
+    code: '00995A',
+    name: '主動中信卓越成長',
+    issuer: '中信投信'
   }
 ];

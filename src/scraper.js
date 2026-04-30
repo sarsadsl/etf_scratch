@@ -243,6 +243,7 @@ async function fetchNomuraApi(fundCode) {
 // 群益 fundId 對照表
 const CAPITAL_FUND_ID_MAP = {
   '00982A': 399,
+  '00992A': 500,
 };
 
 async function fetchCapitalApi(fundCode) {
@@ -337,6 +338,10 @@ export async function fetchHoldings(target) {
 
     } else if (target.issuer === '群益投信') {
       holdings = await fetchCapitalApi(target.code);
+
+    } else if (target.issuer === '中信投信') {
+      const page = await getSharedPage();
+      holdings = await fetchMoneyDjHoldings(page, target.code);
 
     } else {
       return { error: true, message: `未知發行商: ${target.issuer}` };
