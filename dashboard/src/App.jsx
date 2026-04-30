@@ -159,25 +159,35 @@ function App() {
 
   const sortedHoldings = useMemo(() => {
     const arr = [...activeHoldings];
-    if (tableSort === 'diffShares') {
-      arr.sort((a, b) => {
+    arr.sort((a, b) => {
+      // 1. 新進榜優先置頂，若同為新進榜則依張數降冪
+      if (a.isNew && !b.isNew) return -1;
+      if (!a.isNew && b.isNew) return 1;
+      if (a.isNew && b.isNew) return (b.shares || 0) - (a.shares || 0);
+
+      // 2. 一般排序
+      if (tableSort === 'diffShares') {
         const diffA = a.diffShares || 0;
         const diffB = b.diffShares || 0;
-        
         if (diffA > 0 && diffB > 0) return diffB - diffA; // 加碼：多到少 (降冪)
         if (diffA < 0 && diffB < 0) return diffA - diffB; // 減碼：減多到減少 (升冪)
-        
         if (diffA > 0 && diffB <= 0) return -1; // 加碼排最前
         if (diffB > 0 && diffA <= 0) return 1;
-        
         if (diffA < 0 && diffB === 0) return -1; // 減碼排中間
         if (diffB < 0 && diffA === 0) return 1;
-        
         return 0; // 無變動排最後
-      });
-    }
+      }
+      
+      // 預設依權重排序
+      return (b.weight || 0) - (a.weight || 0);
+    });
     return arr;
   }, [activeHoldings, tableSort]);
+
+  // 計算今日新進榜總權重 (用於 Task 3)
+  const newHoldingsTotalWeight = useMemo(() => {
+    return activeHoldings.filter(h => h.isNew).reduce((sum, h) => sum + (h.weight || 0), 0);
+  }, [activeHoldings]);
 
   const chartData = useMemo(() => {
     if (!activeHoldings.length) return [];
@@ -190,7 +200,7 @@ function App() {
       const computedPct = prevShares > 0 ? parseFloat(((diffShares / prevShares) * 100).toFixed(2)) : 0;
       const finalPct = item.diffSharesPercent !== undefined ? item.diffSharesPercent : computedPct;
       return {
-        name: formatStockLabel(item.stockCode, item.stockName, activeEtf),
+        name: (item.isNew ? '* ' : '') + formatStockLabel(item.stockCode, item.stockName, activeEtf),
         weight: item.weight,
         prevWeight: Math.max(Number((item.weight - diff).toFixed(2)), 0),
         diff,
@@ -735,7 +745,18 @@ function App() {
                                 <span style={{ fontWeight: 600 }}>{sharesLotStr}</span>
                               )}
                             </td>
-                            <td>{hold.isNew && <span className="badge new">新進榜</span>}</td>
+                            <td>
+                              {hold.isNew && (
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                  <span className="badge new">新進榜</span>
+                                  {newHoldingsTotalWeight > 0 && (
+                                    <span style={{ fontSize: '0.7rem', color: '#10b981', fontWeight: 600 }}>
+                                      (佔新資金 {((hold.weight / newHoldingsTotalWeight) * 100).toFixed(1)}%)
+                                    </span>
+                                  )}
+                                </div>
+                              )}
+                            </td>
                           </tr>
                         );
                       })}
