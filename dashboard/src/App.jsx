@@ -9,11 +9,11 @@ import './index.css';
 const ETF_META = {
   '00981A': { name: '主動統一台股增長', color: '#60a5fa' },
   '00988A': { name: '主動統一全球創新', color: '#a78bfa' },
-  '00991A': { name: '主動復華未來50',   color: '#f472b6' },
-  '00990A': { name: '主動元大未來',     color: '#34d399' },
+  '00991A': { name: '主動復華未來50', color: '#f472b6' },
+  '00990A': { name: '主動元大未來', color: '#34d399' },
   '00980A': { name: '主動野村台灣優選', color: '#facc15' },
   '00982A': { name: '主動群益台灣強棒', color: '#fb923c' },
-  '00985A': { name: '主動野村台灣50',   color: '#fdba74' },
+  '00985A': { name: '主動野村台灣50', color: '#fdba74' },
   '00992A': { name: '主動群益科技創新', color: '#f87171' },
   '00995A': { name: '主動中信卓越成長', color: '#818cf8' },
 };
@@ -38,8 +38,8 @@ const ALL_ETF_CODES = Object.keys(ETF_META);
 
 // ─── 頂層導航 Tab ─────────────────────────────────────────
 const NAV_TABS = [
-  { id: 'etf',      label: 'ETF 追蹤',   icon: Activity },
-  { id: 'industry', label: '產業分析',   icon: BookOpen },
+  { id: 'etf', label: 'ETF 追蹤', icon: Activity },
+  { id: 'industry', label: '產業分析', icon: BookOpen },
 ];
 
 // ─── 主元件 ──────────────────────────────────────────────
@@ -228,7 +228,7 @@ function App() {
         if (diffB < 0 && diffA === 0) return 1;
         return 0; // 無變動排最後
       }
-      
+
       // 預設依權重排序
       return (b.weight || 0) - (a.weight || 0);
     });
@@ -287,7 +287,7 @@ function App() {
   // 第三圖表：變動差異排行榜 (支援新增佔比、新增張數、減少佔比、減少張數)
   const diffChartInfo = useMemo(() => {
     if (!activeHoldings.length) return { data: [], dataKey: '', color: '', formatter: null, title: '' };
-    
+
     const mapped = activeHoldings.map(item => {
       const shares = item.shares || 0;
       const diffShares = item.diffShares || 0;
@@ -364,100 +364,103 @@ function App() {
       .sort((a, b) => b.totalWeight - a.totalWeight);
   }, [data, visibleEtfs]);
 
-  // ── Telegram 推播 ──
+  // ── Telegram 推播（僅發送當前 tab 選中的 ETF）──
   const handleSendTelegram = async () => {
-    if (!data) return;
+    if (!data || !activeHoldings) return;
     setIsSending(true);
     setSendResult(null);
     const workerUrl = 'https://etf-telegram-proxy.sarsadsl.workers.dev/';
-      const escapeV2 = (str) => {
-        if (!str) return '';
-        return str.toString().replace(/([_*\[\]()~`>#+\-=|{}.!])/g, '\\$1');
-      };
 
-      let reportText = `━━━━━━━━━━━━━━\n`;
-      reportText += `📊 *主動式 ETF 持股異動報告 \(手動廣播\)*\n`;
-      reportText += `📅 *日期*: ${escapeV2(selectedDate)}\n`;
-      reportText += `━━━━━━━━━━━━━━\n\n`;
-      let hasAnyChange = false;
-
+    try {
       const BLACKLIST = { "00981A": ["2357", "2439", "5347"] };
+      const etfCode = activeEtf;
+      const etfName = ETF_META[etfCode]?.name.replace('主動', '') || etfCode;
 
-      ALL_ETF_CODES.forEach(etfCode => {
-        const holdings = data[etfCode] || [];
-        let changedHoldings = holdings.filter(h => 
-          h.isNew || (h.diffShares !== undefined && h.diffShares !== 0)
-        );
+      // 使用 activeHoldings（已含前端出清偵測）
+      let changedHoldings = activeHoldings.filter(h =>
+        h.isNew || h.isSoldOut || (h.diffShares !== undefined && h.diffShares !== 0)
+      );
 
-        if (BLACKLIST[etfCode]) {
-          changedHoldings = changedHoldings.filter(s => !BLACKLIST[etfCode].includes(s.stockCode));
-        }
+      // 排除黑名單
+      if (BLACKLIST[etfCode]) {
+        changedHoldings = changedHoldings.filter(s => !BLACKLIST[etfCode].includes(s.stockCode));
+      }
 
-        if (changedHoldings.length > 0) {
-          hasAnyChange = true;
-          reportText += `🏷️ *${escapeV2(etfCode)} ${escapeV2(ETF_META[etfCode]?.name.replace('主動', ''))}*\n`;
-          reportText += `──────────────────\n`;
-          
-          changedHoldings.sort((a, b) => (b.diffShares || 0) - (a.diffShares || 0));
-
-          const MAX_CHANGES = 10;
-          const isTruncated = changedHoldings.length > MAX_CHANGES;
-
-          changedHoldings.slice(0, MAX_CHANGES).forEach((hold, idx) => {
-            let weightIcon = '➖';
-            let sharesIcon = '';
-            if (hold.diffWeight > 0) weightIcon = '🔺';
-            if (hold.diffWeight < 0) weightIcon = '🔻';
-            if (hold.diffShares > 0) sharesIcon = '+';
-            
-            const newTag = hold.isNew ? ` ✨*新進榜*` : '';
-            const sharesLot = Math.round(hold.shares / 1000);
-            const diffSharesLot = Math.round(hold.diffShares / 1000);
-            
-            let sharesStr = '';
-            if (diffSharesLot === 0 && hold.diffShares !== 0) {
-               sharesStr = `${(hold.shares / 1000).toFixed(1)} 張 \(${sharesIcon}${escapeV2((hold.diffShares / 1000).toFixed(1))}\)`;
-            } else {
-               sharesStr = `${escapeV2(sharesLot.toLocaleString())} 張 \(${sharesIcon}${escapeV2(diffSharesLot.toLocaleString())}\)`;
-            }
-            
-            const safeName = escapeV2(hold.stockName);
-            const safeCode = escapeV2(hold.stockCode);
-            reportText += `${idx + 1}\\. *${safeName}* \(\`${safeCode}\`\)${newTag}\n`;
-            reportText += `   📈 權重: ${escapeV2(hold.weight)}% \(${weightIcon}${hold.diffWeight > 0 ? '\\+' : ''}${escapeV2(hold.diffWeight)}%\)\n`;
-            reportText += `   📦 持倉: ${sharesStr}\n\n`;
-          });
-
-          if (isTruncated) {
-            reportText += `  \\.\\.\\. 以及其他 ${changedHoldings.length - MAX_CHANGES} 筆異動\n`;
-          }
-        }
-      });
-
-      if (!hasAnyChange) {
-        setSendResult({ status: 'success', text: '當日無任何異動' });
+      if (changedHoldings.length === 0) {
+        setSendResult({ status: 'success', text: `${etfCode} 今日無任何異動` });
         setTimeout(() => setSendResult(null), 2000);
+        setIsSending(false);
         return;
       }
 
-      reportText += `━━━━━━━━━━━━━━\n`;
-      reportText += `🌐 [即時視覺化儀表板]\(https://stocktrack\\.morningjoy\\.cc\)`;
+      // 排序：增持在前、減持在後、出清最後
+      changedHoldings.sort((a, b) => {
+        if (a.isSoldOut && !b.isSoldOut) return 1;
+        if (!a.isSoldOut && b.isSoldOut) return -1;
+        return (b.diffShares || 0) - (a.diffShares || 0);
+      });
 
+      // 組裝訊息
+      let msg = `━━━━━━━━━━━━━━\n`;
+      msg += `📊 ${etfCode} ${etfName} 持股異動\n`;
+      msg += `📅 日期: ${selectedDate}\n`;
+      msg += `━━━━━━━━━━━━━━\n\n`;
+
+      changedHoldings.forEach((hold, idx) => {
+        if (hold.isSoldOut) {
+          // 出清持股：特殊格式
+          const prevShares = Math.abs(Math.round(hold.diffShares / 1000));
+          msg += `${idx + 1}. 🔴 ${hold.stockName} (${hold.stockCode}) 全部出清\n`;
+          msg += `   📉 原持倉: ${prevShares.toLocaleString()} 張 → 0 張\n`;
+          msg += `   📉 原權重: ${Math.abs(hold.diffWeight)}% → 0%\n\n`;
+          return;
+        }
+
+        let weightIcon = '➖';
+        let sharesIcon = '';
+        if (hold.diffWeight > 0) weightIcon = '🔺';
+        if (hold.diffWeight < 0) weightIcon = '🔻';
+        if (hold.diffShares > 0) sharesIcon = '+';
+
+        const newTag = hold.isNew ? ' ✨新進榜' : '';
+        const sharesLot = Math.round(hold.shares / 1000);
+        const diffSharesLot = Math.round(hold.diffShares / 1000);
+
+        let sharesStr = '';
+        if (diffSharesLot === 0 && hold.diffShares !== 0) {
+           sharesStr = `${(hold.shares / 1000).toFixed(1)} 張 (${sharesIcon}${(hold.diffShares / 1000).toFixed(1)})`;
+        } else {
+           sharesStr = `${sharesLot.toLocaleString()} 張 (${sharesIcon}${diffSharesLot.toLocaleString()})`;
+        }
+
+        msg += `${idx + 1}. ${hold.stockName} (${hold.stockCode})${newTag}\n`;
+        msg += `   📈 權重: ${hold.weight}% (${weightIcon}${hold.diffWeight > 0 ? '+' : ''}${hold.diffWeight}%)\n`;
+        msg += `   📦 持倉: ${sharesStr}\n\n`;
+      });
+
+      msg += `━━━━━━━━━━━━━━\n`;
+      msg += `🌐 即時視覺化儀表板: https://stocktrack.morningjoy.cc`;
+
+      // 發送
       const response = await fetch(workerUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: reportText, password: adminToken })
+        body: JSON.stringify({ message: msg, password: adminToken })
       });
-      
-      if (!response.ok) throw new Error('API 無效狀態');
-      setSendResult({ status: 'success', text: '全頻道廣播成功' });
+      const result = await response.json().catch(() => ({}));
+      console.log('[Broadcast] Worker Response:', response.status, result);
+
+      if (!response.ok) {
+        throw new Error(result.error || `HTTP ${response.status}`);
+      }
+      setSendResult({ status: 'success', text: `${etfCode} 廣播成功` });
       setTimeout(() => setSendResult(null), 3000);
-    } catch (err) { 
-      console.error('Send Error:', err);
-      setSendResult({ status: 'error', text: '廣播失敗' }); 
-      setTimeout(() => setSendResult(null), 3000); 
-    } finally { 
-      setIsSending(false); 
+    } catch (err) {
+      console.error('[Broadcast] Send Error:', err);
+      setSendResult({ status: 'error', text: `廣播失敗: ${err.message}` });
+      setTimeout(() => setSendResult(null), 5000);
+    } finally {
+      setIsSending(false);
     }
   };
 
@@ -564,427 +567,427 @@ function App() {
 
         {/* ETF 追蹤（預設路由）*/}
         <Route path="/*" element={
-      <>
-      {/* ── Header ── */}
-      <header className="header">
-        <div>
-          <h1>主動式 ETF 持股追蹤</h1>
-        </div>
-        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
-
-
-          {currentUser.role === 'admin' && (
-            <button onClick={handleSendTelegram} disabled={isSending || !adminToken}
-              style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', padding: '0.5rem 1rem', fontSize: '0.9rem', fontWeight: 600, borderRadius: '8px', backgroundColor: sendResult?.status === 'success' ? '#10b981' : (sendResult?.status === 'error' ? '#ef4444' : 'transparent'), color: sendResult?.status ? '#fff' : 'var(--accent-blue)', border: sendResult?.status ? 'none' : '1px solid var(--accent-blue)', cursor: isSending ? 'not-allowed' : 'pointer', opacity: isSending ? 0.6 : 1 }}>
-              <Send size={16} />
-              {isSending ? '鑑權中...' : (sendResult?.text || '發送廣播')}
-            </button>
-          )}
-
-          {currentUser.role === 'admin' ? (
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '0.4rem 0.8rem', background: 'rgba(255,255,255,0.05)', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)' }}>
-                <User size={14} color="#94a3b8" />
-                <span style={{ fontSize: '0.9rem', color: '#e2e8f0', fontWeight: 500 }}>系統站長</span>
+          <>
+            {/* ── Header ── */}
+            <header className="header">
+              <div>
+                <h1>主動式 ETF 持股追蹤</h1>
               </div>
-              <button onClick={handleLogout} title="登出" style={{ display: 'flex', alignItems: 'center', padding: '0.5rem', borderRadius: '8px', background: 'rgba(239,68,68,0.1)', color: '#ef4444', border: 'none', cursor: 'pointer' }}>
-                <LogOut size={16} />
-              </button>
-            </div>
-          ) : (
-            <div style={{ display: 'flex', gap: '0.5rem' }}>
-              <div style={{ position: 'relative' }}>
-                <button onClick={() => setShowLogin(!showLogin)} title="站長專用通道"
-                  style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', padding: '0.5rem', borderRadius: '8px', background: 'rgba(255,255,255,0.05)', color: 'var(--text-secondary)', border: '1px solid rgba(255,255,255,0.1)', cursor: 'pointer' }}>
-                  <Lock size={16} />
-                </button>
-                {showLogin && (
-                  <form onSubmit={handleAdminVerify} style={{ position: 'absolute', top: 'calc(100% + 0.5rem)', right: 0, background: 'var(--bg-surface)', padding: '1rem', borderRadius: '8px', border: '1px solid var(--border-light)', boxShadow: '0 4px 20px rgba(0,0,0,0.5)', zIndex: 100, display: 'flex', gap: '0.5rem' }}>
-                    <input type="password" placeholder="輸入站長密碼..." value={passwordInput} onChange={e => setPasswordInput(e.target.value)} autoFocus
-                      style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: '#eee', padding: '0.5rem 0.6rem', borderRadius: '4px', outline: 'none' }} />
-                    <button type="submit" style={{ background: 'var(--accent-blue)', color: '#fff', border: 'none', padding: '0 0.8rem', borderRadius: '4px', cursor: 'pointer', fontWeight: 600 }}>解鎖</button>
-                  </form>
+              <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
+
+
+                {currentUser.role === 'admin' && (
+                  <button onClick={handleSendTelegram} disabled={isSending || !adminToken}
+                    style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', padding: '0.5rem 1rem', fontSize: '0.9rem', fontWeight: 600, borderRadius: '8px', backgroundColor: sendResult?.status === 'success' ? '#10b981' : (sendResult?.status === 'error' ? '#ef4444' : 'transparent'), color: sendResult?.status ? '#fff' : 'var(--accent-blue)', border: sendResult?.status ? 'none' : '1px solid var(--accent-blue)', cursor: isSending ? 'not-allowed' : 'pointer', opacity: isSending ? 0.6 : 1 }}>
+                    <Send size={16} />
+                    {isSending ? '鑑權中...' : (sendResult?.text || '發送廣播')}
+                  </button>
                 )}
-              </div>
-            </div>
-          )}
 
-          {loading && <RefreshCw className="pulse" style={{ color: 'var(--accent-blue)' }} />}
-          <select value={selectedDate} onChange={e => setSelectedDate(e.target.value)}>
-            {selectedDate === 'latest' && <option value="latest">Latest</option>}
-            {historyDates.map(date => <option key={date} value={date}>{date}</option>)}
-          </select>
-        </div>
-      </header>
-
-      {isMockData && (
-        <div style={{ background: 'rgba(239,68,68,0.15)', color: '#f87171', padding: '0.85rem', borderRadius: '8px', marginBottom: '1.5rem', border: '1px solid rgba(239,68,68,0.3)', textAlign: 'center', fontWeight: 600 }}>
-          ⚠️ 此為系統壓力測試用的【模擬資料】。
-        </div>
-      )}
-
-      {/* ── 控制列：視圖切換 + ETF 過濾器 ── */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem', flexWrap: 'wrap' }}>
-
-        {/* 視圖切換 */}
-        <div style={{ display: 'flex', gap: '0.4rem', background: 'rgba(255,255,255,0.04)', borderRadius: '10px', padding: '4px', border: '1px solid var(--border-light)' }}>
-          <button
-            onClick={() => setViewMode('single')}
-            style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '0.4rem 0.9rem', borderRadius: '7px', border: 'none', cursor: 'pointer', fontWeight: 600, fontSize: '0.85rem', transition: 'all 0.2s', background: viewMode === 'single' ? 'var(--accent-blue)' : 'transparent', color: viewMode === 'single' ? '#fff' : 'var(--text-secondary)' }}
-          >
-            <Activity size={14} /> 單檔 ETF
-          </button>
-          <button
-            onClick={() => setViewMode('aggregated')}
-            style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '0.4rem 0.9rem', borderRadius: '7px', border: 'none', cursor: 'pointer', fontWeight: 600, fontSize: '0.85rem', transition: 'all 0.2s', background: viewMode === 'aggregated' ? '#a78bfa' : 'transparent', color: viewMode === 'aggregated' ? '#fff' : 'var(--text-secondary)' }}
-          >
-            <BarChart2 size={14} /> 股票資金吸收
-          </button>
-        </div>
-
-        {/* Spacer */}
-        <div style={{ flex: 1 }} />
-
-        {/* ETF 過濾器 */}
-        <div style={{ position: 'relative' }}>
-          <button
-            onClick={() => setShowFilter(f => !f)}
-            style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '0.45rem 1rem', borderRadius: '8px', border: `1px solid ${showFilter ? 'var(--accent-blue)' : 'var(--border-light)'}`, background: showFilter ? 'rgba(59,130,246,0.1)' : 'rgba(255,255,255,0.04)', color: showFilter ? 'var(--accent-blue)' : 'var(--text-secondary)', cursor: 'pointer', fontWeight: 600, fontSize: '0.85rem', transition: 'all 0.2s' }}
-          >
-            <Filter size={14} />
-            ETF 篩選 ({visibleEtfs.length}/{ALL_ETF_CODES.length})
-          </button>
-          {showFilter && <FilterPanel />}
-        </div>
-      </div>
-
-      {/* ── ETF Tab 列（僅限可見的 ETF）── */}
-      {viewMode === 'single' && (
-        <div style={{ display: 'flex', gap: '0.6rem', overflowX: 'auto', paddingBottom: '0.5rem', marginBottom: '1rem' }}>
-          {visibleEtfs.map(etf => {
-            const meta = ETF_META[etf];
-            if (!meta) return null;
-            const hasData = data && Array.isArray(data[etf]) && data[etf].length > 0;
-            return (
-              <button
-                key={etf}
-                onClick={() => setActiveEtf(etf)}
-                style={{
-                  borderColor: activeEtf === etf ? meta.color : 'var(--border-light)',
-                  background: activeEtf === etf ? `${meta.color}1A` : 'rgba(255,255,255,0.04)',
-                  opacity: hasData ? 1 : 0.5,
-                  position: 'relative', whiteSpace: 'nowrap', flexShrink: 0
-                }}
-              >
-                <span style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, color: activeEtf === etf ? meta.color : 'var(--text-secondary)' }}>{etf}</span>
-                <span style={{ display: 'block', fontSize: '0.7rem', color: activeEtf === etf ? '#e2e8f0' : 'var(--text-secondary)', marginTop: '1px' }}>{meta.name.replace('主動', '')}</span>
-                {!hasData && <span style={{ position: 'absolute', top: '-4px', right: '-4px', fontSize: '0.55rem', background: '#475569', color: '#cbd5e1', borderRadius: '4px', padding: '1px 4px' }}>無資料</span>}
-              </button>
-            );
-          })}
-        </div>
-      )}
-
-      {/* ══════════ 單檔 ETF 視圖 ══════════ */}
-      {viewMode === 'single' && (
-        <>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '1.5rem', borderBottom: '1px solid var(--border-light)', paddingBottom: '0.8rem' }}>
-            <div>
-              <h2 style={{ margin: 0, fontSize: '1.6rem', fontWeight: 700, color: ETF_META[activeEtf].color }}>
-                {ETF_META[activeEtf].name}
-              </h2>
-              <span style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>{activeEtf}</span>
-            </div>
-            <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', background: 'rgba(255,255,255,0.04)', padding: '0.4rem 0.8rem', borderRadius: '8px', border: '1px solid var(--border-light)' }}>
-              資料更新日期：<span style={{ color: '#e2e8f0', fontWeight: 600, letterSpacing: '0.05em' }}>{selectedDate || '讀取中'}</span>
-            </div>
-          </div>
-
-          {(!activeHoldings || activeHoldings.length === 0) ? (
-            <div className="glass-panel" style={{ textAlign: 'center', padding: '4rem' }}>
-              <Activity size={48} color="var(--text-secondary)" style={{ marginBottom: '1rem' }} />
-              <h3>尚無資料</h3>
-              <p>此日期可能尚未有 {activeEtf} 的持股資料</p>
-            </div>
-          ) : (
-            <>
-              <div className="grid-2">
-                <div className="glass-panel">
-                  <h3 style={{ marginBottom: '1.5rem', fontSize: '1.25rem' }}>前十大持股權重</h3>
-                  <div style={{ height: '300px' }}>
-                    <ResponsiveContainer width="100%" height="100%">
-                      <PieChart>
-                        <Tooltip contentStyle={{ backgroundColor: 'var(--bg-base)', borderColor: 'var(--border-light)' }} itemStyle={{ color: 'var(--text-primary)' }} />
-                        <Pie data={chartData} dataKey="weight" nameKey="name" cx="50%" cy="50%" outerRadius={80} fill={ETF_META[activeEtf].color} label={({ name, value }) => `${name} ${Number(value).toFixed(1)}%`} labelStyle={{ fontSize: '13px', fontWeight: 500 }}>
-                          {chartData.map((_, index) => <Cell key={`cell-${index}`} fill={ETF_META[activeEtf].color} fillOpacity={1 - index * 0.08} />)}
-                        </Pie>
-                      </PieChart>
-                    </ResponsiveContainer>
-                  </div>
-                </div>
-                <div className="glass-panel">
-                  <h3 style={{ marginBottom: '1.5rem', fontSize: '1.25rem' }}>權重對比 (前日 vs 今日)</h3>
-                  <div style={{ height: '350px' }}>
-                    <ResponsiveContainer width="100%" height="100%">
-                      <BarChart data={chartData} layout="vertical" margin={{ top: 5, right: 30, left: 20, bottom: 20 }}>
-                        <XAxis type="number" stroke="var(--text-secondary)" fontSize={12} tickLine={false} axisLine={false} tickFormatter={val => `${val}%`} label={{ value: '權重 (%)', position: 'bottom', fill: 'var(--text-secondary)', fontSize: 13 }} />
-                        <YAxis type="category" dataKey="name" stroke="var(--text-secondary)" fontSize={15} fontWeight={600} tickLine={false} axisLine={false} width={120} />
-                        <Tooltip cursor={{ fill: 'rgba(255,255,255,0.08)' }} contentStyle={{ backgroundColor: 'var(--bg-surface)', borderColor: 'var(--border-light)', borderRadius: '8px', color: '#fff' }} itemStyle={{ color: '#fff', fontWeight: 600 }} formatter={(value, name, props) => {
-                          if (name === '今日權重') {
-                            const pct = props.payload.diffSharesPercent;
-                            const ext = pct ? ` (新增張數 ${pct > 0 ? '+' : ''}${pct}%)` : '';
-                            return [`${value}%${ext}`, name];
-                          }
-                          return [`${value}%`, name];
-                        }} />
-                        <Bar dataKey="prevWeight" name="前日權重" fill="var(--text-secondary)" radius={[0, 4, 4, 0]} barSize={8} />
-                        <Bar dataKey="weight" name="今日權重" radius={[0, 4, 4, 0]} barSize={12}>
-                          <LabelList dataKey="diffSharesPercent" position="right" formatter={(val) => val ? `${val > 0 ? '+' : ''}${val}%` : ''} fill="var(--text-secondary)" fontSize={12} fontWeight={600} />
-                          {chartData.map((entry, index) => <Cell key={`cell-${index}`} fill={entry.diff > 0 ? 'var(--tw-up)' : (entry.diff < 0 ? 'var(--tw-down)' : 'var(--accent-blue)')} />)}
-                        </Bar>
-                      </BarChart>
-                    </ResponsiveContainer>
-                  </div>
-                </div>
-              </div>
-              {/* 第三區塊：變動差異排行榜 + 買進資金圓餅圖 (grid-2) */}
-              <div className="grid-2">
-                <div className="glass-panel" style={{ display: 'flex', flexDirection: 'column' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
-                    <h3 style={{ margin: 0, fontSize: '1.25rem', color: diffChartInfo.color || '#94a3b8' }}>
-                      {diffChartInfo.title || '變動差異排行榜'}
-                    </h3>
-                    <div style={{ display: 'flex', gap: '0.4rem', background: 'rgba(255,255,255,0.05)', padding: '4px', borderRadius: '8px' }}>
-                      <button onClick={() => setDiffSort('addPct')} style={{ padding: '0.3rem 0.6rem', fontSize: '0.75rem', borderRadius: '6px', cursor: 'pointer', border: 'none', background: diffSort === 'addPct' ? 'rgba(16,185,129,0.2)' : 'transparent', color: diffSort === 'addPct' ? '#10b981' : 'var(--text-secondary)' }}>加碼%</button>
-                      <button onClick={() => setDiffSort('addAbs')} style={{ padding: '0.3rem 0.6rem', fontSize: '0.75rem', borderRadius: '6px', cursor: 'pointer', border: 'none', background: diffSort === 'addAbs' ? 'rgba(16,185,129,0.2)' : 'transparent', color: diffSort === 'addAbs' ? '#10b981' : 'var(--text-secondary)' }}>加碼張數</button>
-                      <button onClick={() => setDiffSort('subPct')} style={{ padding: '0.3rem 0.6rem', fontSize: '0.75rem', borderRadius: '6px', cursor: 'pointer', border: 'none', background: diffSort === 'subPct' ? 'rgba(239,68,68,0.2)' : 'transparent', color: diffSort === 'subPct' ? '#ef4444' : 'var(--text-secondary)' }}>減碼%</button>
-                      <button onClick={() => setDiffSort('subAbs')} style={{ padding: '0.3rem 0.6rem', fontSize: '0.75rem', borderRadius: '6px', cursor: 'pointer', border: 'none', background: diffSort === 'subAbs' ? 'rgba(239,68,68,0.2)' : 'transparent', color: diffSort === 'subAbs' ? '#ef4444' : 'var(--text-secondary)' }}>減碼張數</button>
+                {currentUser.role === 'admin' ? (
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '0.4rem 0.8rem', background: 'rgba(255,255,255,0.05)', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)' }}>
+                      <User size={14} color="#94a3b8" />
+                      <span style={{ fontSize: '0.9rem', color: '#e2e8f0', fontWeight: 500 }}>系統站長</span>
                     </div>
+                    <button onClick={handleLogout} title="登出" style={{ display: 'flex', alignItems: 'center', padding: '0.5rem', borderRadius: '8px', background: 'rgba(239,68,68,0.1)', color: '#ef4444', border: 'none', cursor: 'pointer' }}>
+                      <LogOut size={16} />
+                    </button>
                   </div>
-                  <div style={{ flex: 1, minHeight: '350px', position: 'relative' }}>
-                    {diffChartInfo.data && diffChartInfo.data.length > 0 ? (
-                      <ResponsiveContainer width="100%" height="100%">
-                        <BarChart data={diffChartInfo.data} layout="vertical" margin={{ top: 5, right: 40, left: 20, bottom: 20 }}>
-                          <XAxis type="number" stroke="var(--text-secondary)" fontSize={12} tickLine={false} axisLine={false} tickFormatter={val => diffSort.includes('Pct') ? `${val}%` : `${val / 1000}張`} label={{ value: diffSort.includes('Pct') ? '佔比 (%)' : '張數 (千股)', position: 'bottom', fill: 'var(--text-secondary)', fontSize: 13 }} />
-                          <YAxis type="category" dataKey="name" stroke="var(--text-secondary)" fontSize={15} fontWeight={600} tickLine={false} axisLine={false} width={120} />
-                          <Tooltip cursor={{ fill: 'rgba(255,255,255,0.08)' }} contentStyle={{ backgroundColor: 'var(--bg-surface)', borderColor: 'var(--border-light)', borderRadius: '8px', color: '#fff' }} itemStyle={{ color: '#fff', fontWeight: 600 }} formatter={(value, name) => {
-                            return [diffChartInfo.formatter(value), diffChartInfo.title];
-                          }} />
-                          <Bar dataKey={diffChartInfo.dataKey} name={diffChartInfo.title} fill={diffChartInfo.color} radius={[0, 4, 4, 0]} barSize={16}>
-                            <LabelList dataKey={diffChartInfo.dataKey} position="right" formatter={diffChartInfo.formatter} fill={diffChartInfo.color} fontSize={14} fontWeight={700} />
-                          </Bar>
-                        </BarChart>
-                      </ResponsiveContainer>
-                    ) : (
-                      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', color: 'var(--text-secondary)' }}>
-                        <Activity size={40} style={{ marginBottom: '1rem', opacity: 0.5 }} />
-                        <span style={{ fontWeight: 600 }}>本作日未偵測到此類型的實質異動</span>
-                      </div>
-                    )}
-                  </div>
-                </div>
-
-                {/* 今日買進資金佔比圓餅圖 */}
-                {buyingPieData.length > 0 && (
-                  <div className="glass-panel" style={{ display: 'flex', flexDirection: 'column' }}>
-                    <h3 style={{ marginBottom: '0.5rem', fontSize: '1.25rem', color: '#10b981' }}>今日買進資金佔比</h3>
-                    <p style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', marginBottom: '0.75rem' }}>
-                      總加碼權重：<span style={{ color: '#10b981', fontWeight: 700 }}>+{totalBuyingWeight.toFixed(2)}%</span>
-                    </p>
-                    <div style={{ flex: 1, minHeight: '350px' }}>
-                      <ResponsiveContainer width="100%" height="100%">
-                        <PieChart>
-                          <Tooltip
-                            contentStyle={{ backgroundColor: 'var(--bg-surface)', borderColor: 'var(--border-light)', borderRadius: '8px', color: '#fff' }}
-                            itemStyle={{ color: '#fff', fontWeight: 600 }}
-                            formatter={(value, name, props) => [
-                              `${value}% (權重 +${props.payload.diffWeight}%)${props.payload.isNew ? ' ⭐新進榜' : ''}`,
-                              name
-                            ]}
-                          />
-                          <Pie
-                            data={buyingPieData}
-                            dataKey="value"
-                            nameKey="name"
-                            cx="50%"
-                            cy="50%"
-                            outerRadius={110}
-                            innerRadius={50}
-                            paddingAngle={2}
-                            label={({ name, value, isNew }) => `${isNew ? '★ ' : ''}${name} ${value}%`}
-                            labelLine={{ stroke: 'rgba(255,255,255,0.2)' }}
-                          >
-                            {buyingPieData.map((entry, index) => (
-                              <Cell
-                                key={`buying-cell-${index}`}
-                                fill={entry.isOthers ? '#475569' : BUYING_PIE_COLORS[index % BUYING_PIE_COLORS.length]}
-                                stroke={entry.isNew ? '#fff' : 'transparent'}
-                                strokeWidth={entry.isNew ? 2 : 0}
-                              />
-                            ))}
-                          </Pie>
-                        </PieChart>
-                      </ResponsiveContainer>
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              <div className="glass-panel">
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-                  <h3 style={{ margin: 0, fontSize: '1.25rem' }}>完整持股清單 — {ETF_META[activeEtf]?.name}</h3>
+                ) : (
                   <div style={{ display: 'flex', gap: '0.5rem' }}>
-                    <button onClick={() => setTableSort('weight')} style={{ padding: '0.4rem 0.8rem', fontSize: '0.85rem', background: tableSort === 'weight' ? 'rgba(59,130,246,0.2)' : 'rgba(255,255,255,0.05)', borderColor: tableSort === 'weight' ? 'var(--accent-blue)' : 'var(--border-light)', color: tableSort === 'weight' ? '#fff' : 'var(--text-secondary)' }}>依權重</button>
-                    <button onClick={() => setTableSort('diffShares')} style={{ padding: '0.4rem 0.8rem', fontSize: '0.85rem', background: tableSort === 'diffShares' ? 'rgba(59,130,246,0.2)' : 'rgba(255,255,255,0.05)', borderColor: tableSort === 'diffShares' ? 'var(--accent-blue)' : 'var(--border-light)', color: tableSort === 'diffShares' ? '#fff' : 'var(--text-secondary)' }}>依張數異動</button>
+                    <div style={{ position: 'relative' }}>
+                      <button onClick={() => setShowLogin(!showLogin)} title="站長專用通道"
+                        style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', padding: '0.5rem', borderRadius: '8px', background: 'rgba(255,255,255,0.05)', color: 'var(--text-secondary)', border: '1px solid rgba(255,255,255,0.1)', cursor: 'pointer' }}>
+                        <Lock size={16} />
+                      </button>
+                      {showLogin && (
+                        <form onSubmit={handleAdminVerify} style={{ position: 'absolute', top: 'calc(100% + 0.5rem)', right: 0, background: 'var(--bg-surface)', padding: '1rem', borderRadius: '8px', border: '1px solid var(--border-light)', boxShadow: '0 4px 20px rgba(0,0,0,0.5)', zIndex: 100, display: 'flex', gap: '0.5rem' }}>
+                          <input type="password" placeholder="輸入站長密碼..." value={passwordInput} onChange={e => setPasswordInput(e.target.value)} autoFocus
+                            style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: '#eee', padding: '0.5rem 0.6rem', borderRadius: '4px', outline: 'none' }} />
+                          <button type="submit" style={{ background: 'var(--accent-blue)', color: '#fff', border: 'none', padding: '0 0.8rem', borderRadius: '4px', cursor: 'pointer', fontWeight: 600 }}>解鎖</button>
+                        </form>
+                      )}
+                    </div>
+                  </div>
+                )}
+
+                {loading && <RefreshCw className="pulse" style={{ color: 'var(--accent-blue)' }} />}
+                <select value={selectedDate} onChange={e => setSelectedDate(e.target.value)}>
+                  {selectedDate === 'latest' && <option value="latest">Latest</option>}
+                  {historyDates.map(date => <option key={date} value={date}>{date}</option>)}
+                </select>
+              </div>
+            </header>
+
+            {isMockData && (
+              <div style={{ background: 'rgba(239,68,68,0.15)', color: '#f87171', padding: '0.85rem', borderRadius: '8px', marginBottom: '1.5rem', border: '1px solid rgba(239,68,68,0.3)', textAlign: 'center', fontWeight: 600 }}>
+                ⚠️ 此為系統壓力測試用的【模擬資料】。
+              </div>
+            )}
+
+            {/* ── 控制列：視圖切換 + ETF 過濾器 ── */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem', flexWrap: 'wrap' }}>
+
+              {/* 視圖切換 */}
+              <div style={{ display: 'flex', gap: '0.4rem', background: 'rgba(255,255,255,0.04)', borderRadius: '10px', padding: '4px', border: '1px solid var(--border-light)' }}>
+                <button
+                  onClick={() => setViewMode('single')}
+                  style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '0.4rem 0.9rem', borderRadius: '7px', border: 'none', cursor: 'pointer', fontWeight: 600, fontSize: '0.85rem', transition: 'all 0.2s', background: viewMode === 'single' ? 'var(--accent-blue)' : 'transparent', color: viewMode === 'single' ? '#fff' : 'var(--text-secondary)' }}
+                >
+                  <Activity size={14} /> 單檔 ETF
+                </button>
+                <button
+                  onClick={() => setViewMode('aggregated')}
+                  style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '0.4rem 0.9rem', borderRadius: '7px', border: 'none', cursor: 'pointer', fontWeight: 600, fontSize: '0.85rem', transition: 'all 0.2s', background: viewMode === 'aggregated' ? '#a78bfa' : 'transparent', color: viewMode === 'aggregated' ? '#fff' : 'var(--text-secondary)' }}
+                >
+                  <BarChart2 size={14} /> 股票資金吸收
+                </button>
+              </div>
+
+              {/* Spacer */}
+              <div style={{ flex: 1 }} />
+
+              {/* ETF 過濾器 */}
+              <div style={{ position: 'relative' }}>
+                <button
+                  onClick={() => setShowFilter(f => !f)}
+                  style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '0.45rem 1rem', borderRadius: '8px', border: `1px solid ${showFilter ? 'var(--accent-blue)' : 'var(--border-light)'}`, background: showFilter ? 'rgba(59,130,246,0.1)' : 'rgba(255,255,255,0.04)', color: showFilter ? 'var(--accent-blue)' : 'var(--text-secondary)', cursor: 'pointer', fontWeight: 600, fontSize: '0.85rem', transition: 'all 0.2s' }}
+                >
+                  <Filter size={14} />
+                  ETF 篩選 ({visibleEtfs.length}/{ALL_ETF_CODES.length})
+                </button>
+                {showFilter && <FilterPanel />}
+              </div>
+            </div>
+
+            {/* ── ETF Tab 列（僅限可見的 ETF）── */}
+            {viewMode === 'single' && (
+              <div style={{ display: 'flex', gap: '0.6rem', overflowX: 'auto', paddingBottom: '0.5rem', marginBottom: '1rem' }}>
+                {visibleEtfs.map(etf => {
+                  const meta = ETF_META[etf];
+                  if (!meta) return null;
+                  const hasData = data && Array.isArray(data[etf]) && data[etf].length > 0;
+                  return (
+                    <button
+                      key={etf}
+                      onClick={() => setActiveEtf(etf)}
+                      style={{
+                        borderColor: activeEtf === etf ? meta.color : 'var(--border-light)',
+                        background: activeEtf === etf ? `${meta.color}1A` : 'rgba(255,255,255,0.04)',
+                        opacity: hasData ? 1 : 0.5,
+                        position: 'relative', whiteSpace: 'nowrap', flexShrink: 0
+                      }}
+                    >
+                      <span style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, color: activeEtf === etf ? meta.color : 'var(--text-secondary)' }}>{etf}</span>
+                      <span style={{ display: 'block', fontSize: '0.7rem', color: activeEtf === etf ? '#e2e8f0' : 'var(--text-secondary)', marginTop: '1px' }}>{meta.name.replace('主動', '')}</span>
+                      {!hasData && <span style={{ position: 'absolute', top: '-4px', right: '-4px', fontSize: '0.55rem', background: '#475569', color: '#cbd5e1', borderRadius: '4px', padding: '1px 4px' }}>無資料</span>}
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+
+            {/* ══════════ 單檔 ETF 視圖 ══════════ */}
+            {viewMode === 'single' && (
+              <>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '1.5rem', borderBottom: '1px solid var(--border-light)', paddingBottom: '0.8rem' }}>
+                  <div>
+                    <h2 style={{ margin: 0, fontSize: '1.6rem', fontWeight: 700, color: ETF_META[activeEtf].color }}>
+                      {ETF_META[activeEtf].name}
+                    </h2>
+                    <span style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>{activeEtf}</span>
+                  </div>
+                  <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', background: 'rgba(255,255,255,0.04)', padding: '0.4rem 0.8rem', borderRadius: '8px', border: '1px solid var(--border-light)' }}>
+                    資料更新日期：<span style={{ color: '#e2e8f0', fontWeight: 600, letterSpacing: '0.05em' }}>{selectedDate || '讀取中'}</span>
                   </div>
                 </div>
-                <div className="table-container" style={{ maxHeight: '400px', overflowY: 'auto' }}>
-                  <table>
-                    <thead style={{ position: 'sticky', top: 0, zIndex: 20 }}>
-                      <tr>
-                        <th>排名</th><th>代號</th><th>名稱</th><th>權重 (%)</th><th>張數</th><th>狀態</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {sortedHoldings.map((hold, idx) => {
-                        const sharesLotNum = Math.round(hold.shares / 1000);
-                        const diffLotNum = Math.round((hold.diffShares || 0) / 1000);
-                        const prevSharesLotNum = sharesLotNum - diffLotNum;
 
-                        const sharesLotStr = sharesLotNum.toLocaleString();
-                        const prevSharesLotStr = prevSharesLotNum.toLocaleString();
-                        const diffLotStr = diffLotNum > 0 ? `+${diffLotNum.toLocaleString()}` : diffLotNum.toLocaleString();
-
-                        const prevShares = (hold.shares || 0) - (hold.diffShares || 0);
-                        const computedPct = prevShares > 0 ? parseFloat((((hold.diffShares || 0) / prevShares) * 100).toFixed(2)) : 0;
-                        const finalPct = hold.diffSharesPercent !== undefined ? hold.diffSharesPercent : computedPct;
-                        const pctStr = finalPct > 0 ? `+${finalPct}%` : `${finalPct}%`;
-
-                        return (
-                          <tr key={hold.stockCode}>
-                            <td style={{ color: 'var(--text-secondary)' }}>{idx + 1}</td>
-                            <td style={{ fontWeight: 600, color: '#94a3b8' }}>{hold.stockCode}</td>
-                            <td style={{ fontWeight: 500 }}>{hold.stockName}</td>
-                            <td>{hold.weight}%</td>
-                            <td>
-                              {diffLotNum !== 0 ? (
-                                <span>
-                                  <span style={{ color: 'var(--text-secondary)' }}>{prevSharesLotStr}</span>
-                                  <span style={{ margin: '0 6px', color: 'var(--text-secondary)' }}>➔</span>
-                                  <span style={{ fontWeight: 600 }}>{sharesLotStr}</span>
-                                  <span className={diffLotNum > 0 ? 'text-success' : 'text-danger'} style={{ fontWeight: 800, fontSize: '1.05rem', marginLeft: '8px' }}>
-                                    ({diffLotStr}) ({pctStr})
-                                  </span>
-                                  {hold.diffWeight > 0 && totalBuyingWeight > 0 && (
-                                    <div style={{ fontSize: '0.65rem', color: '#10b981', fontWeight: 600, marginTop: '2px' }}>
-                                      佔今日買進總額 {((hold.diffWeight / totalBuyingWeight) * 100).toFixed(1)}%
-                                    </div>
-                                  )}
-                                </span>
-                              ) : (
-                                <span style={{ fontWeight: 600 }}>{sharesLotStr}</span>
-                              )}
-                            </td>
-                            <td>
-                              {hold.isNew && <span className="badge new">{'\u2605'} 新進榜</span>}
-                              {hold.isSoldOut && <span style={{ display: 'inline-block', padding: '2px 8px', borderRadius: '4px', fontSize: '0.7rem', fontWeight: 700, background: 'rgba(239,68,68,0.15)', color: '#f87171', border: '1px solid rgba(239,68,68,0.3)' }}>已出清</span>}
-                            </td>
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </>
-          )}
-        </>
-      )}
-
-      {/* ══════════ 股票資金吸收視圖 ══════════ */}
-      {viewMode === 'aggregated' && (
-        <div className="glass-panel">
-          <div style={{ marginBottom: '1.25rem' }}>
-            <h3 style={{ margin: 0, fontSize: '1.25rem' }}>主動 ETF 資金吸收排行</h3>
-            <p style={{ margin: '0.4rem 0 0', fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
-              統計範圍：{visibleEtfs.join(' · ')}｜共 {visibleEtfs.length} 檔 ETF
-              ｜累計吸收權重 = 各 ETF 持有該股票的權重加總
-            </p>
-          </div>
-
-          {aggregatedData.length === 0 ? (
-            <div style={{ textAlign: 'center', padding: '4rem', color: 'var(--text-secondary)' }}>
-              <Activity size={48} style={{ marginBottom: '1rem' }} />
-              <p>尚無跨 ETF 資料可聚合，請確認已選擇有效 ETF 並載入資料</p>
-            </div>
-          ) : (
-            <div className="table-container" style={{ maxHeight: '600px', overflowY: 'auto' }}>
-              <table>
-                <thead style={{ position: 'sticky', top: 0, zIndex: 20 }}>
-                  <tr>
-                    <th>排名</th>
-                    <th>股票</th>
-                    <th>累計權重 (%)</th>
-                    <th>涵蓋 ETF 數</th>
-                    <th>各 ETF 持倉明細</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {aggregatedData.slice(0, 50).map((item, idx) => (
-                    <tr key={item.stockCode}>
-                      <td style={{ color: 'var(--text-secondary)', fontWeight: 600 }}>{idx + 1}</td>
-                      <td style={{ fontWeight: 600 }}>
-                        <div>{item.stockName}</div>
-                        <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginTop: '1px' }}>{item.stockCode}</div>
-                      </td>
-                      <td>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                          <span style={{ fontWeight: 700, fontSize: '1.05rem', color: item.etfCount >= 2 ? '#a78bfa' : '#e2e8f0' }}>
-                            {item.totalWeight.toFixed(2)}%
-                          </span>
-                          {/* mini bar */}
-                          <div style={{ flex: 1, height: '6px', background: 'rgba(255,255,255,0.08)', borderRadius: '3px', minWidth: '60px' }}>
-                            <div style={{ height: '100%', borderRadius: '3px', background: item.etfCount >= 2 ? '#a78bfa' : 'var(--accent-blue)', width: `${Math.min(item.totalWeight / (aggregatedData[0]?.totalWeight || 1) * 100, 100)}%` }} />
+                {(!activeHoldings || activeHoldings.length === 0) ? (
+                  <div className="glass-panel" style={{ textAlign: 'center', padding: '4rem' }}>
+                    <Activity size={48} color="var(--text-secondary)" style={{ marginBottom: '1rem' }} />
+                    <h3>尚無資料</h3>
+                    <p>此日期可能尚未有 {activeEtf} 的持股資料</p>
+                  </div>
+                ) : (
+                  <>
+                    <div className="grid-2">
+                      <div className="glass-panel">
+                        <h3 style={{ marginBottom: '1.5rem', fontSize: '1.25rem' }}>前十大持股權重</h3>
+                        <div style={{ height: '300px' }}>
+                          <ResponsiveContainer width="100%" height="100%">
+                            <PieChart>
+                              <Tooltip contentStyle={{ backgroundColor: 'var(--bg-base)', borderColor: 'var(--border-light)' }} itemStyle={{ color: 'var(--text-primary)' }} />
+                              <Pie data={chartData} dataKey="weight" nameKey="name" cx="50%" cy="50%" outerRadius={80} fill={ETF_META[activeEtf].color} label={({ name, value }) => `${name} ${Number(value).toFixed(1)}%`} labelStyle={{ fontSize: '13px', fontWeight: 500 }}>
+                                {chartData.map((_, index) => <Cell key={`cell-${index}`} fill={ETF_META[activeEtf].color} fillOpacity={1 - index * 0.08} />)}
+                              </Pie>
+                            </PieChart>
+                          </ResponsiveContainer>
+                        </div>
+                      </div>
+                      <div className="glass-panel">
+                        <h3 style={{ marginBottom: '1.5rem', fontSize: '1.25rem' }}>權重對比 (前日 vs 今日)</h3>
+                        <div style={{ height: '350px' }}>
+                          <ResponsiveContainer width="100%" height="100%">
+                            <BarChart data={chartData} layout="vertical" margin={{ top: 5, right: 30, left: 20, bottom: 20 }}>
+                              <XAxis type="number" stroke="var(--text-secondary)" fontSize={12} tickLine={false} axisLine={false} tickFormatter={val => `${val}%`} label={{ value: '權重 (%)', position: 'bottom', fill: 'var(--text-secondary)', fontSize: 13 }} />
+                              <YAxis type="category" dataKey="name" stroke="var(--text-secondary)" fontSize={15} fontWeight={600} tickLine={false} axisLine={false} width={120} />
+                              <Tooltip cursor={{ fill: 'rgba(255,255,255,0.08)' }} contentStyle={{ backgroundColor: 'var(--bg-surface)', borderColor: 'var(--border-light)', borderRadius: '8px', color: '#fff' }} itemStyle={{ color: '#fff', fontWeight: 600 }} formatter={(value, name, props) => {
+                                if (name === '今日權重') {
+                                  const pct = props.payload.diffSharesPercent;
+                                  const ext = pct ? ` (新增張數 ${pct > 0 ? '+' : ''}${pct}%)` : '';
+                                  return [`${value}%${ext}`, name];
+                                }
+                                return [`${value}%`, name];
+                              }} />
+                              <Bar dataKey="prevWeight" name="前日權重" fill="var(--text-secondary)" radius={[0, 4, 4, 0]} barSize={8} />
+                              <Bar dataKey="weight" name="今日權重" radius={[0, 4, 4, 0]} barSize={12}>
+                                <LabelList dataKey="diffSharesPercent" position="right" formatter={(val) => val ? `${val > 0 ? '+' : ''}${val}%` : ''} fill="var(--text-secondary)" fontSize={12} fontWeight={600} />
+                                {chartData.map((entry, index) => <Cell key={`cell-${index}`} fill={entry.diff > 0 ? 'var(--tw-up)' : (entry.diff < 0 ? 'var(--tw-down)' : 'var(--accent-blue)')} />)}
+                              </Bar>
+                            </BarChart>
+                          </ResponsiveContainer>
+                        </div>
+                      </div>
+                    </div>
+                    {/* 第三區塊：變動差異排行榜 + 買進資金圓餅圖 (grid-2) */}
+                    <div className="grid-2">
+                      <div className="glass-panel" style={{ display: 'flex', flexDirection: 'column' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
+                          <h3 style={{ margin: 0, fontSize: '1.25rem', color: diffChartInfo.color || '#94a3b8' }}>
+                            {diffChartInfo.title || '變動差異排行榜'}
+                          </h3>
+                          <div style={{ display: 'flex', gap: '0.4rem', background: 'rgba(255,255,255,0.05)', padding: '4px', borderRadius: '8px' }}>
+                            <button onClick={() => setDiffSort('addPct')} style={{ padding: '0.3rem 0.6rem', fontSize: '0.75rem', borderRadius: '6px', cursor: 'pointer', border: 'none', background: diffSort === 'addPct' ? 'rgba(16,185,129,0.2)' : 'transparent', color: diffSort === 'addPct' ? '#10b981' : 'var(--text-secondary)' }}>加碼%</button>
+                            <button onClick={() => setDiffSort('addAbs')} style={{ padding: '0.3rem 0.6rem', fontSize: '0.75rem', borderRadius: '6px', cursor: 'pointer', border: 'none', background: diffSort === 'addAbs' ? 'rgba(16,185,129,0.2)' : 'transparent', color: diffSort === 'addAbs' ? '#10b981' : 'var(--text-secondary)' }}>加碼張數</button>
+                            <button onClick={() => setDiffSort('subPct')} style={{ padding: '0.3rem 0.6rem', fontSize: '0.75rem', borderRadius: '6px', cursor: 'pointer', border: 'none', background: diffSort === 'subPct' ? 'rgba(239,68,68,0.2)' : 'transparent', color: diffSort === 'subPct' ? '#ef4444' : 'var(--text-secondary)' }}>減碼%</button>
+                            <button onClick={() => setDiffSort('subAbs')} style={{ padding: '0.3rem 0.6rem', fontSize: '0.75rem', borderRadius: '6px', cursor: 'pointer', border: 'none', background: diffSort === 'subAbs' ? 'rgba(239,68,68,0.2)' : 'transparent', color: diffSort === 'subAbs' ? '#ef4444' : 'var(--text-secondary)' }}>減碼張數</button>
                           </div>
                         </div>
-                      </td>
-                      <td>
-                        <span style={{
-                          display: 'inline-block', padding: '2px 10px', borderRadius: '20px', fontWeight: 700, fontSize: '0.85rem',
-                          background: item.etfCount >= 3 ? 'rgba(167,139,250,0.2)' : (item.etfCount >= 2 ? 'rgba(96,165,250,0.15)' : 'rgba(255,255,255,0.06)'),
-                          color: item.etfCount >= 3 ? '#a78bfa' : (item.etfCount >= 2 ? '#60a5fa' : 'var(--text-secondary)'),
-                          border: `1px solid ${item.etfCount >= 3 ? 'rgba(167,139,250,0.4)' : (item.etfCount >= 2 ? 'rgba(96,165,250,0.3)' : 'var(--border-light)')}`
-                        }}>
-                          {item.etfCount} 檔
-                        </span>
-                      </td>
-                      <td>
-                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
-                          {item.etfBreakdown.map(e => {
-                            const meta = ETF_META[e.etfCode];
-                            return (
-                              <span key={e.etfCode} style={{
-                                fontSize: '0.7rem', padding: '2px 7px', borderRadius: '4px', fontWeight: 600, whiteSpace: 'nowrap',
-                                background: `${meta?.color}18`, color: meta?.color || '#94a3b8',
-                                border: `1px solid ${meta?.color}40`
-                              }}>
-                                {e.etfCode} {e.weight.toFixed(2)}%
-                              </span>
-                            );
-                          })}
+                        <div style={{ flex: 1, minHeight: '350px', position: 'relative' }}>
+                          {diffChartInfo.data && diffChartInfo.data.length > 0 ? (
+                            <ResponsiveContainer width="100%" height="100%">
+                              <BarChart data={diffChartInfo.data} layout="vertical" margin={{ top: 5, right: 40, left: 20, bottom: 20 }}>
+                                <XAxis type="number" stroke="var(--text-secondary)" fontSize={12} tickLine={false} axisLine={false} tickFormatter={val => diffSort.includes('Pct') ? `${val}%` : `${val / 1000}張`} label={{ value: diffSort.includes('Pct') ? '佔比 (%)' : '張數 (千股)', position: 'bottom', fill: 'var(--text-secondary)', fontSize: 13 }} />
+                                <YAxis type="category" dataKey="name" stroke="var(--text-secondary)" fontSize={15} fontWeight={600} tickLine={false} axisLine={false} width={120} />
+                                <Tooltip cursor={{ fill: 'rgba(255,255,255,0.08)' }} contentStyle={{ backgroundColor: 'var(--bg-surface)', borderColor: 'var(--border-light)', borderRadius: '8px', color: '#fff' }} itemStyle={{ color: '#fff', fontWeight: 600 }} formatter={(value, name) => {
+                                  return [diffChartInfo.formatter(value), diffChartInfo.title];
+                                }} />
+                                <Bar dataKey={diffChartInfo.dataKey} name={diffChartInfo.title} fill={diffChartInfo.color} radius={[0, 4, 4, 0]} barSize={16}>
+                                  <LabelList dataKey={diffChartInfo.dataKey} position="right" formatter={diffChartInfo.formatter} fill={diffChartInfo.color} fontSize={14} fontWeight={700} />
+                                </Bar>
+                              </BarChart>
+                            </ResponsiveContainer>
+                          ) : (
+                            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', color: 'var(--text-secondary)' }}>
+                              <Activity size={40} style={{ marginBottom: '1rem', opacity: 0.5 }} />
+                              <span style={{ fontWeight: 600 }}>本作日未偵測到此類型的實質異動</span>
+                            </div>
+                          )}
                         </div>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          )}
-        </div>
-      )}
+                      </div>
+
+                      {/* 今日買進資金佔比圓餅圖 */}
+                      {buyingPieData.length > 0 && (
+                        <div className="glass-panel" style={{ display: 'flex', flexDirection: 'column' }}>
+                          <h3 style={{ marginBottom: '0.5rem', fontSize: '1.25rem', color: '#10b981' }}>今日買進資金佔比</h3>
+                          <p style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', marginBottom: '0.75rem' }}>
+                            總加碼權重：<span style={{ color: '#10b981', fontWeight: 700 }}>+{totalBuyingWeight.toFixed(2)}%</span>
+                          </p>
+                          <div style={{ flex: 1, minHeight: '350px' }}>
+                            <ResponsiveContainer width="100%" height="100%">
+                              <PieChart>
+                                <Tooltip
+                                  contentStyle={{ backgroundColor: 'var(--bg-surface)', borderColor: 'var(--border-light)', borderRadius: '8px', color: '#fff' }}
+                                  itemStyle={{ color: '#fff', fontWeight: 600 }}
+                                  formatter={(value, name, props) => [
+                                    `${value}% (權重 +${props.payload.diffWeight}%)${props.payload.isNew ? ' ⭐新進榜' : ''}`,
+                                    name
+                                  ]}
+                                />
+                                <Pie
+                                  data={buyingPieData}
+                                  dataKey="value"
+                                  nameKey="name"
+                                  cx="50%"
+                                  cy="50%"
+                                  outerRadius={110}
+                                  innerRadius={50}
+                                  paddingAngle={2}
+                                  label={({ name, value, isNew }) => `${isNew ? '★ ' : ''}${name} ${value}%`}
+                                  labelLine={{ stroke: 'rgba(255,255,255,0.2)' }}
+                                >
+                                  {buyingPieData.map((entry, index) => (
+                                    <Cell
+                                      key={`buying-cell-${index}`}
+                                      fill={entry.isOthers ? '#475569' : BUYING_PIE_COLORS[index % BUYING_PIE_COLORS.length]}
+                                      stroke={entry.isNew ? '#fff' : 'transparent'}
+                                      strokeWidth={entry.isNew ? 2 : 0}
+                                    />
+                                  ))}
+                                </Pie>
+                              </PieChart>
+                            </ResponsiveContainer>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="glass-panel">
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+                        <h3 style={{ margin: 0, fontSize: '1.25rem' }}>完整持股清單 — {ETF_META[activeEtf]?.name}</h3>
+                        <div style={{ display: 'flex', gap: '0.5rem' }}>
+                          <button onClick={() => setTableSort('weight')} style={{ padding: '0.4rem 0.8rem', fontSize: '0.85rem', background: tableSort === 'weight' ? 'rgba(59,130,246,0.2)' : 'rgba(255,255,255,0.05)', borderColor: tableSort === 'weight' ? 'var(--accent-blue)' : 'var(--border-light)', color: tableSort === 'weight' ? '#fff' : 'var(--text-secondary)' }}>依權重</button>
+                          <button onClick={() => setTableSort('diffShares')} style={{ padding: '0.4rem 0.8rem', fontSize: '0.85rem', background: tableSort === 'diffShares' ? 'rgba(59,130,246,0.2)' : 'rgba(255,255,255,0.05)', borderColor: tableSort === 'diffShares' ? 'var(--accent-blue)' : 'var(--border-light)', color: tableSort === 'diffShares' ? '#fff' : 'var(--text-secondary)' }}>依張數異動</button>
+                        </div>
+                      </div>
+                      <div className="table-container" style={{ maxHeight: '400px', overflowY: 'auto' }}>
+                        <table>
+                          <thead style={{ position: 'sticky', top: 0, zIndex: 20 }}>
+                            <tr>
+                              <th>排名</th><th>代號</th><th>名稱</th><th>權重 (%)</th><th>張數</th><th>狀態</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {sortedHoldings.map((hold, idx) => {
+                              const sharesLotNum = Math.round(hold.shares / 1000);
+                              const diffLotNum = Math.round((hold.diffShares || 0) / 1000);
+                              const prevSharesLotNum = sharesLotNum - diffLotNum;
+
+                              const sharesLotStr = sharesLotNum.toLocaleString();
+                              const prevSharesLotStr = prevSharesLotNum.toLocaleString();
+                              const diffLotStr = diffLotNum > 0 ? `+${diffLotNum.toLocaleString()}` : diffLotNum.toLocaleString();
+
+                              const prevShares = (hold.shares || 0) - (hold.diffShares || 0);
+                              const computedPct = prevShares > 0 ? parseFloat((((hold.diffShares || 0) / prevShares) * 100).toFixed(2)) : 0;
+                              const finalPct = hold.diffSharesPercent !== undefined ? hold.diffSharesPercent : computedPct;
+                              const pctStr = finalPct > 0 ? `+${finalPct}%` : `${finalPct}%`;
+
+                              return (
+                                <tr key={hold.stockCode}>
+                                  <td style={{ color: 'var(--text-secondary)' }}>{idx + 1}</td>
+                                  <td style={{ fontWeight: 600, color: '#94a3b8' }}>{hold.stockCode}</td>
+                                  <td style={{ fontWeight: 500 }}>{hold.stockName}</td>
+                                  <td>{hold.weight}%</td>
+                                  <td>
+                                    {diffLotNum !== 0 ? (
+                                      <span>
+                                        <span style={{ color: 'var(--text-secondary)' }}>{prevSharesLotStr}</span>
+                                        <span style={{ margin: '0 6px', color: 'var(--text-secondary)' }}>➔</span>
+                                        <span style={{ fontWeight: 600 }}>{sharesLotStr}</span>
+                                        <span className={diffLotNum > 0 ? 'text-success' : 'text-danger'} style={{ fontWeight: 800, fontSize: '1.05rem', marginLeft: '8px' }}>
+                                          ({diffLotStr}) ({pctStr})
+                                        </span>
+                                        {hold.diffWeight > 0 && totalBuyingWeight > 0 && (
+                                          <div style={{ fontSize: '0.65rem', color: '#10b981', fontWeight: 600, marginTop: '2px' }}>
+                                            佔今日買進總額 {((hold.diffWeight / totalBuyingWeight) * 100).toFixed(1)}%
+                                          </div>
+                                        )}
+                                      </span>
+                                    ) : (
+                                      <span style={{ fontWeight: 600 }}>{sharesLotStr}</span>
+                                    )}
+                                  </td>
+                                  <td>
+                                    {hold.isNew && <span className="badge new">{'\u2605'} 新進榜</span>}
+                                    {hold.isSoldOut && <span style={{ display: 'inline-block', padding: '2px 8px', borderRadius: '4px', fontSize: '0.7rem', fontWeight: 700, background: 'rgba(239,68,68,0.15)', color: '#f87171', border: '1px solid rgba(239,68,68,0.3)' }}>已出清</span>}
+                                  </td>
+                                </tr>
+                              );
+                            })}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </>
+                )}
+              </>
+            )}
+
+            {/* ══════════ 股票資金吸收視圖 ══════════ */}
+            {viewMode === 'aggregated' && (
+              <div className="glass-panel">
+                <div style={{ marginBottom: '1.25rem' }}>
+                  <h3 style={{ margin: 0, fontSize: '1.25rem' }}>主動 ETF 資金吸收排行</h3>
+                  <p style={{ margin: '0.4rem 0 0', fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
+                    統計範圍：{visibleEtfs.join(' · ')}｜共 {visibleEtfs.length} 檔 ETF
+                    ｜累計吸收權重 = 各 ETF 持有該股票的權重加總
+                  </p>
+                </div>
+
+                {aggregatedData.length === 0 ? (
+                  <div style={{ textAlign: 'center', padding: '4rem', color: 'var(--text-secondary)' }}>
+                    <Activity size={48} style={{ marginBottom: '1rem' }} />
+                    <p>尚無跨 ETF 資料可聚合，請確認已選擇有效 ETF 並載入資料</p>
+                  </div>
+                ) : (
+                  <div className="table-container" style={{ maxHeight: '600px', overflowY: 'auto' }}>
+                    <table>
+                      <thead style={{ position: 'sticky', top: 0, zIndex: 20 }}>
+                        <tr>
+                          <th>排名</th>
+                          <th>股票</th>
+                          <th>累計權重 (%)</th>
+                          <th>涵蓋 ETF 數</th>
+                          <th>各 ETF 持倉明細</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {aggregatedData.slice(0, 50).map((item, idx) => (
+                          <tr key={item.stockCode}>
+                            <td style={{ color: 'var(--text-secondary)', fontWeight: 600 }}>{idx + 1}</td>
+                            <td style={{ fontWeight: 600 }}>
+                              <div>{item.stockName}</div>
+                              <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginTop: '1px' }}>{item.stockCode}</div>
+                            </td>
+                            <td>
+                              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                <span style={{ fontWeight: 700, fontSize: '1.05rem', color: item.etfCount >= 2 ? '#a78bfa' : '#e2e8f0' }}>
+                                  {item.totalWeight.toFixed(2)}%
+                                </span>
+                                {/* mini bar */}
+                                <div style={{ flex: 1, height: '6px', background: 'rgba(255,255,255,0.08)', borderRadius: '3px', minWidth: '60px' }}>
+                                  <div style={{ height: '100%', borderRadius: '3px', background: item.etfCount >= 2 ? '#a78bfa' : 'var(--accent-blue)', width: `${Math.min(item.totalWeight / (aggregatedData[0]?.totalWeight || 1) * 100, 100)}%` }} />
+                                </div>
+                              </div>
+                            </td>
+                            <td>
+                              <span style={{
+                                display: 'inline-block', padding: '2px 10px', borderRadius: '20px', fontWeight: 700, fontSize: '0.85rem',
+                                background: item.etfCount >= 3 ? 'rgba(167,139,250,0.2)' : (item.etfCount >= 2 ? 'rgba(96,165,250,0.15)' : 'rgba(255,255,255,0.06)'),
+                                color: item.etfCount >= 3 ? '#a78bfa' : (item.etfCount >= 2 ? '#60a5fa' : 'var(--text-secondary)'),
+                                border: `1px solid ${item.etfCount >= 3 ? 'rgba(167,139,250,0.4)' : (item.etfCount >= 2 ? 'rgba(96,165,250,0.3)' : 'var(--border-light)')}`
+                              }}>
+                                {item.etfCount} 檔
+                              </span>
+                            </td>
+                            <td>
+                              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
+                                {item.etfBreakdown.map(e => {
+                                  const meta = ETF_META[e.etfCode];
+                                  return (
+                                    <span key={e.etfCode} style={{
+                                      fontSize: '0.7rem', padding: '2px 7px', borderRadius: '4px', fontWeight: 600, whiteSpace: 'nowrap',
+                                      background: `${meta?.color}18`, color: meta?.color || '#94a3b8',
+                                      border: `1px solid ${meta?.color}40`
+                                    }}>
+                                      {e.etfCode} {e.weight.toFixed(2)}%
+                                    </span>
+                                  );
+                                })}
+                              </div>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+              </div>
+            )}
 
 
-      </>
+          </>
         } />
       </Routes>
 
