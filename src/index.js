@@ -70,7 +70,7 @@ async function main() {
   // 5. 將今日抓取結果覆寫回狀態檔
   fs.writeFileSync(STATE_FILE, JSON.stringify(newState, null, 2), 'utf-8');
 
-  // 新增：儲存至歷史資料庫 (data/YYYYMMDD.json)
+  // 新增：儲存至歷史資料庫 (data/YYYYMMDD/{etfCode}.json)
   const dataDir = path.join(__dirname, '..', 'data');
   if (!fs.existsSync(dataDir)) {
     fs.mkdirSync(dataDir);
@@ -87,17 +87,39 @@ async function main() {
   const dateStr = twTime.getUTCFullYear().toString()
     + String(twTime.getUTCMonth() + 1).padStart(2, '0')
     + String(twTime.getUTCDate()).padStart(2, '0');
-  const historyFile = path.join(dataDir, `${dateStr}.json`);
-  fs.writeFileSync(historyFile, JSON.stringify(dashboardState, null, 2), 'utf-8');
+
+  // 寫入 data/{dateStr}/{etfCode}.json（每檔 ETF 獨立檔案）
+  const historyDir = path.join(dataDir, dateStr);
+  if (!fs.existsSync(historyDir)) {
+    fs.mkdirSync(historyDir, { recursive: true });
+  }
+  for (const [etfCode, holdings] of Object.entries(dashboardState)) {
+    fs.writeFileSync(path.join(historyDir, `${etfCode}.json`), JSON.stringify(holdings, null, 2), 'utf-8');
+  }
 
   // 新增：寫入 Dashboard 公開目錄供前端提取 (Static Site)
   const dashboardDataDir = path.join(__dirname, '..', 'dashboard', 'public', 'data');
   if (!fs.existsSync(dashboardDataDir)) {
     fs.mkdirSync(dashboardDataDir, { recursive: true });
   }
-  // 複製包含 diffs 的狀態至 Dashboard
-  fs.writeFileSync(path.join(dashboardDataDir, 'latest.json'), JSON.stringify(dashboardState, null, 2), 'utf-8');
-  fs.writeFileSync(path.join(dashboardDataDir, `${dateStr}.json`), JSON.stringify(dashboardState, null, 2), 'utf-8');
+
+  // 寫入 dashboard/public/data/{dateStr}/{etfCode}.json
+  const dashDateDir = path.join(dashboardDataDir, dateStr);
+  if (!fs.existsSync(dashDateDir)) {
+    fs.mkdirSync(dashDateDir, { recursive: true });
+  }
+  for (const [etfCode, holdings] of Object.entries(dashboardState)) {
+    fs.writeFileSync(path.join(dashDateDir, `${etfCode}.json`), JSON.stringify(holdings, null, 2), 'utf-8');
+  }
+
+  // 寫入 dashboard/public/data/latest/{etfCode}.json
+  const latestDir = path.join(dashboardDataDir, 'latest');
+  if (!fs.existsSync(latestDir)) {
+    fs.mkdirSync(latestDir, { recursive: true });
+  }
+  for (const [etfCode, holdings] of Object.entries(dashboardState)) {
+    fs.writeFileSync(path.join(latestDir, `${etfCode}.json`), JSON.stringify(holdings, null, 2), 'utf-8');
+  }
 
   // 生成歷史日期選單 (index.json)
   // 防護：只有實際成功抓到至少一個 ETF 資料時，才將此日期登錄至選單

@@ -52,6 +52,7 @@ function App() {
   const [historyDates, setHistoryDates] = useState([]);
   const [selectedDate, setSelectedDate] = useState('');
   const [data, setData] = useState(null);
+  const [prevData, setPrevData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   // ── 檢視模式：'single' | 'aggregated' ──
@@ -130,6 +131,23 @@ function App() {
 
 
   // ── 資料載入 ──
+  // 輔助函式：從日期目錄逐 ETF 載入後合併為 { etfCode: [...] } 物件
+  const fetchDateData = async (dateOrLatest) => {
+    const results = {};
+    const fetches = ALL_ETF_CODES.map(async (etfCode) => {
+      try {
+        const res = await fetch(`./data/${dateOrLatest}/${etfCode}.json`);
+        if (res.ok) {
+          results[etfCode] = await res.json();
+        }
+      } catch {
+        // 該 ETF 無資料，跳過
+      }
+    });
+    await Promise.all(fetches);
+    return Object.keys(results).length > 0 ? results : null;
+  };
+
   useEffect(() => {
     fetch('./data/index.json')
       .then(res => res.json())
@@ -143,19 +161,52 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (!selectedDate) return;
+    if (!selectedDate || historyDates.length === 0) return;
     setLoading(true);
-    fetch(`./data/${selectedDate}.json`)
-      .then(res => res.json())
-      .then(json => { setData(json); setLoading(false); })
-      .catch(() => setLoading(false));
-  }, [selectedDate]);
+    setPrevData(null);
 
-  // ── 單檔持股 ──
+    // 載入當日資料（逐 ETF 個別載入）
+    const currentFetch = fetchDateData(selectedDate);
+
+    // 載入前一日資料（用於偵測出清持股）
+    const idx = historyDates.indexOf(selectedDate);
+    const prevDate = (idx >= 0 && idx < historyDates.length - 1) ? historyDates[idx + 1] : null;
+    const prevFetch = prevDate
+      ? fetchDateData(prevDate)
+      : Promise.resolve(null);
+
+    Promise.all([currentFetch, prevFetch]).then(([currentJson, prevJson]) => {
+      if (currentJson) setData(currentJson);
+      setPrevData(prevJson);
+      setLoading(false);
+    });
+  }, [selectedDate, historyDates]);
+
+
+  // ── 單檔持股（含前端層出清偵測） ──
   const activeHoldings = useMemo(() => {
     if (!data) return [];
-    return data[activeEtf] || [];
-  }, [data, activeEtf]);
+    const current = data[activeEtf] || [];
+    const prev = prevData?.[activeEtf] || [];
+    if (prev.length === 0) return current;
+
+    // 偵測出清：前一日有但今日消失的標的
+    const currentCodes = new Set(current.map(h => h.stockCode));
+    const soldOut = prev
+      .filter(p => !currentCodes.has(p.stockCode))
+      .map(p => ({
+        stockCode: p.stockCode,
+        stockName: p.stockName,
+        shares: 0,
+        weight: 0,
+        diffShares: -(p.shares || 0),
+        diffWeight: -(p.weight || 0),
+        diffSharesPercent: -100,
+        isNew: false,
+        isSoldOut: true,
+      }));
+    return [...current, ...soldOut];
+  }, [data, prevData, activeEtf]);
 
   const sortedHoldings = useMemo(() => {
     const arr = [...activeHoldings];
@@ -184,10 +235,33 @@ function App() {
     return arr;
   }, [activeHoldings, tableSort]);
 
-  // 計算今日新進榜總權重 (用於 Task 3)
-  const newHoldingsTotalWeight = useMemo(() => {
-    return activeHoldings.filter(h => h.isNew).reduce((sum, h) => sum + (h.weight || 0), 0);
+  // 計算今日買進總權重變動 (用於計算各標的佔今日買進總額比例)
+  const totalBuyingWeight = useMemo(() => {
+    return activeHoldings.reduce((sum, h) => sum + Math.max(0, h.diffWeight || 0), 0);
   }, [activeHoldings]);
+
+  // 今日買進資金佔比圓餅圖資料
+  const BUYING_PIE_COLORS = ['#10b981', '#34d399', '#6ee7b7', '#a7f3d0', '#059669', '#047857', '#065f46', '#0d9488', '#14b8a6', '#2dd4bf', '#5eead4', '#99f6e4'];
+  const buyingPieData = useMemo(() => {
+    if (totalBuyingWeight <= 0) return [];
+    const all = activeHoldings
+      .filter(h => (h.diffWeight || 0) > 0)
+      .map(h => ({
+        name: formatStockLabel(h.stockCode, h.stockName, activeEtf),
+        value: parseFloat(((h.diffWeight / totalBuyingWeight) * 100).toFixed(1)),
+        diffWeight: h.diffWeight,
+        isNew: h.isNew,
+      }))
+      .sort((a, b) => b.value - a.value);
+    const main = all.filter(d => d.value >= 5);
+    const others = all.filter(d => d.value < 5);
+    if (others.length > 0) {
+      const othersTotal = parseFloat(others.reduce((s, d) => s + d.value, 0).toFixed(1));
+      const othersDiffWeight = parseFloat(others.reduce((s, d) => s + d.diffWeight, 0).toFixed(2));
+      main.push({ name: `其他 (${others.length} 檔)`, value: othersTotal, diffWeight: othersDiffWeight, isNew: false, isOthers: true });
+    }
+    return main;
+  }, [activeHoldings, totalBuyingWeight, activeEtf]);
 
   const chartData = useMemo(() => {
     if (!activeHoldings.length) return [];
@@ -607,7 +681,7 @@ function App() {
               <span style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>{activeEtf}</span>
             </div>
             <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', background: 'rgba(255,255,255,0.04)', padding: '0.4rem 0.8rem', borderRadius: '8px', border: '1px solid var(--border-light)' }}>
-              資料更新日期：<span style={{ color: '#e2e8f0', fontWeight: 600, letterSpacing: '0.05em' }}>{historyDates[0] || selectedDate || '讀取中'}</span>
+              資料更新日期：<span style={{ color: '#e2e8f0', fontWeight: 600, letterSpacing: '0.05em' }}>{selectedDate || '讀取中'}</span>
             </div>
           </div>
 
@@ -657,8 +731,9 @@ function App() {
                     </ResponsiveContainer>
                   </div>
                 </div>
-
-                {/* 第三區塊：變動差異排行榜 */}
+              </div>
+              {/* 第三區塊：變動差異排行榜 + 買進資金圓餅圖 (grid-2) */}
+              <div className="grid-2">
                 <div className="glass-panel" style={{ display: 'flex', flexDirection: 'column' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
                     <h3 style={{ margin: 0, fontSize: '1.25rem', color: diffChartInfo.color || '#94a3b8' }}>
@@ -693,6 +768,51 @@ function App() {
                     )}
                   </div>
                 </div>
+
+                {/* 今日買進資金佔比圓餅圖 */}
+                {buyingPieData.length > 0 && (
+                  <div className="glass-panel" style={{ display: 'flex', flexDirection: 'column' }}>
+                    <h3 style={{ marginBottom: '0.5rem', fontSize: '1.25rem', color: '#10b981' }}>今日買進資金佔比</h3>
+                    <p style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', marginBottom: '0.75rem' }}>
+                      總加碼權重：<span style={{ color: '#10b981', fontWeight: 700 }}>+{totalBuyingWeight.toFixed(2)}%</span>
+                    </p>
+                    <div style={{ flex: 1, minHeight: '350px' }}>
+                      <ResponsiveContainer width="100%" height="100%">
+                        <PieChart>
+                          <Tooltip
+                            contentStyle={{ backgroundColor: 'var(--bg-surface)', borderColor: 'var(--border-light)', borderRadius: '8px', color: '#fff' }}
+                            itemStyle={{ color: '#fff', fontWeight: 600 }}
+                            formatter={(value, name, props) => [
+                              `${value}% (權重 +${props.payload.diffWeight}%)${props.payload.isNew ? ' ⭐新進榜' : ''}`,
+                              name
+                            ]}
+                          />
+                          <Pie
+                            data={buyingPieData}
+                            dataKey="value"
+                            nameKey="name"
+                            cx="50%"
+                            cy="50%"
+                            outerRadius={110}
+                            innerRadius={50}
+                            paddingAngle={2}
+                            label={({ name, value, isNew }) => `${isNew ? '★ ' : ''}${name} ${value}%`}
+                            labelLine={{ stroke: 'rgba(255,255,255,0.2)' }}
+                          >
+                            {buyingPieData.map((entry, index) => (
+                              <Cell
+                                key={`buying-cell-${index}`}
+                                fill={entry.isOthers ? '#475569' : BUYING_PIE_COLORS[index % BUYING_PIE_COLORS.length]}
+                                stroke={entry.isNew ? '#fff' : 'transparent'}
+                                strokeWidth={entry.isNew ? 2 : 0}
+                              />
+                            ))}
+                          </Pie>
+                        </PieChart>
+                      </ResponsiveContainer>
+                    </div>
+                  </div>
+                )}
               </div>
 
               <div className="glass-panel">
@@ -740,22 +860,19 @@ function App() {
                                   <span className={diffLotNum > 0 ? 'text-success' : 'text-danger'} style={{ fontWeight: 800, fontSize: '1.05rem', marginLeft: '8px' }}>
                                     ({diffLotStr}) ({pctStr})
                                   </span>
+                                  {hold.diffWeight > 0 && totalBuyingWeight > 0 && (
+                                    <div style={{ fontSize: '0.65rem', color: '#10b981', fontWeight: 600, marginTop: '2px' }}>
+                                      佔今日買進總額 {((hold.diffWeight / totalBuyingWeight) * 100).toFixed(1)}%
+                                    </div>
+                                  )}
                                 </span>
                               ) : (
                                 <span style={{ fontWeight: 600 }}>{sharesLotStr}</span>
                               )}
                             </td>
                             <td>
-                              {hold.isNew && (
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                                  <span className="badge new">新進榜</span>
-                                  {newHoldingsTotalWeight > 0 && (
-                                    <span style={{ fontSize: '0.7rem', color: '#10b981', fontWeight: 600 }}>
-                                      (佔新資金 {((hold.weight / newHoldingsTotalWeight) * 100).toFixed(1)}%)
-                                    </span>
-                                  )}
-                                </div>
-                              )}
+                              {hold.isNew && <span className="badge new">{'\u2605'} 新進榜</span>}
+                              {hold.isSoldOut && <span style={{ display: 'inline-block', padding: '2px 8px', borderRadius: '4px', fontSize: '0.7rem', fontWeight: 700, background: 'rgba(239,68,68,0.15)', color: '#f87171', border: '1px solid rgba(239,68,68,0.3)' }}>已出清</span>}
                             </td>
                           </tr>
                         );

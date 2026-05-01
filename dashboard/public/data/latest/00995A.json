@@ -1,0 +1,92 @@
+[
+  {
+    "stockCode": "2330",
+    "stockName": "台積電",
+    "shares": 208000,
+    "weight": 8.64,
+    "diffShares": 208000,
+    "diffWeight": 8.64,
+    "isNew": true
+  },
+  {
+    "stockCode": "2383",
+    "stockName": "台光電",
+    "shares": 74000,
+    "weight": 6.51,
+    "diffShares": 74000,
+    "diffWeight": 6.51,
+    "isNew": true
+  },
+  {
+    "stockCode": "2308",
+    "stockName": "台達電",
+    "shares": 141000,
+    "weight": 5.91,
+    "diffShares": 141000,
+    "diffWeight": 5.91,
+    "isNew": true
+  },
+  {
+    "stockCode": "3665",
+    "stockName": "貿聯-KY",
+    "shares": 105000,
+    "weight": 5.63,
+    "diffShares": 105000,
+    "diffWeight": 5.63,
+    "isNew": true
+  },
+  {
+    "stockCode": "2345",
+    "stockName": "智邦",
+    "shares": 119000,
+    "weight": 5.26,
+    "diffShares": 119000,
+    "diffWeight": 5.26,
+    "isNew": true
+  },
+  {
+    "stockCode": "2368",
+    "stockName": "金像電",
+    "shares": 195000,
+    "weight": 5.25,
+    "diffShares": 195000,
+    "diffWeight": 5.25,
+    "isNew": true
+  },
+  {
+    "stockCode": "3017",
+    "stockName": "奇鋐",
+    "shares": 85000,
+    "weight": 4.67,
+    "diffShares": 85000,
+    "diffWeight": 4.67,
+    "isNew": true
+  },
+  {
+    "stockCode": "6223",
+    "stockName": "旺矽",
+    "shares": 42000,
+    "weight": 4.01,
+    "diffShares": 42000,
+    "diffWeight": 4.01,
+    "isNew": true
+  },
+  {
+    "stockCode": "3037",
+    "stockName": "欣興",
+    "shares": 232000,
+    "weight": 3.97,
+    "diffShares": 232000,
+    "diffWeight": 3.97,
+    "isNew": true
+  },
+  {
+    "stockCode": "2454",
+    "stockName": "聯發科",
+    "shares": 77000,
+    "weight": 3.89,
+    "diffShares": 77000,
+    "diffWeight": 3.89,
+    "isNew": true
+  }
+]

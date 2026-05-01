@@ -19,10 +19,14 @@ export async function sendTelegramNotification(results) {
   }
 
   const today = new Date().toLocaleDateString('zh-TW', { timeZone: 'Asia/Taipei' });
-  let message = `📊 *主動式 ETF 持股異動報告* (${today})\n\n`;
+  let message = `━━━━━━━━━━━━━━\n`;
+  message += `📊 *主動式 ETF 持股異動報告*\n`;
+  message += `📅 *日期*: ${today}\n`;
+  message += `━━━━━━━━━━━━━━\n\n`;
 
   results.forEach(result => {
-    message += `🔹 *${result.target.code} ${result.target.name}*\n`;
+    message += `🏷️ *${result.target.code} ${result.target.name.replace('主動', '')}*\n`;
+    message += `──────────────────\n`;
     
     const BLACKLIST = {
       "00981A": ["2357", "2439", "5347"]
@@ -33,67 +37,60 @@ export async function sendTelegramNotification(results) {
       if (result.debugError) {
         message += `  🔴 *Debug*: \`${result.debugError}\`\n`;
       }
-      if (result.debugPayload && result.debugPayload.title) {
-        message += `  💬 *Page Title*: ${result.debugPayload.title}\n`;
-      }
       message += '\n';
       return;
     }
 
-    // 為所有股票加上原始排行名次，再過濾出有實質異動的股票
     const mappedHoldings = result.holdings.map((stock, i) => ({ ...stock, rank: i + 1 }));
     let changedHoldings = mappedHoldings.filter(stock => 
       stock.isNew || (stock.diffShares !== undefined && stock.diffShares !== 0)
     );
 
-    // 套用黑名單過濾
     if (BLACKLIST[result.target.code]) {
       changedHoldings = changedHoldings.filter(s => !BLACKLIST[result.target.code].includes(s.stockCode));
     }
 
     if (changedHoldings.length === 0) {
-      message += `  💤 今日前十大持股無任何增減變化\n\n`;
+      message += `  💤 今日持股無顯著異動\n\n`;
       return;
     }
 
-    // 根據張數異動由大到小排序
     changedHoldings.sort((a, b) => b.diffShares - a.diffShares);
 
     const MAX_CHANGES = 10;
     const isTruncated = changedHoldings.length > MAX_CHANGES;
 
     changedHoldings.slice(0, MAX_CHANGES).forEach((stock, idx) => {
-      // 判斷增減符號
       let weightIcon = '➖';
       let sharesIcon = '';
       if (stock.diffWeight > 0) weightIcon = '🔺';
       if (stock.diffWeight < 0) weightIcon = '🔻';
       if (stock.diffShares > 0) sharesIcon = '+';
       
-      const newTag = stock.isNew ? ' 🆕新進榜' : '';
-      
+      const newTag = stock.isNew ? ' ✨*新進榜*' : '';
       const sharesLot = Math.round(stock.shares / 1000);
       const diffSharesLot = Math.round(stock.diffShares / 1000);
       
       let sharesStr = '';
       if (diffSharesLot === 0 && stock.diffShares !== 0) {
-         sharesStr = `${(stock.shares / 1000).toFixed(1)}張 (${sharesIcon}${(stock.diffShares / 1000).toFixed(1)})`;
+         sharesStr = `${(stock.shares / 1000).toFixed(1)} 張 (${sharesIcon}${(stock.diffShares / 1000).toFixed(1)})`;
       } else {
-         sharesStr = `${sharesLot}張 (${sharesIcon}${diffSharesLot})`;
+         sharesStr = `${sharesLot.toLocaleString()} 張 (${sharesIcon}${diffSharesLot.toLocaleString()})`;
       }
       
-      // 格式: #1 2330 台積電 35.5% (🔺0.5%) | 5000張 (+100) 🆕新進榜
       const safeStockName = stock.stockName.replace(/([_*\[\]()~`>#+\-=|{}.!])/g, '\\$1');
-      message += `  #${idx + 1} \`${stock.stockCode}\` ${safeStockName}${newTag}\n`;
-      message += `     ${stock.weight}% (${weightIcon}${stock.diffWeight > 0 ? '+' : ''}${stock.diffWeight}%) | ${sharesStr}\n`;
+      message += `${idx + 1}. *${safeStockName}* (\`${stock.stockCode}\`)${newTag}\n`;
+      message += `   📈 權重: ${stock.weight}% (${weightIcon}${stock.diffWeight > 0 ? '+' : ''}${stock.diffWeight}%)\n`;
+      message += `   📦 持倉: ${sharesStr}\n\n`;
     });
 
     if (isTruncated) {
       message += `  ... 以及其他 ${changedHoldings.length - MAX_CHANGES} 筆異動\n`;
     }
-    
-    message += '\n';
   });
+
+  message += `━━━━━━━━━━━━━━\n`;
+  message += `🌐 [即時視覺化儀表板](https://stocktrack.morningjoy.cc)`;
 
   try {
     const url = `https://api.telegram.org/bot${token}/sendMessage`;

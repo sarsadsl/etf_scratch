@@ -22,7 +22,7 @@ export function compareHoldings(currentHoldings, previousHoldings) {
     prevMap.set(item.stockCode, item);
   });
 
-  return currentHoldings.map(current => {
+  const result = currentHoldings.map(current => {
     const prev = prevMap.get(current.stockCode);
     
     if (!prev) {
@@ -48,4 +48,24 @@ export function compareHoldings(currentHoldings, previousHoldings) {
       isNew: false
     };
   });
+
+  // 偵測被完全出清的持股：前一日存在但今日消失的標的
+  const currentCodes = new Set(currentHoldings.map(h => h.stockCode));
+  previousHoldings.forEach(prev => {
+    if (!currentCodes.has(prev.stockCode)) {
+      result.push({
+        stockCode: prev.stockCode,
+        stockName: prev.stockName,
+        shares: 0,
+        weight: 0,
+        diffShares: -(prev.shares || 0),
+        diffWeight: -(prev.weight || 0),
+        diffSharesPercent: -100,
+        isNew: false,
+        isSoldOut: true,
+      });
+    }
+  });
+
+  return result;
 }

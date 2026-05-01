@@ -3,3 +3,35 @@ node_modules/
 state.json
 
 archives/
+
+# 除錯/測試用暫存檔案
+test-*.js
+test-*.mjs
+debug*.js
+debug*.mjs
+debug*.html
+debug*.png
+dump*.js
+mock-*.js
+mock-*.mjs
+fix_*.mjs
+run_*.mjs
+probe_*.js
+intercept_*.js
+migrate-*.mjs
+*.bat
+*.html
+*.png
+state_old.json
+state_new.json
+github_latest.json
+architecture_guide.md
+scratch/
+skills/
+src/test.js
+mndj.js
+capital.html
+capital.png
+nomura.html
+nomura.png
+yuanta_debug.png

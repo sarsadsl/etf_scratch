@@ -1,0 +1,515 @@
+[
+  {
+    "stockCode": "2330",
+    "stockName": "台積電",
+    "shares": 1468000,
+    "weight": 8.0463,
+    "diffShares": 1468000,
+    "diffWeight": 8.0463,
+    "isNew": true
+  },
+  {
+    "stockCode": "5536",
+    "stockName": "聖暉*",
+    "shares": 3355000,
+    "weight": 7.837,
+    "diffShares": 3355000,
+    "diffWeight": 7.837,
+    "isNew": true
+  },
+  {
+    "stockCode": "3105",
+    "stockName": "穩懋",
+    "shares": 3946000,
+    "weight": 6.323,
+    "diffShares": 3946000,
+    "diffWeight": 6.323,
+    "isNew": true
+  },
+  {
+    "stockCode": "6669",
+    "stockName": "緯穎",
+    "shares": 461000,
+    "weight": 4.9662,
+    "diffShares": 461000,
+    "diffWeight": 4.9662,
+    "isNew": true
+  },
+  {
+    "stockCode": "2383",
+    "stockName": "台光電",
+    "shares": 457000,
+    "weight": 4.7623,
+    "diffShares": 457000,
+    "diffWeight": 4.7623,
+    "isNew": true
+  },
+  {
+    "stockCode": "2360",
+    "stockName": "致茂",
+    "shares": 855000,
+    "weight": 4.7442,
+    "diffShares": 855000,
+    "diffWeight": 4.7442,
+    "isNew": true
+  },
+  {
+    "stockCode": "6139",
+    "stockName": "亞翔",
+    "shares": 2278000,
+    "weight": 4.6306,
+    "diffShares": 2278000,
+    "diffWeight": 4.6306,
+    "isNew": true
+  },
+  {
+    "stockCode": "3264",
+    "stockName": "欣銓",
+    "shares": 8078000,
+    "weight": 4.0997,
+    "diffShares": 8078000,
+    "diffWeight": 4.0997,
+    "isNew": true
+  },
+  {
+    "stockCode": "2345",
+    "stockName": "智邦",
+    "shares": 719000,
+    "weight": 3.902,
+    "diffShares": 719000,
+    "diffWeight": 3.902,
+    "isNew": true
+  },
+  {
+    "stockCode": "6223",
+    "stockName": "旺矽",
+    "shares": 276000,
+    "weight": 3.8361,
+    "diffShares": 276000,
+    "diffWeight": 3.8361,
+    "isNew": true
+  },
+  {
+    "stockCode": "3017",
+    "stockName": "奇鋐",
+    "shares": 538000,
+    "weight": 3.626,
+    "diffShares": 538000,
+    "diffWeight": 3.626,
+    "isNew": true
+  },
+  {
+    "stockCode": "2308",
+    "stockName": "台達電",
+    "shares": 690000,
+    "weight": 3.5485,
+    "diffShares": 690000,
+    "diffWeight": 3.5485,
+    "isNew": true
+  },
+  {
+    "stockCode": "6257",
+    "stockName": "矽格",
+    "shares": 6338000,
+    "weight": 3.0793,
+    "diffShares": 6338000,
+    "diffWeight": 3.0793,
+    "isNew": true
+  },
+  {
+    "stockCode": "6805",
+    "stockName": "富世達",
+    "shares": 501000,
+    "weight": 2.5697,
+    "diffShares": 501000,
+    "diffWeight": 2.5697,
+    "isNew": true
+  },
+  {
+    "stockCode": "3491",
+    "stockName": "昇達科",
+    "shares": 539000,
+    "weight": 2.4729,
+    "diffShares": 539000,
+    "diffWeight": 2.4729,
+    "isNew": true
+  },
+  {
+    "stockCode": "2454",
+    "stockName": "聯發科",
+    "shares": 443000,
+    "weight": 2.2782,
+    "diffShares": 443000,
+    "diffWeight": 2.2782,
+    "isNew": true
+  },
+  {
+    "stockCode": "6147",
+    "stockName": "頎邦",
+    "shares": 6546000,
+    "weight": 2.2413,
+    "diffShares": 6546000,
+    "diffWeight": 2.2413,
+    "isNew": true
+  },
+  {
+    "stockCode": "4958",
+    "stockName": "臻鼎-KY",
+    "shares": 2654000,
+    "weight": 2.2269,
+    "diffShares": 2654000,
+    "diffWeight": 2.2269,
+    "isNew": true
+  },
+  {
+    "stockCode": "1785",
+    "stockName": "光洋科",
+    "shares": 4611000,
+    "weight": 1.9158,
+    "diffShares": 4611000,
+    "diffWeight": 1.9158,
+    "isNew": true
+  },
+  {
+    "stockCode": "2467",
+    "stockName": "志聖",
+    "shares": 1179000,
+    "weight": 1.819,
+    "diffShares": 1179000,
+    "diffWeight": 1.819,
+    "isNew": true
+  },
+  {
+    "stockCode": "6285",
+    "stockName": "啟碁",
+    "shares": 2497000,
+    "weight": 1.6998,
+    "diffShares": 2497000,
+    "diffWeight": 1.6998,
+    "isNew": true
+  },
+  {
+    "stockCode": "8996",
+    "stockName": "高力",
+    "shares": 373000,
+    "weight": 1.2115,
+    "diffShares": 373000,
+    "diffWeight": 1.2115,
+    "isNew": true
+  },
+  {
+    "stockCode": "2059",
+    "stockName": "川湖",
+    "shares": 106000,
+    "weight": 1.0744,
+    "diffShares": 106000,
+    "diffWeight": 1.0744,
+    "isNew": true
+  },
+  {
+    "stockCode": "3030",
+    "stockName": "德律",
+    "shares": 1135000,
+    "weight": 1.0506,
+    "diffShares": 1135000,
+    "diffWeight": 1.0506,
+    "isNew": true
+  },
+  {
+    "stockCode": "2404",
+    "stockName": "漢唐",
+    "shares": 368000,
+    "weight": 1.0209,
+    "diffShares": 368000,
+    "diffWeight": 1.0209,
+    "isNew": true
+  },
+  {
+    "stockCode": "6488",
+    "stockName": "環球晶",
+    "shares": 683000,
+    "weight": 1.0186,
+    "diffShares": 683000,
+    "diffWeight": 1.0186,
+    "isNew": true
+  },
+  {
+    "stockCode": "2347",
+    "stockName": "聯強",
+    "shares": 3693000,
+    "weight": 0.8396,
+    "diffShares": 3693000,
+    "diffWeight": 0.8396,
+    "isNew": true
+  },
+  {
+    "stockCode": "3583",
+    "stockName": "辛耘",
+    "shares": 370000,
+    "weight": 0.8092,
+    "diffShares": 370000,
+    "diffWeight": 0.8092,
+    "isNew": true
+  },
+  {
+    "stockCode": "3533",
+    "stockName": "嘉澤",
+    "shares": 111000,
+    "weight": 0.7886,
+    "diffShares": 111000,
+    "diffWeight": 0.7886,
+    "isNew": true
+  },
+  {
+    "stockCode": "3211",
+    "stockName": "順達",
+    "shares": 780000,
+    "weight": 0.779,
+    "diffShares": 780000,
+    "diffWeight": 0.779,
+    "isNew": true
+  },
+  {
+    "stockCode": "3131",
+    "stockName": "弘塑",
+    "shares": 89000,
+    "weight": 0.7732,
+    "diffShares": 89000,
+    "diffWeight": 0.7732,
+    "isNew": true
+  },
+  {
+    "stockCode": "5289",
+    "stockName": "宜鼎",
+    "shares": 274000,
+    "weight": 0.7564,
+    "diffShares": 274000,
+    "diffWeight": 0.7564,
+    "isNew": true
+  },
+  {
+    "stockCode": "2313",
+    "stockName": "華通",
+    "shares": 1033000,
+    "weight": 0.7004,
+    "diffShares": 1033000,
+    "diffWeight": 0.7004,
+    "isNew": true
+  },
+  {
+    "stockCode": "2472",
+    "stockName": "立隆電",
+    "shares": 1210000,
+    "weight": 0.5993,
+    "diffShares": 1210000,
+    "diffWeight": 0.5993,
+    "isNew": true
+  },
+  {
+    "stockCode": "6274",
+    "stockName": "台燿",
+    "shares": 223000,
+    "weight": 0.5734,
+    "diffShares": 223000,
+    "diffWeight": 0.5734,
+    "isNew": true
+  },
+  {
+    "stockCode": "2303",
+    "stockName": "聯電",
+    "shares": 2445000,
+    "weight": 0.5089,
+    "diffShares": 2445000,
+    "diffWeight": 0.5089,
+    "isNew": true
+  },
+  {
+    "stockCode": "2368",
+    "stockName": "金像電",
+    "shares": 155000,
+    "weight": 0.5076,
+    "diffShares": 155000,
+    "diffWeight": 0.5076,
+    "isNew": true
+  },
+  {
+    "stockCode": "3711",
+    "stockName": "日月光投控",
+    "shares": 349000,
+    "weight": 0.4359,
+    "diffShares": 349000,
+    "diffWeight": 0.4359,
+    "isNew": true
+  },
+  {
+    "stockCode": "3665",
+    "stockName": "貿聯-KY",
+    "shares": 58136,
+    "weight": 0.3871,
+    "diffShares": 58136,
+    "diffWeight": 0.3871,
+    "isNew": true
+  },
+  {
+    "stockCode": "6691",
+    "stockName": "洋基工程",
+    "shares": 159000,
+    "weight": 0.2861,
+    "diffShares": 159000,
+    "diffWeight": 0.2861,
+    "isNew": true
+  },
+  {
+    "stockCode": "4938",
+    "stockName": "和碩",
+    "shares": 1236000,
+    "weight": 0.2766,
+    "diffShares": 1236000,
+    "diffWeight": 0.2766,
+    "isNew": true
+  },
+  {
+    "stockCode": "3529",
+    "stockName": "力旺",
+    "shares": 23000,
+    "weight": 0.2729,
+    "diffShares": 23000,
+    "diffWeight": 0.2729,
+    "isNew": true
+  },
+  {
+    "stockCode": "5274",
+    "stockName": "信驊",
+    "shares": 6000,
+    "weight": 0.2342,
+    "diffShares": 6000,
+    "diffWeight": 0.2342,
+    "isNew": true
+  },
+  {
+    "stockCode": "8046",
+    "stockName": "南電",
+    "shares": 103000,
+    "weight": 0.2219,
+    "diffShares": 103000,
+    "diffWeight": 0.2219,
+    "isNew": true
+  },
+  {
+    "stockCode": "6177",
+    "stockName": "達麗",
+    "shares": 1784350,
+    "weight": 0.2166,
+    "diffShares": 1784350,
+    "diffWeight": 0.2166,
+    "isNew": true
+  },
+  {
+    "stockCode": "3376",
+    "stockName": "新日興",
+    "shares": 355000,
+    "weight": 0.196,
+    "diffShares": 355000,
+    "diffWeight": 0.196,
+    "isNew": true
+  },
+  {
+    "stockCode": "2885",
+    "stockName": "元大金",
+    "shares": 1102420,
+    "weight": 0.1527,
+    "diffShares": 1102420,
+    "diffWeight": 0.1527,
+    "isNew": true
+  },
+  {
+    "stockCode": "8464",
+    "stockName": "億豐",
+    "shares": 142000,
+    "weight": 0.142,
+    "diffShares": 142000,
+    "diffWeight": 0.142,
+    "isNew": true
+  },
+  {
+    "stockCode": "1319",
+    "stockName": "東陽",
+    "shares": 355000,
+    "weight": 0.0749,
+    "diffShares": 355000,
+    "diffWeight": 0.0749,
+    "isNew": true
+  },
+  {
+    "stockCode": "4441",
+    "stockName": "振大環球",
+    "shares": 59000,
+    "weight": 0.0313,
+    "diffShares": 59000,
+    "diffWeight": 0.0313,
+    "isNew": true
+  },
+  {
+    "stockCode": "6510",
+    "stockName": "精測",
+    "shares": 1000,
+    "weight": 0.0103,
+    "diffShares": 1000,
+    "diffWeight": 0.0103,
+    "isNew": true
+  },
+  {
+    "stockCode": "2548",
+    "stockName": "華固",
+    "shares": 29600,
+    "weight": 0.0102,
+    "diffShares": 29600,
+    "diffWeight": 0.0102,
+    "isNew": true
+  },
+  {
+    "stockCode": "3443",
+    "stockName": "創意",
+    "shares": 1000,
+    "weight": 0.0096,
+    "diffShares": 1000,
+    "diffWeight": 0.0096,
+    "isNew": true
+  },
+  {
+    "stockCode": "1519",
+    "stockName": "華城",
+    "shares": 600,
+    "weight": 0.0014,
+    "diffShares": 600,
+    "diffWeight": 0.0014,
+    "isNew": true
+  },
+  {
+    "stockCode": "8358",
+    "stockName": "金居",
+    "shares": 1000,
+    "weight": 0.001,
+    "diffShares": 1000,
+    "diffWeight": 0.001,
+    "isNew": true
+  },
+  {
+    "stockCode": "3706",
+    "stockName": "神達",
+    "shares": 1400,
+    "weight": 0.0003,
+    "diffShares": 1400,
+    "diffWeight": 0.0003,
+    "isNew": true
+  },
+  {
+    "stockCode": "2886",
+    "stockName": "兆豐金",
+    "shares": 1000,
+    "weight": 0.0001,
+    "diffShares": 1000,
+    "diffWeight": 0.0001,
+    "isNew": true
+  }
+]
