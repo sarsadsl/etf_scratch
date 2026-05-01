@@ -46,7 +46,7 @@ export default {
         body: JSON.stringify({
           chat_id: env.CHANNEL_ID,
           text: message,
-          parse_mode: "Markdown"
+          parse_mode: "MarkdownV2"
         })
       });
 
