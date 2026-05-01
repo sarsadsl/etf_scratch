@@ -45,7 +45,8 @@ export default {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           chat_id: env.CHANNEL_ID,
-          text: message
+          text: message,
+          parse_mode: "Markdown"
         })
       });
 

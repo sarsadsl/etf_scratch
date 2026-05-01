@@ -371,7 +371,10 @@ function App() {
     setSendResult(null);
     const workerUrl = 'https://etf-telegram-proxy.sarsadsl.workers.dev/';
     try {
-      let reportText = `📊 *主動式 ETF 持股異動報告 (手動廣播)* (${selectedDate})\n\n`;
+      let reportText = `━━━━━━━━━━━━━━\n`;
+      reportText += `📊 *主動式 ETF 持股異動報告 (手動廣播)*\n`;
+      reportText += `📅 *日期*: ${selectedDate}\n`;
+      reportText += `━━━━━━━━━━━━━━\n\n`;
       let hasAnyChange = false;
 
       const BLACKLIST = { "00981A": ["2357", "2439", "5347"] };
@@ -390,33 +393,43 @@ function App() {
 
         if (changedHoldings.length > 0) {
           hasAnyChange = true;
-          reportText += `🔹 *${etfCode} ${ETF_META[etfCode]?.name.replace('主動', '')}*\n`;
+          reportText += `🏷️ *${etfCode} ${ETF_META[etfCode]?.name.replace('主動', '')}*\n`;
+          reportText += `──────────────────\n`;
           
           // 根據張數異動排序
           changedHoldings.sort((a, b) => (b.diffShares || 0) - (a.diffShares || 0));
 
-          changedHoldings.forEach((hold, idx) => {
+          const MAX_CHANGES = 10;
+          const isTruncated = changedHoldings.length > MAX_CHANGES;
+
+          changedHoldings.slice(0, MAX_CHANGES).forEach((hold, idx) => {
             let weightIcon = '➖';
             let sharesIcon = '';
             if (hold.diffWeight > 0) weightIcon = '🔺';
             if (hold.diffWeight < 0) weightIcon = '🔻';
             if (hold.diffShares > 0) sharesIcon = '+';
             
-            const newTag = hold.isNew ? ' 🆕新進榜' : '';
+            const newTag = hold.isNew ? ' ✨*新進榜*' : '';
             const sharesLot = Math.round(hold.shares / 1000);
             const diffSharesLot = Math.round(hold.diffShares / 1000);
             
             let sharesStr = '';
             if (diffSharesLot === 0 && hold.diffShares !== 0) {
-               sharesStr = `${(hold.shares / 1000).toFixed(1)}張 (${sharesIcon}${(hold.diffShares / 1000).toFixed(1)})`;
+               sharesStr = `${(hold.shares / 1000).toFixed(1)} 張 (${sharesIcon}${(hold.diffShares / 1000).toFixed(1)})`;
             } else {
-               sharesStr = `${sharesLot}張 (${sharesIcon}${diffSharesLot})`;
+               sharesStr = `${sharesLot.toLocaleString()} 張 (${sharesIcon}${diffSharesLot.toLocaleString()})`;
             }
             
-            reportText += `  #${idx + 1} \`${hold.stockCode}\` ${hold.stockName}${newTag}\n`;
-            reportText += `     ${hold.weight}% (${weightIcon}${hold.diffWeight > 0 ? '+' : ''}${hold.diffWeight}%) | ${sharesStr}\n`;
+            // Markdown 特殊字元跳脫
+            const safeName = hold.stockName.replace(/([_*\[\]()~`>#+\-=|{}.!])/g, '\\$1');
+            reportText += `${idx + 1}. *${safeName}* (\`${hold.stockCode}\`)${newTag}\n`;
+            reportText += `   📈 權重: ${hold.weight}% (${weightIcon}${hold.diffWeight > 0 ? '+' : ''}${hold.diffWeight}%)\n`;
+            reportText += `   📦 持倉: ${sharesStr}\n\n`;
           });
-          reportText += '\n';
+
+          if (isTruncated) {
+            reportText += `  ... 以及其他 ${changedHoldings.length - MAX_CHANGES} 筆異動\n`;
+          }
         }
       });
 
@@ -426,7 +439,8 @@ function App() {
         return;
       }
 
-      reportText += `🌐 發送自 ETF Monitor 儀表板`;
+      reportText += `━━━━━━━━━━━━━━\n`;
+      reportText += `🌐 [即時視覺化儀表板](https://stocktrack.morningjoy.cc)`;
 
       const response = await fetch(workerUrl, {
         method: 'POST',
