@@ -1,0 +1,531 @@
+[
+  {
+    "stockCode": "2330",
+    "stockName": "台積電",
+    "shares": 9113000,
+    "weight": 9.49,
+    "diffShares": 895000,
+    "diffSharesPercent": 10.89,
+    "diffWeight": 0.74,
+    "isNew": false
+  },
+  {
+    "stockCode": "2383",
+    "stockName": "台光電",
+    "shares": 3904000,
+    "weight": 8.02,
+    "diffShares": 223000,
+    "diffSharesPercent": 6.06,
+    "diffWeight": 0.25,
+    "isNew": false
+  },
+  {
+    "stockCode": "3653",
+    "stockName": "健策",
+    "shares": 2267000,
+    "weight": 6.03,
+    "diffShares": 69000,
+    "diffSharesPercent": 3.14,
+    "diffWeight": -0.15,
+    "isNew": false
+  },
+  {
+    "stockCode": "2308",
+    "stockName": "台達電",
+    "shares": 6024000,
+    "weight": 5.97,
+    "diffShares": 185000,
+    "diffSharesPercent": 3.17,
+    "diffWeight": -0.14,
+    "isNew": false
+  },
+  {
+    "stockCode": "3665",
+    "stockName": "貿聯-KY",
+    "shares": 3933848,
+    "weight": 5.43,
+    "diffShares": 121000,
+    "diffSharesPercent": 3.17,
+    "diffWeight": 0.37,
+    "isNew": false
+  },
+  {
+    "stockCode": "2345",
+    "stockName": "智邦",
+    "shares": 5057000,
+    "weight": 5.27,
+    "diffShares": 155000,
+    "diffSharesPercent": 3.16,
+    "diffWeight": -0.33,
+    "isNew": false
+  },
+  {
+    "stockCode": "3017",
+    "stockName": "奇鋐",
+    "shares": 3845000,
+    "weight": 5.16,
+    "diffShares": 118000,
+    "diffSharesPercent": 3.17,
+    "diffWeight": -0.06,
+    "isNew": false
+  },
+  {
+    "stockCode": "2368",
+    "stockName": "金像電",
+    "shares": 7389000,
+    "weight": 4.68,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": -0.12,
+    "isNew": false
+  },
+  {
+    "stockCode": "6223",
+    "stockName": "旺矽",
+    "shares": 1774000,
+    "weight": 4.26,
+    "diffShares": 54000,
+    "diffSharesPercent": 3.14,
+    "diffWeight": -0.05,
+    "isNew": false
+  },
+  {
+    "stockCode": "8046",
+    "stockName": "南電",
+    "shares": 9256000,
+    "weight": 3.69,
+    "diffShares": 284000,
+    "diffSharesPercent": 3.17,
+    "diffWeight": -0.05,
+    "isNew": false
+  },
+  {
+    "stockCode": "2454",
+    "stockName": "聯發科",
+    "shares": 3295000,
+    "weight": 3.66,
+    "diffShares": 101000,
+    "diffSharesPercent": 3.16,
+    "diffWeight": -0.15,
+    "isNew": false
+  },
+  {
+    "stockCode": "3037",
+    "stockName": "欣興",
+    "shares": 9287000,
+    "weight": 3.39,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": -0.06,
+    "isNew": false
+  },
+  {
+    "stockCode": "5274",
+    "stockName": "信驊",
+    "shares": 351000,
+    "weight": 2.75,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": -0.18,
+    "isNew": false
+  },
+  {
+    "stockCode": "2327",
+    "stockName": "國巨",
+    "shares": 14288000,
+    "weight": 2.11,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": -0.23,
+    "isNew": false
+  },
+  {
+    "stockCode": "6669",
+    "stockName": "緯穎",
+    "shares": 952000,
+    "weight": 2.03,
+    "diffShares": 29000,
+    "diffSharesPercent": 3.14,
+    "diffWeight": -0.06,
+    "isNew": false
+  },
+  {
+    "stockCode": "6515",
+    "stockName": "穎崴",
+    "shares": 368000,
+    "weight": 1.98,
+    "diffShares": 11000,
+    "diffSharesPercent": 3.08,
+    "diffWeight": -0.01,
+    "isNew": false
+  },
+  {
+    "stockCode": "3711",
+    "stockName": "日月光投控",
+    "shares": 7654000,
+    "weight": 1.78,
+    "diffShares": 235000,
+    "diffSharesPercent": 3.17,
+    "diffWeight": -0.01,
+    "isNew": false
+  },
+  {
+    "stockCode": "6805",
+    "stockName": "富世達",
+    "shares": 1698000,
+    "weight": 1.62,
+    "diffShares": 52000,
+    "diffSharesPercent": 3.16,
+    "diffWeight": -0.08,
+    "isNew": false
+  },
+  {
+    "stockCode": "6510",
+    "stockName": "精測",
+    "shares": 781000,
+    "weight": 1.51,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": -0.19,
+    "isNew": false
+  },
+  {
+    "stockCode": "2449",
+    "stockName": "京元電子",
+    "shares": 10503000,
+    "weight": 1.46,
+    "diffShares": 323000,
+    "diffSharesPercent": 3.17,
+    "diffWeight": -0.06,
+    "isNew": false
+  },
+  {
+    "stockCode": "6274",
+    "stockName": "台燿",
+    "shares": 3019000,
+    "weight": 1.44,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": -0.09,
+    "isNew": false
+  },
+  {
+    "stockCode": "3661",
+    "stockName": "世芯-KY",
+    "shares": 694000,
+    "weight": 1.38,
+    "diffShares": 21000,
+    "diffSharesPercent": 3.12,
+    "diffWeight": -0.04,
+    "isNew": false
+  },
+  {
+    "stockCode": "2303",
+    "stockName": "聯電",
+    "shares": 30837000,
+    "weight": 1.14,
+    "diffShares": 948000,
+    "diffSharesPercent": 3.17,
+    "diffWeight": -0.08,
+    "isNew": false
+  },
+  {
+    "stockCode": "8358",
+    "stockName": "金居",
+    "shares": 5558000,
+    "weight": 1.03,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": -0.11,
+    "isNew": false
+  },
+  {
+    "stockCode": "2317",
+    "stockName": "鴻海",
+    "shares": 6927000,
+    "weight": 0.78,
+    "diffShares": 212000,
+    "diffSharesPercent": 3.16,
+    "diffWeight": 0.01,
+    "isNew": false
+  },
+  {
+    "stockCode": "3189",
+    "stockName": "景碩",
+    "shares": 2952000,
+    "weight": 0.71,
+    "diffShares": 90000,
+    "diffSharesPercent": 3.14,
+    "diffWeight": -0.02,
+    "isNew": false
+  },
+  {
+    "stockCode": "8210",
+    "stockName": "勤誠",
+    "shares": 1051000,
+    "weight": 0.58,
+    "diffShares": 32000,
+    "diffSharesPercent": 3.14,
+    "diffWeight": 0.03,
+    "isNew": false
+  },
+  {
+    "stockCode": "5439",
+    "stockName": "高技",
+    "shares": 2880000,
+    "weight": 0.54,
+    "diffShares": 89000,
+    "diffSharesPercent": 3.19,
+    "diffWeight": -0.07,
+    "isNew": false
+  },
+  {
+    "stockCode": "3443",
+    "stockName": "創意",
+    "shares": 271000,
+    "weight": 0.53,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0.01,
+    "isNew": false
+  },
+  {
+    "stockCode": "6147",
+    "stockName": "頎邦",
+    "shares": 7884000,
+    "weight": 0.53,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": -0.05,
+    "isNew": false
+  },
+  {
+    "stockCode": "2404",
+    "stockName": "漢唐",
+    "shares": 1091000,
+    "weight": 0.53,
+    "diffShares": 33000,
+    "diffSharesPercent": 3.12,
+    "diffWeight": -0.02,
+    "isNew": false
+  },
+  {
+    "stockCode": "3264",
+    "stockName": "欣銓",
+    "shares": 4896000,
+    "weight": 0.48,
+    "diffShares": 151000,
+    "diffSharesPercent": 3.18,
+    "diffWeight": -0.04,
+    "isNew": false
+  },
+  {
+    "stockCode": "8996",
+    "stockName": "高力",
+    "shares": 535000,
+    "weight": 0.32,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": -0.01,
+    "isNew": false
+  },
+  {
+    "stockCode": "7769",
+    "stockName": "鴻勁",
+    "shares": 97000,
+    "weight": 0.23,
+    "diffShares": 2000,
+    "diffSharesPercent": 2.11,
+    "diffWeight": 0,
+    "isNew": false
+  },
+  {
+    "stockCode": "6191",
+    "stockName": "精成科",
+    "shares": 3985000,
+    "weight": 0.21,
+    "diffShares": 120000,
+    "diffSharesPercent": 3.1,
+    "diffWeight": -0.01,
+    "isNew": false
+  },
+  {
+    "stockCode": "3211",
+    "stockName": "順達",
+    "shares": 916000,
+    "weight": 0.18,
+    "diffShares": -2964000,
+    "diffSharesPercent": -76.39,
+    "diffWeight": -0.66,
+    "isNew": false
+  },
+  {
+    "stockCode": "2481",
+    "stockName": "強茂",
+    "shares": 3651000,
+    "weight": 0.18,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": -0.02,
+    "isNew": false
+  },
+  {
+    "stockCode": "3376",
+    "stockName": "新日興",
+    "shares": 1561000,
+    "weight": 0.17,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": -0.01,
+    "isNew": false
+  },
+  {
+    "stockCode": "6415",
+    "stockName": "矽力-KY",
+    "shares": 660000,
+    "weight": 0.14,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
+  },
+  {
+    "stockCode": "4966",
+    "stockName": "譜瑞-KY",
+    "shares": 370000,
+    "weight": 0.11,
+    "diffShares": 370000,
+    "diffWeight": 0.11,
+    "isNew": true
+  },
+  {
+    "stockCode": "6488",
+    "stockName": "環球晶",
+    "shares": 332000,
+    "weight": 0.1,
+    "diffShares": -617000,
+    "diffSharesPercent": -65.02,
+    "diffWeight": -0.2,
+    "isNew": false
+  },
+  {
+    "stockCode": "3324",
+    "stockName": "雙鴻",
+    "shares": 170000,
+    "weight": 0.09,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": -0.01,
+    "isNew": false
+  },
+  {
+    "stockCode": "2313",
+    "stockName": "華通",
+    "shares": 764000,
+    "weight": 0.09,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": -0.01,
+    "isNew": false
+  },
+  {
+    "stockCode": "3217",
+    "stockName": "優群",
+    "shares": 780000,
+    "weight": 0.07,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
+  },
+  {
+    "stockCode": "1303",
+    "stockName": "南亞",
+    "shares": 1373000,
+    "weight": 0.06,
+    "diffShares": -6642000,
+    "diffSharesPercent": -82.87,
+    "diffWeight": -0.31,
+    "isNew": false
+  },
+  {
+    "stockCode": "2002",
+    "stockName": "中鋼",
+    "shares": 5160000,
+    "weight": 0.05,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
+  },
+  {
+    "stockCode": "3583",
+    "stockName": "辛耘",
+    "shares": 57000,
+    "weight": 0.03,
+    "diffShares": -470000,
+    "diffSharesPercent": -89.18,
+    "diffWeight": -0.2,
+    "isNew": false
+  },
+  {
+    "stockCode": "1319",
+    "stockName": "東陽",
+    "shares": 508000,
+    "weight": 0.02,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
+  },
+  {
+    "stockCode": "1815",
+    "stockName": "富喬",
+    "shares": 107000,
+    "weight": 0.01,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
+  },
+  {
+    "stockCode": "2357",
+    "stockName": "華碩",
+    "shares": 15000,
+    "weight": 0,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
+  },
+  {
+    "stockCode": "2439",
+    "stockName": "美律",
+    "shares": 15000,
+    "weight": 0,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
+  },
+  {
+    "stockCode": "4979",
+    "stockName": "華星光",
+    "shares": 1000,
+    "weight": 0,
+    "diffShares": -1036000,
+    "diffSharesPercent": -99.9,
+    "diffWeight": -0.34,
+    "isNew": false
+  },
+  {
+    "stockCode": "5347",
+    "stockName": "世界",
+    "shares": 61000,
+    "weight": 0,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
+  }
+]

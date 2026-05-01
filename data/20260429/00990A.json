@@ -1,0 +1,522 @@
+[
+  {
+    "stockCode": "LITE",
+    "stockName": "LUMENTUM HOLDINGS INC",
+    "shares": 70985,
+    "weight": 6.6,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": -0.4,
+    "isNew": false
+  },
+  {
+    "stockCode": "NVDA",
+    "stockName": "NVIDIA CORP",
+    "shares": 202650,
+    "weight": 5.08,
+    "diffShares": 60400,
+    "diffSharesPercent": 42.46,
+    "diffWeight": 1.55,
+    "isNew": false
+  },
+  {
+    "stockCode": "2308",
+    "stockName": "台達電",
+    "shares": 628000,
+    "weight": 4.97,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0.35,
+    "isNew": false
+  },
+  {
+    "stockCode": "SNDK",
+    "stockName": "SANDISK CORP",
+    "shares": 40093,
+    "weight": 4.72,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": -0.2,
+    "isNew": false
+  },
+  {
+    "stockCode": "MU",
+    "stockName": "MICRON TECHNOLOGY INC",
+    "shares": 62071,
+    "weight": 3.68,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": -0.05,
+    "isNew": false
+  },
+  {
+    "stockCode": "2330",
+    "stockName": "台積電",
+    "shares": 433000,
+    "weight": 3.57,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
+  },
+  {
+    "stockCode": "BE",
+    "stockName": "BLOOM ENERGY CORP- A",
+    "shares": 109100,
+    "weight": 2.9,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": -0.03,
+    "isNew": false
+  },
+  {
+    "stockCode": "5706",
+    "stockName": "MITSUI KINZOKU CO LTD",
+    "shares": 92300,
+    "weight": 2.81,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0.2,
+    "isNew": false
+  },
+  {
+    "stockCode": "285A",
+    "stockName": "KIOXIA HOLDINGS CORP",
+    "shares": 102900,
+    "weight": 2.75,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0.12,
+    "isNew": false
+  },
+  {
+    "stockCode": "AMD",
+    "stockName": "ADVANCED MICRO DEVICES",
+    "shares": 71400,
+    "weight": 2.71,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": -0.03,
+    "isNew": false
+  },
+  {
+    "stockCode": "TSEM",
+    "stockName": "TOWER SEMICONDUCTOR LTD",
+    "shares": 118182,
+    "weight": 2.69,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": -0.06,
+    "isNew": false
+  },
+  {
+    "stockCode": "GLW",
+    "stockName": "CORNING INC",
+    "shares": 145895,
+    "weight": 2.62,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": -0.19,
+    "isNew": false
+  },
+  {
+    "stockCode": "TER",
+    "stockName": "TERADYNE INC",
+    "shares": 58500,
+    "weight": 2.61,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": -0.09,
+    "isNew": false
+  },
+  {
+    "stockCode": "CIEN",
+    "stockName": "CIENA CORP",
+    "shares": 42342,
+    "weight": 2.36,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": -0.1,
+    "isNew": false
+  },
+  {
+    "stockCode": "2383",
+    "stockName": "台光電",
+    "shares": 144000,
+    "weight": 2.35,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": -0.13,
+    "isNew": false
+  },
+  {
+    "stockCode": "5801",
+    "stockName": "FURUKAWA ELECTRIC CO LTD",
+    "shares": 73200,
+    "weight": 2.31,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0.06,
+    "isNew": false
+  },
+  {
+    "stockCode": "009150",
+    "stockName": "SAMSUNG ELECTRO-MECHANICS CO",
+    "shares": 34369,
+    "weight": 2.3,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0.17,
+    "isNew": false
+  },
+  {
+    "stockCode": "005930",
+    "stockName": "SAMSUNG ELECTRONICS CO LTD",
+    "shares": 115810,
+    "weight": 2.05,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0.02,
+    "isNew": false
+  },
+  {
+    "stockCode": "3653",
+    "stockName": "健策",
+    "shares": 110000,
+    "weight": 2.03,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0.04,
+    "isNew": false
+  },
+  {
+    "stockCode": "6787",
+    "stockName": "MEIKO ELECTRONICS CO LTD",
+    "shares": 85300,
+    "weight": 2.01,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0.12,
+    "isNew": false
+  },
+  {
+    "stockCode": "GOOGL",
+    "stockName": "ALPHABET INC-CL A",
+    "shares": 48100,
+    "weight": 1.98,
+    "diffShares": 24900,
+    "diffSharesPercent": 107.33,
+    "diffWeight": 1.05,
+    "isNew": false
+  },
+  {
+    "stockCode": "2368",
+    "stockName": "金像電",
+    "shares": 370000,
+    "weight": 1.92,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0.01,
+    "isNew": false
+  },
+  {
+    "stockCode": "WDC",
+    "stockName": "WESTERN DIGITAL CORP",
+    "shares": 41462,
+    "weight": 1.9,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
+  },
+  {
+    "stockCode": "2345",
+    "stockName": "智邦",
+    "shares": 221000,
+    "weight": 1.89,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0.14,
+    "isNew": false
+  },
+  {
+    "stockCode": "MRVL",
+    "stockName": "MARVELL TECHNOLOGY INC",
+    "shares": 103000,
+    "weight": 1.85,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": -0.02,
+    "isNew": false
+  },
+  {
+    "stockCode": "AIXA",
+    "stockName": "AIXTRON SE",
+    "shares": 278437,
+    "weight": 1.64,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": -0.02,
+    "isNew": false
+  },
+  {
+    "stockCode": "3037",
+    "stockName": "欣興",
+    "shares": 475000,
+    "weight": 1.46,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0.01,
+    "isNew": false
+  },
+  {
+    "stockCode": "AVGO",
+    "stockName": "BROADCOM INC",
+    "shares": 30960,
+    "weight": 1.45,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": -0.03,
+    "isNew": false
+  },
+  {
+    "stockCode": "CRWV",
+    "stockName": "COREWEAVE INC-CL A",
+    "shares": 109900,
+    "weight": 1.36,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": -0.05,
+    "isNew": false
+  },
+  {
+    "stockCode": "3017",
+    "stockName": "奇鋐",
+    "shares": 130000,
+    "weight": 1.35,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0.01,
+    "isNew": false
+  },
+  {
+    "stockCode": "SOI",
+    "stockName": "S.O.I.T.E.C.",
+    "shares": 89943,
+    "weight": 1.22,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": -0.11,
+    "isNew": false
+  },
+  {
+    "stockCode": "ORCL",
+    "stockName": "ORACLE CORP",
+    "shares": 58680,
+    "weight": 1.14,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": -0.02,
+    "isNew": false
+  },
+  {
+    "stockCode": "5803",
+    "stockName": "FUJIKURA LTD",
+    "shares": 243500,
+    "weight": 1.13,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0.02,
+    "isNew": false
+  },
+  {
+    "stockCode": "3110",
+    "stockName": "NITTO BOSEKI CO LTD",
+    "shares": 53700,
+    "weight": 1.12,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0.06,
+    "isNew": false
+  },
+  {
+    "stockCode": "000660",
+    "stockName": "SK HYNIX INC",
+    "shares": 10711,
+    "weight": 1.11,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0.03,
+    "isNew": false
+  },
+  {
+    "stockCode": "3533",
+    "stockName": "嘉澤",
+    "shares": 101000,
+    "weight": 1.01,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0.01,
+    "isNew": false
+  },
+  {
+    "stockCode": "6274",
+    "stockName": "台燿",
+    "shares": 268000,
+    "weight": 0.96,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": -0.01,
+    "isNew": false
+  },
+  {
+    "stockCode": "COHR",
+    "stockName": "COHERENT CORP",
+    "shares": 26174,
+    "weight": 0.93,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": -0.03,
+    "isNew": false
+  },
+  {
+    "stockCode": "CRWD",
+    "stockName": "CROWDSTRIKE HOLDINGS INC - A",
+    "shares": 15200,
+    "weight": 0.81,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0.02,
+    "isNew": false
+  },
+  {
+    "stockCode": "2360",
+    "stockName": "致茂",
+    "shares": 103000,
+    "weight": 0.79,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0.07,
+    "isNew": false
+  },
+  {
+    "stockCode": "6510",
+    "stockName": "精測",
+    "shares": 56000,
+    "weight": 0.77,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0.04,
+    "isNew": false
+  },
+  {
+    "stockCode": "APP",
+    "stockName": "APPLOVIN CORP-CLASS A",
+    "shares": 14160,
+    "weight": 0.75,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
+  },
+  {
+    "stockCode": "268A",
+    "stockName": "RIGAKU HOLDINGS CORP",
+    "shares": 340900,
+    "weight": 0.7,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0.02,
+    "isNew": false
+  },
+  {
+    "stockCode": "4958",
+    "stockName": "臻鼎-KY",
+    "shares": 435000,
+    "weight": 0.64,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0.07,
+    "isNew": false
+  },
+  {
+    "stockCode": "010120",
+    "stockName": "LS ELECTRIC CO LTD",
+    "shares": 29671,
+    "weight": 0.62,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0.03,
+    "isNew": false
+  },
+  {
+    "stockCode": "5274",
+    "stockName": "信驊",
+    "shares": 10000,
+    "weight": 0.6,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0.02,
+    "isNew": false
+  },
+  {
+    "stockCode": "ONTO",
+    "stockName": "ONTO INNOVATION INC",
+    "shares": 18000,
+    "weight": 0.6,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": -0.02,
+    "isNew": false
+  },
+  {
+    "stockCode": "PLTR",
+    "stockName": "PALANTIR TECHNOLOGIES INC-A",
+    "shares": 33200,
+    "weight": 0.55,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0.01,
+    "isNew": false
+  },
+  {
+    "stockCode": "3529",
+    "stockName": "力旺",
+    "shares": 36000,
+    "weight": 0.53,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
+  },
+  {
+    "stockCode": "2467",
+    "stockName": "志聖",
+    "shares": 249000,
+    "weight": 0.51,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0.06,
+    "isNew": false
+  },
+  {
+    "stockCode": "2454",
+    "stockName": "聯發科",
+    "shares": 50000,
+    "weight": 0.49,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0.05,
+    "isNew": false
+  },
+  {
+    "stockCode": "RKLB",
+    "stockName": "ROCKET LAB CORP",
+    "shares": 52200,
+    "weight": 0.48,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": -0.01,
+    "isNew": false
+  }
+]
