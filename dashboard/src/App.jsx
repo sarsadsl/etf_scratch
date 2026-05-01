@@ -433,8 +433,9 @@ function App() {
            sharesStr = `${sharesLot.toLocaleString()} 張 (${sharesIcon}${diffSharesLot.toLocaleString()})`;
         }
 
+        const lineIcon = hold.diffShares >= 0 ? '📈' : '📉';
         msg += `${idx + 1}. ${hold.stockName} (${hold.stockCode})${newTag}\n`;
-        msg += `   📈 權重: ${hold.weight}% (${weightIcon}${hold.diffWeight > 0 ? '+' : ''}${hold.diffWeight}%)\n`;
+        msg += `   ${lineIcon} 權重: ${hold.weight}% (${weightIcon}${hold.diffWeight > 0 ? '+' : ''}${hold.diffWeight}%)\n`;
         msg += `   📦 持倉: ${sharesStr}\n\n`;
       });
 

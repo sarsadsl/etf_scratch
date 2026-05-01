@@ -24,7 +24,10 @@ export async function sendTelegramNotification(results) {
   message += `📅 *日期*: ${today}\n`;
   message += `━━━━━━━━━━━━━━\n\n`;
 
-  results.forEach(result => {
+  // 暫時只處理 00981A
+  const filteredResults = results.filter(r => r.target.code === '00981A');
+
+  filteredResults.forEach(result => {
     message += `🏷️ *${result.target.code} ${result.target.name.replace('主動', '')}*\n`;
     message += `──────────────────\n`;
     
@@ -70,17 +73,23 @@ export async function sendTelegramNotification(results) {
       const newTag = stock.isNew ? ' ✨*新進榜*' : '';
       const sharesLot = Math.round(stock.shares / 1000);
       const diffSharesLot = Math.round(stock.diffShares / 1000);
+      const prevLot = sharesLot - diffSharesLot;
       
       let sharesStr = '';
       if (diffSharesLot === 0 && stock.diffShares !== 0) {
-         sharesStr = `${(stock.shares / 1000).toFixed(1)} 張 (${sharesIcon}${(stock.diffShares / 1000).toFixed(1)})`;
+         const curT = (stock.shares / 1000).toFixed(1);
+         const diffT = (stock.diffShares / 1000).toFixed(1);
+         const prevT = (parseFloat(curT) - parseFloat(diffT)).toFixed(1);
+         sharesStr = `${prevT} -> ${curT} 張 (${sharesIcon}${diffT})`;
       } else {
-         sharesStr = `${sharesLot.toLocaleString()} 張 (${sharesIcon}${diffSharesLot.toLocaleString()})`;
+         sharesStr = `${prevLot.toLocaleString()} -> ${sharesLot.toLocaleString()} 張 (${sharesIcon}${diffSharesLot.toLocaleString()})`;
       }
       
       const safeStockName = stock.stockName.replace(/([_*\[\]()~`>#+\-=|{}.!])/g, '\\$1');
+      const lineIcon = stock.diffShares >= 0 ? '📈' : '📉';
+
       message += `${idx + 1}. *${safeStockName}* (\`${stock.stockCode}\`)${newTag}\n`;
-      message += `   📈 權重: ${stock.weight}% (${weightIcon}${stock.diffWeight > 0 ? '+' : ''}${stock.diffWeight}%)\n`;
+      message += `   ${lineIcon} 權重: ${stock.weight}% (${weightIcon}${stock.diffWeight > 0 ? '+' : ''}${stock.diffWeight}%)\n`;
       message += `   📦 持倉: ${sharesStr}\n\n`;
     });
 
