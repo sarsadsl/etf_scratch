@@ -6,7 +6,7 @@
     "weight": 7.02,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.42,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -16,7 +16,7 @@
     "weight": 4.96,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -26,7 +26,7 @@
     "weight": 4.91,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.19,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -36,7 +36,7 @@
     "weight": 4.88,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.2,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -46,7 +46,7 @@
     "weight": 3.71,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -56,7 +56,7 @@
     "weight": 3.62,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.72,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -66,7 +66,7 @@
     "weight": 3.44,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.13,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -76,7 +76,7 @@
     "weight": 2.77,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.06,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -86,7 +86,7 @@
     "weight": 2.75,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.06,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -96,7 +96,7 @@
     "weight": 2.71,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.02,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -106,7 +106,7 @@
     "weight": 2.7,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.05,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -114,9 +114,9 @@
     "stockName": "WESTERN DIGITAL CORP",
     "shares": 52262,
     "weight": 2.48,
-    "diffShares": 10800,
-    "diffSharesPercent": 26.05,
-    "diffWeight": 0.58,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -126,7 +126,7 @@
     "weight": 2.33,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.02,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -136,7 +136,7 @@
     "weight": 2.26,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.05,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -146,7 +146,7 @@
     "weight": 2.21,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.09,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -156,7 +156,7 @@
     "weight": 2.18,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.15,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -166,7 +166,7 @@
     "weight": 2.04,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -176,7 +176,7 @@
     "weight": 1.97,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.04,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -184,9 +184,9 @@
     "stockName": "CORNING INC",
     "shares": 112595,
     "weight": 1.97,
-    "diffShares": -33300,
-    "diffSharesPercent": -22.82,
-    "diffWeight": -0.65,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -196,7 +196,7 @@
     "weight": 1.94,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.04,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -204,9 +204,9 @@
     "stockName": "欣興",
     "shares": 634000,
     "weight": 1.86,
-    "diffShares": 159000,
-    "diffSharesPercent": 33.47,
-    "diffWeight": 0.4,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -216,7 +216,7 @@
     "weight": 1.86,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -226,7 +226,7 @@
     "weight": 1.78,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.11,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -236,7 +236,7 @@
     "weight": 1.67,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -244,9 +244,9 @@
     "stockName": "TERADYNE INC",
     "shares": 42900,
     "weight": 1.51,
-    "diffShares": -15600,
-    "diffSharesPercent": -26.67,
-    "diffWeight": -1.1,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -266,7 +266,7 @@
     "weight": 1.45,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.09,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -276,7 +276,7 @@
     "weight": 1.37,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.15,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -286,7 +286,7 @@
     "weight": 1.34,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -294,9 +294,9 @@
     "stockName": "CIENA CORP",
     "shares": 24442,
     "weight": 1.34,
-    "diffShares": -17900,
-    "diffSharesPercent": -42.27,
-    "diffWeight": -1.02,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -304,9 +304,9 @@
     "stockName": "金像電",
     "shares": 267000,
     "weight": 1.32,
-    "diffShares": -103000,
-    "diffSharesPercent": -27.84,
-    "diffWeight": -0.6,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -314,9 +314,9 @@
     "stockName": "LS ELECTRIC CO LTD",
     "shares": 52680,
     "weight": 1.12,
-    "diffShares": 23009,
-    "diffSharesPercent": 77.55,
-    "diffWeight": 0.5,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -326,7 +326,7 @@
     "weight": 1.1,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -336,7 +336,7 @@
     "weight": 1.09,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -346,7 +346,7 @@
     "weight": 1.08,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -354,9 +354,10 @@
     "stockName": "FORMFACTOR INC",
     "shares": 63300,
     "weight": 0.99,
-    "diffShares": 63300,
-    "diffWeight": 0.99,
-    "isNew": true
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
   },
   {
     "stockCode": "3533",
@@ -365,7 +366,7 @@
     "weight": 0.98,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -375,7 +376,7 @@
     "weight": 0.95,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -385,7 +386,7 @@
     "weight": 0.92,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -395,7 +396,7 @@
     "weight": 0.79,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.02,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -405,7 +406,7 @@
     "weight": 0.77,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.02,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -413,9 +414,10 @@
     "stockName": "INTEL CORP",
     "shares": 69505,
     "weight": 0.76,
-    "diffShares": 69505,
-    "diffWeight": 0.76,
-    "isNew": true
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
   },
   {
     "stockCode": "6510",
@@ -424,7 +426,7 @@
     "weight": 0.74,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -432,9 +434,10 @@
     "stockName": "NOKIA CORP-SPON ADR",
     "shares": 477710,
     "weight": 0.69,
-    "diffShares": 477710,
-    "diffWeight": 0.69,
-    "isNew": true
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
   },
   {
     "stockCode": "268A",
@@ -443,7 +446,7 @@
     "weight": 0.68,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.02,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -453,7 +456,7 @@
     "weight": 0.61,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -473,7 +476,7 @@
     "weight": 0.59,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -483,7 +486,7 @@
     "weight": 0.51,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.02,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -493,7 +496,7 @@
     "weight": 0.5,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -503,7 +506,7 @@
     "weight": 0.47,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.02,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -513,40 +516,7 @@
     "weight": 0.46,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.02,
+    "diffWeight": 0,
     "isNew": false
-  },
-  {
-    "stockCode": "ORCL",
-    "stockName": "ORACLE CORP",
-    "shares": 0,
-    "weight": 0,
-    "diffShares": -58680,
-    "diffWeight": -1.14,
-    "diffSharesPercent": -100,
-    "isNew": false,
-    "isSoldOut": true
-  },
-  {
-    "stockCode": "APP",
-    "stockName": "APPLOVIN CORP-CLASS A",
-    "shares": 0,
-    "weight": 0,
-    "diffShares": -14160,
-    "diffWeight": -0.75,
-    "diffSharesPercent": -100,
-    "isNew": false,
-    "isSoldOut": true
-  },
-  {
-    "stockCode": "PLTR",
-    "stockName": "PALANTIR TECHNOLOGIES INC-A",
-    "shares": 0,
-    "weight": 0,
-    "diffShares": -33200,
-    "diffWeight": -0.55,
-    "diffSharesPercent": -100,
-    "isNew": false,
-    "isSoldOut": true
   }
 ]
