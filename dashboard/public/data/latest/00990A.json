@@ -6,7 +6,7 @@
     "weight": 6.41,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.43,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -16,7 +16,7 @@
     "weight": 6.39,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.4,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -26,7 +26,7 @@
     "weight": 4.61,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.11,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -36,7 +36,7 @@
     "weight": 4.06,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.16,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -46,7 +46,7 @@
     "weight": 3.95,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.07,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -56,7 +56,7 @@
     "weight": 2.95,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.12,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -66,7 +66,7 @@
     "weight": 2.89,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.44,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -76,7 +76,7 @@
     "weight": 2.87,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.39,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -86,7 +86,7 @@
     "weight": 2.85,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.33,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -96,7 +96,7 @@
     "weight": 2.68,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -106,7 +106,7 @@
     "weight": 2.51,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.11,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -116,7 +116,7 @@
     "weight": 2.45,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.2,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -126,7 +126,7 @@
     "weight": 2.45,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.13,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -136,7 +136,7 @@
     "weight": 2.3,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -146,7 +146,7 @@
     "weight": 2.2,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -156,7 +156,7 @@
     "weight": 2.08,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -166,7 +166,7 @@
     "weight": 1.98,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.08,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -176,7 +176,7 @@
     "weight": 1.94,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -186,7 +186,7 @@
     "weight": 1.83,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.07,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -196,7 +196,7 @@
     "weight": 1.82,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.04,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -206,7 +206,7 @@
     "weight": 1.72,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.06,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -216,7 +216,7 @@
     "weight": 1.67,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.14,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -226,7 +226,7 @@
     "weight": 1.61,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -236,7 +236,7 @@
     "weight": 1.49,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.12,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -246,7 +246,7 @@
     "weight": 1.42,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.05,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -254,9 +254,9 @@
     "stockName": "RIGAKU HOLDINGS CORP",
     "shares": 687700,
     "weight": 1.39,
-    "diffShares": 346800,
-    "diffSharesPercent": 101.73,
-    "diffWeight": 0.79,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -266,7 +266,7 @@
     "weight": 1.37,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.17,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -276,7 +276,7 @@
     "weight": 1.33,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.11,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -286,7 +286,7 @@
     "weight": 1.29,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.05,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -294,9 +294,9 @@
     "stockName": "FURUKAWA ELECTRIC CO LTD",
     "shares": 42800,
     "weight": 1.28,
-    "diffShares": -30400,
-    "diffSharesPercent": -41.53,
-    "diffWeight": -0.7,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -316,7 +316,7 @@
     "weight": 1.25,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.11,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -326,7 +326,7 @@
     "weight": 1.24,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -336,7 +336,7 @@
     "weight": 1.21,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.18,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -356,7 +356,7 @@
     "weight": 1.11,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.12,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -366,7 +366,7 @@
     "weight": 1.02,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.09,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -376,7 +376,7 @@
     "weight": 1.01,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.02,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -386,7 +386,7 @@
     "weight": 0.97,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.12,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -396,7 +396,7 @@
     "weight": 0.96,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.09,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -406,7 +406,7 @@
     "weight": 0.93,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -416,7 +416,7 @@
     "weight": 0.88,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.07,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -424,9 +424,10 @@
     "stockName": "RENESAS ELECTRONICS CORP",
     "shares": 337900,
     "weight": 0.79,
-    "diffShares": 337900,
-    "diffWeight": 0.79,
-    "isNew": true
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
   },
   {
     "stockCode": "2360",
@@ -435,7 +436,7 @@
     "weight": 0.77,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -445,7 +446,7 @@
     "weight": 0.77,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -455,7 +456,7 @@
     "weight": 0.77,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -463,9 +464,10 @@
     "stockName": "SOFTBANK GROUP CORP",
     "shares": 169800,
     "weight": 0.71,
-    "diffShares": 169800,
-    "diffWeight": 0.71,
-    "isNew": true
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
   },
   {
     "stockCode": "4062",
@@ -474,7 +476,7 @@
     "weight": 0.66,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.12,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -484,7 +486,7 @@
     "weight": 0.6,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.04,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -494,7 +496,7 @@
     "weight": 0.58,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -502,9 +504,10 @@
     "stockName": "NEBIUS GROUP NV",
     "shares": 30100,
     "weight": 0.56,
-    "diffShares": 30100,
-    "diffWeight": 0.56,
-    "isNew": true
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
   },
   {
     "stockCode": "2454",
@@ -513,7 +516,7 @@
     "weight": 0.55,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -523,18 +526,7 @@
     "weight": 0.55,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.04,
+    "diffWeight": 0,
     "isNew": false
-  },
-  {
-    "stockCode": "COHR",
-    "stockName": "COHERENT CORP",
-    "shares": 0,
-    "weight": 0,
-    "diffShares": -26174,
-    "diffWeight": -0.92,
-    "diffSharesPercent": -100,
-    "isNew": false,
-    "isSoldOut": true
   }
 ]

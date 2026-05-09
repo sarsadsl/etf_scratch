@@ -6,7 +6,7 @@
     "weight": 9.78,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.16,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -16,7 +16,7 @@
     "weight": 8.22,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.16,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -26,7 +26,7 @@
     "weight": 6.09,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.49,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -36,7 +36,7 @@
     "weight": 5.56,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.29,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -46,7 +46,7 @@
     "weight": 5.44,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.05,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -56,7 +56,7 @@
     "weight": 4.86,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.06,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -66,7 +66,7 @@
     "weight": 4.13,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.26,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -76,7 +76,7 @@
     "weight": 4.06,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.34,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -84,9 +84,9 @@
     "stockName": "緯穎",
     "shares": 2047000,
     "weight": 4,
-    "diffShares": 228000,
-    "diffSharesPercent": 12.53,
-    "diffWeight": 0.74,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -94,9 +94,9 @@
     "stockName": "旺矽",
     "shares": 2054000,
     "weight": 3.88,
-    "diffShares": 132000,
-    "diffSharesPercent": 6.87,
-    "diffWeight": 0.33,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -104,9 +104,9 @@
     "stockName": "奇鋐",
     "shares": 4202000,
     "weight": 3.86,
-    "diffShares": 120000,
-    "diffSharesPercent": 2.94,
-    "diffWeight": 0.25,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -116,7 +116,7 @@
     "weight": 3.19,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.22,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -126,7 +126,7 @@
     "weight": 3.11,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.11,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -136,7 +136,7 @@
     "weight": 3.08,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.09,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -146,7 +146,7 @@
     "weight": 2.68,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.06,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -156,7 +156,7 @@
     "weight": 2.52,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.17,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -166,7 +166,7 @@
     "weight": 2.14,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.06,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -176,7 +176,7 @@
     "weight": 1.59,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.05,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -196,7 +196,7 @@
     "weight": 1.51,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.1,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -206,7 +206,7 @@
     "weight": 1.5,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -216,7 +216,7 @@
     "weight": 1.33,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -226,7 +226,7 @@
     "weight": 1.31,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.07,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -236,7 +236,7 @@
     "weight": 1.25,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.02,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -246,7 +246,7 @@
     "weight": 0.82,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.09,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -256,7 +256,7 @@
     "weight": 0.76,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.06,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -264,9 +264,9 @@
     "stockName": "景碩",
     "shares": 3744000,
     "weight": 0.64,
-    "diffShares": -1616000,
-    "diffSharesPercent": -30.15,
-    "diffWeight": -0.33,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -276,7 +276,7 @@
     "weight": 0.54,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.02,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -284,9 +284,9 @@
     "stockName": "漢唐",
     "shares": 1394000,
     "weight": 0.53,
-    "diffShares": 301000,
-    "diffSharesPercent": 27.54,
-    "diffWeight": 0.13,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -296,7 +296,7 @@
     "weight": 0.49,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.02,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -306,7 +306,7 @@
     "weight": 0.49,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.02,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -316,7 +316,7 @@
     "weight": 0.47,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -326,7 +326,7 @@
     "weight": 0.39,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.02,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -336,7 +336,7 @@
     "weight": 0.39,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.02,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -344,9 +344,9 @@
     "stockName": "金居",
     "shares": 1980000,
     "weight": 0.34,
-    "diffShares": -3578000,
-    "diffSharesPercent": -64.38,
-    "diffWeight": -0.62,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -356,7 +356,7 @@
     "weight": 0.3,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -366,7 +366,7 @@
     "weight": 0.25,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -376,7 +376,7 @@
     "weight": 0.14,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -396,7 +396,7 @@
     "weight": 0.13,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -404,9 +404,9 @@
     "stockName": "譜瑞-KY",
     "shares": 486000,
     "weight": 0.12,
-    "diffShares": 100000,
-    "diffSharesPercent": 25.91,
-    "diffWeight": 0.03,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -416,7 +416,7 @@
     "weight": 0.11,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -446,7 +446,7 @@
     "weight": 0.02,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -484,9 +484,9 @@
     "stockName": "頎邦",
     "shares": 1000,
     "weight": 0,
-    "diffShares": -7984000,
-    "diffSharesPercent": -99.99,
-    "diffWeight": -0.56,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -494,8 +494,8 @@
     "stockName": "世界",
     "shares": 1000,
     "weight": 0,
-    "diffShares": -62000,
-    "diffSharesPercent": -98.41,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false
   }

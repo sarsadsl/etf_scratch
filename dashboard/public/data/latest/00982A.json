@@ -4,9 +4,9 @@
     "stockName": "台積電",
     "shares": 1728000,
     "weight": 8.4935,
-    "diffShares": 36000,
-    "diffSharesPercent": 2.13,
-    "diffWeight": 0.06,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -16,7 +16,7 @@
     "weight": 6.4643,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.04,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -26,7 +26,7 @@
     "weight": 5.7257,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.33,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -34,9 +34,9 @@
     "stockName": "台光電",
     "shares": 510000,
     "weight": 5.1996,
-    "diffShares": 11000,
-    "diffSharesPercent": 2.2,
-    "diffWeight": -0.14,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -46,7 +46,7 @@
     "weight": 4.4644,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.24,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -56,7 +56,7 @@
     "weight": 4.3531,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.09,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -64,9 +64,9 @@
     "stockName": "智邦",
     "shares": 797000,
     "weight": 4.0628,
-    "diffShares": 16000,
-    "diffSharesPercent": 2.05,
-    "diffWeight": -0.25,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -74,9 +74,9 @@
     "stockName": "欣銓",
     "shares": 8430000,
     "weight": 4.053,
-    "diffShares": 162000,
-    "diffSharesPercent": 1.96,
-    "diffWeight": -0.38,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -84,9 +84,9 @@
     "stockName": "亞翔",
     "shares": 2533000,
     "weight": 3.8819,
-    "diffShares": 50000,
-    "diffSharesPercent": 2.01,
-    "diffWeight": 0.02,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -94,9 +94,9 @@
     "stockName": "致茂",
     "shares": 799000,
     "weight": 3.8243,
-    "diffShares": 14000,
-    "diffSharesPercent": 1.78,
-    "diffWeight": -0.11,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -104,9 +104,9 @@
     "stockName": "台達電",
     "shares": 766000,
     "weight": 3.6171,
-    "diffShares": 15000,
-    "diffSharesPercent": 2,
-    "diffWeight": -0.08,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -114,9 +114,9 @@
     "stockName": "矽格",
     "shares": 7010000,
     "weight": 3.1747,
-    "diffShares": 124000,
-    "diffSharesPercent": 1.8,
-    "diffWeight": 0.01,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -126,7 +126,7 @@
     "weight": 3.1062,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.02,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -134,9 +134,9 @@
     "stockName": "頎邦",
     "shares": 7068000,
     "weight": 3.0038,
-    "diffShares": 99000,
-    "diffSharesPercent": 1.42,
-    "diffWeight": 0.11,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -144,9 +144,9 @@
     "stockName": "川湖",
     "shares": 246000,
     "weight": 2.809,
-    "diffShares": 135000,
-    "diffSharesPercent": 121.62,
-    "diffWeight": 1.65,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -156,7 +156,7 @@
     "weight": 2.3841,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.17,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -164,9 +164,9 @@
     "stockName": "環球晶",
     "shares": 1235000,
     "weight": 2.1259,
-    "diffShares": 12000,
-    "diffSharesPercent": 0.98,
-    "diffWeight": 0.03,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -176,7 +176,7 @@
     "weight": 1.9999,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -184,9 +184,9 @@
     "stockName": "光洋科",
     "shares": 5096000,
     "weight": 1.8266,
-    "diffShares": 96000,
-    "diffSharesPercent": 1.92,
-    "diffWeight": -0.17,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -194,9 +194,9 @@
     "stockName": "奇鋐",
     "shares": 337000,
     "weight": 1.7685,
-    "diffShares": 15000,
-    "diffSharesPercent": 4.66,
-    "diffWeight": 0.09,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -204,9 +204,9 @@
     "stockName": "啟碁",
     "shares": 3320000,
     "weight": 1.7636,
-    "diffShares": 60000,
-    "diffSharesPercent": 1.84,
-    "diffWeight": -0.04,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -214,9 +214,9 @@
     "stockName": "聯電",
     "shares": 8040000,
     "weight": 1.5755,
-    "diffShares": 93000,
-    "diffSharesPercent": 1.17,
-    "diffWeight": -0.08,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -224,9 +224,9 @@
     "stockName": "志聖",
     "shares": 1329000,
     "weight": 1.5318,
-    "diffShares": 26000,
-    "diffSharesPercent": 2,
-    "diffWeight": -0.02,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -234,9 +234,9 @@
     "stockName": "辛耘",
     "shares": 890000,
     "weight": 1.5053,
-    "diffShares": 8000,
-    "diffSharesPercent": 0.91,
-    "diffWeight": -0.01,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -246,7 +246,7 @@
     "weight": 1.3812,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.04,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -254,9 +254,9 @@
     "stockName": "嘉澤",
     "shares": 199000,
     "weight": 1.1532,
-    "diffShares": 3000,
-    "diffSharesPercent": 1.53,
-    "diffWeight": -0.05,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -264,9 +264,9 @@
     "stockName": "德律",
     "shares": 1197000,
     "weight": 1.0007,
-    "diffShares": 21000,
-    "diffSharesPercent": 1.79,
-    "diffWeight": -0.06,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -274,9 +274,9 @@
     "stockName": "宜鼎",
     "shares": 290000,
     "weight": 0.9959,
-    "diffShares": 5000,
-    "diffSharesPercent": 1.75,
-    "diffWeight": 0.03,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -286,7 +286,7 @@
     "weight": 0.9681,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.05,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -294,9 +294,9 @@
     "stockName": "台燿",
     "shares": 301000,
     "weight": 0.8851,
-    "diffShares": 4000,
-    "diffSharesPercent": 1.35,
-    "diffWeight": -0.04,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -306,7 +306,7 @@
     "weight": 0.8474,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.05,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -316,7 +316,7 @@
     "weight": 0.8365,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -324,8 +324,8 @@
     "stockName": "聯強",
     "shares": 4109000,
     "weight": 0.7249,
-    "diffShares": 83000,
-    "diffSharesPercent": 2.06,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false
   },
@@ -334,9 +334,9 @@
     "stockName": "順達",
     "shares": 849000,
     "weight": 0.6952,
-    "diffShares": 18000,
-    "diffSharesPercent": 2.17,
-    "diffWeight": 0.01,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -346,7 +346,7 @@
     "weight": 0.6251,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.05,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -354,9 +354,9 @@
     "stockName": "華通",
     "shares": 1148000,
     "weight": 0.6246,
-    "diffShares": 22000,
-    "diffSharesPercent": 1.95,
-    "diffWeight": 0.02,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -366,7 +366,7 @@
     "weight": 0.5994,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.04,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -374,9 +374,9 @@
     "stockName": "金像電",
     "shares": 173000,
     "weight": 0.4938,
-    "diffShares": 4000,
-    "diffSharesPercent": 2.37,
-    "diffWeight": -0.03,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -384,9 +384,9 @@
     "stockName": "日月光投控",
     "shares": 388000,
     "weight": 0.4297,
-    "diffShares": 8000,
-    "diffSharesPercent": 2.11,
-    "diffWeight": -0.01,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -394,8 +394,8 @@
     "stockName": "貿聯-KY",
     "shares": 64136,
     "weight": 0.3785,
-    "diffShares": 1000,
-    "diffSharesPercent": 1.58,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false
   },
@@ -404,8 +404,8 @@
     "stockName": "和碩",
     "shares": 1345000,
     "weight": 0.2436,
-    "diffShares": 28000,
-    "diffSharesPercent": 2.13,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false
   },
@@ -416,7 +416,7 @@
     "weight": 0.2183,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -426,7 +426,7 @@
     "weight": 0.1961,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.02,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -446,7 +446,7 @@
     "weight": 0.1612,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -558,16 +558,5 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false
-  },
-  {
-    "stockCode": "6691",
-    "stockName": "洋基工程",
-    "shares": 0,
-    "weight": 0,
-    "diffShares": -166000,
-    "diffWeight": -0.2402,
-    "diffSharesPercent": -100,
-    "isNew": false,
-    "isSoldOut": true
   }
 ]
