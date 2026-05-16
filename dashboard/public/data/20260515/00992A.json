@@ -6,7 +6,7 @@
     "weight": 7.9658,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.32,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -16,7 +16,7 @@
     "weight": 4.9401,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.1,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -26,7 +26,7 @@
     "weight": 4.75,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.08,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -34,9 +34,9 @@
     "stockName": "智邦",
     "shares": 916000,
     "weight": 4.5825,
-    "diffShares": 200000,
-    "diffSharesPercent": 27.93,
-    "diffWeight": 0.92,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -46,7 +46,7 @@
     "weight": 3.7744,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.1,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -56,7 +56,7 @@
     "weight": 3.7628,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.15,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -66,7 +66,7 @@
     "weight": 3.6143,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -76,7 +76,7 @@
     "weight": 3.508,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.07,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -86,7 +86,7 @@
     "weight": 3.4833,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -96,7 +96,7 @@
     "weight": 3.4747,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.05,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -106,7 +106,7 @@
     "weight": 3.4023,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.07,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -116,7 +116,7 @@
     "weight": 3.1477,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.2,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -126,7 +126,7 @@
     "weight": 3.1435,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -136,7 +136,7 @@
     "weight": 2.9492,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.09,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -146,7 +146,7 @@
     "weight": 2.7906,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.08,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -156,7 +156,7 @@
     "weight": 2.6714,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.13,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -166,7 +166,7 @@
     "weight": 2.6026,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.08,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -176,7 +176,7 @@
     "weight": 2.4563,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -186,7 +186,7 @@
     "weight": 2.0404,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.1,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -196,7 +196,7 @@
     "weight": 2.0148,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.12,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -206,7 +206,7 @@
     "weight": 1.9543,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -216,7 +216,7 @@
     "weight": 1.7569,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.05,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -226,7 +226,7 @@
     "weight": 1.7511,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.05,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -236,7 +236,7 @@
     "weight": 1.7235,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.11,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -246,7 +246,7 @@
     "weight": 1.6575,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.11,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -256,7 +256,7 @@
     "weight": 1.5453,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -266,7 +266,7 @@
     "weight": 1.5162,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.1,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -276,7 +276,7 @@
     "weight": 1.4794,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -286,7 +286,7 @@
     "weight": 1.3796,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.06,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -296,7 +296,7 @@
     "weight": 1.3632,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.1,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -306,7 +306,7 @@
     "weight": 1.2559,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.11,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -326,7 +326,7 @@
     "weight": 0.926,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -336,7 +336,7 @@
     "weight": 0.8872,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.05,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -344,9 +344,9 @@
     "stockName": "光聖",
     "shares": 238000,
     "weight": 0.827,
-    "diffShares": -250000,
-    "diffSharesPercent": -51.23,
-    "diffWeight": -0.9,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -356,7 +356,7 @@
     "weight": 0.6346,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.02,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -366,7 +366,7 @@
     "weight": 0.4991,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -376,7 +376,7 @@
     "weight": 0.4717,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -396,7 +396,7 @@
     "weight": 0.3495,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -416,7 +416,7 @@
     "weight": 0.3273,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -426,7 +426,7 @@
     "weight": 0.3,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -446,7 +446,7 @@
     "weight": 0.1819,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
