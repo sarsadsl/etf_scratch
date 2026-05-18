@@ -6,7 +6,7 @@
     "weight": 17.733,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.27,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -16,7 +16,7 @@
     "weight": 8.068,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.22,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -26,7 +26,7 @@
     "weight": 7.541,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.15,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -36,7 +36,7 @@
     "weight": 5.664,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.06,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -46,7 +46,7 @@
     "weight": 5.325,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.46,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -56,7 +56,7 @@
     "weight": 4.697,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.12,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -66,7 +66,7 @@
     "weight": 4.329,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -76,7 +76,7 @@
     "weight": 3.943,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.12,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -86,7 +86,7 @@
     "weight": 3.687,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.14,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -94,9 +94,9 @@
     "stockName": "奇鋐科技",
     "shares": 700000,
     "weight": 3.659,
-    "diffShares": 20000,
-    "diffSharesPercent": 2.94,
-    "diffWeight": 0.02,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -104,9 +104,9 @@
     "stockName": "緯穎科技",
     "shares": 330000,
     "weight": 3.643,
-    "diffShares": 10000,
-    "diffSharesPercent": 3.13,
-    "diffWeight": 0.08,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -116,7 +116,7 @@
     "weight": 3.609,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.14,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -126,7 +126,7 @@
     "weight": 3.503,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.24,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -136,7 +136,7 @@
     "weight": 3.46,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.12,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -146,7 +146,7 @@
     "weight": 3.308,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.12,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -154,9 +154,9 @@
     "stockName": "穎崴科技",
     "shares": 135000,
     "weight": 2.998,
-    "diffShares": 50000,
-    "diffSharesPercent": 58.82,
-    "diffWeight": 1.19,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -166,7 +166,7 @@
     "weight": 2.831,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -174,9 +174,9 @@
     "stockName": "勤誠興業",
     "shares": 800000,
     "weight": 2.395,
-    "diffShares": 180000,
-    "diffSharesPercent": 29.03,
-    "diffWeight": 0.49,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -184,9 +184,9 @@
     "stockName": "致茂電子",
     "shares": 500000,
     "weight": 2.37,
-    "diffShares": 100000,
-    "diffSharesPercent": 25,
-    "diffWeight": 0.42,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -206,7 +206,7 @@
     "weight": 1.917,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.06,
+    "diffWeight": 0,
     "isNew": false
   },
   {

@@ -6,7 +6,7 @@
     "weight": 6.89,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.11,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -16,7 +16,7 @@
     "weight": 6.64,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.43,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -26,7 +26,7 @@
     "weight": 4.98,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.1,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -36,7 +36,7 @@
     "weight": 4.13,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.04,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -46,7 +46,7 @@
     "weight": 3.88,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.09,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -56,7 +56,7 @@
     "weight": 3.81,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.17,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -66,7 +66,7 @@
     "weight": 3.5,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -76,7 +76,7 @@
     "weight": 3.3,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.14,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -86,7 +86,7 @@
     "weight": 3.01,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.14,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -96,7 +96,7 @@
     "weight": 2.82,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.08,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -106,7 +106,7 @@
     "weight": 2.72,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.1,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -116,7 +116,7 @@
     "weight": 2.52,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.08,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -126,7 +126,7 @@
     "weight": 2.16,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.07,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -136,7 +136,7 @@
     "weight": 2.11,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -146,7 +146,7 @@
     "weight": 2.08,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -156,7 +156,7 @@
     "weight": 1.95,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.04,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -166,7 +166,7 @@
     "weight": 1.91,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.07,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -176,7 +176,7 @@
     "weight": 1.82,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -186,7 +186,7 @@
     "weight": 1.8,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.06,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -196,7 +196,7 @@
     "weight": 1.76,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -206,7 +206,7 @@
     "weight": 1.76,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -216,7 +216,7 @@
     "weight": 1.66,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -226,7 +226,7 @@
     "weight": 1.65,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.04,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -236,7 +236,7 @@
     "weight": 1.54,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.05,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -246,7 +246,7 @@
     "weight": 1.47,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -256,7 +256,7 @@
     "weight": 1.46,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.05,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -266,7 +266,7 @@
     "weight": 1.4,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.08,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -276,7 +276,7 @@
     "weight": 1.36,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.02,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -286,7 +286,7 @@
     "weight": 1.32,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.02,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -296,7 +296,7 @@
     "weight": 1.28,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -306,7 +306,7 @@
     "weight": 1.24,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.09,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -316,7 +316,7 @@
     "weight": 1.21,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.09,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -326,7 +326,7 @@
     "weight": 1.2,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.02,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -336,7 +336,7 @@
     "weight": 1.11,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.05,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -346,7 +346,7 @@
     "weight": 1.11,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.07,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -366,7 +366,7 @@
     "weight": 1.01,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -376,7 +376,7 @@
     "weight": 0.91,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -386,7 +386,7 @@
     "weight": 0.89,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.04,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -396,7 +396,7 @@
     "weight": 0.87,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -416,7 +416,7 @@
     "weight": 0.81,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.04,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -446,7 +446,7 @@
     "weight": 0.76,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -456,7 +456,7 @@
     "weight": 0.73,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -466,7 +466,7 @@
     "weight": 0.73,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.06,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -476,7 +476,7 @@
     "weight": 0.66,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -486,7 +486,7 @@
     "weight": 0.55,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -496,7 +496,7 @@
     "weight": 0.52,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -516,7 +516,7 @@
     "weight": 0.43,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {

@@ -6,7 +6,7 @@
     "weight": 26.94,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.52,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -14,9 +14,9 @@
     "stockName": "統一企業",
     "shares": 5227000,
     "weight": 3.63,
-    "diffShares": 57000,
-    "diffSharesPercent": 1.1,
-    "diffWeight": 0.16,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -24,9 +24,9 @@
     "stockName": "富邦金融控股",
     "shares": 4102000,
     "weight": 3.61,
-    "diffShares": 9000,
-    "diffSharesPercent": 0.22,
-    "diffWeight": 0.14,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -34,9 +34,9 @@
     "stockName": "中華電信",
     "shares": 2325000,
     "weight": 2.94,
-    "diffShares": 64000,
-    "diffSharesPercent": 2.83,
-    "diffWeight": 0.15,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -44,9 +44,9 @@
     "stockName": "中國信託金融控股",
     "shares": 5402000,
     "weight": 2.71,
-    "diffShares": 480000,
-    "diffSharesPercent": 9.75,
-    "diffWeight": 0.29,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -54,9 +54,10 @@
     "stockName": "上銀科技",
     "shares": 739000,
     "weight": 2.66,
-    "diffShares": 739000,
-    "diffWeight": 2.66,
-    "isNew": true
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
   },
   {
     "stockCode": "4904",
@@ -65,7 +66,7 @@
     "weight": 2.57,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.06,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -75,7 +76,7 @@
     "weight": 2.43,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -85,7 +86,7 @@
     "weight": 2.32,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.05,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -95,7 +96,7 @@
     "weight": 2.26,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.04,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -103,9 +104,9 @@
     "stockName": "川湖科技",
     "shares": 49000,
     "weight": 2.18,
-    "diffShares": -14000,
-    "diffSharesPercent": -22.22,
-    "diffWeight": -0.65,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -115,7 +116,7 @@
     "weight": 2.05,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -125,7 +126,7 @@
     "weight": 2.05,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.02,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -135,7 +136,7 @@
     "weight": 2.03,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.09,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -145,7 +146,7 @@
     "weight": 1.95,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.17,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -155,7 +156,7 @@
     "weight": 1.94,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.13,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -165,7 +166,7 @@
     "weight": 1.92,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.08,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -175,7 +176,7 @@
     "weight": 1.65,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.04,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -185,7 +186,7 @@
     "weight": 1.62,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.07,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -195,7 +196,7 @@
     "weight": 1.59,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.02,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -205,7 +206,7 @@
     "weight": 1.56,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.07,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -215,7 +216,7 @@
     "weight": 1.52,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.06,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -225,7 +226,7 @@
     "weight": 1.51,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.02,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -235,7 +236,7 @@
     "weight": 1.4,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -243,9 +244,9 @@
     "stockName": "鴻勁精密",
     "shares": 22000,
     "weight": 1.39,
-    "diffShares": -15000,
-    "diffSharesPercent": -40.54,
-    "diffWeight": -1.12,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -275,7 +276,7 @@
     "weight": 1.24,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.1,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -285,7 +286,7 @@
     "weight": 1.22,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -295,7 +296,7 @@
     "weight": 1.1,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.05,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -305,7 +306,7 @@
     "weight": 1.05,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.05,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -315,7 +316,7 @@
     "weight": 1.02,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.04,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -325,7 +326,7 @@
     "weight": 0.97,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.05,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -335,7 +336,7 @@
     "weight": 0.91,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -345,7 +346,7 @@
     "weight": 0.79,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.04,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -355,7 +356,7 @@
     "weight": 0.63,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.05,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -365,7 +366,7 @@
     "weight": 0.53,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.04,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -375,7 +376,7 @@
     "weight": 0.44,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -385,7 +386,7 @@
     "weight": 0.41,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -395,7 +396,7 @@
     "weight": 0.41,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -405,7 +406,7 @@
     "weight": 0.27,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -425,7 +426,7 @@
     "weight": 0.19,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.02,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -435,7 +436,7 @@
     "weight": 0.17,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -455,7 +456,7 @@
     "weight": 0.06,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -497,16 +498,5 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false
-  },
-  {
-    "stockCode": "6515",
-    "stockName": "穎崴科技",
-    "shares": 0,
-    "weight": 0,
-    "diffShares": -1000,
-    "diffWeight": -0.09,
-    "diffSharesPercent": -100,
-    "isNew": false,
-    "isSoldOut": true
   }
 ]

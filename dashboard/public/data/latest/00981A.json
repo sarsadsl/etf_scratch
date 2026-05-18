@@ -6,7 +6,7 @@
     "weight": 10.2,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.06,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -16,7 +16,7 @@
     "weight": 8.38,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.09,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -36,7 +36,7 @@
     "weight": 5.66,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.26,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -46,7 +46,7 @@
     "weight": 5.2,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.23,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -56,7 +56,7 @@
     "weight": 5.18,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.12,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -66,7 +66,7 @@
     "weight": 4.63,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.07,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -86,7 +86,7 @@
     "weight": 3.91,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.04,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -96,7 +96,7 @@
     "weight": 3.72,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.11,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -106,7 +106,7 @@
     "weight": 3.58,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.34,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -126,7 +126,7 @@
     "weight": 3.43,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.09,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -136,7 +136,7 @@
     "weight": 3.05,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.18,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -146,7 +146,7 @@
     "weight": 2.99,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.2,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -156,7 +156,7 @@
     "weight": 2.89,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.16,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -164,9 +164,9 @@
     "stockName": "聯電",
     "shares": 63190000,
     "weight": 2.74,
-    "diffShares": 7023000,
-    "diffSharesPercent": 12.5,
-    "diffWeight": 0.34,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -176,7 +176,7 @@
     "weight": 2.04,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.07,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -186,7 +186,7 @@
     "weight": 1.77,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.09,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -196,7 +196,7 @@
     "weight": 1.49,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -226,7 +226,7 @@
     "weight": 1.06,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.02,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -236,7 +236,7 @@
     "weight": 0.81,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.02,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -246,7 +246,7 @@
     "weight": 0.55,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -266,7 +266,7 @@
     "weight": 0.52,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.02,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -296,7 +296,7 @@
     "weight": 0.42,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.02,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -306,7 +306,7 @@
     "weight": 0.42,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.04,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -326,7 +326,7 @@
     "weight": 0.33,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -334,9 +334,9 @@
     "stockName": "台表科",
     "shares": 3734000,
     "weight": 0.31,
-    "diffShares": 1234000,
-    "diffSharesPercent": 49.36,
-    "diffWeight": 0.1,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -346,7 +346,7 @@
     "weight": 0.31,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -364,9 +364,9 @@
     "stockName": "矽力-KY",
     "shares": 1038000,
     "weight": 0.21,
-    "diffShares": 98000,
-    "diffSharesPercent": 10.43,
-    "diffWeight": 0.04,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -386,7 +386,7 @@
     "weight": 0.18,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -406,7 +406,7 @@
     "weight": 0.14,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -416,7 +416,7 @@
     "weight": 0.12,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
