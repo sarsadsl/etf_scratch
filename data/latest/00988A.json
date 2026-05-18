@@ -4,9 +4,9 @@
     "stockName": "MICRON TECHNOLOGY INC",
     "shares": 77000,
     "weight": 4.82,
-    "diffShares": 7000,
-    "diffSharesPercent": 10,
-    "diffWeight": 0.11,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -16,7 +16,7 @@
     "weight": 4.62,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.06,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -26,7 +26,7 @@
     "weight": 4.61,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.17,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -34,9 +34,9 @@
     "stockName": "BLOOM ENERGY CORP- A",
     "shares": 170000,
     "weight": 4.05,
-    "diffShares": 15000,
-    "diffSharesPercent": 9.68,
-    "diffWeight": -0.03,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -44,9 +44,9 @@
     "stockName": "ADVANCED MICRO DEVICES.amd us(超微半導體公司)",
     "shares": 110000,
     "weight": 4.03,
-    "diffShares": 10000,
-    "diffSharesPercent": 10,
-    "diffWeight": 0.13,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -54,9 +54,9 @@
     "stockName": "Samsung Electro-Mechanics co(009150 ks)",
     "shares": 50000,
     "weight": 2.98,
-    "diffShares": 3000,
-    "diffSharesPercent": 6.38,
-    "diffWeight": 0.19,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -66,7 +66,7 @@
     "weight": 2.81,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.14,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -74,8 +74,8 @@
     "stockName": "MEIKO ELECTRONICS CO LTD",
     "shares": 140000,
     "weight": 2.76,
-    "diffShares": 10000,
-    "diffSharesPercent": 7.69,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false
   },
@@ -86,7 +86,7 @@
     "weight": 2.74,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.2,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -94,9 +94,9 @@
     "stockName": "FURUKAWA ELECTRIC CO LTD",
     "shares": 90000,
     "weight": 2.67,
-    "diffShares": 8000,
-    "diffSharesPercent": 9.76,
-    "diffWeight": 0.09,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -106,7 +106,7 @@
     "weight": 2.49,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.18,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -116,7 +116,7 @@
     "weight": 2.49,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.22,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -124,9 +124,9 @@
     "stockName": "台積電",
     "shares": 400000,
     "weight": 2.48,
-    "diffShares": 55000,
-    "diffSharesPercent": 15.94,
-    "diffWeight": 0.33,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -136,7 +136,7 @@
     "weight": 2.45,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.19,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -144,9 +144,9 @@
     "stockName": "Mitsui Mining ＆ Smelting Co",
     "shares": 95000,
     "weight": 2.42,
-    "diffShares": 5000,
-    "diffSharesPercent": 5.56,
-    "diffWeight": -0.08,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -154,9 +154,9 @@
     "stockName": "WESTERN DIGITAL CORP",
     "shares": 57000,
     "weight": 2.37,
-    "diffShares": 7000,
-    "diffSharesPercent": 14,
-    "diffWeight": 0.25,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -166,7 +166,7 @@
     "weight": 2.35,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.21,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -176,7 +176,7 @@
     "weight": 2.3,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.23,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -186,7 +186,7 @@
     "weight": 2.26,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.08,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -194,9 +194,9 @@
     "stockName": "COHERENT INC",
     "shares": 68000,
     "weight": 2.25,
-    "diffShares": 11000,
-    "diffSharesPercent": 19.3,
-    "diffWeight": 0.25,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -204,9 +204,9 @@
     "stockName": "信驊",
     "shares": 46000,
     "weight": 2.17,
-    "diffShares": 6000,
-    "diffSharesPercent": 15,
-    "diffWeight": 0.21,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -214,9 +214,9 @@
     "stockName": "穎崴",
     "shares": 80000,
     "weight": 2.14,
-    "diffShares": 13000,
-    "diffSharesPercent": 19.4,
-    "diffWeight": 0.2,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -224,9 +224,9 @@
     "stockName": "FURUYA METAL CO LTD",
     "shares": 374300,
     "weight": 2.06,
-    "diffShares": 27900,
-    "diffSharesPercent": 8.05,
-    "diffWeight": 0.04,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -236,7 +236,7 @@
     "weight": 1.75,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.07,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -246,7 +246,7 @@
     "weight": 1.72,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.08,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -256,7 +256,7 @@
     "weight": 1.65,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -264,9 +264,9 @@
     "stockName": "NIPPON CHEMI-CON CORP",
     "shares": 1000000,
     "weight": 1.63,
-    "diffShares": 112000,
-    "diffSharesPercent": 12.61,
-    "diffWeight": -0.04,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -276,7 +276,7 @@
     "weight": 1.59,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.12,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -286,7 +286,7 @@
     "weight": 1.51,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.02,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -294,9 +294,9 @@
     "stockName": "NVIDIA CORP(輝達公司)",
     "shares": 75000,
     "weight": 1.46,
-    "diffShares": 25000,
-    "diffSharesPercent": 50,
-    "diffWeight": 0.44,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -306,7 +306,7 @@
     "weight": 1.45,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.11,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -316,7 +316,7 @@
     "weight": 1.45,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.06,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -324,9 +324,9 @@
     "stockName": "INFINEON TECHNOLOGIES AG",
     "shares": 200000,
     "weight": 1.31,
-    "diffShares": 100000,
-    "diffSharesPercent": 100,
-    "diffWeight": 0.62,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -336,7 +336,7 @@
     "weight": 1.31,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.1,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -346,7 +346,7 @@
     "weight": 1.28,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.07,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -356,7 +356,7 @@
     "weight": 1.03,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.05,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -366,7 +366,7 @@
     "weight": 0.96,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.06,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -376,7 +376,7 @@
     "weight": 0.92,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -384,18 +384,19 @@
     "stockName": "NOKIA CORP-SPON ADR",
     "shares": 750000,
     "weight": 0.9,
-    "diffShares": 750000,
-    "diffWeight": 0.9,
-    "isNew": true
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
   },
   {
     "stockCode": "SOI FP",
     "stockName": "S.O.I.T.E.C.",
     "shares": 60000,
     "weight": 0.89,
-    "diffShares": 15000,
-    "diffSharesPercent": 33.33,
-    "diffWeight": 0.2,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -405,7 +406,7 @@
     "weight": 0.82,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.1,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -415,7 +416,7 @@
     "weight": 0.77,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.05,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -435,7 +436,7 @@
     "weight": 0.68,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.07,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -445,7 +446,7 @@
     "weight": 0.67,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.02,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -455,7 +456,7 @@
     "weight": 0.64,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.09,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -465,7 +466,7 @@
     "weight": 0.45,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.04,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -477,49 +478,5 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false
-  },
-  {
-    "stockCode": "5803 JP",
-    "stockName": "FUJIKURA LTD",
-    "shares": 0,
-    "weight": 0,
-    "diffShares": -339300,
-    "diffWeight": -1.18,
-    "diffSharesPercent": -100,
-    "isNew": false,
-    "isSoldOut": true
-  },
-  {
-    "stockCode": "TER US",
-    "stockName": "TERADYNE INC",
-    "shares": 0,
-    "weight": 0,
-    "diffShares": -24000,
-    "diffWeight": -0.74,
-    "diffSharesPercent": -100,
-    "isNew": false,
-    "isSoldOut": true
-  },
-  {
-    "stockCode": "FORM US",
-    "stockName": "FORMFACTOR INC",
-    "shares": 0,
-    "weight": 0,
-    "diffShares": -65000,
-    "diffWeight": -0.72,
-    "diffSharesPercent": -100,
-    "isNew": false,
-    "isSoldOut": true
-  },
-  {
-    "stockCode": "268A JP",
-    "stockName": "RIGAKU HOLDINGS CORP",
-    "shares": 0,
-    "weight": 0,
-    "diffShares": -31000,
-    "diffWeight": -0.05,
-    "diffSharesPercent": -100,
-    "isNew": false,
-    "isSoldOut": true
   }
 ]
