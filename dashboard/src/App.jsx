@@ -4,6 +4,9 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, PieCha
 import { Activity, RefreshCw, Send, Lock, LogOut, User, ShieldCheck, Filter, BarChart2, BookOpen, ArrowLeft } from 'lucide-react';
 import IndustryIndex from './pages/IndustryIndex';
 import BmcPage from './pages/BmcPage';
+import DeltaPage from './pages/DeltaPage';
+import GlobalWafersPage from './pages/GlobalWafersPage';
+import BizLinkPage from './pages/BizLinkPage';
 import './index.css';
 
 const ETF_META = {
@@ -11,6 +14,7 @@ const ETF_META = {
   '00988A': { name: '主動統一全球創新', color: '#a78bfa' },
   '00991A': { name: '主動復華未來50', color: '#f472b6' },
   '00990A': { name: '主動元大未來', color: '#34d399' },
+  '00403A': { name: '主動統一台股升級50', color: '#10b981' },
   '00980A': { name: '主動野村台灣優選', color: '#facc15' },
   '00982A': { name: '主動群益台灣強棒', color: '#fb923c' },
   '00985A': { name: '主動野村台灣50', color: '#fdba74' },
@@ -578,6 +582,57 @@ function App() {
               <ArrowLeft size={15} /> 返回產業分析列表
             </button>
             <BmcPage />
+          </div>
+        } />
+        
+        <Route path="/industry/delta" element={
+          <div>
+            <button
+              onClick={() => navigate('/industry')}
+              style={{
+                display: 'flex', alignItems: 'center', gap: '6px',
+                padding: '0.4rem 0.9rem', borderRadius: '8px', marginBottom: '1.5rem',
+                border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(255,255,255,0.04)',
+                color: '#94a3b8', cursor: 'pointer', fontSize: '0.875rem', fontWeight: 600,
+              }}
+            >
+              <ArrowLeft size={15} /> 返回產業分析列表
+            </button>
+            <DeltaPage />
+          </div>
+        } />
+        
+        <Route path="/industry/globalwafers" element={
+          <div>
+            <button
+              onClick={() => navigate('/industry')}
+              style={{
+                display: 'flex', alignItems: 'center', gap: '6px',
+                padding: '0.4rem 0.9rem', borderRadius: '8px', marginBottom: '1.5rem',
+                border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(255,255,255,0.04)',
+                color: '#94a3b8', cursor: 'pointer', fontSize: '0.875rem', fontWeight: 600,
+              }}
+            >
+              <ArrowLeft size={15} /> 返回產業分析列表
+            </button>
+            <GlobalWafersPage />
+          </div>
+        } />
+        
+        <Route path="/industry/bizlink" element={
+          <div>
+            <button
+              onClick={() => navigate('/industry')}
+              style={{
+                display: 'flex', alignItems: 'center', gap: '6px',
+                padding: '0.4rem 0.9rem', borderRadius: '8px', marginBottom: '1.5rem',
+                border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(255,255,255,0.04)',
+                color: '#94a3b8', cursor: 'pointer', fontSize: '0.875rem', fontWeight: 600,
+              }}
+            >
+              <ArrowLeft size={15} /> 返回產業分析列表
+            </button>
+            <BizLinkPage />
           </div>
         } />
 

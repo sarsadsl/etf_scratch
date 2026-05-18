@@ -251,6 +251,9 @@ export default function BmcPage() {
         <div style={{ display: 'inline-block', marginBottom: '1rem', padding: '3px 14px', borderRadius: 999, border: '1px solid rgba(6,182,212,0.3)', background: 'rgba(6,182,212,0.08)', color: '#22D3EE', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.12em' }}>
           INDUSTRY DEEP DIVE REPORT
         </div>
+        <div style={{ color: '#64748b', fontSize: '0.85rem', marginBottom: '1.2rem', fontWeight: 600 }}>
+          發表日期：2026-04-28
+        </div>
         <h2 style={{ fontSize: '2.25rem', fontWeight: 900, letterSpacing: '-0.02em', lineHeight: 1.25, marginBottom: '1rem' }}>
           萬金股王基本面：<span style={gradientText('#67E8F9', '#06B6D4')}>信驊(ASPEED)</span> 與 BMC 革命
         </h2>

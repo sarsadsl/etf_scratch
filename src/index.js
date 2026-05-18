@@ -13,6 +13,43 @@ const STATE_FILE = path.join(__dirname, '..', 'state.json');
 async function main() {
   console.log('[System] 開始執行主動式 ETF 持股抓取任務...');
   
+  // 0. 判斷今日是否為休市日 (週末或國定假日)
+  const now = new Date();
+  const twTime = new Date(now.getTime() + 8 * 60 * 60 * 1000); // 轉換為台灣時間 (UTC+8)
+  if (twTime.getUTCHours() < 15) {
+    twTime.setUTCDate(twTime.getUTCDate() - 1); // 15:00 前視為前一個日曆日
+  }
+  
+  const yyyy = twTime.getUTCFullYear();
+  const mm = String(twTime.getUTCMonth() + 1).padStart(2, '0');
+  const dd = String(twTime.getUTCDate()).padStart(2, '0');
+  const targetDateStr = `${yyyy}-${mm}-${dd}`;
+  const dayOfWeek = twTime.getUTCDay();
+
+  try {
+    const res = await fetch(`https://www.twse.com.tw/holidaySchedule/holidaySchedule?response=json&queryYear=${yyyy}`);
+    const holidayJson = await res.json();
+    if (holidayJson.stat === 'ok' && holidayJson.data) {
+      const holidayEntry = holidayJson.data.find(h => h[0] === targetDateStr);
+      if (holidayEntry) {
+        const title = holidayEntry[1] || '';
+        // 判斷是否為休市：若含有「無交易」或 (不含「開始交易」且不含「最後交易」)
+        if (title.includes('無交易') || (!title.includes('開始交易') && !title.includes('最後交易'))) {
+          console.log(`[System] 目標日期 ${targetDateStr} 為「${title}」，市場休市，取消抓取任務避免產生多餘 JSON。`);
+          return;
+        }
+      }
+    }
+  } catch (e) {
+    console.warn(`[System] 無法取得 TWSE 休市表，將繼續執行...`, e.message);
+  }
+
+  // 若不在休市表中，進一步判斷是否為週末
+  if (dayOfWeek === 0 || dayOfWeek === 6) {
+    console.log(`[System] 目標日期 ${targetDateStr} 為週末，市場休市，取消抓取任務避免產生多餘 JSON。`);
+    return;
+  }
+
   // 1. 讀取前一日狀態
   let previousState = {};
   if (fs.existsSync(STATE_FILE)) {
@@ -75,18 +112,9 @@ async function main() {
   if (!fs.existsSync(dataDir)) {
     fs.mkdirSync(dataDir);
   }
-  // 取最近有效交易日（與 scraper.js 邏輯同步：15:00 前取前一交易日）
-  const now = new Date();
-  const twTime = new Date(now.getTime() + 8 * 60 * 60 * 1000); // 轉換為台灣時間 (UTC+8)
-  if (twTime.getUTCHours() < 15) {
-    twTime.setUTCDate(twTime.getUTCDate() - 1);
-  }
-  while (twTime.getUTCDay() === 0 || twTime.getUTCDay() === 6) {
-    twTime.setUTCDate(twTime.getUTCDate() - 1);
-  }
-  const dateStr = twTime.getUTCFullYear().toString()
-    + String(twTime.getUTCMonth() + 1).padStart(2, '0')
-    + String(twTime.getUTCDate()).padStart(2, '0');
+
+  // 使用開頭已計算確認過的 targetDateStr
+  const dateStr = targetDateStr.replace(/-/g, '');
 
   // 寫入 data/{dateStr}/{etfCode}.json（每檔 ETF 獨立檔案）
   const historyDir = path.join(dataDir, dateStr);

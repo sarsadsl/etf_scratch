@@ -12,6 +12,12 @@ export const targets = [
     ezmoneyCCode: '61YTW'
   },
   {
+    code: '00403A',
+    name: '主動統一台股升級50',
+    issuer: '統一投信',
+    ezmoneyCCode: '63YTW'
+  },
+  {
     code: '00991A',
     name: '主動復華未來50',
     issuer: '復華投信',
@@ -45,6 +51,7 @@ export const targets = [
   {
     code: '00995A',
     name: '主動中信卓越成長',
-    issuer: '中信投信'
+    issuer: '中信投信',
+    ctbcCode: '00653201'
   }
 ];

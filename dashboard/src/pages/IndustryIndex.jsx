@@ -23,6 +23,36 @@ const ARTICLES = [
     accentColor: '#06B6D4',
     date: '2026-04-28',
   },
+  {
+    id: 'delta',
+    category: 'ai_infra',
+    title: '電源王者台達電(2308)產業深度解析',
+    subtitle: '全球電源與散熱霸主：從氣冷到液冷的維度打擊',
+    desc: '深度解析高壓直流 (HVDC)、液冷 Sidecar 佈局，與外資投顧上修至 3,000 元的底層邏輯。',
+    tags: ['台達電', '電源供應', '液冷散熱', 'AI 機櫃'],
+    accentColor: '#22D3EE',
+    date: '2026-05-18',
+  },
+  {
+    id: 'globalwafers',
+    category: 'semiconductor',
+    title: '矽晶圓巨頭環球晶(6488)產業深度解析',
+    subtitle: '半導體上游霸主：長約護城河與先進製程紅利',
+    desc: '解析環球晶在全球矽晶圓版圖的戰略地位、LTA 長約保護傘，與受惠於先進製程的成長動能。',
+    tags: ['環球晶', '矽晶圓', '半導體', '長約'],
+    accentColor: '#F59E0B',
+    date: '2026-05-18',
+  },
+  {
+    id: 'bizlink',
+    category: 'ai_infra',
+    title: '線束龍頭貿聯-KY(3665)產業深度解析',
+    subtitle: 'AI 伺服器的高速神經網路',
+    desc: '從電動車跨足 AI，解析貿聯在伺服器高速傳輸線束的寡占地位與強勁爆發力。',
+    tags: ['貿聯-KY', '高速線束', 'AI 伺服器'],
+    accentColor: '#A78BFA',
+    date: '2026-05-18',
+  },
   // 未來在此新增更多文章：
   // { id: 'xxx', category: 'ai_infra', title: '...', ... }
 ];

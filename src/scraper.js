@@ -283,11 +283,58 @@ async function fetchCapitalApi(fundCode) {
 }
 
 // ============================================================
+// 策略 F：中信投信 — SPA DOM/API 解析
+// ============================================================
+async function fetchCtbcSpa(page, ctbcCode) {
+  let fullData = null;
+  const intercept = async (res) => {
+    try {
+      if (res.url().includes('ETFHoldingWeight')) {
+        const text = await res.text();
+        fullData = JSON.parse(text);
+      }
+    } catch(e) {}
+  };
+
+  console.log(`[CTBC] Navigating to https://www.ctbcinvestments.com/Etf/${ctbcCode}`);
+  page.on('response', intercept);
+  
+  await page.goto(`https://www.ctbcinvestments.com/Etf/${ctbcCode}`, { waitUntil: 'networkidle2', timeout: 30000 });
+  
+  const buttons = await page.$$('button');
+  for (let b of buttons) {
+    const text = await page.evaluate(el => el.innerText, b);
+    if (text && text.includes('投資組合')) {
+      await b.click();
+      break;
+    }
+  }
+  
+  await new Promise(r => setTimeout(r, 3000));
+  page.off('response', intercept);
+
+  if (fullData && fullData.Data && fullData.Data.FundAssetsDetail) {
+    const stockSection = fullData.Data.FundAssetsDetail.find(s => s.Code === 'STOCK');
+    if (stockSection && stockSection.Data) {
+      return stockSection.Data.map(s => ({
+        stockCode: String(s.code_).trim(),
+        stockName: String(s.name_).trim(),
+        shares: parseInt(String(s.qty_).replace(/,/g, ''), 10) || 0,
+        weight: parseFloat(s.weights_) || 0
+      })).filter(s => s.stockCode && (s.weight > 0 || s.shares > 0));
+    }
+  }
+
+  console.warn(`[CTBC] Failed to parse API response for ${ctbcCode}`);
+  return null;
+}
+
+// ============================================================
 // 主要 fetchHoldings (export)
 // ============================================================
 const ISSUER_MAP = {
   '復華投信': { strategy: 'fhtrust', fundCode: null }, // fundCode 從 target 取
-  '統一投信': { strategy: 'fsitc', ezmoneyCodes: { '00981A': '49YTW', '00988A': '61YTW' } },
+  '統一投信': { strategy: 'fsitc', ezmoneyCodes: { '00981A': '49YTW', '00988A': '61YTW', '00403A': '63YTW' } },
   '元大投信': { strategy: 'yuanta' },
 };
 
@@ -339,9 +386,9 @@ export async function fetchHoldings(target) {
     } else if (target.issuer === '群益投信') {
       holdings = await fetchCapitalApi(target.code);
 
-    } else if (target.issuer === '中信投信') {
+    } else if (target.issuer === '中信投信' && target.ctbcCode) {
       const page = await getSharedPage();
-      holdings = await fetchMoneyDjHoldings(page, target.code);
+      holdings = await fetchCtbcSpa(page, target.ctbcCode);
 
     } else {
       return { error: true, message: `未知發行商: ${target.issuer}` };
