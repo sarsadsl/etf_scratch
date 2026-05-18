@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>電源王者台達電(2308)產業深度解析</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+    body {
+        background-color: #050B14;
+        color: #F8FAFC;
+        font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+    .chart-container {
+        position: relative;
+        width: 100%;
+        max-width: 850px;
+        margin-left: auto;
+        margin-right: auto;
+        height: 380px;
+        max-height: 450px;
+    }
+    @media (min-width: 768px) {
+        .chart-container { height: 420px; }
+    }
+    .glass-card {
+        background: rgba(15, 23, 42, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.8);
+    }
+    .text-gradient-cyan {
+        background: linear-gradient(135deg, #22D3EE 0%, #0284C7 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+    .text-gradient-amber {
+        background: linear-gradient(135deg, #FDE68A 0%, #F59E0B 50%, #D97706 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+    .text-gradient-purple {
+        background: linear-gradient(135deg, #C4B5FD 0%, #8B5CF6 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+    .quadrant-bg-S { background: linear-gradient(135deg, rgba(34,211,238,0.05), rgba(34,211,238,0.15)); border-color: rgba(34,211,238,0.4); }
+    .quadrant-bg-W { background: linear-gradient(135deg, rgba(245,158,11,0.05), rgba(245,158,11,0.15)); border-color: rgba(245,158,11,0.4); }
+    .quadrant-bg-O { background: linear-gradient(135deg, rgba(167,139,250,0.05), rgba(167,139,250,0.15)); border-color: rgba(167,139,250,0.4); }
+    .quadrant-bg-T { background: linear-gradient(135deg, rgba(248,113,113,0.05), rgba(248,113,113,0.15)); border-color: rgba(248,113,113,0.4); }
+    
+    .arch-box {
+        background-color: #1E293B;
+        border: 1px solid #334155;
+        padding: 16px 20px;
+        border-radius: 8px;
+        text-align: center;
+        font-weight: 600;
+        width: 100%;
+        margin: 0 auto;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+        font-size: 1.05rem;
+    }
+    .arch-arrow {
+        text-align: center;
+        color: #64748B;
+        font-size: 1.5rem;
+        margin: 8px 0;
+        font-weight: bold;
+    }
+    .arch-highlight {
+        background-color: rgba(34, 211, 238, 0.1);
+        border-color: #06B6D4;
+        color: #67E8F9;
+        box-shadow: 0 0 15px rgba(6, 182, 212, 0.2);
+    }
+    .arch-warning {
+        background-color: rgba(245, 158, 11, 0.1);
+        border-color: #F59E0B;
+        color: #FDE68A;
+    }
+    .custom-scrollbar::-webkit-scrollbar { width: 8px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.5); border-radius: 4px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(100, 116, 139, 0.5); border-radius: 4px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(100, 116, 139, 0.8); }
+</style>
+</head>
+<body class="antialiased pb-24">
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10">
+
+    <div class="bg-red-900/20 border border-red-500/50 text-red-300 p-4 rounded-xl text-center text-sm font-bold mb-10 shadow-[0_0_15px_rgba(239,68,68,0.15)] tracking-wide">
+        【免責聲明與風險提示】本報告所載之所有資訊、投顧報告數據（含富邦、凱基、玉山、統一、兆豐、大和等機構）及目標價，僅供學術研究與教育展示用途，絕不構成任何有價證券之買賣要約、招攬或投資建議。投資人應自行審慎評估市場風險，並對自身之投資決策自負盈虧。
+    </div>
+
+    <header class="text-center mb-16">
+        <div class="inline-block mb-4 px-6 py-2 rounded-full border border-cyan-500/50 bg-cyan-500/20 text-cyan-300 text-sm font-bold tracking-widest uppercase shadow-[0_0_15px_rgba(34,211,238,0.2)]">
+            AI Power & Thermal Infrastructure
+        </div>
+        <p class="text-sm text-gray-500 mb-4 font-semibold tracking-wider">發表日期：2026-05-18</p>
+        <h1 class="text-4xl md:text-6xl font-black mb-6 tracking-tight">
+            全球電源與散熱霸主：<span class="text-gradient-cyan">台達電(2308)</span>
+        </h1>
+        <h2 class="text-xl md:text-2xl font-semibold text-gray-400 mb-8 max-w-4xl mx-auto leading-relaxed">
+            從 1Q26 獲利創高到 Vera Rubin 架構的顛覆性升級；深度解析高壓直流 (HVDC)、液冷 Sidecar 佈局，與外資投顧上修至 3,000 元的底層邏輯。
+        </h2>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+        <section class="glass-card rounded-3xl p-8 lg:col-span-2">
+            <h3 class="text-3xl font-bold mb-6 text-gradient-cyan border-b border-gray-700 pb-4">一、AI 功耗狂飆：驅動電源與散熱的「維度打擊」</h3>
+            <p class="text-gray-300 mb-8 text-lg leading-relaxed">
+                NVIDIA 晶片架構的迭代，帶來了熱設計功耗 (TDP) 的幾何級數噴發。從 H100 單晶片 700W，到 GB200 機櫃的 120kW，再到 2H26 即將推出的 <strong class="text-amber-400">Vera Rubin (VR300) 機櫃，其功耗將上看驚人的 190~230kW</strong>。傳統的交流電 (AC) 降壓與氣冷散熱已面臨物理極限，台達電憑藉兩大終極武器成為這場算力軍備競賽的最大贏家。
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-slate-900/80 rounded-2xl p-6 md:p-8 border border-gray-700 shadow-lg">
+                    <h4 class="text-2xl font-bold text-gray-200 mb-8 text-center">⚡ 電源革命：HVDC 高壓直流</h4>
+                    
+                    <div class="flex flex-col">
+                        <div class="arch-box arch-warning">傳統 AC 架構 (多次交直流轉換)</div>
+                        <div class="arch-arrow text-sm">能耗損耗達 10-15%</div>
+                        <div class="arch-box">市電(AC) → UPS(DC→AC) → 伺服器(DC)</div>
+                        <div class="arch-arrow text-xl">VS</div>
+                        <div class="arch-box arch-highlight relative">
+                            台達電 HVDC (400V/800V 直流)
+                            <div class="text-xs mt-2 text-cyan-200 font-normal bg-cyan-900/40 p-2 rounded">消滅多餘轉換，銅線用量劇減，效率直逼 98%</div>
+                        </div>
+                        <div class="arch-arrow text-sm">↓ 直供晶片</div>
+                        <div class="arch-box border-blue-600/50 bg-blue-900/20 text-blue-300">GPU / CPU (AI 運算節點)</div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900/80 rounded-2xl p-6 md:p-8 border border-gray-700 shadow-lg">
+                    <h4 class="text-2xl font-bold text-gray-200 mb-8 text-center">🌊 散熱革命：Liquid Cooling 液冷系統</h4>
+                    
+                    <div class="flex flex-col">
+                        <div class="arch-box arch-warning">傳統 3D VC 氣冷極限</div>
+                        <div class="arch-arrow text-sm">單櫃功耗 > 100kW 時失效</div>
+                        <div class="arch-box">風扇模組全速運轉 (噪音與能耗極大)</div>
+                        <div class="arch-arrow text-xl">VS</div>
+                        <div class="arch-box arch-highlight relative">
+                            台達電 L2A Sidecar / CDU 水冷方案
+                            <div class="text-xs mt-2 text-cyan-200 font-normal bg-cyan-900/40 p-2 rounded">冷卻液分配單元與側邊冷卻櫃，無縫銜接氣冷機房</div>
+                        </div>
+                        <div class="arch-arrow text-sm">↓ 高效帶走廢熱</div>
+                        <div class="arch-box border-blue-600/50 bg-blue-900/20 text-blue-300">GB300 / Vera Rubin 運算機櫃</div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 text-sm text-gray-300 bg-slate-800/50 p-5 rounded-xl border border-slate-600 text-center leading-relaxed">
+                <strong class="text-cyan-400">凱基投顧指出：</strong> 預期隨 Kyber 機櫃設計推出，VR300 平台的 TDP 將逾 1MW (含多櫃連結)，屆時勢必強制採用 HVDC (±400V 甚至 800V)。台達電的 33U 110kW 電源模組 (Power Shelf) 規格與單價將再度迎來數倍跳升。
+            </div>
+        </section>
+
+        <section class="glass-card rounded-3xl p-8">
+            <h3 class="text-2xl font-bold mb-6 text-gradient-purple border-b border-gray-700 pb-2">二、黑科技佈局：SOFC 固態氧化物燃料電池</h3>
+            <p class="text-gray-300 mb-6 text-base leading-relaxed">
+                AI 巨頭面臨的最大問題不再是「買不到 GPU」，而是「找不到足夠的電」。台達電早已佈局下一代微電網發電技術：<strong class="text-purple-400">SOFC (固態氧化物燃料電池)</strong>。
+            </p>
+            <div class="space-y-4">
+                <div class="bg-slate-800/80 p-5 rounded-xl border border-slate-600 shadow-md">
+                    <div class="text-cyan-400 font-bold mb-2 text-lg flex items-center"><span class="mr-2">🔥</span> 獨家低溫技術優勢</div>
+                    <div class="text-sm text-gray-300">相較市場龍頭 Bloom Energy 約 800°C 的極端高溫，台達電技術鎖定 500-600°C 中溫設計，並在陶瓷材料外增加金屬支撐層，大幅延長系統壽命並降低材料負擔。</div>
+                </div>
+                <div class="bg-slate-800/80 p-5 rounded-xl border border-slate-600 shadow-md">
+                    <div class="text-amber-400 font-bold mb-2 text-lg flex items-center"><span class="mr-2">🏭</span> 量產時程明確</div>
+                    <div class="text-sm text-gray-300">2026年已送交台電測試並於5月啟動長期運轉。桃園觀音廠第一期已規劃為燃料電池專屬量產線，預計 2027 年底建置完成，2028 年正式大量出貨。</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass-card rounded-3xl p-8">
+            <h3 class="text-2xl font-bold mb-6 text-gradient-purple border-b border-gray-700 pb-2">三、財報驚喜：產品組合質變引爆高毛利</h3>
+            <p class="text-gray-300 mb-4 text-base leading-relaxed">
+                台達電 1Q26 財報繳出亮眼成績單，毛利率攀升至 <strong class="text-cyan-400">37.0% (創歷史新高)</strong>，EPS 達 7.91 元，完全擊敗市場共識。這並非偶然，而是營收結構「質變」的結果。
+            </p>
+            <div class="chart-container w-full mt-4">
+                <canvas id="marginEpsChart"></canvas>
+            </div>
+            <p class="text-center text-xs text-gray-500 mt-2">資料來源：各投顧報告整理 (1Q26 包含約0.7% EV客戶賠償金挹注)</p>
+        </section>
+
+        <section class="glass-card rounded-3xl p-8 lg:col-span-2">
+            <h3 class="text-3xl font-bold mb-6 text-gradient-amber border-b border-gray-700 pb-4">四、2026 最新投顧前瞻：目標價衝破 3,000 元的底層邏輯</h3>
+            <p class="text-gray-300 mb-8 text-lg leading-relaxed">
+                2026 年 5 月初，隨著 1Q26 財報公布與法說會釋出樂觀指引，各大法人機構（富邦、凱基、玉山、兆豐、統一、中信等）出現了罕見的「集體強勢上修」。富邦投顧更是一舉將目標價調升至 <strong class="text-amber-400">3,000 元</strong>。
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-8">
+                <div class="bg-slate-900/60 p-8 rounded-2xl border border-gray-600 shadow-xl">
+                    <h4 class="text-2xl font-bold text-white mb-5 border-b border-gray-700 pb-3">外資與投顧核心看多理由</h4>
+                    <ul class="space-y-6 text-sm text-gray-300">
+                        <li>
+                            <strong class="text-cyan-400 text-base block mb-1">AI 營收佔比急遽攀升：</strong>
+                            1Q26 AI 相關伺服器電源佔比已達整體營收 5%，若單看電源及零組件事業群則高達 40%。隨著 2H26 GB300 與 Vera Rubin 陸續放量，高毛利的 AI 電源將主導獲利結構。
+                        </li>
+                        <li>
+                            <strong class="text-cyan-400 text-base block mb-1">資本支出 (CapEx) 進入強烈擴張期：</strong>
+                            2025 年資本支出約 461 億元，公司明確指引 2026 年將進一步雙位數成長，且「生產設備」投資增加逾 10% (泰國、美國、台灣、重慶大擴產)，顯示接單能見度極高。
+                        </li>
+                        <li>
+                            <strong class="text-cyan-400 text-base block mb-1">EPS 複合成⻑率 (CAGR) 驚人：</strong>
+                            兆豐投顧預估 2025~2027 年 EPS CAGR 高達 78.34%，2027 年 EPS 有望突破 70 元大關 (凱基估 73.6 元，富邦估更高)。市場願意將評價基準 (Valuation) 切換至 2027 年的高壓直流 (HVDC) 收割期，給予 40 倍以上的本益比。
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="flex flex-col space-y-6">
+                    <div class="chart-container w-full h-full min-h-[350px]">
+                        <canvas id="brokerageTargetsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 pt-8 border-t border-gray-700">
+                <h4 class="text-xl font-bold text-white mb-6 text-center">NVIDIA 世代交替：機櫃熱設計功耗 (TDP) 躍升帶動單櫃價值</h4>
+                <div class="chart-container w-full max-w-4xl mx-auto">
+                    <canvas id="tdpEvolutionChart"></canvas>
+                </div>
+                <p class="text-center text-xs text-gray-400 mt-4">註：隨著 TDP 突破 130kW，高壓直流 (HVDC) 與液冷 (Liquid Cooling) 將從「選配」變成「標配」。</p>
+            </div>
+        </section>
+
+        <section class="glass-card rounded-3xl p-8 lg:col-span-2 relative overflow-hidden min-h-[550px]">
+            <h3 class="text-3xl font-bold mb-4 text-white border-b border-gray-700 pb-4">五、台達電 (2308) 互動式 SWOT 戰略矩陣</h3>
+            <p class="text-gray-400 text-base mb-8">結合前述深度解析與 2026 年最新投顧報告數據，<strong class="text-cyan-400">請點擊下方任一象限</strong>，深入探索電源霸主的總體戰略、獲利護城河與潛在風險剖析。</p>
+            
+            <div class="grid grid-cols-2 gap-6 h-[400px]">
+                <div class="quadrant-bg-S border-2 rounded-2xl p-6 cursor-pointer transform transition-all hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(34,211,238,0.4)] flex flex-col items-center justify-center text-center group" onclick="openSwotDetail('S')">
+                    <div class="text-8xl font-black text-cyan-500/10 absolute top-4 left-6 group-hover:text-cyan-500/20 transition-colors">S</div>
+                    <h4 class="text-3xl md:text-5xl font-black text-cyan-400 z-10 mb-2">優勢</h4>
+                    <p class="text-cyan-200 text-sm md:text-lg z-10 font-bold tracking-widest uppercase">Strengths</p>
+                    <p class="text-gray-300 text-sm md:text-base mt-4 z-10 font-medium">電源技術絕對龍頭 / 產品組合優化 / 全球佈局</p>
+                </div>
+                
+                <div class="quadrant-bg-W border-2 rounded-2xl p-6 cursor-pointer transform transition-all hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(245,158,11,0.4)] flex flex-col items-center justify-center text-center group" onclick="openSwotDetail('W')">
+                    <div class="text-8xl font-black text-amber-500/10 absolute top-4 right-6 group-hover:text-amber-500/20 transition-colors">W</div>
+                    <h4 class="text-3xl md:text-5xl font-black text-amber-400 z-10 mb-2">劣勢</h4>
+                    <p class="text-amber-200 text-sm md:text-lg z-10 font-bold tracking-widest uppercase">Weaknesses</p>
+                    <p class="text-gray-300 text-sm md:text-base mt-4 z-10 font-medium">電動車(EV)業務逆風 / 資本支出龐大</p>
+                </div>
+                
+                <div class="quadrant-bg-O border-2 rounded-2xl p-6 cursor-pointer transform transition-all hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(167,139,250,0.4)] flex flex-col items-center justify-center text-center group" onclick="openSwotDetail('O')">
+                    <div class="text-8xl font-black text-purple-500/10 absolute bottom-4 left-6 group-hover:text-purple-500/20 transition-colors">O</div>
+                    <h4 class="text-3xl md:text-5xl font-black text-purple-400 z-10 mb-2">機會</h4>
+                    <p class="text-purple-200 text-sm md:text-lg z-10 font-bold tracking-widest uppercase">Opportunities</p>
+                    <p class="text-gray-300 text-sm md:text-base mt-4 z-10 font-medium">Vera Rubin HVDC / 液冷 Sidecar / SOFC 微電網</p>
+                </div>
+                
+                <div class="quadrant-bg-T border-2 rounded-2xl p-6 cursor-pointer transform transition-all hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(248,113,113,0.4)] flex flex-col items-center justify-center text-center group" onclick="openSwotDetail('T')">
+                    <div class="text-8xl font-black text-red-500/10 absolute bottom-4 right-6 group-hover:text-red-500/20 transition-colors">T</div>
+                    <h4 class="text-3xl md:text-5xl font-black text-red-400 z-10 mb-2">威脅</h4>
+                    <p class="text-red-200 text-sm md:text-lg z-10 font-bold tracking-widest uppercase">Threats</p>
+                    <p class="text-gray-300 text-sm md:text-base mt-4 z-10 font-medium">液冷市場價格戰 / 地緣政治與關稅風險</p>
+                </div>
+            </div>
+
+            <div id="swotDetailView" class="hidden absolute inset-0 bg-slate-900/95 backdrop-blur-2xl z-50 p-10 flex flex-col rounded-3xl border border-gray-700 transition-opacity duration-300">
+                <div class="flex justify-between items-center mb-8 border-b border-gray-700 pb-6">
+                    <h4 id="detailTitle" class="text-4xl md:text-5xl font-black tracking-wide">Title</h4>
+                    <button onclick="closeSwotDetail()" class="text-gray-400 hover:text-white bg-gray-800 hover:bg-red-600 rounded-full w-14 h-14 flex items-center justify-center transition-colors text-3xl focus:outline-none font-bold shadow-lg">&times;</button>
+                </div>
+                <div class="flex-1 overflow-y-auto pr-6 custom-scrollbar">
+                    <ul id="detailList" class="space-y-8 text-xl text-gray-300">
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</div>
+
+<script>
+    const processLabel = (label) => {
+        if (label.length <= 14) return label;
+        let words = label.split(' ');
+        if(words.length === 1) {
+            let lines = [];
+            for(let i = 0; i < label.length; i+=12) {
+                lines.push(label.substring(i, i+12));
+            }
+            return lines;
+        }
+        let lines = [];
+        let currentLine = '';
+        for(let i=0; i<words.length; i++) {
+            if((currentLine + words[i]).length > 14) {
+                if(currentLine.trim() !== '') lines.push(currentLine.trim());
+                currentLine = words[i] + ' ';
+            } else {
+                currentLine += words[i] + ' ';
+            }
+        }
+        if(currentLine.trim() !== '') lines.push(currentLine.trim());
+        return lines.length > 1 ? lines : lines[0];
+    };
+
+    const toolTipConf = {
+        callbacks: {
+            title: function(ctx) {
+                const item = ctx[0];
+                let lbl = item.chart.data.labels[item.dataIndex];
+                if(Array.isArray(lbl)) {
+                    return lbl.join(' ');
+                }
+                return lbl;
+            }
+        }
+    };
+
+    Chart.defaults.color = '#94A3B8';
+    Chart.defaults.font.family = "'Segoe UI', Roboto, Helvetica, Arial, sans-serif";
+
+    const ctxMarginEps = document.getElementById('marginEpsChart').getContext('2d');
+    const labelsMargin = ['1Q25', '2Q25', '3Q25', '4Q25', '1Q26'].map(processLabel);
+    new Chart(ctxMarginEps, {
+        type: 'bar',
+        data: {
+            labels: labelsMargin,
+            datasets: [
+                {
+                    type: 'line',
+                    label: '毛利率 (%)',
+                    data: [29.5, 34.1, 34.9, 34.0, 37.0],
+                    borderColor: '#22D3EE',
+                    backgroundColor: '#22D3EE',
+                    borderWidth: 3,
+                    pointRadius: 6,
+                    yAxisID: 'yMargin'
+                },
+                {
+                    type: 'bar',
+                    label: '單季 EPS (元)',
+                    data: [2.23, 3.24, 4.75, 3.34, 7.91],
+                    backgroundColor: 'rgba(139, 92, 246, 0.7)',
+                    borderColor: '#8B5CF6',
+                    borderWidth: 1,
+                    borderRadius: 4,
+                    yAxisID: 'yEps'
+                }
+            ]
+        },
+        options: {
+            maintainAspectRatio: false,
+            interaction: { mode: 'index', intersect: false },
+            plugins: {
+                tooltip: toolTipConf,
+                legend: { position: 'top', labels: { color: '#F8FAFC', font: {weight: 'bold'} } },
+                title: { display: true, text: '毛利率創新高帶動獲利噴發', color: '#E2E8F0', font: {size: 16, weight: 'bold'}, padding: {bottom: 20} }
+            },
+            scales: {
+                yMargin: {
+                    type: 'linear',
+                    display: true,
+                    position: 'left',
+                    title: { display: true, text: '毛利率 (%)', color: '#22D3EE', font: {weight: 'bold'} },
+                    grid: { color: 'rgba(255,255,255,0.05)' },
+                    min: 25,
+                    max: 40
+                },
+                yEps: {
+                    type: 'linear',
+                    display: true,
+                    position: 'right',
+                    title: { display: true, text: '單季 EPS (TWD)', color: '#C4B5FD', font: {weight: 'bold'} },
+                    grid: { drawOnChartArea: false },
+                    min: 0,
+                    max: 10
+                },
+                x: {
+                    grid: { display: false }
+                }
+            }
+        }
+    });
+
+    const ctxTargets = document.getElementById('brokerageTargetsChart').getContext('2d');
+    const labelsTargets = ['富邦投顧', '凱基投顧', '玉山投顧', '中信投顧', '元大投顧', '兆豐投顧'].map(processLabel);
+    new Chart(ctxTargets, {
+        type: 'bar',
+        data: {
+            labels: labelsTargets,
+            datasets: [
+                {
+                    type: 'line',
+                    label: '2027年 EPS 預估 (元)',
+                    data: [68.0, 73.6, 65.0, 64.0, 60.0, 73.6], 
+                    borderColor: '#F59E0B',
+                    backgroundColor: '#F59E0B',
+                    borderWidth: 4,
+                    pointRadius: 7,
+                    pointBackgroundColor: '#fff',
+                    yAxisID: 'yEps',
+                    tension: 0.3
+                },
+                {
+                    type: 'bar',
+                    label: '法人目標價 (元)',
+                    data: [3000, 2945, 2800, 2800, 2660, 2945],
+                    backgroundColor: [
+                        'rgba(6, 182, 212, 0.8)', 
+                        'rgba(6, 182, 212, 0.7)', 
+                        'rgba(6, 182, 212, 0.6)', 
+                        'rgba(6, 182, 212, 0.6)', 
+                        'rgba(6, 182, 212, 0.5)',
+                        'rgba(6, 182, 212, 0.7)'
+                    ],
+                    borderColor: '#0284C7',
+                    borderWidth: 1,
+                    borderRadius: 6,
+                    yAxisID: 'yPrice'
+                }
+            ]
+        },
+        options: {
+            maintainAspectRatio: false,
+            interaction: { mode: 'index', intersect: false },
+            plugins: {
+                tooltip: toolTipConf,
+                legend: { position: 'bottom', labels: { color: '#F8FAFC', padding: 20, font: {weight: 'bold', size: 14} } },
+                title: { display: true, text: '2026/05 法人目標價與 2027 EPS 預估', color: '#E2E8F0', font: {size: 16, weight: 'bold'}, padding: {bottom: 20} }
+            },
+            scales: {
+                yPrice: {
+                    type: 'linear',
+                    display: true,
+                    position: 'left',
+                    title: { display: true, text: '目標價 (TWD)', color: '#67E8F9', font: {weight: 'bold', size: 14} },
+                    grid: { color: 'rgba(255,255,255,0.05)' },
+                    min: 2000
+                },
+                yEps: {
+                    type: 'linear',
+                    display: true,
+                    position: 'right',
+                    title: { display: true, text: '2027F EPS (TWD)', color: '#FCD34D', font: {weight: 'bold', size: 14} },
+                    grid: { drawOnChartArea: false },
+                    min: 50,
+                    max: 80
+                },
+                x: {
+                    grid: { display: false },
+                    ticks: { font: {size: 13, weight: 'bold'} }
+                }
+            }
+        }
+    });
+
+    const ctxTdp = document.getElementById('tdpEvolutionChart').getContext('2d');
+    const labelsTdp = ['傳統伺服器', 'H100 機櫃', 'GB200 NVL72', 'VR300 NVL72 (Vera Rubin)'].map(processLabel);
+    new Chart(ctxTdp, {
+        type: 'bar',
+        data: {
+            labels: labelsTdp,
+            datasets: [
+                {
+                    label: '機櫃熱設計功耗 TDP (kW)',
+                    data: [10, 40, 130, 230],
+                    backgroundColor: 'rgba(245, 158, 11, 0.85)',
+                    borderColor: '#FDE68A',
+                    borderWidth: 2,
+                    borderRadius: 8
+                }
+            ]
+        },
+        options: {
+            maintainAspectRatio: false,
+            plugins: {
+                tooltip: toolTipConf,
+                legend: { position: 'bottom', labels: { color: '#F8FAFC', font: {weight: 'bold', size: 14}, padding: 20 } }
+            },
+            scales: {
+                y: { 
+                    grid: { color: 'rgba(255,255,255,0.05)' },
+                    title: { display: true, text: '整櫃功耗 (kW)', color: '#94A3B8', font: {size: 14, weight: 'bold'} },
+                    ticks: { font: {size: 13} }
+                },
+                x: {
+                    grid: { display: false },
+                    ticks: { font: {size: 13, weight: 'bold'} }
+                }
+            }
+        }
+    });
+
+    const swotContent = {
+        'S': {
+            title: 'STRENGTHS (優勢)',
+            colorClass: 'text-cyan-400',
+            bgClass: 'border-cyan-500/50 bg-cyan-950/40',
+            bulletColor: 'bg-cyan-400',
+            items: [
+                '<strong class="text-cyan-300 text-2xl mb-2 block">系統級整合與技術龍頭：</strong>台達電早已從單純的零組件供應商轉型為「整體節能解決方案提供者」。在 AI 伺服器領域，能一口氣提供從電網端到晶片端 (Grid-to-Chip) 的完整方案，涵蓋 Power Shelf、DC-DC、液冷 CDU、風扇模組等，具備極強的定價與規格制定能力。',
+                '<strong class="text-cyan-300 text-2xl mb-2 block mt-6">產品組合極度優化：</strong>1Q26 毛利率創下 37.0% 歷史新高，營益率 17.8% 亦創高。這不僅是規模經濟的結果，更代表高毛利產品（如 AI 電源、資料中心基礎設施）的營收佔比已大到足以扭轉整家公司的獲利結構。',
+                '<strong class="text-cyan-300 text-2xl mb-2 block mt-6">無可取代的研發與專利護城河：</strong>在高階伺服器電源（如 33U 110kW 電源模組）與高壓直流 (HVDC) 技術上，台達電領先業界數個世代，競爭對手難以在短期內跨越安規與轉換效率的技術壁壘。'
+            ]
+        },
+        'W': {
+            title: 'WEAKNESSES (劣勢)',
+            colorClass: 'text-amber-400',
+            bgClass: 'border-amber-500/50 bg-amber-950/40',
+            bulletColor: 'bg-amber-400',
+            items: [
+                '<strong class="text-amber-300 text-2xl mb-2 block">電動車 (EV) 業務遭遇逆風：</strong>全球電動車市場需求降溫，傳統車廠延緩轉型步伐，導致台達電 EV 部門訂單遭取消或遞延（1Q26 認列了客戶違約賠償金）。交通事業群短期內成長動能受限，拖累整體營收表現。',
+                '<strong class="text-amber-300 text-2xl mb-2 block mt-6">龐大的資本支出負擔：</strong>為應對全球供應鏈重組與 AI 強勁需求，公司正在中國、泰國、印度、美國、斯洛伐克等地大舉擴廠。2025年資本支出達 461 億，2026年預計再增 10% 以上。龐大的建廠與設備投資將帶來沉重的折舊壓力。',
+                '<strong class="text-amber-300 text-2xl mb-2 block mt-6">傳統 PC 與自動化市場復甦緩慢：</strong>佔營收一定比重的傳統 PC 電源與工業自動化 (IA) 領域，受到總體經濟與中國市場復甦緩慢影響，短期內難以提供強勁的成長動能。'
+            ]
+        },
+        'O': {
+            title: 'OPPORTUNITIES (機會)',
+            colorClass: 'text-purple-400',
+            bgClass: 'border-purple-500/50 bg-purple-950/40',
+            bulletColor: 'bg-purple-400',
+            items: [
+                '<strong class="text-purple-300 text-2xl mb-2 block">Vera Rubin 與 HVDC 時代降臨：</strong>NVIDIA 預計 2H26 推出 Vera Rubin 平台，單櫃 TDP 將暴升至 190~230kW 甚至更高。凱基與富邦投顧指出，這將強制推動 400V/800V HVDC (高壓直流) 架構的普及。台達電將以 Power Rack 整合出貨，營收規模與毛利將再次出現數倍跳升。',
+                '<strong class="text-purple-300 text-2xl mb-2 block mt-6">液冷方案 (Liquid Cooling) 放量：</strong>氣冷散熱已達物理極限，台達電的液冷解決方案（包含 CDU 水冷分配單元、L2A Sidecar）預計在下半年搭配新世代機櫃大量出貨，補足在散熱領域的最後一塊高成長拼圖。',
+                '<strong class="text-purple-300 text-2xl mb-2 block mt-6">SOFC 燃料電池開拓微電網藍海：</strong>AI 巨頭面臨嚴重的電力短缺。台達電開發的低溫固態氧化物燃料電池 (SOFC) 已進入台電長測，預計 2027-2028 年量產，鎖定資料中心自建微電網與分散式發電市場，這將是一個完全無競爭者的全新藍海。'
+            ]
+        },
+        'T': {
+            title: 'THREATS (威脅)',
+            colorClass: 'text-red-400',
+            bgClass: 'border-red-500/50 bg-red-950/40',
+            bulletColor: 'bg-red-400',
+            items: [
+                '<strong class="text-red-300 text-2xl mb-2 block">液冷散熱市場競爭白熱化：</strong>雖然在電源領域稱霸，但在液冷散熱領域，台達電面臨著奇鋐、雙鴻等散熱專門廠，以及 Vertiv、CoolIT 等國際大廠的激烈競爭。未來可能面臨價格戰導致毛利率遭到壓縮。',
+                '<strong class="text-red-300 text-2xl mb-2 block mt-6">同業競爭與 CSP 供應鏈分散策略：</strong>雲端巨頭 (CSP) 為避免被單一供應商綁架，通常會採取多供應商策略 (Multi-sourcing)。光寶科 (Lite-On)、雅特生 (Artesyn) 等競爭對手亦積極搶進 AI 伺服器高階電源市場，可能對報價產生干擾。',
+                '<strong class="text-red-300 text-2xl mb-2 block mt-6">地緣政治與貿易關稅風險：</strong>台達電仍有約 45% 的產能位於中國。若中美貿易戰持續升溫，針對伺服器零組件祭出更高的懲罰性關稅，將考驗公司全球產能調度的靈活性與成本轉嫁能力。'
+            ]
+        }
+    };
+
+    function openSwotDetail(type) {
+        const detailView = document.getElementById('swotDetailView');
+        const detailTitle = document.getElementById('detailTitle');
+        const detailList = document.getElementById('detailList');
+        const data = swotContent[type];
+        
+        detailTitle.textContent = data.title;
+        detailTitle.className = 'text-4xl md:text-5xl font-black tracking-wide ' + data.colorClass;
+        detailView.className = 'absolute inset-0 z-50 p-12 flex flex-col rounded-3xl border transition-opacity duration-300 backdrop-blur-2xl ' + data.bgClass;
+        
+        detailList.innerHTML = '';
+        data.items.forEach(itemHtml => {
+            const li = document.createElement('li');
+            li.className = 'flex items-start';
+            const bullet = document.createElement('span');
+            bullet.className = 'mr-5 mt-3 w-4 h-4 rounded-full flex-shrink-0 shadow-[0_0_12px_currentColor] ' + data.bulletColor;
+            const textSpan = document.createElement('div');
+            textSpan.className = 'flex-1 leading-relaxed text-gray-200';
+            textSpan.innerHTML = itemHtml;
+            
+            li.appendChild(bullet);
+            li.appendChild(textSpan);
+            detailList.appendChild(li);
+        });
+        
+        detailView.classList.remove('hidden');
+        document.getElementById('detailList').parentElement.scrollTop = 0;
+    }
+
+    function closeSwotDetail() {
+        document.getElementById('swotDetailView').classList.add('hidden');
+    }
+</script>
+
+<script>
+  const ro = new ResizeObserver(() => {
+    const height = document.documentElement.scrollHeight;
+    window.parent.postMessage({ type: 'resize', height: height }, '*');
+  });
+  ro.observe(document.body);
+</script>
+</body>
+</html>

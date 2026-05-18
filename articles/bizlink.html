@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 基礎設施架構師：貿聯-KY(3665) 產業深度解析</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+    body {
+        background-color: #050B14;
+        color: #F8FAFC;
+        font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+    .chart-container {
+        position: relative;
+        width: 100%;
+        max-width: 850px;
+        margin-left: auto;
+        margin-right: auto;
+        height: 380px;
+        max-height: 450px;
+    }
+    @media (min-width: 768px) {
+        .chart-container { height: 420px; }
+    }
+    .glass-card {
+        background: rgba(15, 23, 42, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.8);
+    }
+    .text-gradient-cyan {
+        background: linear-gradient(135deg, #22D3EE 0%, #0284C7 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+    .text-gradient-amber {
+        background: linear-gradient(135deg, #FDE68A 0%, #F59E0B 50%, #D97706 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+    .quadrant-bg-S { background: linear-gradient(135deg, rgba(34,211,238,0.05), rgba(34,211,238,0.15)); border-color: rgba(34,211,238,0.4); }
+    .quadrant-bg-W { background: linear-gradient(135deg, rgba(245,158,11,0.05), rgba(245,158,11,0.15)); border-color: rgba(245,158,11,0.4); }
+    .quadrant-bg-O { background: linear-gradient(135deg, rgba(167,139,250,0.05), rgba(167,139,250,0.15)); border-color: rgba(167,139,250,0.4); }
+    .quadrant-bg-T { background: linear-gradient(135deg, rgba(248,113,113,0.05), rgba(248,113,113,0.15)); border-color: rgba(248,113,113,0.4); }
+    
+    .flow-box {
+        background-color: #1E293B;
+        border: 1px solid #334155;
+        padding: 16px 20px;
+        border-radius: 8px;
+        text-align: center;
+        font-weight: 600;
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+        font-size: 1.05rem;
+    }
+    .flow-arrow {
+        text-align: center;
+        color: #64748B;
+        font-size: 1.5rem;
+        margin: 8px 0;
+        font-weight: bold;
+    }
+    .flow-box-highlight {
+        background-color: rgba(245, 158, 11, 0.1);
+        border-color: #F59E0B;
+        color: #FDE68A;
+        box-shadow: 0 0 15px rgba(245, 158, 11, 0.2);
+    }
+    .custom-scrollbar::-webkit-scrollbar { width: 8px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.5); border-radius: 4px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(100, 116, 139, 0.5); border-radius: 4px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(100, 116, 139, 0.8); }
+</style>
+</head>
+<body class="antialiased pb-24">
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10">
+
+    <div class="bg-red-900/20 border border-red-500/50 text-red-300 p-4 rounded-xl text-center text-sm font-bold mb-10 shadow-[0_0_15px_rgba(239,68,68,0.15)] tracking-wide">
+        【免責聲明與風險提示】本報告所載之所有資訊、投顧報告數據（含富邦、國票、華南等機構）及目標價，僅供學術研究與教育展示用途，絕不構成任何有價證券之買賣要約、招攬或投資建議。投資人應自行審慎評估市場風險，並對自身之投資決策自負盈虧。
+    </div>
+
+    <header class="text-center mb-16">
+        <div class="inline-block mb-4 px-6 py-2 rounded-full border border-cyan-500/50 bg-cyan-500/20 text-cyan-300 text-sm font-bold tracking-widest uppercase shadow-[0_0_15px_rgba(34,211,238,0.2)]">
+            AI Infrastructure Architect
+        </div>
+        <p class="text-sm text-gray-500 mb-4 font-semibold tracking-wider">發表日期：2026-05-18</p>
+        <h1 class="text-4xl md:text-6xl font-black mb-6 tracking-tight">
+            AI 基礎設施的造浪者：<span class="text-gradient-cyan">貿聯-KY(3665)</span>
+        </h1>
+        <h2 class="text-xl md:text-2xl font-semibold text-gray-400 mb-8 max-w-4xl mx-auto leading-relaxed">
+            從矽谷線束廠到全球系統整合巨頭，深度解析 AI 機櫃的電力與數據大動脈，以及 2026 年最新外資與本土投顧的估值重塑邏輯。
+        </h2>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+        <section class="glass-card rounded-3xl p-8 lg:col-span-2">
+            <h3 class="text-3xl font-bold mb-6 text-gradient-cyan border-b border-gray-700 pb-4">一、產業痛點與解決方案：光與銅的機櫃對決</h3>
+            <p class="text-gray-300 mb-8 text-lg leading-relaxed">
+                在 AI 伺服器算力狂飆的時代，資料中心面臨著兩大極端挑戰：<strong class="text-amber-400">「海量數據的超高速傳輸」</strong>與<strong class="text-amber-400">「千瓦級電力的極致分配」</strong>。市場常有「矽光子(CPO)將完全取代銅線」的迷思，但貿聯-KY 的強勢崛起證明了：在機櫃內部 (In-Rack) 的短距傳輸中，銅纜與特製匯流排 (Busbar) 具備光纖無可取代的低功耗與成本優勢。
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-slate-900/80 rounded-2xl p-6 md:p-8 border border-gray-700 shadow-lg">
+                    <h4 class="text-2xl font-bold text-gray-200 mb-8 text-center">📡 數據傳輸 (Data Interconnect)</h4>
+                    
+                    <div class="flex flex-col">
+                        <div class="flow-box">GPU 運算節點 (Compute Tray)</div>
+                        <div class="flow-arrow text-sm">↓ 機櫃內短距傳輸 ( &lt; 3公尺 )</div>
+                        <div class="flow-box flow-box-highlight relative">
+                            貿聯 AEC / DAC 高速銅纜
+                            <div class="text-xs mt-2 text-amber-200 font-normal bg-amber-900/40 p-2 rounded">極低延遲、無需光電轉換、低功耗</div>
+                        </div>
+                        <div class="flow-arrow text-sm">↓ 聚合至交換器</div>
+                        <div class="flow-box">機頂交換器 (Top of Rack Switch)</div>
+                        <div class="flow-arrow text-sm">↓ 機櫃間長距傳輸 ( &gt; 3公尺 )</div>
+                        <div class="flow-box border-blue-600/50 bg-blue-900/20 text-blue-300">光纖模組 (CPO / Pluggable Optics)</div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900/80 rounded-2xl p-6 md:p-8 border border-gray-700 shadow-lg">
+                    <h4 class="text-2xl font-bold text-gray-200 mb-8 text-center">⚡ 電力分配 (Power Delivery)</h4>
+                    
+                    <div class="flex flex-col">
+                        <div class="flow-box">機房主幹電網 (Grid Power)</div>
+                        <div class="flow-arrow text-sm">↓ 高壓交流電 (AC)</div>
+                        <div class="flow-box">電源機櫃 (Power Shelf / PSU)</div>
+                        <div class="flow-arrow text-sm">↓ 轉換為高壓直流 (HVDC)</div>
+                        <div class="flow-box flow-box-highlight relative">
+                            貿聯 伺服器機架匯流排 (Rack Busbar)
+                            <div class="text-xs mt-2 text-amber-200 font-normal bg-amber-900/40 p-2 rounded">承受超大電流、極低阻抗發熱、客製化成型</div>
+                        </div>
+                        <div class="flow-arrow text-sm">↓ 穩定電流輸出</div>
+                        <div class="flow-box border-blue-600/50 bg-blue-900/20 text-blue-300">各運算節點 (GPU/CPU) 主機板</div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 text-sm text-gray-300 bg-slate-800/50 p-5 rounded-xl border border-slate-600 leading-relaxed text-center">
+                <strong class="text-cyan-400">系統級賦能者 (System-Level Enabler)：</strong> 貿聯已跳脫傳統「賣線材」的框架，成為提供從 PCIe Gen5/6 高速線、主動式電纜 (AEC) 到大電流匯流排的一站式「AI 機櫃神經與血管系統架構師」。
+            </div>
+        </section>
+
+        <section class="glass-card rounded-3xl p-8">
+            <h3 class="text-2xl font-bold mb-6 text-gradient-purple border-b border-gray-700 pb-2">二、華麗轉型：併購驅動的「4x4 全球策略」</h3>
+            <p class="text-gray-300 mb-6 text-base leading-relaxed">
+                貿聯自 1996 年於矽谷發跡，透過精準的國際併購，完成「四大產業領域」與「四大區域產能」的全球化分散佈局，完美規避了地緣政治與單一產業的衰退風險。
+            </p>
+            <div class="space-y-4">
+                <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-600 shadow-md">
+                    <div class="text-cyan-400 font-bold mb-1 text-lg">2020 併購新加坡 Speedy</div>
+                    <div class="text-sm text-gray-300">補足東南亞製造基地，並強勢切入高門檻的「半導體設備線束」供應鏈。</div>
+                </div>
+                <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-600 shadow-md">
+                    <div class="text-amber-400 font-bold mb-1 text-lg">2022 併購德國 INBG (Leoni 工業事業)</div>
+                    <div class="text-sm text-gray-300">取得歐洲頂級工業自動化、機器人手臂線束技術，擴張歐洲在地化產能。</div>
+                </div>
+                <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-600 shadow-md">
+                    <div class="text-purple-400 font-bold mb-1 text-lg">2024 併購 Easys 與 CableCon</div>
+                    <div class="text-sm text-gray-300">深化半導體設備與高階客製化系統整合能力，推升工業應用板塊毛利。</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass-card rounded-3xl p-8">
+            <h3 class="text-2xl font-bold mb-6 text-gradient-purple border-b border-gray-700 pb-2">三、產品組合質變：AI 引爆資訊科技板塊</h3>
+            <p class="text-gray-300 mb-4 text-base leading-relaxed">
+                隨著 AI 資料中心需求井噴，貿聯的營收結構發生了根本性的質變。毛利率較低的消費電器與車用佔比快速下降，取而代之的是極高毛利的資訊科技 (HPC/AI) 領域。
+            </p>
+            <div class="chart-container w-full mt-4">
+                <canvas id="productMixChart"></canvas>
+            </div>
+            <p class="text-center text-xs text-gray-500 mt-2">資料來源：華南投顧 (2026/05) 產品組合預測</p>
+        </section>
+
+        <section class="glass-card rounded-3xl p-8 lg:col-span-2">
+            <h3 class="text-3xl font-bold mb-6 text-gradient-amber border-b border-gray-700 pb-4">四、2026 最新投顧前瞻：目標價上看 3,780 元的底層邏輯</h3>
+            <p class="text-gray-300 mb-8 text-lg leading-relaxed">
+                2026 年 5 月中旬，包含富邦、國票、華南及日系外資在內的法人機構，密集發布針對貿聯-KY (3665) 的更新報告。儘管 1Q26 遭遇短暫的毛利率逆風，法人依然紛紛給出「買進」或「強力買進」評等，目標價最高直指 <strong class="text-amber-400">3,780 元</strong>。
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-8">
+                <div class="bg-slate-900/60 p-8 rounded-2xl border border-gray-600 shadow-xl">
+                    <h4 class="text-2xl font-bold text-white mb-5 border-b border-gray-700 pb-3">法人報告三大核心護城河</h4>
+                    <ul class="space-y-6 text-sm text-gray-300">
+                        <li>
+                            <strong class="text-cyan-400 text-base block mb-1">1Q26 財報解析 (利空出盡)：</strong>
+                            首季毛利率跌至 28.78% (預期32.8%)，國票投顧指出此為「新舊世代產品轉換期」的陣痛。舊世代產品出貨降溫致產能利用率下滑，且銅與 PVC 成本上漲尚未完全轉嫁，但此屬短期現象。
+                        </li>
+                        <li>
+                            <strong class="text-cyan-400 text-base block mb-1">Meta MTIA 與高階 AI 專案：</strong>
+                            日系外資與市場報告指出，貿聯在 Meta ASIC AI 伺服器 (MTIA 架構) 中扮演關鍵角色。其主動式電纜 (AEC) 預計將大量應用於機櫃內擴展 (Scale-up) 與機櫃到交換器場景。
+                        </li>
+                        <li>
+                            <strong class="text-cyan-400 text-base block mb-1">EPS 爆發性成長軌跡：</strong>
+                            富邦投顧預估其 EPS 將從 FY25 的 46.57 元，跳升至 FY26F 的 67.96 元，並在 FY27F 突破百元大關達 108.22 元。強勁的獲利增長支撐了高達 35 倍以上的本益比預期。
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="flex flex-col space-y-6">
+                    <div class="chart-container w-full h-full min-h-[350px]">
+                        <canvas id="brokerageTargetsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass-card rounded-3xl p-8 lg:col-span-2 relative overflow-hidden min-h-[550px]">
+            <h3 class="text-3xl font-bold mb-4 text-white border-b border-gray-700 pb-4">五、貿聯-KY (3665) 互動式 SWOT 戰略矩陣</h3>
+            <p class="text-gray-400 text-base mb-8">結合前述深度解析與投顧報告數據，<strong class="text-cyan-400">請點擊下方任一象限</strong>，深入探索貿聯-KY 的總體戰略、獲利護城河與潛在風險剖析。</p>
+            
+            <div class="grid grid-cols-2 gap-6 h-[400px]">
+                <div class="quadrant-bg-S border-2 rounded-2xl p-6 cursor-pointer transform transition-all hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(34,211,238,0.4)] flex flex-col items-center justify-center text-center group" onclick="openSwotDetail('S')">
+                    <div class="text-8xl font-black text-cyan-500/10 absolute top-4 left-6 group-hover:text-cyan-500/20 transition-colors">S</div>
+                    <h4 class="text-3xl md:text-5xl font-black text-cyan-400 z-10 mb-2">優勢</h4>
+                    <p class="text-cyan-200 text-sm md:text-lg z-10 font-bold tracking-widest uppercase">Strengths</p>
+                    <p class="text-gray-300 text-sm md:text-base mt-4 z-10 font-medium">全球在地化生產 / 系統級設計能力 / M&A整合力</p>
+                </div>
+                
+                <div class="quadrant-bg-W border-2 rounded-2xl p-6 cursor-pointer transform transition-all hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(245,158,11,0.4)] flex flex-col items-center justify-center text-center group" onclick="openSwotDetail('W')">
+                    <div class="text-8xl font-black text-amber-500/10 absolute top-4 right-6 group-hover:text-amber-500/20 transition-colors">W</div>
+                    <h4 class="text-3xl md:text-5xl font-black text-amber-400 z-10 mb-2">劣勢</h4>
+                    <p class="text-amber-200 text-sm md:text-lg z-10 font-bold tracking-widest uppercase">Weaknesses</p>
+                    <p class="text-gray-300 text-sm md:text-base mt-4 z-10 font-medium">原物料(銅/PVC)成本敏感 / 新舊產品轉換陣痛</p>
+                </div>
+                
+                <div class="quadrant-bg-O border-2 rounded-2xl p-6 cursor-pointer transform transition-all hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(167,139,250,0.4)] flex flex-col items-center justify-center text-center group" onclick="openSwotDetail('O')">
+                    <div class="text-8xl font-black text-purple-500/10 absolute bottom-4 left-6 group-hover:text-purple-500/20 transition-colors">O</div>
+                    <h4 class="text-3xl md:text-5xl font-black text-purple-400 z-10 mb-2">機會</h4>
+                    <p class="text-purple-200 text-sm md:text-lg z-10 font-bold tracking-widest uppercase">Opportunities</p>
+                    <p class="text-gray-300 text-sm md:text-base mt-4 z-10 font-medium">AI 機櫃高壓電力與高速線路 / 機器人自動化</p>
+                </div>
+                
+                <div class="quadrant-bg-T border-2 rounded-2xl p-6 cursor-pointer transform transition-all hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(248,113,113,0.4)] flex flex-col items-center justify-center text-center group" onclick="openSwotDetail('T')">
+                    <div class="text-8xl font-black text-red-500/10 absolute bottom-4 right-6 group-hover:text-red-500/20 transition-colors">T</div>
+                    <h4 class="text-3xl md:text-5xl font-black text-red-400 z-10 mb-2">威脅</h4>
+                    <p class="text-red-200 text-sm md:text-lg z-10 font-bold tracking-widest uppercase">Threats</p>
+                    <p class="text-gray-300 text-sm md:text-base mt-4 z-10 font-medium">CPO光通訊技術下放 / 同業低價競爭 / 客戶集中</p>
+                </div>
+            </div>
+
+            <div id="swotDetailView" class="hidden absolute inset-0 bg-slate-900/95 backdrop-blur-2xl z-50 p-10 flex flex-col rounded-3xl border border-gray-700 transition-opacity duration-300">
+                <div class="flex justify-between items-center mb-8 border-b border-gray-700 pb-6">
+                    <h4 id="detailTitle" class="text-4xl md:text-5xl font-black tracking-wide">Title</h4>
+                    <button onclick="closeSwotDetail()" class="text-gray-400 hover:text-white bg-gray-800 hover:bg-red-600 rounded-full w-14 h-14 flex items-center justify-center transition-colors text-3xl focus:outline-none font-bold shadow-lg">&times;</button>
+                </div>
+                <div class="flex-1 overflow-y-auto pr-6 custom-scrollbar">
+                    <ul id="detailList" class="space-y-8 text-xl text-gray-300">
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</div>
+
+<script>
+    const processLabel = (label) => {
+        if (label.length <= 14) return label;
+        let words = label.split(' ');
+        if(words.length === 1) {
+            let lines = [];
+            for(let i = 0; i < label.length; i+=12) {
+                lines.push(label.substring(i, i+12));
+            }
+            return lines;
+        }
+        let lines = [];
+        let currentLine = '';
+        for(let i=0; i<words.length; i++) {
+            if((currentLine + words[i]).length > 14) {
+                if(currentLine.trim() !== '') lines.push(currentLine.trim());
+                currentLine = words[i] + ' ';
+            } else {
+                currentLine += words[i] + ' ';
+            }
+        }
+        if(currentLine.trim() !== '') lines.push(currentLine.trim());
+        return lines.length > 1 ? lines : lines[0];
+    };
+
+    const toolTipConf = {
+        callbacks: {
+            title: function(ctx) {
+                const item = ctx[0];
+                let lbl = item.chart.data.labels[item.dataIndex];
+                if(Array.isArray(lbl)) {
+                    return lbl.join(' ');
+                }
+                return lbl;
+            }
+        }
+    };
+
+    Chart.defaults.color = '#94A3B8';
+    Chart.defaults.font.family = "'Segoe UI', Roboto, Helvetica, Arial, sans-serif";
+
+    const ctxProduct = document.getElementById('productMixChart').getContext('2d');
+    const labelsProduct = ['資訊科技 (IT)', '工業用 (Industrial)', '車用 (Automotive)', '電器 (Electrical)', '其他'].map(processLabel);
+    new Chart(ctxProduct, {
+        type: 'bar',
+        data: {
+            labels: labelsProduct,
+            datasets: [
+                {
+                    label: '2024 實際佔比 (%)',
+                    data: [24, 40, 18, 17, 1],
+                    backgroundColor: 'rgba(100, 116, 139, 0.6)',
+                    borderColor: '#64748B',
+                    borderWidth: 1,
+                    borderRadius: 4
+                },
+                {
+                    label: '2026F 預估佔比 (%)',
+                    data: [55, 28, 9, 9, 1],
+                    backgroundColor: 'rgba(34, 211, 238, 0.8)',
+                    borderColor: '#06B6D4',
+                    borderWidth: 1,
+                    borderRadius: 4
+                }
+            ]
+        },
+        options: {
+            maintainAspectRatio: false,
+            plugins: {
+                tooltip: toolTipConf,
+                legend: { position: 'top', labels: { color: '#F8FAFC', font: {weight: 'bold'} } },
+                title: { display: true, text: '產品組合的巨變：AI 基礎建設營收大爆發', color: '#E2E8F0', font: {size: 16, weight: 'bold'}, padding: {bottom: 20} }
+            },
+            scales: {
+                y: { 
+                    grid: { color: 'rgba(255,255,255,0.05)' },
+                    title: { display: true, text: '營收佔比 (%)', color: '#94A3B8', font: {size: 14, weight: 'bold'} },
+                    max: 60
+                },
+                x: {
+                    grid: { display: false },
+                    ticks: { font: {size: 13, weight: 'bold'} }
+                }
+            }
+        }
+    });
+
+    const ctxTargets = document.getElementById('brokerageTargetsChart').getContext('2d');
+    const labelsTargets = ['華南投顧', '日系外資', '國票投顧', '富邦投顧'].map(processLabel);
+    new Chart(ctxTargets, {
+        type: 'bar',
+        data: {
+            labels: labelsTargets,
+            datasets: [
+                {
+                    type: 'line',
+                    label: '遠期 EPS 預估 (元) - 右軸',
+                    data: [68.38, 85.00, 101.40, 108.22], 
+                    borderColor: '#22D3EE',
+                    backgroundColor: '#22D3EE',
+                    borderWidth: 4,
+                    pointRadius: 7,
+                    pointBackgroundColor: '#fff',
+                    yAxisID: 'yEps',
+                    tension: 0.3
+                },
+                {
+                    type: 'bar',
+                    label: '法人目標價 (元) - 左軸',
+                    data: [3000, 3053, 3500, 3780],
+                    backgroundColor: [
+                        'rgba(245, 158, 11, 0.5)', 
+                        'rgba(245, 158, 11, 0.6)', 
+                        'rgba(245, 158, 11, 0.8)', 
+                        'rgba(245, 158, 11, 1.0)' 
+                    ],
+                    borderColor: '#F59E0B',
+                    borderWidth: 2,
+                    borderRadius: 8,
+                    yAxisID: 'yPrice'
+                }
+            ]
+        },
+        options: {
+            maintainAspectRatio: false,
+            interaction: { mode: 'index', intersect: false },
+            plugins: {
+                tooltip: toolTipConf,
+                legend: { position: 'bottom', labels: { color: '#F8FAFC', padding: 20, font: {weight: 'bold', size: 14} } },
+                title: { display: true, text: '2026年5月 投顧外資目標價與EPS預測矩陣', color: '#E2E8F0', font: {size: 16, weight: 'bold'}, padding: {bottom: 20} }
+            },
+            scales: {
+                yPrice: {
+                    type: 'linear',
+                    display: true,
+                    position: 'left',
+                    title: { display: true, text: '目標價 (TWD)', color: '#FCD34D', font: {weight: 'bold', size: 14} },
+                    grid: { color: 'rgba(255,255,255,0.05)' },
+                    min: 2000
+                },
+                yEps: {
+                    type: 'linear',
+                    display: true,
+                    position: 'right',
+                    title: { display: true, text: 'EPS 預估 (TWD)', color: '#67E8F9', font: {weight: 'bold', size: 14} },
+                    grid: { drawOnChartArea: false },
+                    min: 40,
+                    max: 130
+                },
+                x: {
+                    grid: { display: false },
+                    ticks: { font: {size: 13, weight: 'bold'} }
+                }
+            }
+        }
+    });
+
+    const swotContent = {
+        'S': {
+            title: 'STRENGTHS (優勢)',
+            colorClass: 'text-cyan-400',
+            bgClass: 'border-cyan-500/50 bg-cyan-950/40',
+            bulletColor: 'bg-cyan-400',
+            items: [
+                '<strong class="text-cyan-300 text-2xl mb-2 block">系統級解決方案架構師 (Tier 1 供應商)：</strong>貿聯早已超越傳統代工「賣線材」的層級，具備為客戶（如 NVIDIA, Meta 等）進行客製化系統設計的能力。從 PCIe 高速資料傳輸線 (AEC) 到承受極大電流的高壓直流匯流排 (HVDC Busbar)，提供一站式整合服務。',
+                '<strong class="text-cyan-300 text-2xl mb-2 block mt-6">「4x4 策略」全球在地化生產優勢：</strong>透過持續且精準的併購 (Speedy, INBG, Easys)，貿聯在全球四大洲皆擁有深厚的製造與研發基地。這完美契合了當前地緣政治下，客戶要求「China+1」或「Local-for-Local」的供應鏈去風險化趨勢。',
+                '<strong class="text-cyan-300 text-2xl mb-2 block mt-6">多角化抗風險能力：</strong>即便資訊科技(IT)佔比快速上升，貿聯在工業自動化、半導體設備、電動車及醫療設備領域的均衡佈局，使其營收在單一產業衰退時具備強大的避震能力。'
+            ]
+        },
+        'W': {
+            title: 'WEAKNESSES (劣勢)',
+            colorClass: 'text-amber-400',
+            bgClass: 'border-amber-500/50 bg-amber-950/40',
+            bulletColor: 'bg-amber-400',
+            items: [
+                '<strong class="text-amber-300 text-2xl mb-2 block">新舊產品轉換的毛利陣痛期：</strong>根據國票投顧 (5/13) 報告，貿聯 1Q26 毛利率意外降至 28.78% (原預期 32.8%)。主因在於新世代平台 (如 NVL72 相關零組件) 尚未完全放量，而高毛利的舊世代產品出貨下滑，導致整體產能利用率降低。',
+                '<strong class="text-amber-300 text-2xl mb-2 block mt-6">原物料價格敏感度高：</strong>銅、金與 PVC 等大宗原物料佔連接線材成本極高比重。國際銅價的劇烈波動，若未能及時透過漲價轉嫁給下游客戶，將直接侵蝕公司短期的毛利率表現。',
+                '<strong class="text-amber-300 text-2xl mb-2 block mt-6">環保法規與化學品限制：</strong>歐洲與北美對於塑料及電鍍化學品的環保法規日益嚴苛 (如 RoHS, REACH 的持續升級)，可能增加製造端的合規成本與材料替代研發壓力。'
+            ]
+        },
+        'O': {
+            title: 'OPPORTUNITIES (機會)',
+            colorClass: 'text-purple-400',
+            bgClass: 'border-purple-500/50 bg-purple-950/40',
+            bulletColor: 'bg-purple-400',
+            items: [
+                '<strong class="text-purple-300 text-2xl mb-2 block">AI 伺服器解構帶來的超級紅利：</strong>輝達 GB200 NVL72 及 Meta MTIA 等架構，將伺服器拉升至「機櫃級」部署。機櫃內部需要極大量的主動式電纜 (AEC) 進行低延遲資料傳輸，以及客製化的電源匯流排 (Busbar) 處理千瓦級的電力分配，為貿聯創造龐大且高毛利的新增市場 (TAM)。',
+                '<strong class="text-purple-300 text-2xl mb-2 block mt-6">工業機器人與半導體設備復甦：</strong>併購 INBG 與 Easys 後，貿聯在歐洲工業自動化與半導體無塵室線束市場站穩腳步。隨著全球缺工導致自動化需求不滅，以及半導體設備投資進入上升循環，將為公司提供堅實的第二成長引擎。',
+                '<strong class="text-purple-300 text-2xl mb-2 block mt-6">與晶片大廠 (如 Credo) 的戰略結盟：</strong>在 AEC 市場，貿聯與 DSP 晶片大廠 Credo 保持緊密的合作關係。隨著 PCIe Gen6/Gen7 時代到來，共同開發的高速線路將進一步鞏固其在雲端巨頭 (CSP) 中的市佔率。'
+            ]
+        },
+        'T': {
+            title: 'THREATS (威脅)',
+            colorClass: 'text-red-400',
+            bgClass: 'border-red-500/50 bg-red-950/40',
+            bulletColor: 'bg-red-400',
+            items: [
+                '<strong class="text-red-300 text-2xl mb-2 block">矽光子 (CPO) 技術的快速下放：</strong>目前在 3 公尺以內的機櫃內部傳輸，銅纜 (DAC/AEC) 因成本與功耗優勢仍是主流。但若未來共同封裝光學 (CPO) 技術成熟且成本大幅下降，光通訊可能進一步向下取代銅線的短距傳輸市場，侵蝕貿聯的護城河。',
+                '<strong class="text-red-300 text-2xl mb-2 block mt-6">同業競爭與削價壓力：</strong>面對 AI 伺服器這塊大餅，全球大廠如 Amphenol、Molex、TE Connectivity，甚至區域型的低成本製造商皆積極搶進。雲端巨頭 (CSP) 擁有極強的議價能力，可能導入多供應商策略 (Multi-sourcing) 以壓低零組件價格。',
+                '<strong class="text-red-300 text-2xl mb-2 block mt-6">客戶集中度與電動車逆風：</strong>雖然貿聯積極分散客源，但在電動車 (EV) 領域高度依賴特定美系大廠 (Tesla)。近期全球電動車市場需求降溫、傳統車廠暫緩轉型，恐對其車用業務板塊帶來持續性的逆風壓力。'
+            ]
+        }
+    };
+
+    function openSwotDetail(type) {
+        const detailView = document.getElementById('swotDetailView');
+        const detailTitle = document.getElementById('detailTitle');
+        const detailList = document.getElementById('detailList');
+        const data = swotContent[type];
+        
+        detailTitle.textContent = data.title;
+        detailTitle.className = 'text-4xl md:text-5xl font-black tracking-wide ' + data.colorClass;
+        detailView.className = 'absolute inset-0 z-50 p-12 flex flex-col rounded-3xl border transition-opacity duration-300 backdrop-blur-2xl ' + data.bgClass;
+        
+        detailList.innerHTML = '';
+        data.items.forEach(itemHtml => {
+            const li = document.createElement('li');
+            li.className = 'flex items-start';
+            const bullet = document.createElement('span');
+            bullet.className = 'mr-5 mt-3 w-4 h-4 rounded-full flex-shrink-0 shadow-[0_0_12px_currentColor] ' + data.bulletColor;
+            const textSpan = document.createElement('div');
+            textSpan.className = 'flex-1 leading-relaxed text-gray-200';
+            textSpan.innerHTML = itemHtml;
+            
+            li.appendChild(bullet);
+            li.appendChild(textSpan);
+            detailList.appendChild(li);
+        });
+        
+        detailView.classList.remove('hidden');
+        document.getElementById('detailList').parentElement.scrollTop = 0;
+    }
+
+    function closeSwotDetail() {
+        document.getElementById('swotDetailView').classList.add('hidden');
+    }
+</script>
+
+<script>
+  const ro = new ResizeObserver(() => {
+    const height = document.documentElement.scrollHeight;
+    window.parent.postMessage({ type: 'resize', height: height }, '*');
+  });
+  ro.observe(document.body);
+</script>
+</body>
+</html>
