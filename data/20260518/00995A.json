@@ -1,1 +1,488 @@
-[]
+[
+  {
+    "stockCode": "2330",
+    "stockName": "台灣積體電路製造",
+    "shares": 226000,
+    "weight": 9.5,
+    "diffShares": 226000,
+    "diffWeight": 9.5,
+    "isNew": true
+  },
+  {
+    "stockCode": "2383",
+    "stockName": "台光電子材料",
+    "shares": 74000,
+    "weight": 6.31,
+    "diffShares": 74000,
+    "diffWeight": 6.31,
+    "isNew": true
+  },
+  {
+    "stockCode": "2345",
+    "stockName": "智邦科技",
+    "shares": 119000,
+    "weight": 5.57,
+    "diffShares": 119000,
+    "diffWeight": 5.57,
+    "isNew": true
+  },
+  {
+    "stockCode": "2308",
+    "stockName": "台達電子工業",
+    "shares": 141000,
+    "weight": 5.35,
+    "diffShares": 141000,
+    "diffWeight": 5.35,
+    "isNew": true
+  },
+  {
+    "stockCode": "2454",
+    "stockName": "聯發科技",
+    "shares": 82000,
+    "weight": 5.23,
+    "diffShares": 82000,
+    "diffWeight": 5.23,
+    "isNew": true
+  },
+  {
+    "stockCode": "6223",
+    "stockName": "旺矽科技",
+    "shares": 36000,
+    "weight": 4.15,
+    "diffShares": 36000,
+    "diffWeight": 4.15,
+    "isNew": true
+  },
+  {
+    "stockCode": "6669",
+    "stockName": "緯穎科技服務",
+    "shares": 41000,
+    "weight": 3.92,
+    "diffShares": 41000,
+    "diffWeight": 3.92,
+    "isNew": true
+  },
+  {
+    "stockCode": "3017",
+    "stockName": "奇鋐科技",
+    "shares": 85000,
+    "weight": 3.85,
+    "diffShares": 85000,
+    "diffWeight": 3.85,
+    "isNew": true
+  },
+  {
+    "stockCode": "2368",
+    "stockName": "金像電子",
+    "shares": 155000,
+    "weight": 3.64,
+    "diffShares": 155000,
+    "diffWeight": 3.64,
+    "isNew": true
+  },
+  {
+    "stockCode": "5274",
+    "stockName": "信驊科技",
+    "shares": 12000,
+    "weight": 3.64,
+    "diffShares": 12000,
+    "diffWeight": 3.64,
+    "isNew": true
+  },
+  {
+    "stockCode": "3037",
+    "stockName": "欣興電子",
+    "shares": 232000,
+    "weight": 3.55,
+    "diffShares": 232000,
+    "diffWeight": 3.55,
+    "isNew": true
+  },
+  {
+    "stockCode": "3665",
+    "stockName": "貿聯控股",
+    "shares": 77000,
+    "weight": 2.93,
+    "diffShares": 77000,
+    "diffWeight": 2.93,
+    "isNew": true
+  },
+  {
+    "stockCode": "6515",
+    "stockName": "穎崴科技",
+    "shares": 13000,
+    "weight": 2.5,
+    "diffShares": 13000,
+    "diffWeight": 2.5,
+    "isNew": true
+  },
+  {
+    "stockCode": "2327",
+    "stockName": "國巨*",
+    "shares": 257000,
+    "weight": 2.42,
+    "diffShares": 257000,
+    "diffWeight": 2.42,
+    "isNew": true
+  },
+  {
+    "stockCode": "8046",
+    "stockName": "南亞電路板",
+    "shares": 152000,
+    "weight": 2.26,
+    "diffShares": 152000,
+    "diffWeight": 2.26,
+    "isNew": true
+  },
+  {
+    "stockCode": "7769",
+    "stockName": "鴻勁",
+    "shares": 16000,
+    "weight": 2,
+    "diffShares": 16000,
+    "diffWeight": 2,
+    "isNew": true
+  },
+  {
+    "stockCode": "3711",
+    "stockName": "日月光投資控股",
+    "shares": 200000,
+    "weight": 1.91,
+    "diffShares": 200000,
+    "diffWeight": 1.91,
+    "isNew": true
+  },
+  {
+    "stockCode": "3653",
+    "stockName": "健策精密工業",
+    "shares": 30000,
+    "weight": 1.84,
+    "diffShares": 30000,
+    "diffWeight": 1.84,
+    "isNew": true
+  },
+  {
+    "stockCode": "6274",
+    "stockName": "台燿科技",
+    "shares": 68000,
+    "weight": 1.61,
+    "diffShares": 68000,
+    "diffWeight": 1.61,
+    "isNew": true
+  },
+  {
+    "stockCode": "8210",
+    "stockName": "勤誠興業",
+    "shares": 60000,
+    "weight": 1.55,
+    "diffShares": 60000,
+    "diffWeight": 1.55,
+    "isNew": true
+  },
+  {
+    "stockCode": "6510",
+    "stockName": "中華精測科技",
+    "shares": 20000,
+    "weight": 1.4,
+    "diffShares": 20000,
+    "diffWeight": 1.4,
+    "isNew": true
+  },
+  {
+    "stockCode": "3661",
+    "stockName": "世芯電子",
+    "shares": 15000,
+    "weight": 1.29,
+    "diffShares": 15000,
+    "diffWeight": 1.29,
+    "isNew": true
+  },
+  {
+    "stockCode": "2449",
+    "stockName": "京元電子",
+    "shares": 224500,
+    "weight": 1.24,
+    "diffShares": 224500,
+    "diffWeight": 1.24,
+    "isNew": true
+  },
+  {
+    "stockCode": "2303",
+    "stockName": "聯華電子",
+    "shares": 525000,
+    "weight": 1.09,
+    "diffShares": 525000,
+    "diffWeight": 1.09,
+    "isNew": true
+  },
+  {
+    "stockCode": "2360",
+    "stockName": "致茂電子",
+    "shares": 26000,
+    "weight": 1.07,
+    "diffShares": 26000,
+    "diffWeight": 1.07,
+    "isNew": true
+  },
+  {
+    "stockCode": "3264",
+    "stockName": "欣銓科技",
+    "shares": 212200,
+    "weight": 0.92,
+    "diffShares": 212200,
+    "diffWeight": 0.92,
+    "isNew": true
+  },
+  {
+    "stockCode": "3443",
+    "stockName": "創意電子",
+    "shares": 9000,
+    "weight": 0.8,
+    "diffShares": 9000,
+    "diffWeight": 0.8,
+    "isNew": true
+  },
+  {
+    "stockCode": "4958",
+    "stockName": "臻鼎科技控股",
+    "shares": 107000,
+    "weight": 0.78,
+    "diffShares": 107000,
+    "diffWeight": 0.78,
+    "isNew": true
+  },
+  {
+    "stockCode": "5289",
+    "stockName": "宜鼎國際",
+    "shares": 22000,
+    "weight": 0.77,
+    "diffShares": 22000,
+    "diffWeight": 0.77,
+    "isNew": true
+  },
+  {
+    "stockCode": "8358",
+    "stockName": "金居開發",
+    "shares": 96000,
+    "weight": 0.77,
+    "diffShares": 96000,
+    "diffWeight": 0.77,
+    "isNew": true
+  },
+  {
+    "stockCode": "2455",
+    "stockName": "全新光電科技",
+    "shares": 101000,
+    "weight": 0.73,
+    "diffShares": 101000,
+    "diffWeight": 0.73,
+    "isNew": true
+  },
+  {
+    "stockCode": "2472",
+    "stockName": "立隆電子工業",
+    "shares": 162000,
+    "weight": 0.71,
+    "diffShares": 162000,
+    "diffWeight": 0.71,
+    "isNew": true
+  },
+  {
+    "stockCode": "3081",
+    "stockName": "聯亞光電工業",
+    "shares": 14000,
+    "weight": 0.71,
+    "diffShares": 14000,
+    "diffWeight": 0.71,
+    "isNew": true
+  },
+  {
+    "stockCode": "3044",
+    "stockName": "健鼎科技",
+    "shares": 78000,
+    "weight": 0.69,
+    "diffShares": 78000,
+    "diffWeight": 0.69,
+    "isNew": true
+  },
+  {
+    "stockCode": "6831",
+    "stockName": "邁科",
+    "shares": 48000,
+    "weight": 0.66,
+    "diffShares": 48000,
+    "diffWeight": 0.66,
+    "isNew": true
+  },
+  {
+    "stockCode": "2885",
+    "stockName": "元大金融控股",
+    "shares": 623000,
+    "weight": 0.64,
+    "diffShares": 623000,
+    "diffWeight": 0.64,
+    "isNew": true
+  },
+  {
+    "stockCode": "8996",
+    "stockName": "高力熱處理工業",
+    "shares": 32000,
+    "weight": 0.63,
+    "diffShares": 32000,
+    "diffWeight": 0.63,
+    "isNew": true
+  },
+  {
+    "stockCode": "3023",
+    "stockName": "信邦電子",
+    "shares": 113000,
+    "weight": 0.62,
+    "diffShares": 113000,
+    "diffWeight": 0.62,
+    "isNew": true
+  },
+  {
+    "stockCode": "2344",
+    "stockName": "華邦電子",
+    "shares": 220000,
+    "weight": 0.54,
+    "diffShares": 220000,
+    "diffWeight": 0.54,
+    "isNew": true
+  },
+  {
+    "stockCode": "2059",
+    "stockName": "川湖科技",
+    "shares": 6000,
+    "weight": 0.54,
+    "diffShares": 6000,
+    "diffWeight": 0.54,
+    "isNew": true
+  },
+  {
+    "stockCode": "4749",
+    "stockName": "新應材",
+    "shares": 28000,
+    "weight": 0.53,
+    "diffShares": 28000,
+    "diffWeight": 0.53,
+    "isNew": true
+  },
+  {
+    "stockCode": "3105",
+    "stockName": "穩懋半導體",
+    "shares": 60000,
+    "weight": 0.51,
+    "diffShares": 60000,
+    "diffWeight": 0.51,
+    "isNew": true
+  },
+  {
+    "stockCode": "7751",
+    "stockName": "竑騰",
+    "shares": 15000,
+    "weight": 0.5,
+    "diffShares": 15000,
+    "diffWeight": 0.5,
+    "isNew": true
+  },
+  {
+    "stockCode": "5439",
+    "stockName": "高技企業",
+    "shares": 65180,
+    "weight": 0.47,
+    "diffShares": 65180,
+    "diffWeight": 0.47,
+    "isNew": true
+  },
+  {
+    "stockCode": "6438",
+    "stockName": "迅得機械",
+    "shares": 140000,
+    "weight": 0.44,
+    "diffShares": 140000,
+    "diffWeight": 0.44,
+    "isNew": true
+  },
+  {
+    "stockCode": "7750",
+    "stockName": "新代",
+    "shares": 9000,
+    "weight": 0.43,
+    "diffShares": 9000,
+    "diffWeight": 0.43,
+    "isNew": true
+  },
+  {
+    "stockCode": "4979",
+    "stockName": "華星光通科技",
+    "shares": 41000,
+    "weight": 0.42,
+    "diffShares": 41000,
+    "diffWeight": 0.42,
+    "isNew": true
+  },
+  {
+    "stockCode": "3491",
+    "stockName": "昇達科技",
+    "shares": 12000,
+    "weight": 0.42,
+    "diffShares": 12000,
+    "diffWeight": 0.42,
+    "isNew": true
+  },
+  {
+    "stockCode": "6805",
+    "stockName": "富世達股份有限公司",
+    "shares": 11000,
+    "weight": 0.36,
+    "diffShares": 11000,
+    "diffWeight": 0.36,
+    "isNew": true
+  },
+  {
+    "stockCode": "2313",
+    "stockName": "華通電腦",
+    "shares": 55000,
+    "weight": 0.27,
+    "diffShares": 55000,
+    "diffWeight": 0.27,
+    "isNew": true
+  },
+  {
+    "stockCode": "6285",
+    "stockName": "啟碁科技",
+    "shares": 40000,
+    "weight": 0.21,
+    "diffShares": 40000,
+    "diffWeight": 0.21,
+    "isNew": true
+  },
+  {
+    "stockCode": "6442",
+    "stockName": "光紅建聖",
+    "shares": 6000,
+    "weight": 0.2,
+    "diffShares": 6000,
+    "diffWeight": 0.2,
+    "isNew": true
+  },
+  {
+    "stockCode": "2421",
+    "stockName": "建準電機工業",
+    "shares": 73637,
+    "weight": 0.19,
+    "diffShares": 73637,
+    "diffWeight": 0.19,
+    "isNew": true
+  },
+  {
+    "stockCode": "3189",
+    "stockName": "景碩科技",
+    "shares": 5000,
+    "weight": 0.05,
+    "diffShares": 5000,
+    "diffWeight": 0.05,
+    "isNew": true
+  }
+]
