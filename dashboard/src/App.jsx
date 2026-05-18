@@ -220,12 +220,27 @@ function App() {
       if (tableSort === 'diffShares') {
         const diffA = a.diffShares || 0;
         const diffB = b.diffShares || 0;
-        if (diffA > 0 && diffB > 0) return diffB - diffA; // 加碼：多到少 (降冪)
-        if (diffA < 0 && diffB < 0) return diffA - diffB; // 減碼：減多到減少 (升冪)
-        if (diffA > 0 && diffB <= 0) return -1; // 加碼排最前
-        if (diffB > 0 && diffA <= 0) return 1;
-        if (diffA < 0 && diffB === 0) return -1; // 減碼排中間
-        if (diffB < 0 && diffA === 0) return 1;
+        
+        const getGroup = (item, diff) => {
+          if (item.isSoldOut) return 2;
+          if (diff > 0) return 1;
+          if (diff < 0) return 3;
+          return 4; // 無變動
+        };
+
+        const groupA = getGroup(a, diffA);
+        const groupB = getGroup(b, diffB);
+
+        // 若不同群組，依群組順序排：1(加碼) -> 2(出清) -> 3(減碼) -> 4(無變動)
+        if (groupA !== groupB) {
+          return groupA - groupB;
+        }
+
+        // 若同群組，依張數變動量排序 (由多到少)
+        if (groupA === 1) return diffB - diffA; // 加碼：降冪 (增加多的在前)
+        if (groupA === 2) return diffA - diffB; // 出清：升冪 (出清多的在前，因 diffShares 是負數)
+        if (groupA === 3) return diffA - diffB; // 減碼：升冪 (減少多的在前，因 diffShares 是負數)
+        
         return 0; // 無變動排最後
       }
 
