@@ -77,6 +77,7 @@ function App() {
   // ── 排序與榜單 ──
   const [tableSort, setTableSort] = useState('weight');
   const [diffSort, setDiffSort] = useState('addPct'); // 'addPct' | 'addAbs' | 'subPct' | 'subAbs'
+  const [aggregatedSort, setAggregatedSort] = useState('weight'); // 'weight' | 'diffShares' | 'buyingValue'
 
   const [currentUser, setCurrentUser] = useState(() => {
     try {
@@ -254,20 +255,30 @@ function App() {
     return arr;
   }, [activeHoldings, tableSort]);
 
-  // 計算今日買進總權重變動 (用於計算各標的佔今日買進總額比例)
-  const totalBuyingWeight = useMemo(() => {
-    return activeHoldings.reduce((sum, h) => sum + Math.max(0, h.diffWeight || 0), 0);
+  // 計算今日買進估計金額比例 (以 diffShares * weight / shares 作為買進金額的相對代理值)
+  // 判斷「有買進」的依據是 diffShares > 0，與 diffWeight 無關
+  const { totalBuyingValue, holdingBuyingValues } = useMemo(() => {
+    const values = {};
+    let total = 0;
+    activeHoldings.forEach(h => {
+      if ((h.diffShares || 0) > 0 && (h.shares || 0) > 0) {
+        const estimatedValue = h.diffShares * (h.weight / h.shares);
+        values[h.stockCode] = estimatedValue;
+        total += estimatedValue;
+      }
+    });
+    return { totalBuyingValue: total, holdingBuyingValues: values };
   }, [activeHoldings]);
 
   // 今日買進資金佔比圓餅圖資料
   const BUYING_PIE_COLORS = ['#10b981', '#34d399', '#6ee7b7', '#a7f3d0', '#059669', '#047857', '#065f46', '#0d9488', '#14b8a6', '#2dd4bf', '#5eead4', '#99f6e4'];
   const buyingPieData = useMemo(() => {
-    if (totalBuyingWeight <= 0) return [];
+    if (totalBuyingValue <= 0) return [];
     const all = activeHoldings
-      .filter(h => (h.diffWeight || 0) > 0)
+      .filter(h => (h.diffShares || 0) > 0 && holdingBuyingValues[h.stockCode])
       .map(h => ({
         name: formatStockLabel(h.stockCode, h.stockName, activeEtf),
-        value: parseFloat(((h.diffWeight / totalBuyingWeight) * 100).toFixed(1)),
+        value: parseFloat(((holdingBuyingValues[h.stockCode] / totalBuyingValue) * 100).toFixed(1)),
         diffWeight: h.diffWeight,
         isNew: h.isNew,
       }))
@@ -280,7 +291,7 @@ function App() {
       main.push({ name: `其他 (${others.length} 檔)`, value: othersTotal, diffWeight: othersDiffWeight, isNew: false, isOthers: true });
     }
     return main;
-  }, [activeHoldings, totalBuyingWeight, activeEtf]);
+  }, [activeHoldings, totalBuyingValue, holdingBuyingValues, activeEtf]);
 
   const chartData = useMemo(() => {
     if (!activeHoldings.length) return [];
@@ -353,7 +364,7 @@ function App() {
   // 對 visibleEtfs 中有資料的 ETF，加總同一股票的持股比例與持股數量
   const aggregatedData = useMemo(() => {
     if (!data) return [];
-    const map = {}; // stockCode -> { stockCode, stockName, totalWeight, etfCount, etfBreakdown: [{etfCode, weight, shares}] }
+    const map = {}; // stockCode -> { stockCode, stockName, totalWeight, etfCount, etfBreakdown: [{etfCode, weight, shares}], totalDiffShares: 0, totalBuyingValue: 0 }
 
     visibleEtfs.forEach(etfCode => {
       const holdings = data[etfCode];
@@ -366,7 +377,9 @@ function App() {
             stockName: h.stockName,
             totalWeight: 0,
             etfCount: 0,
-            etfBreakdown: []
+            etfBreakdown: [],
+            totalDiffShares: 0,
+            totalBuyingValue: 0
           };
         }
         map[h.stockCode].totalWeight = Number((map[h.stockCode].totalWeight + (h.weight || 0)).toFixed(4));
@@ -374,14 +387,25 @@ function App() {
         map[h.stockCode].etfBreakdown.push({
           etfCode,
           weight: h.weight || 0,
-          shares: h.shares || 0
+          shares: h.shares || 0,
+          diffShares: h.diffShares || 0
         });
+        
+        if ((h.diffShares || 0) > 0 && (h.shares || 0) > 0) {
+          const estimatedValue = h.diffShares * (h.weight / h.shares);
+          map[h.stockCode].totalDiffShares += h.diffShares;
+          map[h.stockCode].totalBuyingValue += estimatedValue;
+        }
       });
     });
 
     return Object.values(map)
-      .sort((a, b) => b.totalWeight - a.totalWeight);
-  }, [data, visibleEtfs]);
+      .sort((a, b) => {
+        if (aggregatedSort === 'diffShares') return b.totalDiffShares - a.totalDiffShares;
+        if (aggregatedSort === 'buyingValue') return b.totalBuyingValue - a.totalBuyingValue;
+        return b.totalWeight - a.totalWeight;
+      });
+  }, [data, visibleEtfs, aggregatedSort]);
 
   // ── Telegram 推播（僅發送當前 tab 選中的 ETF）──
   const handleSendTelegram = async () => {
@@ -863,7 +887,7 @@ function App() {
                         <div className="glass-panel" style={{ display: 'flex', flexDirection: 'column' }}>
                           <h3 style={{ marginBottom: '0.5rem', fontSize: '1.25rem', color: '#10b981' }}>今日買進資金佔比</h3>
                           <p style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', marginBottom: '0.75rem' }}>
-                            總加碼權重：<span style={{ color: '#10b981', fontWeight: 700 }}>+{totalBuyingWeight.toFixed(2)}%</span>
+                            今日買進標的數：<span style={{ color: '#10b981', fontWeight: 700 }}>{Object.keys(holdingBuyingValues).length} 檔</span>
                           </p>
                           <div style={{ flex: 1, minHeight: '350px' }}>
                             <ResponsiveContainer width="100%" height="100%">
@@ -949,9 +973,9 @@ function App() {
                                         <span className={diffLotNum > 0 ? 'text-success' : 'text-danger'} style={{ fontWeight: 800, fontSize: '1.05rem', marginLeft: '8px' }}>
                                           ({diffLotStr}) ({pctStr})
                                         </span>
-                                        {hold.diffWeight > 0 && totalBuyingWeight > 0 && (
+                                        {(hold.diffShares || 0) > 0 && totalBuyingValue > 0 && holdingBuyingValues[hold.stockCode] && (
                                           <div style={{ fontSize: '0.65rem', color: '#10b981', fontWeight: 600, marginTop: '2px' }}>
-                                            佔今日買進總額 {((hold.diffWeight / totalBuyingWeight) * 100).toFixed(1)}%
+                                            佔今日買進總額 {((holdingBuyingValues[hold.stockCode] / totalBuyingValue) * 100).toFixed(1)}%
                                           </div>
                                         )}
                                       </span>
@@ -998,7 +1022,8 @@ function App() {
                         <tr>
                           <th>排名</th>
                           <th>股票</th>
-                          <th>累計權重 (%)</th>
+                          <th className="cursor-pointer" onClick={() => setAggregatedSort('weight')}>累計權重 (%) {aggregatedSort === 'weight' && '↓'}</th>
+                          <th className="cursor-pointer" onClick={() => setAggregatedSort('diffShares')}>總加碼張數 {aggregatedSort === 'diffShares' && '↓'}</th>
                           <th>涵蓋 ETF 數</th>
                           <th>各 ETF 持倉明細</th>
                         </tr>
@@ -1023,6 +1048,22 @@ function App() {
                               </div>
                             </td>
                             <td>
+                              {item.totalDiffShares > 0 ? (
+                                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                                  <span style={{ fontWeight: 700, fontSize: '1rem', color: 'var(--tw-up)' }}>
+                                    +{(item.totalDiffShares / 1000).toFixed(1).replace(/\.0$/, '')} 張
+                                  </span>
+                                  {item.totalBuyingValue > 0 && (
+                                    <span style={{ fontSize: '0.75rem', color: '#10b981', marginTop: '2px' }}>
+                                      估計佔比: {(item.totalBuyingValue).toFixed(2)}
+                                    </span>
+                                  )}
+                                </div>
+                              ) : (
+                                <span style={{ color: 'var(--border-light)' }}>-</span>
+                              )}
+                            </td>
+                            <td>
                               <span style={{
                                 display: 'inline-block', padding: '2px 10px', borderRadius: '20px', fontWeight: 700, fontSize: '0.85rem',
                                 background: item.etfCount >= 3 ? 'rgba(167,139,250,0.2)' : (item.etfCount >= 2 ? 'rgba(96,165,250,0.15)' : 'rgba(255,255,255,0.06)'),
@@ -1040,9 +1081,13 @@ function App() {
                                     <span key={e.etfCode} style={{
                                       fontSize: '0.7rem', padding: '2px 7px', borderRadius: '4px', fontWeight: 600, whiteSpace: 'nowrap',
                                       background: `${meta?.color}18`, color: meta?.color || '#94a3b8',
-                                      border: `1px solid ${meta?.color}40`
+                                      border: `1px solid ${meta?.color}40`,
+                                      display: 'flex', alignItems: 'center', gap: '3px'
                                     }}>
                                       {e.etfCode} {e.weight.toFixed(2)}%
+                                      {(e.diffShares || 0) > 0 && (
+                                        <span style={{ color: 'var(--tw-up)' }}>+{((e.diffShares)/1000).toFixed(1).replace(/\.0$/,'')}</span>
+                                      )}
                                     </span>
                                   );
                                 })}
