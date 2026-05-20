@@ -59,6 +59,16 @@ function App() {
   const [prevData, setPrevData] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // ── 多日比對區間 ──
+  const [compareRange, setCompareRange] = useState(1); // 1 | 3 | 5 | 10 | 'custom'
+  const [customBaseDate, setCustomBaseDate] = useState(''); // YYYYMMDD
+  const [baseData, setBaseData] = useState(null); // 基準日的完整資料
+  const [showCalendar, setShowCalendar] = useState(false);
+  const [calendarMonth, setCalendarMonth] = useState(() => {
+    const now = new Date();
+    return { year: now.getFullYear(), month: now.getMonth() };
+  });
+
   // ── 檢視模式：'single' | 'aggregated' ──
   const [viewMode, setViewMode] = useState('single');
 
@@ -187,17 +197,83 @@ function App() {
     });
   }, [selectedDate, historyDates]);
 
+  // ── 多日比對：載入基準日資料 ──
+  useEffect(() => {
+    if (!selectedDate || historyDates.length === 0) return;
+    if (compareRange === 1) { setBaseData(null); return; }
 
-  // ── 單檔持股（含前端層出清偵測） ──
+    const idx = historyDates.indexOf(selectedDate);
+    let baseDateStr = null;
+
+    if (compareRange === 'custom') {
+      baseDateStr = customBaseDate || null;
+    } else {
+      const baseIdx = idx + compareRange;
+      baseDateStr = (baseIdx < historyDates.length) ? historyDates[baseIdx] : null;
+    }
+
+    if (baseDateStr) {
+      fetchDateData(baseDateStr).then(json => setBaseData(json));
+    } else {
+      setBaseData(null);
+    }
+  }, [selectedDate, historyDates, compareRange, customBaseDate]);
+
+
+  // ── 計算比對基準日標籤 ──
+  const comparisonLabel = useMemo(() => {
+    if (compareRange === 1) return '前日';
+    if (compareRange === 'custom' && customBaseDate) return customBaseDate;
+    const idx = historyDates.indexOf(selectedDate);
+    const baseIdx = idx + (typeof compareRange === 'number' ? compareRange : 0);
+    if (baseIdx < historyDates.length) return historyDates[baseIdx];
+    return '(無資料)';
+  }, [compareRange, customBaseDate, selectedDate, historyDates]);
+
+  // ── 單檔持股（含前端層出清偵測 + 多日比對） ──
   const activeHoldings = useMemo(() => {
     if (!data) return [];
     const current = data[activeEtf] || [];
-    const prev = prevData?.[activeEtf] || [];
-    if (prev.length === 0) return current;
+    const useMultiDay = compareRange !== 1;
+    const base = useMultiDay ? (baseData?.[activeEtf] || []) : (prevData?.[activeEtf] || []);
 
-    // 偵測出清：前一日有但今日消失的標的
+    if (base.length === 0 && !useMultiDay) return current;
+    if (base.length === 0 && useMultiDay) return current;
+
+    if (useMultiDay) {
+      // 多日模式：前端重算 diff
+      const baseMap = new Map(base.map(h => [h.stockCode, h]));
+      const recomputed = current.map(h => {
+        const prev = baseMap.get(h.stockCode);
+        if (!prev) {
+          return { ...h, diffShares: h.shares, diffWeight: Number(h.weight.toFixed(2)), diffSharesPercent: 100, isNew: true };
+        }
+        const ds = h.shares - prev.shares;
+        const dsp = prev.shares > 0 ? parseFloat(((ds / prev.shares) * 100).toFixed(2)) : 0;
+        return {
+          ...h,
+          diffShares: ds,
+          diffWeight: Number((h.weight - prev.weight).toFixed(2)),
+          diffSharesPercent: dsp,
+          isNew: false
+        };
+      });
+      // 偵測出清
+      const currentCodes = new Set(current.map(h => h.stockCode));
+      const soldOut = base
+        .filter(p => !currentCodes.has(p.stockCode))
+        .map(p => ({
+          stockCode: p.stockCode, stockName: p.stockName,
+          shares: 0, weight: 0,
+          diffShares: -(p.shares || 0), diffWeight: -(p.weight || 0),
+          diffSharesPercent: -100, isNew: false, isSoldOut: true,
+        }));
+      return [...recomputed, ...soldOut];
+    }
+
+    // 單日模式：沿用原邏輯（使用 JSON 中既有的 diffShares）
     const currentCodes = new Set(current.map(h => h.stockCode));
-    const soldOut = prev
+    const soldOut = base
       .filter(p => !currentCodes.has(p.stockCode))
       .map(p => ({
         stockCode: p.stockCode,
@@ -211,7 +287,7 @@ function App() {
         isSoldOut: true,
       }));
     return [...current, ...soldOut];
-  }, [data, prevData, activeEtf]);
+  }, [data, prevData, baseData, activeEtf, compareRange]);
 
   const sortedHoldings = useMemo(() => {
     const arr = [...activeHoldings];
@@ -512,7 +588,7 @@ function App() {
 
   // ── ETF 過濾器面板 ──
   const FilterPanel = () => (
-    <div style={{
+    <div className="filter-popup" style={{
       position: 'absolute', top: 'calc(100% + 0.5rem)', right: 0, zIndex: 200,
       background: 'var(--bg-surface)', border: '1px solid var(--border-light)',
       borderRadius: '12px', padding: '1rem', minWidth: '280px',
@@ -752,7 +828,12 @@ function App() {
                   <Filter size={14} />
                   ETF 篩選 ({visibleEtfs.length}/{ALL_ETF_CODES.length})
                 </button>
-                {showFilter && <FilterPanel />}
+                {showFilter && (
+                  <>
+                    <div className="popup-overlay" onClick={() => setShowFilter(false)} />
+                    <FilterPanel />
+                  </>
+                )}
               </div>
             </div>
 
@@ -786,7 +867,7 @@ function App() {
             {/* ══════════ 單檔 ETF 視圖 ══════════ */}
             {viewMode === 'single' && (
               <>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '1.5rem', borderBottom: '1px solid var(--border-light)', paddingBottom: '0.8rem' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '1rem', borderBottom: '1px solid var(--border-light)', paddingBottom: '0.8rem' }}>
                   <div>
                     <h2 style={{ margin: 0, fontSize: '1.6rem', fontWeight: 700, color: ETF_META[activeEtf].color }}>
                       {ETF_META[activeEtf].name}
@@ -796,6 +877,166 @@ function App() {
                   <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', background: 'rgba(255,255,255,0.04)', padding: '0.4rem 0.8rem', borderRadius: '8px', border: '1px solid var(--border-light)' }}>
                     資料更新日期：<span style={{ color: '#e2e8f0', fontWeight: 600, letterSpacing: '0.05em' }}>{selectedDate || '讀取中'}</span>
                   </div>
+                </div>
+
+                {/* ── 比對區間選擇器 ── */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1.5rem', flexWrap: 'wrap' }}>
+                  <span style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', fontWeight: 600 }}>比對區間：</span>
+                  <div style={{ display: 'flex', gap: '0.3rem', background: 'rgba(255,255,255,0.04)', borderRadius: '8px', padding: '3px', border: '1px solid var(--border-light)' }}>
+                    {[
+                      { label: '1 日', value: 1 },
+                      { label: '3 日', value: 3 },
+                      { label: '5 日', value: 5 },
+                      { label: '10 日', value: 10 },
+                    ].map(opt => (
+                      <button key={opt.value}
+                        onClick={() => { setCompareRange(opt.value); setCustomBaseDate(''); setShowCalendar(false); }}
+                        style={{
+                          padding: '0.3rem 0.7rem', fontSize: '0.78rem', borderRadius: '6px',
+                          cursor: 'pointer', border: 'none', fontWeight: 600, transition: 'all 0.2s',
+                          background: compareRange === opt.value ? 'var(--accent-blue)' : 'transparent',
+                          color: compareRange === opt.value ? '#fff' : 'var(--text-secondary)'
+                        }}
+                      >
+                        {opt.label}
+                      </button>
+                    ))}
+                    <div style={{ position: 'relative' }}>
+                      <button
+                        onClick={() => { setCompareRange('custom'); setShowCalendar(c => !c); }}
+                        style={{
+                          padding: '0.3rem 0.7rem', fontSize: '0.78rem', borderRadius: '6px',
+                          cursor: 'pointer', border: 'none', fontWeight: 600, transition: 'all 0.2s',
+                          background: compareRange === 'custom' ? '#a78bfa' : 'transparent',
+                          color: compareRange === 'custom' ? '#fff' : 'var(--text-secondary)'
+                        }}
+                      >
+                        自訂
+                      </button>
+                      {/* ── 日曆彈出層 ── */}
+                      {showCalendar && compareRange === 'custom' && (
+                        <>
+                          <div className="popup-overlay" onClick={() => setShowCalendar(false)} />
+                          {(() => {
+                            const availSet = new Set(historyDates);
+                            const { year, month } = calendarMonth;
+                            const firstDay = new Date(year, month, 1).getDay();
+                            const daysInMonth = new Date(year, month + 1, 0).getDate();
+                            const cells = [];
+                            for (let i = 0; i < firstDay; i++) cells.push(null);
+                            for (let d = 1; d <= daysInMonth; d++) cells.push(d);
+
+                            const pad = n => String(n).padStart(2, '0');
+                            const toStr = d => `${year}${pad(month + 1)}${pad(d)}`;
+
+                            // 範圍高亮遏輯
+                            const selIdx = selectedDate ? historyDates.indexOf(selectedDate) : -1;
+                            const baseIdx = customBaseDate ? historyDates.indexOf(customBaseDate) : -1;
+                            const rangeSet = new Set();
+                            if (selIdx >= 0 && baseIdx >= 0) {
+                              const lo = Math.min(selIdx, baseIdx);
+                              const hi = Math.max(selIdx, baseIdx);
+                              for (let i = lo; i <= hi; i++) rangeSet.add(historyDates[i]);
+                            }
+
+                            // 可選日期：必須在 historyDates 且必須比 selectedDate 更早
+                            const isSelectable = (dateStr) => {
+                              if (!availSet.has(dateStr)) return false;
+                              return historyDates.indexOf(dateStr) > historyDates.indexOf(selectedDate);
+                            };
+
+                            const oldestDate = historyDates[historyDates.length - 1];
+                            const oldestYear = parseInt(oldestDate.slice(0, 4));
+                            const oldestMonth = parseInt(oldestDate.slice(4, 6)) - 1;
+                            const canGoPrev = year > oldestYear || (year === oldestYear && month > oldestMonth);
+                            const now = new Date();
+                            const canGoNext = year < now.getFullYear() || (year === now.getFullYear() && month < now.getMonth());
+
+                            return (
+                              <div className="calendar-popup" style={{
+                                position: 'absolute', top: 'calc(100% + 6px)', left: 0, zIndex: 300,
+                                background: 'var(--bg-surface)', border: '1px solid var(--border-light)',
+                                borderRadius: '12px', padding: '0.8rem', minWidth: '280px',
+                                boxShadow: '0 8px 32px rgba(0,0,0,0.6)'
+                              }}>
+                                {/* 月份導航 */}
+                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.6rem' }}>
+                                  <button onClick={() => canGoPrev && setCalendarMonth(p => {
+                                    const m = p.month - 1;
+                                    return m < 0 ? { year: p.year - 1, month: 11 } : { ...p, month: m };
+                                  })} style={{ background: 'none', border: 'none', color: canGoPrev ? '#e2e8f0' : '#475569', cursor: canGoPrev ? 'pointer' : 'default', fontSize: '1rem', padding: '4px 8px' }}>&lt;</button>
+                                  <span style={{ fontWeight: 700, fontSize: '0.9rem', color: '#e2e8f0' }}>{year} 年 {month + 1} 月</span>
+                                  <button onClick={() => canGoNext && setCalendarMonth(p => {
+                                    const m = p.month + 1;
+                                    return m > 11 ? { year: p.year + 1, month: 0 } : { ...p, month: m };
+                                  })} style={{ background: 'none', border: 'none', color: canGoNext ? '#e2e8f0' : '#475569', cursor: canGoNext ? 'pointer' : 'default', fontSize: '1rem', padding: '4px 8px' }}>&gt;</button>
+                                </div>
+                                {/* 星期標題 */}
+                                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: '2px', textAlign: 'center', marginBottom: '4px' }}>
+                                  {['日', '一', '二', '三', '四', '五', '六'].map(w => (
+                                    <div key={w} style={{ fontSize: '0.7rem', color: '#64748b', fontWeight: 600, padding: '2px 0' }}>{w}</div>
+                                  ))}
+                                </div>
+                                {/* 日期格子 */}
+                                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: '2px', textAlign: 'center' }}>
+                                  {cells.map((day, i) => {
+                                    if (day === null) return <div key={`e-${i}`} />;
+                                    const dateStr = toStr(day);
+                                    const selectable = isSelectable(dateStr);
+                                    const isSelected = dateStr === customBaseDate;
+                                    const isTarget = dateStr === selectedDate;
+                                    const inRange = rangeSet.has(dateStr);
+                                    const hasData = availSet.has(dateStr);
+
+                                    let bg = 'transparent';
+                                    let color = '#475569'; // gray default
+                                    let fontWeight = 400;
+                                    let border = '1px solid transparent';
+
+                                    if (isSelected) {
+                                      bg = '#a78bfa'; color = '#fff'; fontWeight = 700;
+                                      border = '1px solid #a78bfa';
+                                    } else if (isTarget) {
+                                      bg = 'var(--accent-blue)'; color = '#fff'; fontWeight = 700;
+                                      border = '1px solid var(--accent-blue)';
+                                    } else if (inRange && hasData) {
+                                      bg = 'rgba(167,139,250,0.15)'; color = '#c4b5fd'; fontWeight = 600;
+                                    } else if (selectable) {
+                                      color = '#e2e8f0'; fontWeight = 500;
+                                    }
+
+                                    return (
+                                      <div key={dateStr}
+                                        onClick={() => {
+                                          if (selectable) {
+                                            setCustomBaseDate(dateStr);
+                                            setShowCalendar(false);
+                                          }
+                                        }}
+                                        style={{
+                                          padding: '5px 2px', borderRadius: '6px', fontSize: '0.78rem',
+                                          cursor: selectable ? 'pointer' : 'default',
+                                          background: bg, color, fontWeight, border,
+                                          transition: 'all 0.15s'
+                                        }}
+                                      >
+                                        {day}
+                                      </div>
+                                    );
+                                  })}
+                                </div>
+                              </div>
+                            );
+                          })()}
+                        </>
+                      )}
+                    </div>
+                  </div>
+                  {compareRange !== 1 && (
+                    <span style={{ fontSize: '0.75rem', color: '#a78bfa', background: 'rgba(167,139,250,0.1)', padding: '3px 8px', borderRadius: '4px', border: '1px solid rgba(167,139,250,0.3)' }}>
+                      基準日：{comparisonLabel}
+                    </span>
+                  )}
                 </div>
 
                 {(!activeHoldings || activeHoldings.length === 0) ? (
@@ -821,7 +1062,7 @@ function App() {
                         </div>
                       </div>
                       <div className="glass-panel">
-                        <h3 style={{ marginBottom: '1.5rem', fontSize: '1.25rem' }}>權重對比 (前日 vs 今日)</h3>
+                        <h3 style={{ marginBottom: '1.5rem', fontSize: '1.25rem' }}>權重對比 ({comparisonLabel} vs {selectedDate})</h3>
                         <div style={{ height: '350px' }}>
                           <ResponsiveContainer width="100%" height="100%">
                             <BarChart data={chartData} layout="vertical" margin={{ top: 5, right: 30, left: 20, bottom: 20 }}>
@@ -835,7 +1076,7 @@ function App() {
                                 }
                                 return [`${value}%`, name];
                               }} />
-                              <Bar dataKey="prevWeight" name="前日權重" fill="var(--text-secondary)" radius={[0, 4, 4, 0]} barSize={8} />
+                              <Bar dataKey="prevWeight" name={`${comparisonLabel}權重`} fill="var(--text-secondary)" radius={[0, 4, 4, 0]} barSize={8} />
                               <Bar dataKey="weight" name="今日權重" radius={[0, 4, 4, 0]} barSize={12}>
                                 <LabelList dataKey="diffSharesPercent" position="right" formatter={(val) => val ? `${val > 0 ? '+' : ''}${val}%` : ''} fill="var(--text-secondary)" fontSize={12} fontWeight={600} />
                                 {chartData.map((entry, index) => <Cell key={`cell-${index}`} fill={entry.diff > 0 ? 'var(--tw-up)' : (entry.diff < 0 ? 'var(--tw-down)' : 'var(--accent-blue)')} />)}
@@ -964,21 +1205,23 @@ function App() {
                                   <td style={{ fontWeight: 600, color: '#94a3b8' }}>{hold.stockCode}</td>
                                   <td style={{ fontWeight: 500 }}>{hold.stockName}</td>
                                   <td>{hold.weight}%</td>
-                                  <td>
+                                  <td className="shares-cell">
                                     {diffLotNum !== 0 ? (
-                                      <span>
-                                        <span style={{ color: 'var(--text-secondary)' }}>{prevSharesLotStr}</span>
-                                        <span style={{ margin: '0 6px', color: 'var(--text-secondary)' }}>➔</span>
-                                        <span style={{ fontWeight: 600 }}>{sharesLotStr}</span>
-                                        <span className={diffLotNum > 0 ? 'text-success' : 'text-danger'} style={{ fontWeight: 800, fontSize: '1.05rem', marginLeft: '8px' }}>
+                                      <div className="shares-change-row">
+                                        <span>
+                                          <span style={{ color: 'var(--text-secondary)' }}>{prevSharesLotStr}</span>
+                                          <span style={{ margin: '0 6px', color: 'var(--text-secondary)' }}>➔</span>
+                                          <span style={{ fontWeight: 600 }}>{sharesLotStr}</span>
+                                        </span>
+                                        <span className={`shares-diff-badge ${diffLotNum > 0 ? 'text-success' : 'text-danger'}`}>
                                           ({diffLotStr}) ({pctStr})
                                         </span>
                                         {(hold.diffShares || 0) > 0 && totalBuyingValue > 0 && holdingBuyingValues[hold.stockCode] && (
-                                          <div style={{ fontSize: '0.65rem', color: '#10b981', fontWeight: 600, marginTop: '2px' }}>
+                                          <div style={{ fontSize: '0.65rem', color: '#10b981', fontWeight: 600, marginTop: '2px', width: '100%' }}>
                                             佔今日買進總額 {((holdingBuyingValues[hold.stockCode] / totalBuyingValue) * 100).toFixed(1)}%
                                           </div>
                                         )}
-                                      </span>
+                                      </div>
                                     ) : (
                                       <span style={{ fontWeight: 600 }}>{sharesLotStr}</span>
                                     )}
