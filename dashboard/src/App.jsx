@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, PieChart, Pie, LabelList } from 'recharts';
 import { Activity, RefreshCw, Send, Lock, LogOut, User, ShieldCheck, Filter, BarChart2, BookOpen, ArrowLeft } from 'lucide-react';
@@ -7,6 +7,8 @@ import BmcPage from './pages/BmcPage';
 import DeltaPage from './pages/DeltaPage';
 import GlobalWafersPage from './pages/GlobalWafersPage';
 import BizLinkPage from './pages/BizLinkPage';
+import StockChartModal from './components/StockChartModal';
+import InlineStockChart from './components/InlineStockChart';
 import './index.css';
 
 const ETF_META = {
@@ -20,6 +22,230 @@ const ETF_META = {
   '00985A': { name: '主動野村台灣50', color: '#fdba74' },
   '00992A': { name: '主動群益科技創新', color: '#f87171' },
   '00995A': { name: '主動中信卓越成長', color: '#818cf8' },
+};
+
+// ─── 產業板塊字典與分類邏輯 ──────────────────────────────────
+const STOCK_INDUSTRY_MAP = {
+  // 半導體代工
+  '2330': '半導體代工', '2303': '半導體代工', '5347': '半導體代工', '6488': '半導體代工', '3105': '半導體代工', '4991': '半導體代工',
+  'INTL': '半導體代工', 'INTC': '半導體代工', 'TSEM': '半導體代工', 'WOLF': '半導體代工', 'SOI': '半導體代工', 'SOI FP': '半導體代工', 'AXTI US': '半導體代工',
+  
+  // 半導體封測
+  '3711': '半導體封測', '2449': '半導體封測', '6147': '半導體封測', '3264': '半導體封測', '6257': '半導體封測', '8150': '半導體封測', '2351': '半導體封測',
+  
+  // IC 設計 / IP
+  '2454': 'IC 設計/IP', '3661': 'IC 設計/IP', '3443': 'IC 設計/IP', '3035': 'IC 設計/IP', 
+  '6462': 'IC 設計/IP', '8299': 'IC 設計/IP', '5274': 'IC 設計/IP', '5269': 'IC 設計/IP', 
+  '3034': 'IC 設計/IP', '2379': 'IC 設計/IP', '3527': 'IC 設計/IP', '3008': 'IC 設計/IP', '4966': 'IC 設計/IP',
+  '3529': 'IC 設計/IP', '6415': 'IC 設計/IP', '6531': 'IC 設計/IP', '8016': 'IC 設計/IP',
+  'AMD': 'IC 設計/IP', 'AMD US': 'IC 設計/IP', 'NVDA': 'IC 設計/IP', 'NVDA US': 'IC 設計/IP',
+  'AVGO': 'IC 設計/IP', 'AVGO US': 'IC 設計/IP', 'MRVL': 'IC 設計/IP', 'MRVL US': 'IC 設計/IP',
+  'IFX': 'IC 設計/IP', 'IFX GY': 'IC 設計/IP', 'ON': 'IC 設計/IP', 'RENESAS ELECTRONICS CORP': 'IC 設計/IP',
+  '6723': 'IC 設計/IP', 'NVTS': 'IC 設計/IP', 'SMTC': 'IC 設計/IP',
+  
+  // AI 伺服器 & 代工
+  '2317': 'AI 伺服器/代工', '2382': 'AI 伺服器/代工', '3231': 'AI 伺服器/代工', '6669': 'AI 伺服器/代工', 
+  '2376': 'AI 伺服器/代工', '2301': 'AI 伺服器/代工', '8210': 'AI 伺服器/代工', '2059': 'AI 伺服器/代工',
+  '6584': 'AI 伺服器/代工', '3706': 'AI 伺服器/代工',
+  'GOOGL': 'AI 伺服器/軟體', 'GOOGL US': 'AI 伺服器/軟體', 'NBIS': 'AI 伺服器/軟體', 'PENG': 'AI 伺服器/軟體',
+  
+  // 電腦代工
+  '2353': '電腦代工', '2324': '電腦代工', '2357': '電腦代工', '2377': '電腦代工', '4938': '電腦代工',
+  
+  // CoWoS & 半導體設備
+  '3583': 'CoWoS/設備', '6187': 'CoWoS/設備', '3131': 'CoWoS/設備', '6640': 'CoWoS/設備', '6207': 'CoWoS/設備', 
+  '2360': '電源/設備', '3680': 'CoWoS/設備', '2404': 'CoWoS/設備', '6223': 'CoWoS/設備', '1560': 'CoWoS/設備',
+  '2467': 'CoWoS/設備', '3030': 'CoWoS/設備', '4749': 'CoWoS/設備', '5536': 'CoWoS/設備', '6139': 'CoWoS/設備',
+  '6438': 'CoWoS/設備', '6510': 'CoWoS/設備', '6515': 'CoWoS/設備', '7750': 'CoWoS/設備', '7751': 'CoWoS/設備',
+  '7769': 'CoWoS/設備',
+  '268A': 'CoWoS/設備', 'AEHR': 'CoWoS/設備', 'AIXA': 'CoWoS/設備', 'AIXA GY': 'CoWoS/設備',
+  '7826': 'CoWoS/設備', '7826 JP': 'CoWoS/設備',
+  
+  // CPO & 網通光通訊
+  '2345': '網通', '6285': '網通', 'NOK': '網通', 'NOK US': '網通',
+  '6442': 'CPO/光通訊', '3450': 'CPO/光通訊', '3363': 'CPO/光通訊', '3163': 'CPO/光通訊', '4979': 'CPO/光通訊',
+  '3081': 'CPO/光通訊', '2455': 'CPO/光通訊',
+  'FURUKAWA ELECTRIC CO LTD': 'CPO/光通訊', '5801': 'CPO/光通訊', '5801 JP': 'CPO/光通訊',
+  'FUJIKURA LTD': 'CPO/光通訊', '5803': 'CPO/光通訊', '6869 HK': 'CPO/光通訊',
+  'AAOI': 'CPO/光通訊', 'AAOI US': 'CPO/光通訊', 'CIEN': 'CPO/光通訊', 'CIEN US': 'CPO/光通訊',
+  'COHERENT INC': 'CPO/光通訊', 'COHR US': 'CPO/光通訊', 'GLW': 'CPO/光通訊', 'GLW US': 'CPO/光通訊',
+  'LITE': 'CPO/光通訊', 'LITE US': 'CPO/光通訊', 'VIAV US': 'CPO/光通訊', '6777': 'CPO/光通訊',
+  
+  // 散熱模組
+  '3017': '散熱模組', '3324': '散熱模組', '2421': '散熱模組', '3016': '散熱模組', '3653': '散熱模組', '8996': '散熱模組',
+  
+  // PCB & 載板
+  '3037': 'PCB/載板', '3189': 'PCB/載板', '8046': 'PCB/載板', '2368': 'PCB/載板', '2383': 'PCB/載板', '6274': 'PCB/載板',
+  '2313': 'PCB/載板', '3044': 'PCB/載板', '4958': 'PCB/載板', '5439': 'PCB/載板', '1815': 'PCB/載板',
+  '4062': 'PCB/載板', '4062 JP': 'PCB/載板', '6787': 'PCB/載板', '6787 JP': 'PCB/載板',
+  '603256 CH': 'PCB/載板',
+  
+  // 被動元件 & 電子零組件
+  '2327': '被動元件', '3023': '電子零組件', '3005': '電子零組件', '6805': '電子零組件', '3533': '電子零組件', 
+  '3665': '電子零組件', '3211': '電子零組件', '3217': '電子零組件', '3376': '電子零組件', '6781': '電子零組件',
+  'AES Holding Co Ltd': '電子零組件', '009150': '被動元件', '009150 KS': '被動元件', '6981 JP': '被動元件',
+  '6997 JP': '被動元件', '5706': '電子零組件', '5706 JP': '電子零組件', 'VICR': '電子零組件',
+  '2439': '電子零組件', '2481': '電子零組件', 'VSH US': '被動元件',
+  
+  // 記憶體
+  '2408': '記憶體', '2344': '記憶體', '2337': '記憶體', '2451': '記憶體', '3260': '記憶體', '5289': '記憶體',
+  '000660': '記憶體', '005930': '記憶體', '285A': '記憶體', '285A JP': '記憶體',
+  'MU': '記憶體', 'MU US': '記憶體', 'WDC': '記憶體', 'WDC US': '記憶體', 'STX': '記憶體', 'SNDK': '記憶體', 'SNDK US': '記憶體',
+  
+  // 電子通路
+  '2347': '電子通路', '3702': '電子通路', '3036': '電子通路',
+  
+  // 綠能/重電
+  '2308': '綠能/重電', '1519': '綠能/重電', '2395': '綠能/工業電腦',
+  '010120': '綠能/重電', '010120 KS': '綠能/重電', 'BE': '綠能/重電', 'BE US': '綠能/重電',
+  'ENR GY': '綠能/重電', 'GEV US': '綠能/重電',
+  
+  // 金融
+  '2881': '金融保險', '2882': '金融保險', '2891': '金融保險', '2886': '金融保險', '2884': '金融保險', '5880': '金融保險', '2892': '金融保險', '2885': '金融保險',
+  
+  // 航運
+  '2603': '航運', '2609': '航運', '2615': '航運', '2618': '航運', '2610': '航運',
+  
+  // 傳統產業
+  '1216': '傳統產業', '1303': '傳統產業', '1319': '傳統產業', '1477': '傳統產業', '1590': '傳統產業',
+  '2548': '傳統產業', '5904': '傳統產業', '6177': '傳統產業', '8464': '傳統產業', 'HOT GY': '傳統產業',
+  '2002': '傳統產業', '3045': '傳統產業', '4441': '傳統產業',
+};
+
+// ─── 科技概念字典 (經過雜訊過濾與手動校正) ──────────────────────────────────
+const STOCK_CONCEPTS_MAP = {
+  '1459': ['HBM'], // 聯發
+  '1560': ['CoWoS'], // 中砂
+  '1802': ['FOPLP'], // 台玻
+  '2301': ['GB200', 'BBU'], // 光寶科
+  '2303': ['IC載板'], // 聯電
+  '2308': ['GB200', 'BBU'], // 台達電
+  '2313': ['低軌衛星', 'IC載板'], // 華通
+  '2314': ['低軌衛星'], // 台揚
+  '2316': ['CoWoS'], // 楠梓電
+  '2327': ['GB200', 'BBU'], // 國巨
+  '2330': ['CoWoS', 'GB200'], // 台積電
+  '2344': ['HBM'], // 華邦電
+  '2345': ['光通訊'], // 智邦
+  '2354': ['散熱模組'], // 鴻準
+  '2357': ['AI PC'], // 華碩
+  '2363': ['ASIC'], // 矽統
+  '2367': ['低軌衛星'], // 燿華
+  '2376': ['GB200', 'AI PC'], // 技嘉
+  '2379': ['HBM'], // 瑞昱
+  '2382': ['GB200', 'AI PC', 'IC載板'], // 廣達
+  '2383': ['低軌衛星'], // 台光電
+  '2388': ['ASIC'], // 威盛
+  '2392': ['GB200', 'BBU'], // 正崴
+  '2401': ['ASIC'], // 凌陽
+  '2408': ['HBM'], // 南亞科
+  '2409': ['FOPLP'], // 友達
+  '2419': ['低軌衛星'], // 仲琦
+  '2421': ['散熱模組'], // 建準
+  '2449': ['CoWoS'], // 京元電子
+  '2454': ['HBM', 'ASIC', 'AI PC'], // 聯發科
+  '2455': ['HBM', '光通訊'], // 全新
+  '2458': ['AI PC'], // 義隆
+  '2467': ['CoWoS', 'HBM'], // 志聖
+  '2476': ['BBU'], // 鉅祥
+  '2485': ['低軌衛星'], // 兆赫
+  '2489': ['IC載板'], // 瑞軒
+  '3003': ['BBU'], // 健和興
+  '3017': ['GB200', 'AI PC', '散熱模組'], // 奇鋐
+  '3034': ['HBM', 'ASIC'], // 聯詠
+  '3035': ['ASIC', '矽智財IP'], // 智原
+  '3037': ['HBM', 'IC載板'], // 欣興
+  '3062': ['低軌衛星'], // 建漢
+  '3081': ['HBM', '光通訊'], // 聯亞
+  '3105': ['HBM'], // 穩懋
+  '3131': ['CoWoS'], // 弘塑
+  '3138': ['低軌衛星'], // 耀登
+  '3149': ['FOPLP'], // 正達
+  '3163': ['光通訊'], // 波若威
+  '3189': ['IC載板'], // 景碩
+  '3211': ['GB200', 'BBU'], // 順達
+  '3231': ['HBM', 'GB200', 'AI PC', 'FOPLP'], // 緯創
+  '3234': ['光通訊'], // 光環
+  '3324': ['GB200', '散熱模組'], // 雙鴻
+  '3338': ['散熱模組'], // 泰碩
+  '3363': ['光通訊'], // 上詮
+  '3374': ['CoWoS'], // 精材
+  '3443': ['HBM', 'ASIC', '矽智財IP'], // 創意
+  '3450': ['光通訊'], // 聯鈞
+  '3481': ['FOPLP'], // 群創
+  '3483': ['散熱模組'], // 力致
+  '3491': ['低軌衛星'], // 昇達科
+  '3529': ['矽智財IP', 'IC載板'], // 力旺
+  '3533': ['GB200', 'AI PC'], // 嘉澤
+  '3576': ['HBM'], // 聯合再生
+  '3580': ['FOPLP'], // 友威科
+  '3583': ['CoWoS'], // 辛耘
+  '3625': ['GB200'], // 西勝
+  '3653': ['散熱模組'], // 健策
+  '3661': ['ASIC', '矽智財IP'], // 世芯-KY
+  '3663': ['FOPLP'], // 鑫科
+  '3665': ['GB200'], // 貿聯-KY
+  '3680': ['CoWoS'], // 家登
+  '3711': ['CoWoS', 'AI PC', 'FOPLP'], // 日月光投控
+  '4919': ['IC載板'], // 新唐
+  '4931': ['GB200', 'BBU'], // 新盛力
+  '4958': ['IC載板'], // 臻鼎-KY
+  '4966': ['AI PC'], // 譜瑞-KY
+  '4979': ['光通訊'], // 華星光
+  '5269': ['AI PC'], // 祥碩
+  '5274': ['GB200'], // 信驊
+  '5309': ['GB200', 'BBU'], // 系統電
+  '5498': ['HBM'], // 凱崴
+  '6121': ['GB200'], // 新普
+  '6138': ['AI PC'], // 茂達
+  '6196': ['IC載板'], // 帆宣
+  '6223': ['CoWoS'], // 旺矽
+  '6230': ['散熱模組'], // 尼得科超眾
+  '6239': ['HBM', 'FOPLP'], // 力成
+  '6274': ['GB200'], // 台燿
+  '6282': ['BBU'], // 康舒
+  '6285': ['低軌衛星'], // 啟碁
+  '6290': ['HBM'], // 良維
+  '6423': ['矽智財IP'], // 億而得
+  '6442': ['光通訊'], // 光聖
+  '6451': ['光通訊'], // 訊芯-KY
+  '6515': ['CoWoS'], // 穎崴
+  '6533': ['矽智財IP'], // 晶心科
+  '6568': ['矽智財IP'], // 宏觀
+  '6591': ['散熱模組'], // 動力-KY
+  '6640': ['CoWoS'], // 均華
+  '6643': ['矽智財IP'], // M31
+  '6669': ['GB200'], // 緯穎
+  '6695': ['ASIC'], // 芯鼎
+  '6781': ['GB200', 'BBU'], // AES-KY
+  '7879': ['HBM'], // 益材科技
+  '8027': ['FOPLP'], // 鈦昇
+  '8046': ['IC載板'], // 南電
+  '8054': ['ASIC'], // 安國
+  '8064': ['FOPLP'], // 東捷
+  '8112': ['HBM'], // 至上
+  '8171': ['BBU'], // 天宇
+  '8210': ['AI 伺服器'], // 勤誠
+  '8227': ['矽智財IP'], // 巨有科技
+  '8299': ['HBM', 'FOPLP'], // 群聯
+  '8358': ['HBM'], // 金居
+  '8996': ['GB200'], // 高力
+};
+
+
+const getStockIndustry = (code, name) => {
+  if (!code) return '其他';
+  const cleanCode = code.trim();
+  if (STOCK_INDUSTRY_MAP[cleanCode]) return STOCK_INDUSTRY_MAP[cleanCode];
+  
+  if (name) {
+    if (name.includes('光') || name.includes('訊') || name.includes('波')) return 'CPO/光通訊';
+    if (name.includes('科') || name.includes('電')) return '電子零組件';
+    if (name.includes('銀') || name.includes('金') || name.includes('保')) return '金融保險';
+    if (name.includes('船') || name.includes('航') || name.includes('運')) return '航運';
+    if (name.includes('電信') || name.includes('電訊')) return '傳統產業';
+  }
+  return '其他';
 };
 
 // ─── 工具函式 ──────────────────────────────────────────────
@@ -46,8 +272,407 @@ const NAV_TABS = [
   { id: 'industry', label: '產業分析', icon: BookOpen },
 ];
 
+// ─── 抽離的板塊資金流向熱力圖元件 ──────────────────────────────────
+function TreemapFlowChart({ 
+  industryFlowData, 
+  activeHoldings, 
+  comparisonLabel, 
+  selectedDate, 
+  getStockIndustry 
+}) {
+  const tooltipRef = useRef(null);
+
+  // 遞迴 BSP Treemap 佈局演算法，保證方形面積與權重精確成比例，且始終沿長邊切割以優化長寬比
+  const computeBspTreemap = (items, x, y, w, h) => {
+    if (items.length === 0) return [];
+    if (items.length === 1) {
+      return [{ item: items[0], x, y, w, h }];
+    }
+    
+    const currentTotal = items.reduce((sum, item) => sum + (item.displayWeight || 0), 0);
+    let accumulated = 0;
+    let splitIdx = 0;
+    let minDiff = Infinity;
+    
+    // 尋找能讓兩側權重最均衡的切割點
+    for (let i = 0; i < items.length - 1; i++) {
+      accumulated += items[i].displayWeight || 0;
+      const diff = Math.abs(accumulated - (currentTotal - accumulated));
+      if (diff < minDiff) {
+        minDiff = diff;
+        splitIdx = i;
+      }
+    }
+    
+    const leftItems = items.slice(0, splitIdx + 1);
+    const rightItems = items.slice(splitIdx + 1);
+    
+    const leftWeight = leftItems.reduce((sum, item) => sum + (item.displayWeight || 0), 0);
+    
+    // 沿長邊切割，維持接近正方形的比例
+    const splitVertically = w >= h;
+    
+    if (splitVertically) {
+      const leftWidth = currentTotal > 0 ? (leftWeight / currentTotal) * w : 0;
+      const rightWidth = w - leftWidth;
+      return [
+        ...computeBspTreemap(leftItems, x, y, leftWidth, h),
+        ...computeBspTreemap(rightItems, x + leftWidth, y, rightWidth, h)
+      ];
+    } else {
+      const leftHeight = currentTotal > 0 ? (leftWeight / currentTotal) * h : 0;
+      const rightHeight = h - leftHeight;
+      return [
+        ...computeBspTreemap(leftItems, x, y, w, leftHeight),
+        ...computeBspTreemap(rightItems, x, y + leftHeight, w, rightHeight)
+      ];
+    }
+  };
+
+  const getTopStocksForIndustry = (industryName, limit = 2, prefix = '主要持股：') => {
+    if (!activeHoldings) return '';
+    const list = activeHoldings
+      .filter(h => !h.isSoldOut && getStockIndustry(h.stockCode, h.stockName) === industryName)
+      .sort((a, b) => (b.weight || 0) - (a.weight || 0))
+      .slice(0, limit);
+    if (list.length === 0) return '';
+    return `${prefix}${list.map(h => `${h.stockName} (${h.weight.toFixed(1)}%)`).join('、')}`;
+  };
+
+  // 依照佔比權重由大到小排序，使大板塊優先分配在左上角
+  // 視覺權重錨定：防止小板塊塌陷到不可見，設定最小視覺權重為 2.0%
+  const treemapRects = useMemo(() => {
+    const sortedFlowData = [...industryFlowData].map(item => ({
+      ...item,
+      displayWeight: Math.max(item.currentWeight || 0, 2.0)
+    })).sort((a, b) => (b.displayWeight || 0) - (a.displayWeight || 0));
+    return computeBspTreemap(sortedFlowData, 0, 0, 100, 100);
+  }, [industryFlowData]);
+
+  return (
+    <div className="glass-panel" style={{ marginBottom: '1.5rem' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', marginBottom: '1.25rem' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
+          <h3 style={{ margin: 0, fontSize: '1.25rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <span style={{ display: 'inline-block', width: '4px', height: '18px', background: 'var(--accent-purple)', borderRadius: '2px' }} />
+            板塊資金流向熱力圖 ({comparisonLabel} vs {selectedDate})
+          </h3>
+          <span style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', background: 'rgba(255,255,255,0.04)', padding: '2px 8px', borderRadius: '4px', border: '1px solid var(--border-light)' }}>
+            台股配色：紅漲綠跌
+          </span>
+        </div>
+        <p style={{ margin: 0, fontSize: '0.78rem', color: 'var(--text-secondary)' }}>
+          展示各產業板塊在選定比較區間內的累計權重增減變化與目前總持股佔比（方塊面積已錨定最小視覺比例，滑鼠懸浮可檢視完整資訊）
+        </p>
+      </div>
+      <div 
+        onMouseMove={(e) => {
+          const rect = e.currentTarget.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          e.currentTarget.style.setProperty('--mouse-x', `${x}px`);
+          e.currentTarget.style.setProperty('--mouse-y', `${y}px`);
+          e.currentTarget.style.setProperty('--shift-x', x > rect.width * 0.55 ? '-105%' : '0px');
+          e.currentTarget.style.setProperty('--shift-y', y > rect.height * 0.55 ? '-105%' : '0px');
+        }}
+        style={{
+          width: '50%',
+          margin: '0 auto',
+          aspectRatio: '1.2 / 1',
+          background: 'rgba(15, 23, 42, 0.45)',
+          border: '1.5px solid rgba(255, 255, 255, 0.08)',
+          borderRadius: '16px',
+          padding: '0px',
+          boxShadow: 'inset 0 4px 30px rgba(0, 0, 0, 0.4), 0 10px 30px rgba(0, 0, 0, 0.3)',
+          boxSizing: 'border-box',
+          position: 'relative',
+          overflow: 'hidden',
+          backdropFilter: 'blur(16px)',
+          WebkitBackdropFilter: 'blur(16px)'
+        }}
+      >
+        {treemapRects.map(rect => {
+          const item = rect.item;
+          const isPositive = item.diffWeight > 0;
+          const isNegative = item.diffWeight < 0;
+          
+          // 根據變動幅度的絕對值計算透明度比例 (最深設為 0.28)
+          const intensity = Math.min(0.04 + Math.abs(item.diffWeight) * 0.08, 0.28);
+          
+          let bg = 'rgba(255, 255, 255, 0.02)';
+          let border = 'rgba(255, 255, 255, 0.08)';
+          let flowColor = 'var(--text-secondary)';
+          let badgeBg = 'rgba(255, 255, 255, 0.05)';
+          let badgeBorder = 'rgba(255, 255, 255, 0.1)';
+          let flowSign = '';
+          let glowColor = 'rgba(255, 255, 255, 0.05)';
+          
+          if (isPositive) {
+            bg = `rgba(239, 68, 68, ${intensity})`;
+            border = `rgba(239, 68, 68, ${Math.min(0.12 + Math.abs(item.diffWeight) * 0.15, 0.45)})`;
+            flowColor = 'var(--tw-up)';
+            badgeBg = 'rgba(239, 68, 68, 0.18)';
+            badgeBorder = 'rgba(239, 68, 68, 0.35)';
+            flowSign = '+';
+            glowColor = 'rgba(239, 68, 68, 0.22)';
+          } else if (isNegative) {
+            bg = `rgba(16, 185, 129, ${intensity})`;
+            border = `rgba(16, 185, 129, ${Math.min(0.12 + Math.abs(item.diffWeight) * 0.15, 0.45)})`;
+            flowColor = 'var(--tw-down)';
+            badgeBg = 'rgba(16, 185, 129, 0.18)';
+            badgeBorder = 'rgba(16, 185, 129, 0.35)';
+            glowColor = 'rgba(16, 185, 129, 0.22)';
+          }
+
+          const isLarge = item.currentWeight > 12;
+          const isMedium = item.currentWeight >= 5 && item.currentWeight <= 12;
+
+          let padding = '0.45rem 0.6rem';
+          let titleSize = '0.75rem';
+          let titleWeight = 600;
+          let weightSize = '0.95rem';
+          let badgeSize = '0.65rem';
+
+          if (isLarge) {
+            padding = '0.75rem 0.9rem';
+            titleSize = '0.98rem';
+            titleWeight = 800;
+            weightSize = '1.4rem';
+            badgeSize = '0.78rem';
+          } else if (isMedium) {
+            padding = '0.6rem 0.75rem';
+            titleSize = '0.85rem';
+            titleWeight = 700;
+            weightSize = '1.15rem';
+            badgeSize = '0.72rem';
+          }
+
+          return (
+            <div
+              key={item.name}
+              style={{
+                position: 'absolute',
+                left: `calc(${rect.x}% + 4px)`,
+                top: `calc(${rect.y}% + 4px)`,
+                width: `calc(${rect.w}% - 8px)`,
+                height: `calc(${rect.h}% - 8px)`,
+                background: bg,
+                border: `1px solid ${border}`,
+                borderRadius: '12px',
+                padding: padding,
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                cursor: 'pointer',
+                boxShadow: isPositive || isNegative ? `0 4px 15px rgba(0, 0, 0, 0.15)` : 'none',
+                boxSizing: 'border-box',
+                overflow: 'hidden'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'scale(1.02) translateY(-1px)';
+                e.currentTarget.style.zIndex = '10';
+                e.currentTarget.style.borderColor = isPositive ? 'rgba(239, 68, 68, 0.65)' : (isNegative ? 'rgba(16, 185, 129, 0.65)' : 'rgba(255, 255, 255, 0.25)');
+                e.currentTarget.style.boxShadow = `0 8px 25px ${glowColor}`;
+                
+                const tooltip = tooltipRef.current;
+                if (tooltip) {
+                  const titleEl = tooltip.querySelector('[data-tooltip-title]');
+                  if (titleEl) titleEl.textContent = item.name;
+                  
+                  const pctEl = tooltip.querySelector('[data-tooltip-pct]');
+                  if (pctEl) {
+                    pctEl.textContent = `${item.diffWeight > 0 ? '+' : ''}${item.diffWeight.toFixed(2)}%`;
+                    pctEl.style.color = item.diffWeight > 0 ? 'var(--tw-up)' : (item.diffWeight < 0 ? 'var(--tw-down)' : 'var(--text-secondary)');
+                    pctEl.style.background = item.diffWeight > 0 ? 'rgba(239, 68, 68, 0.18)' : (item.diffWeight < 0 ? 'rgba(16, 185, 129, 0.18)' : 'rgba(255,255,255,0.05)');
+                    pctEl.style.borderColor = item.diffWeight > 0 ? 'rgba(239, 68, 68, 0.35)' : (item.diffWeight < 0 ? 'rgba(16, 185, 129, 0.35)' : 'rgba(255,255,255,0.1)');
+                  }
+                  
+                  const curWeightEl = tooltip.querySelector('[data-tooltip-curweight]');
+                  if (curWeightEl) curWeightEl.textContent = `${item.currentWeight.toFixed(2)}%`;
+                  
+                  const holdingsEl = tooltip.querySelector('[data-tooltip-holdings]');
+                  if (holdingsEl) {
+                    holdingsEl.textContent = getTopStocksForIndustry(item.name, 3, '') || '暫無主要持股';
+                  }
+                  
+                  tooltip.style.display = 'block';
+                }
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'scale(1) translateY(0)';
+                e.currentTarget.style.zIndex = '1';
+                e.currentTarget.style.borderColor = border;
+                e.currentTarget.style.boxShadow = isPositive || isNegative ? `0 4px 15px rgba(0, 0, 0, 0.15)` : 'none';
+                
+                const tooltip = tooltipRef.current;
+                if (tooltip) {
+                  tooltip.style.display = 'none';
+                }
+              }}
+            >
+              {/* Top Row: Sector Name & Flow Diff Badge */}
+              <div style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'flex-start',
+                width: '100%',
+                gap: '4px'
+              }}>
+                <div style={{
+                  fontSize: titleSize,
+                  fontWeight: titleWeight,
+                  color: '#f1f5f9',
+                  whiteSpace: 'nowrap',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  lineHeight: 1.2
+                }}>
+                  {item.name}
+                </div>
+                <div style={{
+                  fontSize: badgeSize,
+                  fontWeight: 700,
+                  color: flowColor,
+                  background: badgeBg,
+                  border: `1px solid ${badgeBorder}`,
+                  borderRadius: '6px',
+                  padding: '2px 6px',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  fontFamily: 'var(--font-mono)',
+                  lineHeight: 1,
+                  whiteSpace: 'nowrap'
+                }}>
+                  {flowSign}{item.diffWeight.toFixed(2)}%
+                </div>
+              </div>
+
+              {/* Middle Row: Primary Holdings (Large cards only) */}
+              {isLarge && (
+                <div style={{
+                  fontSize: '0.7rem',
+                  color: 'var(--text-secondary)',
+                  marginTop: '4px',
+                  fontWeight: 500,
+                  lineHeight: 1.3,
+                  whiteSpace: 'nowrap',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  width: '100%'
+                }}>
+                  {getTopStocksForIndustry(item.name, 2)}
+                </div>
+              )}
+
+              {/* Bottom Row: Current Weight */}
+              <div style={{
+                display: 'flex',
+                alignItems: 'baseline',
+                justifyContent: 'flex-start',
+                marginTop: 'auto',
+                paddingTop: '6px',
+                width: '100%'
+              }}>
+                <span style={{
+                  fontSize: '0.65rem',
+                  color: 'var(--text-secondary)',
+                  marginRight: '4px',
+                  fontWeight: 500,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05em'
+                }}>
+                  佔比
+                </span>
+                <span style={{
+                  fontSize: weightSize,
+                  fontWeight: 900,
+                  color: '#f8fafc',
+                  fontFamily: 'var(--font-mono)',
+                  lineHeight: 1
+                }}>
+                  {item.currentWeight.toFixed(1)}%
+                </span>
+              </div>
+            </div>
+          );
+        })}
+
+        {/* 懸浮板塊資訊浮動視窗 (Tooltip) */}
+        <div 
+          ref={tooltipRef}
+          style={{
+            display: 'none',
+            position: 'absolute',
+            left: 'calc(var(--mouse-x) + 15px)',
+            top: 'calc(var(--mouse-y) + 15px)',
+            transform: 'translate(var(--shift-x, 0px), var(--shift-y, 0px))',
+            zIndex: 100,
+            pointerEvents: 'none',
+            background: 'rgba(15, 23, 42, 0.95)',
+            backdropFilter: 'blur(16px)',
+            WebkitBackdropFilter: 'blur(16px)',
+            border: '1px solid rgba(255, 255, 255, 0.15)',
+            borderRadius: '12px',
+            padding: '0.75rem 1rem',
+            boxShadow: '0 12px 30px -5px rgba(0, 0, 0, 0.6), 0 8px 16px -6px rgba(0, 0, 0, 0.6)',
+            minWidth: '240px',
+            maxWidth: '300px',
+            color: '#f8fafc',
+            boxSizing: 'border-box',
+            transition: 'transform 0.1s ease-out'
+          }}
+        >
+          {/* 標題與變動百分比 */}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.6rem', gap: '8px' }}>
+            <span data-tooltip-title style={{ fontSize: '0.92rem', fontWeight: 800, color: '#fff' }}>
+              -
+            </span>
+            <span data-tooltip-pct style={{
+              fontSize: '0.72rem',
+              fontWeight: 700,
+              borderRadius: '6px',
+              padding: '2px 6px',
+              fontFamily: 'var(--font-mono)'
+            }}>
+              -
+            </span>
+          </div>
+          
+          {/* 數據清單 */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '0.78rem', color: 'var(--text-secondary)' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <span>目前總持股佔比：</span>
+              <span data-tooltip-curweight style={{ color: '#f8fafc', fontWeight: 700, fontFamily: 'var(--font-mono)' }}>
+                -
+              </span>
+            </div>
+            <div style={{ height: '1.5px', background: 'rgba(255, 255, 255, 0.08)', margin: '4px 0' }} />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+              <span style={{ fontSize: '0.72rem', color: '#94a3b8', fontWeight: 700 }}>前 3 大持股：</span>
+              <div data-tooltip-holdings style={{
+                color: '#e2e8f0',
+                lineHeight: 1.45,
+                fontSize: '0.75rem',
+                background: 'rgba(255, 255, 255, 0.02)',
+                padding: '6px 8px',
+                borderRadius: '6px',
+                border: '1px solid rgba(255, 255, 255, 0.04)'
+              }}>
+                -
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ─── 主元件 ──────────────────────────────────────────────
 function App() {
+  const [chartModalData, setChartModalData] = useState(null);
+
   // ── 路由 ──
   const navigate = useNavigate();
   const location = useLocation();
@@ -69,8 +694,16 @@ function App() {
     return { year: now.getFullYear(), month: now.getMonth() };
   });
 
-  // ── 檢視模式：'single' | 'aggregated' ──
+  // ── 檢視模式：'single' | 'aggregated' | 'compare' ──
   const [viewMode, setViewMode] = useState('single');
+  const [compareEtfA, setCompareEtfA] = useState('00981A');
+  const [compareEtfB, setCompareEtfB] = useState('00403A');
+
+  // ── 新增：圖表 Tab 與比對 Tab 狀態 ──
+  const [activePieTab, setActivePieTab] = useState('holdings'); // 'holdings' | 'industry'
+  const [compareTab, setCompareTab] = useState('common'); // 'common' | 'uniqueA' | 'uniqueB'
+  const [compareCommonView, setCompareCommonView] = useState('list'); // 'list' | 'chart'
+
 
   // ── 當前單檔 ETF ──
   const [activeEtf, setActiveEtf] = useState('00980A');
@@ -483,6 +1116,114 @@ function App() {
       });
   }, [data, visibleEtfs, aggregatedSort]);
 
+  // ── 單檔 ETF 產業持股佔比 ──
+  const activeIndustryData = useMemo(() => {
+    if (!activeHoldings || activeHoldings.length === 0) return [];
+    const map = {};
+    activeHoldings.forEach(h => {
+      if (h.isSoldOut) return;
+      const ind = getStockIndustry(h.stockCode, h.stockName);
+      map[ind] = (map[ind] || 0) + (h.weight || 0);
+    });
+    return Object.entries(map)
+      .map(([name, value]) => ({ name, value: parseFloat(value.toFixed(2)) }))
+      .sort((a, b) => b.value - a.value);
+  }, [activeHoldings]);
+
+  // ── 單檔 ETF 產業資金流動變動 ──
+  const industryFlowData = useMemo(() => {
+    if (!activeHoldings || activeHoldings.length === 0) return [];
+    const map = {};
+    activeHoldings.forEach(h => {
+      const ind = getStockIndustry(h.stockCode, h.stockName);
+      if (!map[ind]) {
+        map[ind] = { currentWeight: 0, diffWeight: 0 };
+      }
+      if (!h.isSoldOut) {
+        map[ind].currentWeight += (h.weight || 0);
+      }
+      map[ind].diffWeight += (h.diffWeight || 0);
+    });
+    return Object.entries(map)
+      .map(([name, { currentWeight, diffWeight }]) => ({
+        name,
+        currentWeight: parseFloat(currentWeight.toFixed(2)),
+        diffWeight: parseFloat(diffWeight.toFixed(2))
+      }))
+      .sort((a, b) => b.diffWeight - a.diffWeight);
+  }, [activeHoldings]);
+
+  // ── 跨 ETF 產業資金版圖統計 ──
+  const aggregatedIndustryData = useMemo(() => {
+    if (!data) return [];
+    const map = {};
+    visibleEtfs.forEach(etfCode => {
+      const holdings = data[etfCode];
+      if (!Array.isArray(holdings)) return;
+      holdings.forEach(h => {
+        if (!h.stockCode) return;
+        const ind = getStockIndustry(h.stockCode, h.stockName);
+        map[ind] = (map[ind] || 0) + (h.weight || 0);
+      });
+    });
+    return Object.entries(map)
+      .map(([name, value]) => ({ name, value: parseFloat(value.toFixed(2)) }))
+      .sort((a, b) => b.value - a.value);
+  }, [data, visibleEtfs]);
+
+  // ── 雙檔 ETF 比對核心計算邏輯 ──
+  const etfCompareResults = useMemo(() => {
+    if (!data) return { overlapPct: 0, commonHoldings: [], uniqueA: [], uniqueB: [] };
+    const listA = data[compareEtfA] || [];
+    const listB = data[compareEtfB] || [];
+
+    const mapA = new Map(listA.map(h => [h.stockCode, h]));
+    const mapB = new Map(listB.map(h => [h.stockCode, h]));
+
+    let overlapPct = 0;
+    const commonHoldings = [];
+    const uniqueA = [];
+    const uniqueB = [];
+
+    // 比對共同持股與 A 獨有
+    listA.forEach(hA => {
+      const hB = mapB.get(hA.stockCode);
+      if (hB) {
+        const minW = Math.min(hA.weight, hB.weight);
+        overlapPct += minW;
+        commonHoldings.push({
+          stockCode: hA.stockCode,
+          stockName: hA.stockName,
+          weightA: hA.weight,
+          weightB: hB.weight,
+          diffWeight: Number((hA.weight - hB.weight).toFixed(2)),
+          sharesA: hA.shares,
+          sharesB: hB.shares,
+        });
+      } else {
+        uniqueA.push(hA);
+      }
+    });
+
+    // 比對 B 獨有
+    listB.forEach(hB => {
+      if (!mapA.has(hB.stockCode)) {
+        uniqueB.push(hB);
+      }
+    });
+
+    commonHoldings.sort((a, b) => b.weightA + b.weightB - (a.weightA + a.weightB));
+    uniqueA.sort((a, b) => b.weight - a.weight);
+    uniqueB.sort((a, b) => b.weight - a.weight);
+
+    return {
+      overlapPct: parseFloat(overlapPct.toFixed(2)),
+      commonHoldings,
+      uniqueA,
+      uniqueB,
+    };
+  }, [data, compareEtfA, compareEtfB]);
+
   // ── Telegram 推播（僅發送當前 tab 選中的 ETF）──
   const handleSendTelegram = async () => {
     if (!data || !activeHoldings) return;
@@ -814,6 +1555,12 @@ function App() {
                 >
                   <BarChart2 size={14} /> 股票資金吸收
                 </button>
+                <button
+                  onClick={() => setViewMode('compare')}
+                  style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '0.4rem 0.9rem', borderRadius: '7px', border: 'none', cursor: 'pointer', fontWeight: 600, fontSize: '0.85rem', transition: 'all 0.2s', background: viewMode === 'compare' ? '#ec4899' : 'transparent', color: viewMode === 'compare' ? '#fff' : 'var(--text-secondary)' }}
+                >
+                  <RefreshCw size={14} /> 雙檔對比
+                </button>
               </div>
 
               {/* Spacer */}
@@ -874,9 +1621,16 @@ function App() {
                     </h2>
                     <span style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>{activeEtf}</span>
                   </div>
-                  <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', background: 'rgba(255,255,255,0.04)', padding: '0.4rem 0.8rem', borderRadius: '8px', border: '1px solid var(--border-light)' }}>
-                    資料更新日期：<span style={{ color: '#e2e8f0', fontWeight: 600, letterSpacing: '0.05em' }}>{selectedDate || '讀取中'}</span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                    <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', background: 'rgba(255,255,255,0.04)', padding: '0.4rem 0.8rem', borderRadius: '8px', border: '1px solid var(--border-light)' }}>
+                      資料更新日期：<span style={{ color: '#e2e8f0', fontWeight: 600, letterSpacing: '0.05em' }}>{selectedDate || '讀取中'}</span>
+                    </div>
                   </div>
+                </div>
+
+                {/* ── ETF 歷史走勢圖 ── */}
+                <div style={{ marginBottom: '2rem' }}>
+                  <InlineStockChart stockCode={activeEtf} />
                 </div>
 
                 {/* ── 比對區間選擇器 ── */}
@@ -1048,16 +1802,44 @@ function App() {
                 ) : (
                   <>
                     <div className="grid-2">
-                      <div className="glass-panel">
-                        <h3 style={{ marginBottom: '1.5rem', fontSize: '1.25rem' }}>前十大持股權重</h3>
-                        <div style={{ height: '300px' }}>
+                      <div className="glass-panel" style={{ display: 'flex', flexDirection: 'column' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '0.5rem' }}>
+                          <h3 style={{ fontSize: '1.25rem', margin: 0 }}>{activePieTab === 'holdings' ? '前十大持股權重' : '產業持股分佈'}</h3>
+                          <div style={{ display: 'flex', gap: '0.3rem', background: 'rgba(255,255,255,0.05)', padding: '2px', borderRadius: '6px' }}>
+                            <button
+                              onClick={() => setActivePieTab('holdings')}
+                              style={{ padding: '0.2rem 0.5rem', fontSize: '0.75rem', borderRadius: '4px', cursor: 'pointer', border: 'none', background: activePieTab === 'holdings' ? 'rgba(59,130,246,0.2)' : 'transparent', color: activePieTab === 'holdings' ? '#60a5fa' : 'var(--text-secondary)' }}
+                            >
+                              持股
+                            </button>
+                            <button
+                              onClick={() => setActivePieTab('industry')}
+                              style={{ padding: '0.2rem 0.5rem', fontSize: '0.75rem', borderRadius: '4px', cursor: 'pointer', border: 'none', background: activePieTab === 'industry' ? 'rgba(59,130,246,0.2)' : 'transparent', color: activePieTab === 'industry' ? '#60a5fa' : 'var(--text-secondary)' }}
+                            >
+                              產業
+                            </button>
+                          </div>
+                        </div>
+                        <div style={{ height: '300px', flex: 1 }}>
                           <ResponsiveContainer width="100%" height="100%">
-                            <PieChart>
-                              <Tooltip contentStyle={{ backgroundColor: 'var(--bg-base)', borderColor: 'var(--border-light)' }} itemStyle={{ color: 'var(--text-primary)' }} />
-                              <Pie data={chartData} dataKey="weight" nameKey="name" cx="50%" cy="50%" outerRadius={80} fill={ETF_META[activeEtf].color} label={({ name, value }) => `${name} ${Number(value).toFixed(1)}%`} labelStyle={{ fontSize: '13px', fontWeight: 500 }}>
-                                {chartData.map((_, index) => <Cell key={`cell-${index}`} fill={ETF_META[activeEtf].color} fillOpacity={1 - index * 0.08} />)}
-                              </Pie>
-                            </PieChart>
+                            {activePieTab === 'holdings' ? (
+                              <PieChart>
+                                <Tooltip contentStyle={{ backgroundColor: 'var(--bg-base)', borderColor: 'var(--border-light)' }} itemStyle={{ color: 'var(--text-primary)' }} />
+                                <Pie data={chartData} dataKey="weight" nameKey="name" cx="50%" cy="50%" outerRadius={80} fill={ETF_META[activeEtf].color} label={({ name, value }) => `${name} ${Number(value).toFixed(1)}%`} labelStyle={{ fontSize: '12px', fontWeight: 500 }} labelLine={{ stroke: 'rgba(255,255,255,0.2)' }}>
+                                  {chartData.map((_, index) => <Cell key={`cell-${index}`} fill={ETF_META[activeEtf].color} fillOpacity={1 - index * 0.08} />)}
+                                </Pie>
+                              </PieChart>
+                            ) : (
+                              <PieChart>
+                                <Tooltip contentStyle={{ backgroundColor: 'var(--bg-base)', borderColor: 'var(--border-light)' }} itemStyle={{ color: 'var(--text-primary)' }} formatter={(val) => [`${val}%`, '產業權重']} />
+                                <Pie data={activeIndustryData} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={80} fill={ETF_META[activeEtf].color} label={({ name, value }) => `${name} ${Number(value).toFixed(1)}%`} labelStyle={{ fontSize: '12px', fontWeight: 500 }} labelLine={{ stroke: 'rgba(255,255,255,0.2)' }}>
+                                  {activeIndustryData.map((_, index) => {
+                                    const baseColor = ETF_META[activeEtf].color;
+                                    return <Cell key={`cell-ind-${index}`} fill={baseColor} fillOpacity={1 - index * 0.09} />;
+                                  })}
+                                </Pie>
+                              </PieChart>
+                            )}
                           </ResponsiveContainer>
                         </div>
                       </div>
@@ -1153,14 +1935,13 @@ function App() {
                                   label={({ name, value, isNew }) => `${isNew ? '★ ' : ''}${name} ${value}%`}
                                   labelLine={{ stroke: 'rgba(255,255,255,0.2)' }}
                                 >
-                                  {buyingPieData.map((entry, index) => (
-                                    <Cell
-                                      key={`buying-cell-${index}`}
-                                      fill={entry.isOthers ? '#475569' : BUYING_PIE_COLORS[index % BUYING_PIE_COLORS.length]}
-                                      stroke={entry.isNew ? '#fff' : 'transparent'}
-                                      strokeWidth={entry.isNew ? 2 : 0}
-                                    />
-                                  ))}
+                                  {buyingPieData.map((entry, index) => {
+                                    const isNew = entry.isNew;
+                                    const fill = entry.isOthers ? '#475569' : BUYING_PIE_COLORS[index % BUYING_PIE_COLORS.length];
+                                    const stroke = isNew ? '#fff' : 'transparent';
+                                    const strokeWidth = isNew ? 2 : 0;
+                                    return <Cell key={`buying-cell-${index}`} fill={fill} stroke={stroke} strokeWidth={strokeWidth} />;
+                                  })}
                                 </Pie>
                               </PieChart>
                             </ResponsiveContainer>
@@ -1168,6 +1949,17 @@ function App() {
                         </div>
                       )}
                     </div>
+
+                    {/* 板塊資金流向熱力圖 */}
+                    {industryFlowData && industryFlowData.length > 0 && (
+                      <TreemapFlowChart
+                        industryFlowData={industryFlowData}
+                        activeHoldings={activeHoldings}
+                        comparisonLabel={comparisonLabel}
+                        selectedDate={selectedDate}
+                        getStockIndustry={getStockIndustry}
+                      />
+                    )}
 
                     <div className="glass-panel">
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
@@ -1200,10 +1992,42 @@ function App() {
                               const pctStr = finalPct > 0 ? `+${finalPct}%` : `${finalPct}%`;
 
                               return (
-                                <tr key={hold.stockCode}>
+                                <tr key={hold.stockCode} className="clickable-row" onClick={() => setChartModalData({code: hold.stockCode, name: hold.stockName})}>
                                   <td style={{ color: 'var(--text-secondary)' }}>{idx + 1}</td>
                                   <td style={{ fontWeight: 600, color: '#94a3b8' }}>{hold.stockCode}</td>
-                                  <td style={{ fontWeight: 500 }}>{hold.stockName}</td>
+                                  <td style={{ fontWeight: 500 }}>
+                                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                                      <span>{hold.stockName}</span>
+                                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px', marginTop: '4px' }}>
+                                        <span style={{
+                                          display: 'inline-block',
+                                          fontSize: '0.65rem',
+                                          padding: '2px 6px',
+                                          borderRadius: '4px',
+                                          background: 'rgba(255, 255, 255, 0.05)',
+                                          color: 'var(--text-secondary)',
+                                          border: '1px solid var(--border-light)',
+                                          fontWeight: 600
+                                        }}>
+                                          {getStockIndustry(hold.stockCode, hold.stockName)}
+                                        </span>
+                                        {(STOCK_CONCEPTS_MAP[hold.stockCode.trim()] || []).map(concept => (
+                                          <span key={concept} style={{
+                                            display: 'inline-block',
+                                            fontSize: '0.65rem',
+                                            padding: '2px 6px',
+                                            borderRadius: '4px',
+                                            background: 'rgba(96, 165, 250, 0.1)',
+                                            color: '#60a5fa',
+                                            border: '1px solid rgba(96, 165, 250, 0.2)',
+                                            fontWeight: 600
+                                          }}>
+                                            {concept}
+                                          </span>
+                                        ))}
+                                      </div>
+                                    </div>
+                                  </td>
                                   <td>{hold.weight}%</td>
                                   <td className="shares-cell">
                                     {diffLotNum !== 0 ? (
@@ -1244,14 +2068,75 @@ function App() {
 
             {/* ══════════ 股票資金吸收視圖 ══════════ */}
             {viewMode === 'aggregated' && (
-              <div className="glass-panel">
-                <div style={{ marginBottom: '1.25rem' }}>
-                  <h3 style={{ margin: 0, fontSize: '1.25rem' }}>主動 ETF 資金吸收排行</h3>
-                  <p style={{ margin: '0.4rem 0 0', fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
-                    統計範圍：{visibleEtfs.join(' · ')}｜共 {visibleEtfs.length} 檔 ETF
-                    ｜累計吸收權重 = 各 ETF 持有該股票的權重加總
-                  </p>
+              <>
+                {/* ── 跨 ETF 產業資金吸收版圖 ── */}
+                <div className="grid-2" style={{ marginBottom: '1.5rem' }}>
+                  <div className="glass-panel" style={{ display: 'flex', flexDirection: 'column' }}>
+                    <h3 style={{ marginBottom: '1rem', fontSize: '1.25rem', color: '#a78bfa' }}>跨 ETF 產業資金吸收版圖</h3>
+                    <div style={{ height: '300px', flex: 1 }}>
+                      <ResponsiveContainer width="100%" height="100%">
+                        <PieChart>
+                          <Tooltip contentStyle={{ backgroundColor: 'var(--bg-base)', borderColor: 'var(--border-light)' }} itemStyle={{ color: 'var(--text-primary)' }} formatter={(val) => [`${val}%`, '產業累計權重']} />
+                          <Pie
+                            data={aggregatedIndustryData}
+                            dataKey="value"
+                            nameKey="name"
+                            cx="50%"
+                            cy="50%"
+                            outerRadius={90}
+                            innerRadius={40}
+                            paddingAngle={2}
+                            label={({ name, value }) => `${name} ${value}%`}
+                            labelStyle={{ fontSize: '11px', fontWeight: 600 }}
+                            labelLine={{ stroke: 'rgba(255,255,255,0.2)' }}
+                          >
+                            {aggregatedIndustryData.map((_, index) => {
+                              const colors = ['#8b5cf6', '#a78bfa', '#c4b5fd', '#ddd6fe', '#7c3aed', '#6d28d9', '#5b21b6', '#4c1d95', '#64748b', '#94a3b8'];
+                              return <Cell key={`cell-agg-ind-${index}`} fill={colors[index % colors.length]} />;
+                            })}
+                          </Pie>
+                        </PieChart>
+                      </ResponsiveContainer>
+                    </div>
+                  </div>
+                  <div className="glass-panel" style={{ display: 'flex', flexDirection: 'column' }}>
+                    <h3 style={{ marginBottom: '1rem', fontSize: '1.25rem', color: '#a78bfa' }}>產業資金吸收明細</h3>
+                    <div className="table-container" style={{ flex: 1, maxHeight: '300px', overflowY: 'auto', marginTop: 0 }}>
+                      <table style={{ fontSize: '0.9rem' }}>
+                        <thead>
+                          <tr>
+                            <th style={{ padding: '0.6rem' }}>板塊名稱</th>
+                            <th style={{ padding: '0.6rem' }}>累計加總權重</th>
+                            <th style={{ padding: '0.6rem' }}>佔比比重</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {(() => {
+                            const totalWeightSum = aggregatedIndustryData.reduce((s, x) => s + x.value, 0);
+                            return aggregatedIndustryData.map((item, index) => (
+                              <tr key={item.name}>
+                                <td style={{ padding: '0.6rem', fontWeight: 600 }}>{item.name}</td>
+                                <td style={{ padding: '0.6rem', fontWeight: 700, color: '#a78bfa' }}>{item.value.toFixed(2)}%</td>
+                                <td style={{ padding: '0.6rem', color: 'var(--text-secondary)' }}>
+                                  {totalWeightSum > 0 ? `${((item.value / totalWeightSum) * 100).toFixed(1)}%` : '0%'}
+                                </td>
+                              </tr>
+                            ));
+                          })()}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
                 </div>
+
+                <div className="glass-panel">
+                  <div style={{ marginBottom: '1.25rem' }}>
+                    <h3 style={{ margin: 0, fontSize: '1.25rem' }}>主動 ETF 資金吸收排行</h3>
+                    <p style={{ margin: '0.4rem 0 0', fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
+                      統計範圍：{visibleEtfs.join(' · ')}｜共 {visibleEtfs.length} 檔 ETF
+                      ｜累計吸收權重 = 各 ETF 持有該股票的權重加總
+                    </p>
+                  </div>
 
                 {aggregatedData.length === 0 ? (
                   <div style={{ textAlign: 'center', padding: '4rem', color: 'var(--text-secondary)' }}>
@@ -1273,7 +2158,7 @@ function App() {
                       </thead>
                       <tbody>
                         {aggregatedData.slice(0, 50).map((item, idx) => (
-                          <tr key={item.stockCode}>
+                          <tr key={item.stockCode} className="clickable-row" onClick={() => setChartModalData({code: item.stockCode, name: item.stockName})}>
                             <td style={{ color: 'var(--text-secondary)', fontWeight: 600 }}>{idx + 1}</td>
                             <td style={{ fontWeight: 600 }}>
                               <div>{item.stockName}</div>
@@ -1343,6 +2228,486 @@ function App() {
                   </div>
                 )}
               </div>
+            </>
+          )}
+
+            {/* ══════════ 雙檔 ETF 比對視圖 ══════════ */}
+            {viewMode === 'compare' && (
+              <>
+                {/* ── 比對控制列與相似度指標 ── */}
+                <div className="grid-2" style={{ marginBottom: '1.5rem' }}>
+                  {/* 左側：下拉選擇器 */}
+                  <div className="glass-panel" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '1.25rem' }}>
+                    <h3 style={{ fontSize: '1.25rem', color: '#ec4899', marginBottom: '0.5rem' }}>選擇對比標的</h3>
+                    
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                      <label style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-secondary)' }}>投資組合 A</label>
+                      <select 
+                        value={compareEtfA} 
+                        onChange={e => {
+                          const val = e.target.value;
+                          setCompareEtfA(val);
+                          if (val === compareEtfB) {
+                            const remaining = ALL_ETF_CODES.filter(c => c !== val);
+                            if (remaining.length > 0) setCompareEtfB(remaining[0]);
+                          }
+                        }}
+                        style={{ width: '100%', borderColor: ETF_META[compareEtfA]?.color }}
+                      >
+                        {ALL_ETF_CODES.map(code => (
+                          <option key={`opt-a-${code}`} value={code}>
+                            {code} - {ETF_META[code]?.name.replace('主動', '')}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                      <label style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-secondary)' }}>投資組合 B</label>
+                      <select 
+                        value={compareEtfB} 
+                        onChange={e => {
+                          const val = e.target.value;
+                          setCompareEtfB(val);
+                          if (val === compareEtfA) {
+                            const remaining = ALL_ETF_CODES.filter(c => c !== val);
+                            if (remaining.length > 0) setCompareEtfA(remaining[0]);
+                          }
+                        }}
+                        style={{ width: '100%', borderColor: ETF_META[compareEtfB]?.color }}
+                      >
+                        {ALL_ETF_CODES.map(code => (
+                          <option key={`opt-b-${code}`} value={code}>
+                            {code} - {ETF_META[code]?.name.replace('主動', '')}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+
+                  {/* 右側：重疊度 circular progress */}
+                  <div className="glass-panel" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '2rem', flexWrap: 'wrap' }}>
+                    {/* SVG 圓環 */}
+                    <div style={{ position: 'relative', width: '150px', height: '150px' }}>
+                      <svg width="100%" height="100%" viewBox="0 0 100 100">
+                        {/* 軌道 */}
+                        <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="8" />
+                        {/* 進度填充 */}
+                        <circle 
+                          cx="50" cy="50" r="42" fill="none" 
+                          stroke="url(#gradient-compare)" strokeWidth="8" 
+                          strokeDasharray={2 * Math.PI * 42}
+                          strokeDashoffset={2 * Math.PI * 42 * (1 - etfCompareResults.overlapPct / 100)}
+                          strokeLinecap="round"
+                          transform="rotate(-90 50 50)"
+                          style={{ transition: 'stroke-dashoffset 0.6s ease-out' }}
+                        />
+                        {/* 漸變色定義 */}
+                        <defs>
+                          <linearGradient id="gradient-compare" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stopColor="#ec4899" />
+                            <stop offset="100%" stopColor="#8b5cf6" />
+                          </linearGradient>
+                        </defs>
+                      </svg>
+                      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                        <span style={{ fontSize: '1.75rem', fontWeight: 800, color: '#f1f5f9', letterSpacing: '-0.02em' }}>
+                          {etfCompareResults.overlapPct}%
+                        </span>
+                        <span style={{ fontSize: '0.65rem', color: 'var(--text-secondary)', fontWeight: 600 }}>重疊度</span>
+                      </div>
+                    </div>
+
+                    {/* 指標與數據 */}
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem', flex: 1, minWidth: '160px' }}>
+                      <div>
+                        <h4 style={{ margin: 0, fontSize: '1rem', fontWeight: 700 }}>相似持股比例：<span style={{ color: '#ec4899' }}>{etfCompareResults.overlapPct}%</span></h4>
+                        <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>雙檔持股共同佔比之交集加總</span>
+                      </div>
+                      <div style={{ height: '1px', background: 'var(--border-light)' }} />
+                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
+                        <div>
+                          <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)' }}>共同持有</div>
+                          <div style={{ fontSize: '1.05rem', fontWeight: 700, color: '#c4b5fd' }}>{etfCompareResults.commonHoldings.length} 檔</div>
+                        </div>
+                        <div>
+                          <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)' }}>相異佔比</div>
+                          <div style={{ fontSize: '1.05rem', fontWeight: 700, color: 'var(--text-secondary)' }}>{(100 - etfCompareResults.overlapPct).toFixed(2)}%</div>
+                        </div>
+                        <div>
+                          <div style={{ fontSize: '0.72rem', color: ETF_META[compareEtfA]?.color }}>A 檔獨有</div>
+                          <div style={{ fontSize: '1.05rem', fontWeight: 700, color: ETF_META[compareEtfA]?.color }}>{etfCompareResults.uniqueA.length} 檔</div>
+                        </div>
+                        <div>
+                          <div style={{ fontSize: '0.72rem', color: ETF_META[compareEtfB]?.color }}>B 檔獨有</div>
+                          <div style={{ fontSize: '1.05rem', fontWeight: 700, color: ETF_META[compareEtfB]?.color }}>{etfCompareResults.uniqueB.length} 檔</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* ── 持股比對明細表格 ── */}
+                <div className="glass-panel">
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem', flexWrap: 'wrap', gap: '1rem' }}>
+                    <h3 style={{ margin: 0, fontSize: '1.25rem' }}>雙檔持股交叉對比清單</h3>
+                    
+                    {/* Tab 切換器 */}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+                      <div style={{ display: 'flex', gap: '0.4rem', background: 'rgba(255,255,255,0.05)', padding: '4px', borderRadius: '8px' }}>
+                        <button 
+                          onClick={() => setCompareTab('common')} 
+                          style={{ padding: '0.35rem 0.8rem', fontSize: '0.8rem', borderRadius: '6px', cursor: 'pointer', border: 'none', background: compareTab === 'common' ? 'rgba(236,72,153,0.2)' : 'transparent', color: compareTab === 'common' ? '#ec4899' : 'var(--text-secondary)', fontWeight: 600 }}
+                        >
+                          共同持股 ({etfCompareResults.commonHoldings.length})
+                        </button>
+                        <button 
+                          onClick={() => setCompareTab('uniqueA')} 
+                          style={{ padding: '0.35rem 0.8rem', fontSize: '0.8rem', borderRadius: '6px', cursor: 'pointer', border: 'none', background: compareTab === 'uniqueA' ? `${ETF_META[compareEtfA]?.color}25` : 'transparent', color: compareTab === 'uniqueA' ? ETF_META[compareEtfA]?.color : 'var(--text-secondary)', fontWeight: 600 }}
+                        >
+                          {compareEtfA} 獨有 ({etfCompareResults.uniqueA.length})
+                        </button>
+                        <button 
+                          onClick={() => setCompareTab('uniqueB')} 
+                          style={{ padding: '0.35rem 0.8rem', fontSize: '0.8rem', borderRadius: '6px', cursor: 'pointer', border: 'none', background: compareTab === 'uniqueB' ? `${ETF_META[compareEtfB]?.color}25` : 'transparent', color: compareTab === 'uniqueB' ? ETF_META[compareEtfB]?.color : 'var(--text-secondary)', fontWeight: 600 }}
+                        >
+                          {compareEtfB} 獨有 ({etfCompareResults.uniqueB.length})
+                        </button>
+                      </div>
+
+                      {/* 共同持股之列表與圖表視圖切換器 */}
+                      {compareTab === 'common' && etfCompareResults.commonHoldings.length > 0 && (
+                        <div style={{ display: 'flex', gap: '0.2rem', background: 'rgba(255,255,255,0.03)', padding: '3px', borderRadius: '6px', border: '1px solid var(--border-light)' }}>
+                          <button 
+                            onClick={() => setCompareCommonView('list')}
+                            style={{ 
+                              padding: '0.25rem 0.6rem', fontSize: '0.75rem', borderRadius: '4px', cursor: 'pointer', border: 'none', 
+                              background: compareCommonView === 'list' ? 'rgba(255,255,255,0.08)' : 'transparent', 
+                              color: compareCommonView === 'list' ? '#fff' : 'var(--text-secondary)',
+                              fontWeight: compareCommonView === 'list' ? 700 : 500,
+                              transition: 'all 0.15s ease'
+                            }}
+                          >
+                            列表
+                          </button>
+                          <button 
+                            onClick={() => setCompareCommonView('chart')}
+                            style={{ 
+                              padding: '0.25rem 0.6rem', fontSize: '0.75rem', borderRadius: '4px', cursor: 'pointer', border: 'none', 
+                              background: compareCommonView === 'chart' ? 'rgba(255,255,255,0.08)' : 'transparent', 
+                              color: compareCommonView === 'chart' ? '#fff' : 'var(--text-secondary)',
+                              fontWeight: compareCommonView === 'chart' ? 700 : 500,
+                              transition: 'all 0.15s ease'
+                            }}
+                          >
+                            圖表
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* 表格明細 */}
+                  <div className="table-container" style={{ maxHeight: '480px', overflowY: 'auto' }}>
+                    {compareTab === 'common' && compareCommonView === 'list' && (
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>排名</th><th>代號</th><th>個股名稱</th>
+                            <th style={{ color: ETF_META[compareEtfA]?.color }}>{compareEtfA} 權重</th>
+                            <th style={{ color: ETF_META[compareEtfB]?.color }}>{compareEtfB} 權重</th>
+                            <th>權重差值 (A - B)</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {etfCompareResults.commonHoldings.length === 0 ? (
+                            <tr><td colSpan={6} style={{ textAlign: 'center', padding: '3rem', color: 'var(--text-secondary)' }}>雙檔無任何共同持股</td></tr>
+                          ) : (
+                            etfCompareResults.commonHoldings.map((hold, idx) => {
+                              const diff = hold.diffWeight;
+                              const highlightColor = diff > 0 ? ETF_META[compareEtfA]?.color : (diff < 0 ? ETF_META[compareEtfB]?.color : 'var(--text-secondary)');
+                              const pctA = Math.min((hold.weightA / 12) * 100, 100);
+                              const pctB = Math.min((hold.weightB / 12) * 100, 100);
+                              const colorA = ETF_META[compareEtfA]?.color || '#3b82f6';
+                              const colorB = ETF_META[compareEtfB]?.color || '#10b981';
+                              return (
+                                <tr key={`common-${hold.stockCode}`} className="clickable-row" onClick={() => setChartModalData({code: hold.stockCode, name: hold.stockName})}>
+                                  <td style={{ color: 'var(--text-secondary)' }}>{idx + 1}</td>
+                                  <td style={{ fontWeight: 600, color: '#94a3b8' }}>{hold.stockCode}</td>
+                                  <td style={{ fontWeight: 500 }}>
+                                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                                      <span>{hold.stockName}</span>
+                                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px', marginTop: '4px' }}>
+                                        <span style={{
+                                          display: 'inline-block',
+                                          fontSize: '0.65rem',
+                                          padding: '2px 6px',
+                                          borderRadius: '4px',
+                                          background: 'rgba(255, 255, 255, 0.05)',
+                                          color: 'var(--text-secondary)',
+                                          border: '1px solid var(--border-light)',
+                                          fontWeight: 600
+                                        }}>
+                                          {getStockIndustry(hold.stockCode, hold.stockName)}
+                                        </span>
+                                        {(STOCK_CONCEPTS_MAP[hold.stockCode.trim()] || []).map(concept => (
+                                          <span key={concept} style={{
+                                            display: 'inline-block',
+                                            fontSize: '0.65rem',
+                                            padding: '2px 6px',
+                                            borderRadius: '4px',
+                                            background: 'rgba(96, 165, 250, 0.1)',
+                                            color: '#60a5fa',
+                                            border: '1px solid rgba(96, 165, 250, 0.2)',
+                                            fontWeight: 600
+                                          }}>
+                                            {concept}
+                                          </span>
+                                        ))}
+                                      </div>
+                                    </div>
+                                  </td>
+                                  <td style={{ 
+                                    fontWeight: 600,
+                                    background: `linear-gradient(to right, ${colorA}18 0%, ${colorA}18 ${pctA}%, transparent ${pctA}%, transparent 100%)`,
+                                    transition: 'background 0.3s ease'
+                                  }}>{hold.weightA.toFixed(2)}%</td>
+                                  <td style={{ 
+                                    fontWeight: 600,
+                                    background: `linear-gradient(to right, ${colorB}18 0%, ${colorB}18 ${pctB}%, transparent ${pctB}%, transparent 100%)`,
+                                    transition: 'background 0.3s ease'
+                                  }}>{hold.weightB.toFixed(2)}%</td>
+                                  <td style={{ fontWeight: 700, color: highlightColor }}>
+                                    {diff > 0 ? `+${diff.toFixed(2)}%` : `${diff.toFixed(2)}%`}
+                                  </td>
+                                </tr>
+                              );
+                            })
+                          )}
+                        </tbody>
+                      </table>
+                    )}
+
+                    {compareTab === 'common' && compareCommonView === 'chart' && (() => {
+                      const chartHeight = Math.max(etfCompareResults.commonHoldings.length * 36 + 60, 350);
+                      return (
+                        <div style={{ padding: '1rem 0' }}>
+                          {etfCompareResults.commonHoldings.length === 0 ? (
+                            <div style={{ textAlign: 'center', padding: '3rem', color: 'var(--text-secondary)' }}>雙檔無任何共同持股</div>
+                          ) : (
+                            <>
+                              {/* 自訂高質感圖例 */}
+                              <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', marginBottom: '1.5rem', flexWrap: 'wrap' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                  <span style={{ display: 'inline-block', width: '12px', height: '12px', borderRadius: '3px', background: ETF_META[compareEtfA]?.color }} />
+                                  <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-primary)' }}>
+                                    {compareEtfA} {ETF_META[compareEtfA]?.name.replace('主動', '')}
+                                  </span>
+                                </div>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                  <span style={{ display: 'inline-block', width: '12px', height: '12px', borderRadius: '3px', background: ETF_META[compareEtfB]?.color }} />
+                                  <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-primary)' }}>
+                                    {compareEtfB} {ETF_META[compareEtfB]?.name.replace('主動', '')}
+                                  </span>
+                                </div>
+                              </div>
+
+                              {/* 雙柱水平條形圖 */}
+                              <div style={{ width: '100%', height: `${chartHeight}px` }}>
+                                <ResponsiveContainer width="100%" height="100%">
+                                  <BarChart
+                                    layout="vertical"
+                                    data={etfCompareResults.commonHoldings}
+                                    margin={{ top: 10, right: 30, left: 40, bottom: 10 }}
+                                  >
+                                    <XAxis 
+                                      type="number" 
+                                      tickFormatter={(val) => `${val}%`}
+                                      stroke="var(--text-secondary)"
+                                      fontSize={11}
+                                    />
+                                    <YAxis 
+                                      type="category" 
+                                      dataKey="stockName" 
+                                      stroke="var(--text-secondary)"
+                                      fontSize={11}
+                                      width={80}
+                                    />
+                                    <Tooltip
+                                      cursor={{ fill: 'rgba(255, 255, 255, 0.04)' }}
+                                      wrapperStyle={{ outline: 'none' }}
+                                      contentStyle={{ background: 'transparent', border: 'none' }}
+                                      content={({ active, payload }) => {
+                                        if (active && payload && payload.length) {
+                                          const data = payload[0].payload;
+                                          return (
+                                            <div className="glass-panel" style={{ padding: '0.75rem', border: '1px solid var(--border-light)', backdropFilter: 'blur(10px)', background: 'rgba(15, 23, 42, 0.95)', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.4)' }}>
+                                              <div style={{ fontWeight: 700, marginBottom: '6px', fontSize: '0.9rem', color: '#fff' }}>
+                                                {data.stockName} <span style={{ color: 'var(--text-secondary)', fontSize: '0.75rem' }}>({data.stockCode})</span>
+                                              </div>
+                                              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', fontSize: '0.8rem' }}>
+                                                <div style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem', color: ETF_META[compareEtfA]?.color }}>
+                                                  <span>{compareEtfA} 權重:</span>
+                                                  <span style={{ fontWeight: 700 }}>{data.weightA.toFixed(2)}%</span>
+                                                </div>
+                                                <div style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem', color: ETF_META[compareEtfB]?.color }}>
+                                                  <span>{compareEtfB} 權重:</span>
+                                                  <span style={{ fontWeight: 700 }}>{data.weightB.toFixed(2)}%</span>
+                                                </div>
+                                                <div style={{ height: '1px', background: 'rgba(255,255,255,0.08)', margin: '4px 0' }} />
+                                                <div style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem', color: data.diffWeight > 0 ? ETF_META[compareEtfA]?.color : (data.diffWeight < 0 ? ETF_META[compareEtfB]?.color : '#fff') }}>
+                                                  <span>權重差值:</span>
+                                                  <span style={{ fontWeight: 700 }}>
+                                                    {data.diffWeight > 0 ? `+${data.diffWeight.toFixed(2)}%` : `${data.diffWeight.toFixed(2)}%`}
+                                                  </span>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          );
+                                        }
+                                        return null;
+                                      }}
+                                    />
+                                    <Bar 
+                                      dataKey="weightA" 
+                                      name={compareEtfA} 
+                                      fill={ETF_META[compareEtfA]?.color} 
+                                      radius={[0, 4, 4, 0]}
+                                      barSize={12}
+                                    />
+                                    <Bar 
+                                      dataKey="weightB" 
+                                      name={compareEtfB} 
+                                      fill={ETF_META[compareEtfB]?.color} 
+                                      radius={[0, 4, 4, 0]}
+                                      barSize={12}
+                                    />
+                                  </BarChart>
+                                </ResponsiveContainer>
+                              </div>
+                              <div style={{ textAlign: 'center', fontSize: '0.75rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>
+                                * 顯示所有共同持股，依據雙方權重之和排序
+                              </div>
+                            </>
+                          )}
+                        </div>
+                      );
+                    })()}
+
+                    {compareTab === 'uniqueA' && (
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>排名</th><th>代號</th><th>個股名稱</th>
+                            <th style={{ color: ETF_META[compareEtfA]?.color }}>持股權重</th>
+                            <th>產業板塊</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {etfCompareResults.uniqueA.length === 0 ? (
+                            <tr><td colSpan={5} style={{ textAlign: 'center', padding: '3rem', color: 'var(--text-secondary)' }}>該 ETF 無獨有持股</td></tr>
+                          ) : (
+                            etfCompareResults.uniqueA.map((hold, idx) => (
+                              <tr key={`uniqueA-${hold.stockCode}`} className="clickable-row" onClick={() => setChartModalData({code: hold.stockCode, name: hold.stockName})}>
+                                <td style={{ color: 'var(--text-secondary)' }}>{idx + 1}</td>
+                                <td style={{ fontWeight: 600, color: '#94a3b8' }}>{hold.stockCode}</td>
+                                <td style={{ fontWeight: 500 }}>{hold.stockName}</td>
+                                <td style={{ fontWeight: 700, color: ETF_META[compareEtfA]?.color }}>{hold.weight.toFixed(2)}%</td>
+                                <td>
+                                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
+                                    <span style={{
+                                      display: 'inline-block',
+                                      fontSize: '0.65rem',
+                                      padding: '2px 6px',
+                                      borderRadius: '4px',
+                                      background: 'rgba(255, 255, 255, 0.05)',
+                                      color: 'var(--text-secondary)',
+                                      border: '1px solid var(--border-light)',
+                                      fontWeight: 600
+                                    }}>
+                                      {getStockIndustry(hold.stockCode, hold.stockName)}
+                                    </span>
+                                    {(STOCK_CONCEPTS_MAP[hold.stockCode.trim()] || []).map(concept => (
+                                      <span key={concept} style={{
+                                        display: 'inline-block',
+                                        fontSize: '0.65rem',
+                                        padding: '2px 6px',
+                                        borderRadius: '4px',
+                                        background: 'rgba(96, 165, 250, 0.1)',
+                                        color: '#60a5fa',
+                                        border: '1px solid rgba(96, 165, 250, 0.2)',
+                                        fontWeight: 600
+                                      }}>
+                                        {concept}
+                                      </span>
+                                    ))}
+                                  </div>
+                                </td>
+                              </tr>
+                            ))
+                          )}
+                        </tbody>
+                      </table>
+                    )}
+
+                    {compareTab === 'uniqueB' && (
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>排名</th><th>代號</th><th>個股名稱</th>
+                            <th style={{ color: ETF_META[compareEtfB]?.color }}>持股權重</th>
+                            <th>產業板塊</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {etfCompareResults.uniqueB.length === 0 ? (
+                            <tr><td colSpan={5} style={{ textAlign: 'center', padding: '3rem', color: 'var(--text-secondary)' }}>該 ETF 無獨有持股</td></tr>
+                          ) : (
+                            etfCompareResults.uniqueB.map((hold, idx) => (
+                              <tr key={`uniqueB-${hold.stockCode}`} className="clickable-row" onClick={() => setChartModalData({code: hold.stockCode, name: hold.stockName})}>
+                                <td style={{ color: 'var(--text-secondary)' }}>{idx + 1}</td>
+                                <td style={{ fontWeight: 600, color: '#94a3b8' }}>{hold.stockCode}</td>
+                                <td style={{ fontWeight: 500 }}>{hold.stockName}</td>
+                                <td style={{ fontWeight: 700, color: ETF_META[compareEtfB]?.color }}>{hold.weight.toFixed(2)}%</td>
+                                <td>
+                                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
+                                    <span style={{
+                                      display: 'inline-block',
+                                      fontSize: '0.65rem',
+                                      padding: '2px 6px',
+                                      borderRadius: '4px',
+                                      background: 'rgba(255, 255, 255, 0.05)',
+                                      color: 'var(--text-secondary)',
+                                      border: '1px solid var(--border-light)',
+                                      fontWeight: 600
+                                    }}>
+                                      {getStockIndustry(hold.stockCode, hold.stockName)}
+                                    </span>
+                                    {(STOCK_CONCEPTS_MAP[hold.stockCode.trim()] || []).map(concept => (
+                                      <span key={concept} style={{
+                                        display: 'inline-block',
+                                        fontSize: '0.65rem',
+                                        padding: '2px 6px',
+                                        borderRadius: '4px',
+                                        background: 'rgba(96, 165, 250, 0.1)',
+                                        color: '#60a5fa',
+                                        border: '1px solid rgba(96, 165, 250, 0.2)',
+                                        fontWeight: 600
+                                      }}>
+                                        {concept}
+                                      </span>
+                                    ))}
+                                  </div>
+                                </td>
+                              </tr>
+                            ))
+                          )}
+                        </tbody>
+                      </table>
+                    )}
+                  </div>
+                </div>
+              </>
             )}
 
 
@@ -1350,6 +2715,14 @@ function App() {
         } />
       </Routes>
 
+      {/* K線圖懸浮視窗 */}
+      {chartModalData && (
+        <StockChartModal
+          stockCode={chartModalData.code}
+          stockName={chartModalData.name}
+          onClose={() => setChartModalData(null)}
+        />
+      )}
     </div>
   );
 }

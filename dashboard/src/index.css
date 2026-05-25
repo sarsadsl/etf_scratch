@@ -152,6 +152,7 @@ th, td {
   border-bottom: 1px solid var(--border-light);
   color: var(--text-primary);
   font-size: 1.05rem;
+  vertical-align: middle;
 }
 
 th {
@@ -173,6 +174,15 @@ tbody tr {
 
 tbody tr:hover {
   background-color: rgba(255, 255, 255, 0.03); 
+}
+
+.clickable-row {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clickable-row:hover {
+  background-color: rgba(255, 255, 255, 0.06) !important;
 }
 
 .table-container {
@@ -208,8 +218,7 @@ tbody tr:hover {
 
 /* 張數變動響應式排版 */
 .shares-cell {
-  display: flex;
-  flex-direction: column;
+  vertical-align: middle;
 }
 .shares-change-row {
   display: flex;
