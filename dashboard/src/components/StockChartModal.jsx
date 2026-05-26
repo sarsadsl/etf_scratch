@@ -235,6 +235,53 @@ export default function StockChartModal({ stockCode, stockName, onClose }) {
         param.point.y < 0
       );
 
+      const renderHTML = (time, kl, v, m5, m10, m20, m60) => {
+        if (!kl) return '';
+        const color = kl.close >= kl.open ? '#ef4444' : '#10b981';
+        return `
+          <div style="font-size: 15px; color: #94a3b8; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1);">
+            ${time}
+          </div>
+          <div style="font-size: 16px; display: flex; flex-direction: column; gap: 10px;">
+            <div style="display: flex; justify-content: space-between;">
+              <span style="color: #94a3b8;">開盤</span>
+              <span style="color: ${color}; font-weight: 500;">${kl.open}</span>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+              <span style="color: #94a3b8;">最高</span>
+              <span style="color: ${color}; font-weight: 500;">${kl.high}</span>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+              <span style="color: #94a3b8;">最低</span>
+              <span style="color: ${color}; font-weight: 500;">${kl.low}</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="color: #94a3b8;">收盤</span>
+              <span style="color: ${color}; font-weight: 700; font-size: 20px;">${kl.close}</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+              <span style="color: #94a3b8;">成交量</span>
+              <span style="color: var(--text-primary); font-weight: 500;">${v ? v.value.toLocaleString(undefined, {maximumFractionDigits:2}) + 'K' : '0'}</span>
+            </div>
+          </div>
+          
+          <div style="font-size: 15px; display: flex; flex-direction: column; gap: 8px; padding-top: 16px; margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.1);">
+            <div style="display: flex; justify-content: space-between; color: #f8fafc;">
+              <span>MA5</span><span>${m5 ? m5.value.toFixed(2) : '-'}</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; color: #facc15;">
+              <span>MA10</span><span>${m10 ? m10.value.toFixed(2) : '-'}</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; color: #c084fc;">
+              <span>MA20</span><span>${m20 ? m20.value.toFixed(2) : '-'}</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; color: #60a5fa;">
+              <span>MA60</span><span>${m60 ? m60.value.toFixed(2) : '-'}</span>
+            </div>
+          </div>
+        `;
+      };
+
       if (validCrosshairPoint) {
         const kline = param.seriesData.get(candlestickSeries);
         const ma5 = param.seriesData.get(ma5Series);
@@ -244,23 +291,7 @@ export default function StockChartModal({ stockCode, stockName, onClose }) {
         const vol = param.seriesData.get(volumeSeries);
 
         if (kline) {
-          const color = kline.close >= kline.open ? '#ef4444' : '#10b981';
-          legendRef.current.innerHTML = `
-            <div style="font-size: 13px; margin-bottom: 4px;">
-              <span style="color: #94a3b8; margin-right: 8px;">${param.time}</span>
-              開: <span style="color: ${color}; margin-right: 8px;">${kline.open}</span>
-              高: <span style="color: ${color}; margin-right: 8px;">${kline.high}</span>
-              低: <span style="color: ${color}; margin-right: 8px;">${kline.low}</span>
-              收: <span style="color: ${color}; font-weight: bold; margin-right: 8px;">${kline.close}</span>
-              量: <span style="color: var(--text-primary);">${vol ? vol.value.toLocaleString() : 0}</span>
-            </div>
-            <div style="font-size: 12px;">
-              <span style="color: #f8fafc; margin-right: 8px;">MA5: ${ma5 ? ma5.value.toFixed(2) : '-'}</span>
-              <span style="color: #facc15; margin-right: 8px;">MA10: ${ma10 ? ma10.value.toFixed(2) : '-'}</span>
-              <span style="color: #c084fc; margin-right: 8px;">MA20: ${ma20 ? ma20.value.toFixed(2) : '-'}</span>
-              <span style="color: #60a5fa; margin-right: 8px;">MA60: ${ma60 ? ma60.value.toFixed(2) : '-'}</span>
-            </div>
-          `;
+          legendRef.current.innerHTML = renderHTML(param.time, kline, vol, ma5, ma10, ma20, ma60);
         }
       } else {
         // 十字線離開，顯示最後一筆
@@ -272,23 +303,7 @@ export default function StockChartModal({ stockCode, stockName, onClose }) {
         const lastMa60 = ma60Data[ma60Data.length - 1];
         
         if (lastKline) {
-          const color = lastKline.close >= lastKline.open ? '#ef4444' : '#10b981';
-          legendRef.current.innerHTML = `
-            <div style="font-size: 13px; margin-bottom: 4px;">
-              <span style="color: #94a3b8; margin-right: 8px;">${lastKline.time}</span>
-              開: <span style="color: ${color}; margin-right: 8px;">${lastKline.open}</span>
-              高: <span style="color: ${color}; margin-right: 8px;">${lastKline.high}</span>
-              低: <span style="color: ${color}; margin-right: 8px;">${lastKline.low}</span>
-              收: <span style="color: ${color}; font-weight: bold; margin-right: 8px;">${lastKline.close}</span>
-              量: <span style="color: var(--text-primary);">${lastVol ? lastVol.value.toLocaleString() : 0}</span>
-            </div>
-            <div style="font-size: 12px;">
-              <span style="color: #f8fafc; margin-right: 8px;">MA5: ${lastMa5 ? lastMa5.value.toFixed(2) : '-'}</span>
-              <span style="color: #facc15; margin-right: 8px;">MA10: ${lastMa10 ? lastMa10.value.toFixed(2) : '-'}</span>
-              <span style="color: #c084fc; margin-right: 8px;">MA20: ${lastMa20 ? lastMa20.value.toFixed(2) : '-'}</span>
-              <span style="color: #60a5fa; margin-right: 8px;">MA60: ${lastMa60 ? lastMa60.value.toFixed(2) : '-'}</span>
-            </div>
-          `;
+          legendRef.current.innerHTML = renderHTML(lastKline.time, lastKline, lastVol, lastMa5, lastMa10, lastMa20, lastMa60);
         }
       }
     };
@@ -392,60 +407,62 @@ export default function StockChartModal({ stockCode, stockName, onClose }) {
           </button>
         </div>
 
-        {/* 圖表容器與圖例 */}
-        <div style={{ flex: 1, position: 'relative', minHeight: 0, overflow: 'hidden' }}>
-          {/* 絕對定位的互動圖例 */}
-          {(!loading && hasData && !error) && (
-            <div 
-              ref={legendRef}
-              style={{
-                position: 'absolute',
-                top: 10,
-                right: 70,
-                zIndex: 20,
-                background: 'rgba(15, 23, 42, 0.6)',
-                padding: '8px 12px',
-                borderRadius: '8px',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
-                backdropFilter: 'blur(4px)',
-                pointerEvents: 'none' // 讓滑鼠可以穿透圖例點擊後方的圖表
-              }}
-            >
-              {/* 將由 JS 動態填入 OHLC 與 MA */}
-            </div>
-          )}
-
-          {loading && (
-            <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', zIndex: 10 }}>
-              <Loader2 className="animate-spin" size={36} color="var(--accent-blue)" />
-              <span style={{ marginTop: '12px', color: 'var(--text-secondary)', fontSize: '0.9rem' }}>正在獲取歷史資料...</span>
-            </div>
-          )}
+        {/* 圖表容器與獨立圖例區塊 */}
+        <div style={{ flex: 1, minHeight: 0, display: 'flex', gap: '20px' }}>
           
-          {error && !loading && (
-            <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', color: '#ef4444', zIndex: 10 }}>
-              <AlertCircle size={40} />
-              <span style={{ marginTop: '12px', fontWeight: 500 }}>{error}</span>
-            </div>
-          )}
+          {/* 左側圖表區 */}
+          <div style={{ flex: 1, position: 'relative', overflow: 'hidden' }}>
+            {loading && (
+              <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', zIndex: 10 }}>
+                <Loader2 className="animate-spin" size={36} color="var(--accent-blue)" />
+                <span style={{ marginTop: '12px', color: 'var(--text-secondary)', fontSize: '0.9rem' }}>正在獲取歷史資料...</span>
+              </div>
+            )}
+            
+            {error && !loading && (
+              <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', color: '#ef4444', zIndex: 10 }}>
+                <AlertCircle size={40} />
+                <span style={{ marginTop: '12px', fontWeight: 500 }}>{error}</span>
+              </div>
+            )}
 
-          {!hasData && !loading && !error && (
-            <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', zIndex: 10 }}>
-              <AlertCircle size={40} color="#94a3b8" />
-              <span style={{ marginTop: '12px', color: '#94a3b8', fontWeight: 500 }}>暫無該標的之歷史走勢資料</span>
-              <p style={{ margin: '8px 0 0 0', color: 'var(--text-secondary)', fontSize: '0.8rem' }}>FinMind API 主要支援台灣股市，海外標的可能無法獲取。</p>
-            </div>
-          )}
+            {!hasData && !loading && !error && (
+              <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', zIndex: 10 }}>
+                <AlertCircle size={40} color="#94a3b8" />
+                <span style={{ marginTop: '12px', color: '#94a3b8', fontWeight: 500 }}>暫無該標的之歷史走勢資料</span>
+                <p style={{ margin: '8px 0 0 0', color: 'var(--text-secondary)', fontSize: '0.8rem' }}>FinMind API 主要支援台灣股市，海外標的可能無法獲取。</p>
+              </div>
+            )}
 
-          <div 
-            ref={chartContainerRef} 
-            style={{ 
-              width: '100%', 
-              height: '100%', 
-              opacity: (!loading && hasData && !error) ? 1 : 0,
-              transition: 'opacity 0.3s ease-in-out'
-            }} 
-          />
+            <div 
+              ref={chartContainerRef} 
+              style={{ 
+                width: '100%', 
+                height: '100%', 
+                opacity: (!loading && hasData && !error) ? 1 : 0,
+                transition: 'opacity 0.3s ease-in-out'
+              }} 
+            />
+          </div>
+
+          {/* 右側資訊區塊 (獨立一欄) */}
+          <div style={{ width: '220px', flexShrink: 0, display: 'flex', flexDirection: 'column' }}>
+            {(!loading && hasData && !error) && (
+              <div 
+                ref={legendRef}
+                style={{
+                  background: 'rgba(255, 255, 255, 0.03)',
+                  padding: '20px 16px',
+                  borderRadius: '12px',
+                  border: '1px solid rgba(255, 255, 255, 0.06)',
+                  height: '100%'
+                }}
+              >
+                {/* 將由 JS 動態填入 OHLC 與 MA */}
+              </div>
+            )}
+          </div>
+
         </div>
       </div>
     </div>
