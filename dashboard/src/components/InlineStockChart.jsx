@@ -355,7 +355,7 @@ export default function InlineStockChart({ stockCode }) {
 
         <div style={{ flex: 1, position: 'relative', overflow: 'hidden' }}>
           {(!loading && hasData && !error) && (
-            <div ref={legendRef} style={{ position: 'absolute', top: 10, left: 10, zIndex: 20, background: 'rgba(15, 23, 42, 0.6)', padding: '8px 12px', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.08)', backdropFilter: 'blur(4px)', pointerEvents: 'none' }} />
+            <div ref={legendRef} style={{ position: 'absolute', top: 10, right: 70, zIndex: 20, background: 'rgba(15, 23, 42, 0.6)', padding: '8px 12px', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.08)', backdropFilter: 'blur(4px)', pointerEvents: 'none' }} />
           )}
           {loading && (
             <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', zIndex: 10 }}>

@@ -401,7 +401,7 @@ export default function StockChartModal({ stockCode, stockName, onClose }) {
               style={{
                 position: 'absolute',
                 top: 10,
-                left: 10,
+                right: 70,
                 zIndex: 20,
                 background: 'rgba(15, 23, 42, 0.6)',
                 padding: '8px 12px',
