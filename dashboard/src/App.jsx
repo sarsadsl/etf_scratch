@@ -1973,7 +1973,7 @@ function App() {
                         <table>
                           <thead style={{ position: 'sticky', top: 0, zIndex: 20 }}>
                             <tr>
-                              <th>排名</th><th>代號</th><th>名稱</th><th>權重 (%)</th><th>張數</th><th>狀態</th>
+                              <th>排名</th><th>代號</th><th>名稱</th><th>權重 (%)</th><th>張數</th><th>報價</th><th>狀態</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -2048,6 +2048,20 @@ function App() {
                                       </div>
                                     ) : (
                                       <span style={{ fontWeight: 600 }}>{sharesLotStr}</span>
+                                    )}
+                                  </td>
+                                  <td>
+                                    {hold.close ? (
+                                      <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+                                        <span style={{ fontWeight: 700, fontSize: '0.95rem', color: hold.changePercent > 0 ? 'var(--tw-up)' : (hold.changePercent < 0 ? 'var(--tw-down)' : '#e2e8f0') }}>
+                                          {hold.close.toFixed(2)}
+                                        </span>
+                                        <span style={{ fontSize: '0.75rem', fontWeight: 600, color: hold.changePercent > 0 ? 'var(--tw-up)' : (hold.changePercent < 0 ? 'var(--tw-down)' : 'var(--text-secondary)') }}>
+                                          {hold.changePercent > 0 ? '+' : ''}{hold.changePercent.toFixed(2)}%
+                                        </span>
+                                      </div>
+                                    ) : (
+                                      <span style={{ color: 'var(--text-secondary)' }}>-</span>
                                     )}
                                   </td>
                                   <td>

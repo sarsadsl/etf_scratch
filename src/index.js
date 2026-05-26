@@ -5,6 +5,7 @@ import { targets } from './configs/targets.js';
 import { fetchHoldings, closeBrowser } from './scraper.js';
 import { compareHoldings } from './comparator.js';
 import { sendTelegramNotification } from './notifier.js';
+import { fetchMarketQuotes } from './market_quotes.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -64,6 +65,7 @@ async function main() {
   const newState = {};
   const dashboardState = {};
   const notificationResults = [];
+  const allMeta = {};
 
   // 2. 逐一抓取目標 ETF
   for (const target of targets) {
@@ -84,6 +86,11 @@ async function main() {
       newState[target.code] = currentHoldings;
       // 為 Dashboard 準備包含差額的資料
       dashboardState[target.code] = comparedHoldings;
+      
+      // 收集 Metadata
+      if (currentHoldings._meta) {
+        allMeta[target.code] = currentHoldings._meta;
+      }
     } else {
       // 若抓取失敗，保留前一日狀態
       newState[target.code] = previousState[target.code] || [];
@@ -106,6 +113,21 @@ async function main() {
 
   // 5. 將今日抓取結果覆寫回狀態檔
   fs.writeFileSync(STATE_FILE, JSON.stringify(newState, null, 2), 'utf-8');
+
+  // 5.5 全市場盤後報價補齊 (Market Quotes Enrichment)
+  console.log('[System] 開始取得全市場盤後報價...');
+  const marketQuotes = await fetchMarketQuotes();
+  for (const [etfCode, holdings] of Object.entries(dashboardState)) {
+    if (Array.isArray(holdings)) {
+      dashboardState[etfCode] = holdings.map(h => {
+        const quote = marketQuotes[h.stockCode];
+        if (quote) {
+          return { ...h, open: quote.open, close: quote.close, changePercent: quote.changePercent };
+        }
+        return h;
+      });
+    }
+  }
 
   // 新增：儲存至歷史資料庫 (data/YYYYMMDD/{etfCode}.json)
   const dataDir = path.join(__dirname, '..', 'data');
@@ -139,6 +161,8 @@ async function main() {
   for (const [etfCode, holdings] of Object.entries(dashboardState)) {
     fs.writeFileSync(path.join(dashDateDir, `${etfCode}.json`), JSON.stringify(holdings, null, 2), 'utf-8');
   }
+  // 寫入當日 meta.json
+  fs.writeFileSync(path.join(dashDateDir, 'meta.json'), JSON.stringify(allMeta, null, 2), 'utf-8');
 
   // 寫入 dashboard/public/data/latest/{etfCode}.json
   const latestDir = path.join(dashboardDataDir, 'latest');
@@ -148,6 +172,8 @@ async function main() {
   for (const [etfCode, holdings] of Object.entries(dashboardState)) {
     fs.writeFileSync(path.join(latestDir, `${etfCode}.json`), JSON.stringify(holdings, null, 2), 'utf-8');
   }
+  // 寫入最新 meta.json
+  fs.writeFileSync(path.join(latestDir, 'meta.json'), JSON.stringify(allMeta, null, 2), 'utf-8');
 
   // 生成歷史日期選單 (index.json)
   // 防護：只有實際成功抓到至少一個 ETF 資料時，才將此日期登錄至選單

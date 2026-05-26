@@ -43,13 +43,22 @@ function calculateMA(data, period) {
   return result;
 }
 
-// --- 右側面板子元件 ---
-function ETFBasicInfo({ stats }) {
+// --- ETFBasicInfo 顯示面板 ---
+function ETFBasicInfo({ stats, metaData }) {
   if (!stats) return <div style={{ color: 'var(--text-secondary)' }}>載入中...</div>;
   
   const isUp = stats.change >= 0;
   const color = isUp ? '#ef4444' : '#10b981';
   const sign = isUp ? '▲' : '▼';
+
+  const premiumInfo = React.useMemo(() => {
+    if (!metaData || !metaData.nav || !stats.close) return { value: '-', color: 'var(--text-secondary)' };
+    const p = ((stats.close - metaData.nav) / metaData.nav) * 100;
+    return {
+      value: `${p > 0 ? '+' : ''}${p.toFixed(2)}%`,
+      color: p > 0 ? '#ef4444' : p < 0 ? '#10b981' : 'var(--text-secondary)'
+    };
+  }, [metaData, stats]);
 
   const rowStyle = { display: 'flex', justifyContent: 'space-between', padding: '0.6rem 0', borderBottom: '1px solid rgba(255,255,255,0.05)' };
   const labelStyle = { color: 'var(--text-secondary)', fontSize: '0.85rem' };
@@ -75,7 +84,6 @@ function ETFBasicInfo({ stats }) {
         <div style={rowStyle}><span style={labelStyle}>開盤</span><span style={valStyle}>{stats.open.toFixed(2)}</span></div>
         <div style={rowStyle}><span style={labelStyle}>最高</span><span style={valStyle}>{stats.high.toFixed(2)}</span></div>
         <div style={rowStyle}><span style={labelStyle}>最低</span><span style={valStyle}>{stats.low.toFixed(2)}</span></div>
-        <div style={rowStyle}><span style={labelStyle}>昨收</span><span style={valStyle}>{stats.prevClose.toFixed(2)}</span></div>
         <div style={rowStyle}><span style={labelStyle}>成交量(張)</span><span style={valStyle}>{(stats.volume/1000).toLocaleString(undefined, {maximumFractionDigits:0})}</span></div>
         <div style={rowStyle}>
           <span style={labelStyle}>離季線</span>
@@ -83,12 +91,10 @@ function ETFBasicInfo({ stats }) {
             {stats.distToMa60 !== null ? `${stats.distToMa60 > 0 ? '+' : ''}${stats.distToMa60.toFixed(2)}%` : '-'}
           </span>
         </div>
-        
-        {/* 預留欄位：未來可由後端 API 擴充 */}
-        <div style={rowStyle}><span style={labelStyle}>折溢價</span><span style={{...valStyle, color: 'var(--text-muted)'}}>-</span></div>
-        <div style={rowStyle}><span style={labelStyle}>淨值</span><span style={{...valStyle, color: 'var(--text-muted)'}}>-</span></div>
-        <div style={rowStyle}><span style={labelStyle}>規模(億)</span><span style={{...valStyle, color: 'var(--text-muted)'}}>-</span></div>
-        <div style={{...rowStyle, borderBottom: 'none'}}><span style={labelStyle}>發行受益單位(千)</span><span style={{...valStyle, color: 'var(--text-muted)'}}>-</span></div>
+        <div style={rowStyle}><span style={labelStyle}>淨值</span><span style={valStyle}>{metaData?.nav || '-'}</span></div>
+        <div style={rowStyle}><span style={labelStyle}>折溢價</span><span style={{...valStyle, color: premiumInfo.color}}>{premiumInfo.value}</span></div>
+        <div style={rowStyle}><span style={labelStyle}>規模(百萬)</span><span style={valStyle}>{metaData?.aum || '-'}</span></div>
+        <div style={{...rowStyle, borderBottom: 'none'}}><span style={labelStyle}>發行單位(千)</span><span style={valStyle}>{metaData?.units || '-'}</span></div>
       </div>
     </div>
   );
@@ -106,20 +112,28 @@ export default function InlineStockChart({ stockCode }) {
   const [rawData, setRawData] = useState([]);
   const [timeframe, setTimeframe] = useState('daily');
   const [latestStats, setLatestStats] = useState(null);
+  const [metaData, setMetaData] = useState(null);
   
   const chartRef = useRef(null);
   const cleanCode = stockCode.replace(/\s*(US|TW|HK|JP)$/i, '').trim();
 
   // 1. 初次載入
   useEffect(() => {
+    let ignore = false;
+
     const fetchData = async () => {
       try {
         setLoading(true);
+        setRawData([]);
+        setLatestStats(null);
+        setMetaData(null);
+        
         const threeYearsAgo = new Date();
         threeYearsAgo.setFullYear(threeYearsAgo.getFullYear() - 3);
         const startDate = threeYearsAgo.toISOString().split('T')[0];
 
-        const targetUrl = `https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&data_id=${cleanCode}&start_date=${startDate}`;
+        // 加上 timestamp 防止 corsproxy 或 allorigins 快取舊資料
+        const targetUrl = `https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&data_id=${cleanCode}&start_date=${startDate}&_t=${Date.now()}`;
         
         let res;
         try { res = await fetch(targetUrl); if (!res.ok) throw new Error('Direct fetch not ok'); } 
@@ -129,6 +143,9 @@ export default function InlineStockChart({ stockCode }) {
         }
         
         const result = await res.json();
+        
+        if (ignore) return;
+
         if (result.status !== 200 || !result.data || result.data.length === 0) {
           setHasData(false); setLoading(false); return;
         }
@@ -137,11 +154,32 @@ export default function InlineStockChart({ stockCode }) {
         setHasData(true);
         setLoading(false);
       } catch (err) {
+        if (ignore) return;
         setError(`無法取得歷史資料 (${err.message})`);
         setLoading(false);
       }
     };
+    
+    const fetchMeta = async () => {
+      try {
+        const res = await fetch(`/data/latest/meta.json`);
+        if (res.ok) {
+          const allMeta = await res.json();
+          if (!ignore && allMeta[cleanCode]) {
+            setMetaData(allMeta[cleanCode]);
+          }
+        }
+      } catch (e) {
+        console.log('Failed to fetch meta.json', e);
+      }
+    };
+
     fetchData();
+    fetchMeta();
+
+    return () => {
+      ignore = true;
+    };
   }, [cleanCode]);
 
   // 2. 計算即時的右側最新報價 (基於日K rawData)
@@ -352,7 +390,7 @@ export default function InlineStockChart({ stockCode }) {
           flexDirection: 'column' 
         }}
       >
-        <ETFBasicInfo stats={latestStats} />
+        <ETFBasicInfo stats={latestStats} metaData={metaData} />
       </div>
     </div>
   );

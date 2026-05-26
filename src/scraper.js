@@ -76,16 +76,61 @@ async function fetchFsitcSpa(page, fundCode) {
   await page.goto(url, { waitUntil: 'networkidle2', timeout: 60000 });
   await new Promise(r => setTimeout(r, 5000));
 
-  return await page.evaluate(() => {
+  const meta = await page.evaluate(async (code) => {
+    let nav = null;
+    let aum = null;
+    let units = null;
+    
+    // 1. 優先從 DOM 中解析 (網頁即時資料)
+    const tds = Array.from(document.querySelectorAll('td'));
+    const getVal = (label) => {
+      const el = tds.find(td => td.textContent.trim() === label);
+      return el ? el.nextElementSibling.textContent.trim() : null;
+    };
+    
+    try {
+      const domNavStr = getVal('每單位淨值');
+      if (domNavStr) {
+        nav = parseFloat(domNavStr.replace(/[^\d.]/g, ''));
+      }
+      
+      const domAumStr = getVal('淨資產');
+      if (domAumStr) {
+        const aumNum = parseFloat(domAumStr.replace(/[^\d.]/g, ''));
+        aum = (aumNum / 1000000).toFixed(2);
+      }
+      
+      const domUnitsStr = getVal('流通在外單位數');
+      if (domUnitsStr) {
+        const unitsNum = parseFloat(domUnitsStr.replace(/[^\d.]/g, ''));
+        units = (unitsNum / 1000).toFixed(2);
+      }
+    } catch (e) {}
+
+    // 2. 如果 DOM 上沒有 nav，再退回使用 API
+    if (!nav) {
+      try {
+        const res = await fetch(`/ETF/Fund/ValueJson/?fundCode=${code}`);
+        const text = await res.text();
+        const data = JSON.parse(text);
+        const arr = typeof data === 'string' ? JSON.parse(data) : data;
+        if (arr && arr.length > 0) {
+          nav = arr[arr.length - 1][1];
+        }
+      } catch(e) {}
+    }
+    
+    return { nav, aum, units };
+  }, fundCode);
+
+  const rows = await page.evaluate(() => {
     const rows = [];
     const trs = document.querySelectorAll('#assetBody tr');
     trs.forEach(tr => {
       const tds = Array.from(tr.querySelectorAll('td')).map(td => td.innerText.trim());
-      // Check if row has exactly 4 columns and the last column looks like a percentage (e.g., '9.01%')
-      // and it's not the header row.
       if (tds.length === 4 && tds[3].endsWith('%') && tds[0] !== '股票代號' && tds[0] !== '期貨(名目本金)') {
         const stockCode = tds[0];
-        const stockName = tds[1].replace(/\*/g, '').trim(); // Remove asterisks if any
+        const stockName = tds[1].replace(/\*/g, '').trim();
         const shares = parseInt(tds[2].replace(/,/g, ''), 10) || 0;
         const weight = parseFloat(tds[3].replace('%', '')) || 0;
         if (weight > 0 || shares > 0) {
@@ -95,6 +140,11 @@ async function fetchFsitcSpa(page, fundCode) {
     });
     return rows.length > 0 ? rows : null;
   });
+
+  if (rows && meta.nav !== null) {
+    rows._meta = meta;
+  }
+  return rows;
 }
 
 // ============================================================
