@@ -3,248 +3,248 @@
     "stockCode": "2330",
     "stockName": "台灣積體",
     "shares": 4200000,
-    "weight": 14.336,
+    "weight": 14.483,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.27,
+    "diffWeight": 0.15,
     "isNew": false,
-    "open": 2420,
-    "close": 2440,
-    "changePercent": -2.0080321285140563
+    "open": 2430,
+    "close": 2420,
+    "changePercent": -0.819672131147541
   },
   {
     "stockCode": "2383",
     "stockName": "台光電子",
     "shares": 1350000,
-    "weight": 9.835,
+    "weight": 9.859,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.02,
+    "diffWeight": 0.02,
     "isNew": false,
-    "open": 5010,
-    "close": 5120,
-    "changePercent": -7.246376811594203
+    "open": 5155,
+    "close": 5165,
+    "changePercent": 0.87890625
   },
   {
     "stockCode": "3037",
     "stockName": "欣興電子",
     "shares": 5350000,
-    "weight": 8.225,
+    "weight": 8.538,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.03,
+    "diffWeight": 0.31,
     "isNew": false,
-    "open": 1100,
-    "close": 1075,
-    "changePercent": -9.282700421940929
+    "open": 1095,
+    "close": 1090,
+    "changePercent": 1.3953488372093024
   },
   {
     "stockCode": "2408",
     "stockName": "南亞科技",
     "shares": 11700000,
-    "weight": 7.385,
+    "weight": 7.269,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.05,
+    "diffWeight": -0.12,
     "isNew": false,
-    "open": 445,
-    "close": 439.5,
-    "changePercent": -8.532778355879293
-  },
-  {
-    "stockCode": "2059",
-    "stockName": "川湖科技",
-    "shares": 470000,
-    "weight": 6.599,
-    "diffShares": 0,
-    "diffSharesPercent": 0,
-    "diffWeight": 0.09,
-    "isNew": false,
-    "open": 9700,
-    "close": 9720,
-    "changePercent": -2.848575712143928
-  },
-  {
-    "stockCode": "3189",
-    "stockName": "景碩科技",
-    "shares": 4620000,
-    "weight": 6.516,
-    "diffShares": 0,
-    "diffSharesPercent": 0,
-    "diffWeight": 0.07,
-    "isNew": false,
-    "open": 990,
-    "close": 979,
-    "changePercent": -6.761904761904762
+    "open": 446,
+    "close": 447.5,
+    "changePercent": 1.8202502844141069
   },
   {
     "stockCode": "8046",
     "stockName": "南亞電路",
     "shares": 3400000,
-    "weight": 6.498,
+    "weight": 6.686,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.02,
+    "diffWeight": 0.19,
     "isNew": false,
-    "open": 1345,
-    "close": 1345,
-    "changePercent": -5.944055944055944
+    "open": 1360,
+    "close": 1355,
+    "changePercent": 0.7434944237918215
+  },
+  {
+    "stockCode": "2059",
+    "stockName": "川湖科技",
+    "shares": 470000,
+    "weight": 6.644,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0.04,
+    "isNew": false,
+    "open": 10140,
+    "close": 9955,
+    "changePercent": 2.4176954732510287
+  },
+  {
+    "stockCode": "3189",
+    "stockName": "景碩科技",
+    "shares": 4620000,
+    "weight": 6.465,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": -0.05,
+    "isNew": false,
+    "open": 1000,
+    "close": 1000,
+    "changePercent": 2.1450459652706844
+  },
+  {
+    "stockCode": "3017",
+    "stockName": "奇鋐科技",
+    "shares": 1350000,
+    "weight": 6.387,
+    "diffShares": 100000,
+    "diffSharesPercent": 8,
+    "diffWeight": 0.54,
+    "isNew": false,
+    "open": 3115,
+    "close": 3315,
+    "changePercent": 7.455429497568882
   },
   {
     "stockCode": "2454",
     "stockName": "聯發科技",
     "shares": 1050000,
-    "weight": 6.294,
+    "weight": 6.292,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.06,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 4195,
-    "close": 4165,
-    "changePercent": -6.927374301675977
-  },
-  {
-    "stockCode": "3017",
-    "stockName": "奇鋐科技",
-    "shares": 1250000,
-    "weight": 5.845,
-    "diffShares": 0,
-    "diffSharesPercent": 0,
-    "diffWeight": 0.35,
-    "isNew": false,
-    "open": 3200,
-    "close": 3085,
-    "changePercent": -6.93815987933635
-  },
-  {
-    "stockCode": "2327",
-    "stockName": "國巨股份",
-    "shares": 5800000,
-    "weight": 4.638,
-    "diffShares": 0,
-    "diffSharesPercent": 0,
-    "diffWeight": -0.1,
-    "isNew": false,
-    "open": 590,
-    "close": 573,
-    "changePercent": -8.61244019138756
+    "open": 4275,
+    "close": 4250,
+    "changePercent": 2.0408163265306123
   },
   {
     "stockCode": "1303",
     "stockName": "南亞塑膠",
     "shares": 10000000,
-    "weight": 4.33,
-    "diffShares": 400000,
-    "diffSharesPercent": 4.17,
-    "diffWeight": 0.03,
+    "weight": 4.325,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 335,
-    "close": 314.5,
-    "changePercent": -9.885386819484241
+    "open": 314,
+    "close": 307,
+    "changePercent": -2.384737678855326
+  },
+  {
+    "stockCode": "2327",
+    "stockName": "國巨股份",
+    "shares": 5400000,
+    "weight": 4.109,
+    "diffShares": -400000,
+    "diffSharesPercent": -6.9,
+    "diffWeight": -0.53,
+    "isNew": false,
+    "open": 581,
+    "close": 567,
+    "changePercent": -1.0471204188481675
   },
   {
     "stockCode": "3653",
     "stockName": "健策精密",
     "shares": 340000,
-    "weight": 3.227,
-    "diffShares": 20000,
-    "diffSharesPercent": 6.25,
-    "diffWeight": 0.14,
+    "weight": 3.178,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": -0.05,
     "isNew": false,
-    "open": 6720,
-    "close": 6765,
-    "changePercent": -4.3140028288543135
+    "open": 6765,
+    "close": 6730,
+    "changePercent": -0.5173688100517368
   },
   {
     "stockCode": "3026",
     "stockName": "禾伸堂企",
-    "shares": 2800000,
-    "weight": 3.183,
+    "shares": 3000000,
+    "weight": 3.142,
     "diffShares": 200000,
-    "diffSharesPercent": 7.69,
-    "diffWeight": 0.18,
+    "diffSharesPercent": 7.14,
+    "diffWeight": -0.04,
     "isNew": false,
-    "open": 800,
-    "close": 811,
-    "changePercent": -5.035128805620609
+    "open": 825,
+    "close": 806,
+    "changePercent": -0.6165228113440198
   },
   {
     "stockCode": "3081",
     "stockName": "聯亞光電",
     "shares": 800000,
-    "weight": 2.872,
+    "weight": 2.93,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.14,
+    "diffWeight": 0.06,
     "isNew": false,
-    "open": 2685,
-    "close": 2545,
-    "changePercent": -3.5984848484848486
-  },
-  {
-    "stockCode": "6505",
-    "stockName": "台塑石化",
-    "shares": 15000000,
-    "weight": 2.592,
-    "diffShares": 0,
-    "diffSharesPercent": 0,
-    "diffWeight": 0.21,
-    "isNew": false,
-    "open": 118,
-    "close": 111.5,
-    "changePercent": -6.694560669456067
+    "open": 2385,
+    "close": 2570,
+    "changePercent": 0.9823182711198428
   },
   {
     "stockCode": "5274",
     "stockName": "信驊科技",
     "shares": 110500,
-    "weight": 2.569,
+    "weight": 2.516,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.06,
+    "diffWeight": -0.05,
     "isNew": false,
-    "open": 15795,
-    "close": 16480,
-    "changePercent": 3.355283788021323
+    "open": 16300,
+    "close": 15980,
+    "changePercent": -3.033980582524272
+  },
+  {
+    "stockCode": "6505",
+    "stockName": "台塑石化",
+    "shares": 15000000,
+    "weight": 2.479,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": -0.11,
+    "isNew": false,
+    "open": 113.5,
+    "close": 122.5,
+    "changePercent": 9.865470852017937
   },
   {
     "stockCode": "3711",
     "stockName": "日月光投",
     "shares": 1900000,
-    "weight": 1.798,
-    "diffShares": 200000,
-    "diffSharesPercent": 11.76,
-    "diffWeight": 0.17,
+    "weight": 1.814,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0.02,
     "isNew": false,
-    "open": 696,
-    "close": 673,
-    "changePercent": -9.906291834002676
+    "open": 652,
+    "close": 671,
+    "changePercent": -0.2971768202080238
   },
   {
     "stockCode": "3008",
     "stockName": "大立光電",
     "shares": 150000,
-    "weight": 1.354,
+    "weight": 1.335,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.06,
+    "diffWeight": -0.02,
     "isNew": false,
-    "open": 6500,
-    "close": 6605,
-    "changePercent": -3.997093023255814
+    "open": 6625,
+    "close": 6400,
+    "changePercent": -3.1037093111279335
   },
   {
     "stockCode": "7769",
     "stockName": "鴻勁精密",
     "shares": 1000,
-    "weight": 0.007,
+    "weight": 0.008,
     "diffShares": 0,
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 5625,
-    "close": 5225,
-    "changePercent": -9.602076124567475
+    "open": 5265,
+    "close": 5285,
+    "changePercent": 1.1483253588516746
   },
   {
     "stockCode": "6223",
@@ -255,9 +255,9 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 5310,
-    "close": 5205,
-    "changePercent": -1.7924528301886793
+    "open": 5005,
+    "close": 5235,
+    "changePercent": 0.5763688760806917
   },
   {
     "stockCode": "2382",
@@ -268,9 +268,9 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 320.5,
-    "close": 316.5,
-    "changePercent": -2.0123839009287927
+    "open": 320,
+    "close": 322,
+    "changePercent": 1.7377567140600316
   },
   {
     "stockCode": "2603",
@@ -281,9 +281,9 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 260.5,
-    "close": 257,
-    "changePercent": -2.2813688212927756
+    "open": 261,
+    "close": 265.5,
+    "changePercent": 3.3073929961089497
   },
   {
     "stockCode": "2317",
@@ -294,35 +294,9 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 240,
-    "close": 239.5,
-    "changePercent": -1.440329218106996
-  },
-  {
-    "stockCode": "2360",
-    "stockName": "致茂電子",
-    "shares": 1000,
-    "weight": 0.003,
-    "diffShares": 0,
-    "diffSharesPercent": 0,
-    "diffWeight": 0,
-    "isNew": false,
-    "open": 2125,
-    "close": 2025,
-    "changePercent": -10
-  },
-  {
-    "stockCode": "3665",
-    "stockName": "貿聯-KY",
-    "shares": 1000,
-    "weight": 0.003,
-    "diffShares": 0,
-    "diffSharesPercent": 0,
-    "diffWeight": 0,
-    "isNew": false,
-    "open": 2140,
-    "close": 2015,
-    "changePercent": -9.843400447427292
+    "open": 241.5,
+    "close": 244,
+    "changePercent": 1.8789144050104383
   },
   {
     "stockCode": "2345",
@@ -333,9 +307,35 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 1915,
-    "close": 1950,
-    "changePercent": -4.878048780487805
+    "open": 1965,
+    "close": 1980,
+    "changePercent": 1.5384615384615385
+  },
+  {
+    "stockCode": "2360",
+    "stockName": "致茂電子",
+    "shares": 1000,
+    "weight": 0.003,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false,
+    "open": 1985,
+    "close": 2000,
+    "changePercent": -1.2345679012345678
+  },
+  {
+    "stockCode": "3665",
+    "stockName": "貿聯-KY",
+    "shares": 1000,
+    "weight": 0.003,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false,
+    "open": 1990,
+    "close": 2015,
+    "changePercent": 0
   },
   {
     "stockCode": "6669",
@@ -346,9 +346,9 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 1910,
-    "close": 1905,
-    "changePercent": -9.929078014184398
+    "open": 1905,
+    "close": 1845,
+    "changePercent": -3.149606299212598
   },
   {
     "stockCode": "8299",
@@ -359,35 +359,9 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 1885,
-    "close": 1890,
-    "changePercent": 3.278688524590164
-  },
-  {
-    "stockCode": "3231",
-    "stockName": "緯創資通",
-    "shares": 9000,
-    "weight": 0.002,
-    "diffShares": 0,
-    "diffSharesPercent": 0,
-    "diffWeight": 0,
-    "isNew": false,
-    "open": 184.5,
-    "close": 176,
-    "changePercent": -5.88235294117647
-  },
-  {
-    "stockCode": "2308",
-    "stockName": "台達電子",
-    "shares": 1000,
-    "weight": 0.002,
-    "diffShares": 0,
-    "diffSharesPercent": 0,
-    "diffWeight": 0,
-    "isNew": false,
-    "open": 1690,
-    "close": 1630,
-    "changePercent": -8.683473389355742
+    "open": 1830,
+    "close": 1845,
+    "changePercent": -2.380952380952381
   },
   {
     "stockCode": "6274",
@@ -398,9 +372,48 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 1660,
-    "close": 1615,
-    "changePercent": -0.6153846153846154
+    "open": 1525,
+    "close": 1630,
+    "changePercent": 0.9287925696594427
+  },
+  {
+    "stockCode": "3231",
+    "stockName": "緯創資通",
+    "shares": 9000,
+    "weight": 0.002,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false,
+    "open": 178,
+    "close": 182.5,
+    "changePercent": 3.6931818181818183
+  },
+  {
+    "stockCode": "2308",
+    "stockName": "台達電子",
+    "shares": 1000,
+    "weight": 0.002,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false,
+    "open": 1650,
+    "close": 1635,
+    "changePercent": 0.3067484662576687
+  },
+  {
+    "stockCode": "2881",
+    "stockName": "富邦金融",
+    "shares": 9000,
+    "weight": 0.002,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false,
+    "open": 159,
+    "close": 161.5,
+    "changePercent": 1.2539184952978055
   },
   {
     "stockCode": "5347",
@@ -412,21 +425,8 @@
     "diffWeight": 0,
     "isNew": false,
     "open": 163,
-    "close": 167.5,
-    "changePercent": 3.7151702786377707
-  },
-  {
-    "stockCode": "2881",
-    "stockName": "富邦金融",
-    "shares": 9000,
-    "weight": 0.002,
-    "diffShares": 0,
-    "diffSharesPercent": 0,
-    "diffWeight": 0,
-    "isNew": false,
-    "open": 160.5,
-    "close": 159.5,
-    "changePercent": -0.6230529595015576
+    "close": 163.5,
+    "changePercent": -2.3880597014925375
   },
   {
     "stockCode": "2303",
@@ -437,22 +437,9 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 136.5,
-    "close": 133.5,
-    "changePercent": -5.985915492957746
-  },
-  {
-    "stockCode": "2357",
-    "stockName": "華碩電腦",
-    "shares": 1000,
-    "weight": 0.001,
-    "diffShares": 0,
-    "diffSharesPercent": 0,
-    "diffWeight": 0,
-    "isNew": false,
-    "open": 971,
-    "close": 975,
-    "changePercent": -1.5151515151515151
+    "open": 134,
+    "close": 133,
+    "changePercent": -0.37453183520599254
   },
   {
     "stockCode": "2882",
@@ -463,9 +450,22 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 114,
-    "close": 113.5,
-    "changePercent": -0.43859649122807015
+    "open": 113,
+    "close": 116,
+    "changePercent": 2.2026431718061676
+  },
+  {
+    "stockCode": "2357",
+    "stockName": "華碩電腦",
+    "shares": 1000,
+    "weight": 0.001,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false,
+    "open": 982,
+    "close": 994,
+    "changePercent": 1.948717948717949
   },
   {
     "stockCode": "2379",
@@ -476,22 +476,9 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 767,
-    "close": 764,
-    "changePercent": -1.7994858611825193
-  },
-  {
-    "stockCode": "2891",
-    "stockName": "中國信託",
-    "shares": 9000,
-    "weight": 0.001,
-    "diffShares": 0,
-    "diffSharesPercent": 0,
-    "diffWeight": 0,
-    "isNew": false,
-    "open": 72,
-    "close": 72.9,
-    "changePercent": 2.1008403361344534
+    "open": 774,
+    "close": 778,
+    "changePercent": 1.832460732984293
   },
   {
     "stockCode": "2885",
@@ -502,9 +489,22 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 72.4,
-    "close": 72.7,
-    "changePercent": 0.6925207756232686
+    "open": 72.9,
+    "close": 72.9,
+    "changePercent": 0.2751031636863824
+  },
+  {
+    "stockCode": "2891",
+    "stockName": "中國信託",
+    "shares": 9000,
+    "weight": 0.001,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false,
+    "open": 72.6,
+    "close": 73.6,
+    "changePercent": 0.9602194787379973
   },
   {
     "stockCode": "3044",
@@ -515,9 +515,9 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 580,
-    "close": 586,
-    "changePercent": -2.8192371475953566
+    "open": 590,
+    "close": 584,
+    "changePercent": -0.3412969283276451
   },
   {
     "stockCode": "2884",
@@ -528,9 +528,9 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 48.35,
-    "close": 48.8,
-    "changePercent": 3.1712473572938693
+    "open": 48,
+    "close": 49.15,
+    "changePercent": 0.7172131147540983
   },
   {
     "stockCode": "2886",
@@ -541,9 +541,9 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 51.2,
-    "close": 52.5,
-    "changePercent": 2.73972602739726
+    "open": 52.5,
+    "close": 53.7,
+    "changePercent": 2.2857142857142856
   },
   {
     "stockCode": "2880",
@@ -554,22 +554,9 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 49.15,
-    "close": 49.65,
-    "changePercent": 1.5337423312883436
-  },
-  {
-    "stockCode": "2449",
-    "stockName": "京元電子",
-    "shares": 1450,
-    "weight": 0.001,
-    "diffShares": 0,
-    "diffSharesPercent": 0,
-    "diffWeight": 0,
-    "isNew": false,
-    "open": 275,
-    "close": 272,
-    "changePercent": -8.263069139966273
+    "open": 49.65,
+    "close": 48.9,
+    "changePercent": -1.5105740181268883
   },
   {
     "stockCode": "2887",
@@ -580,9 +567,9 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 41.9,
-    "close": 41.6,
-    "changePercent": -2.4618991793669402
+    "open": 42,
+    "close": 42.45,
+    "changePercent": 2.043269230769231
   },
   {
     "stockCode": "2890",
@@ -593,9 +580,22 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 44.3,
-    "close": 45.6,
-    "changePercent": 3.5187287173666286
+    "open": 45.6,
+    "close": 45.75,
+    "changePercent": 0.3289473684210526
+  },
+  {
+    "stockCode": "2449",
+    "stockName": "京元電子",
+    "shares": 1450,
+    "weight": 0.001,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false,
+    "open": 272,
+    "close": 275,
+    "changePercent": 1.1029411764705883
   },
   {
     "stockCode": "2883",
@@ -606,9 +606,9 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 38.3,
-    "close": 38.4,
-    "changePercent": -0.646830530401035
+    "open": 38.5,
+    "close": 39.1,
+    "changePercent": 1.8229166666666667
   },
   {
     "stockCode": "2313",
@@ -619,9 +619,9 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 240,
-    "close": 228,
-    "changePercent": -8.982035928143713
+    "open": 234,
+    "close": 248,
+    "changePercent": 8.771929824561402
   },
   {
     "stockCode": "2412",
@@ -632,9 +632,9 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 149.5,
-    "close": 152.5,
-    "changePercent": 2.6936026936026933
+    "open": 152.5,
+    "close": 153,
+    "changePercent": 0.32786885245901637
   },
   {
     "stockCode": "3036",
@@ -645,8 +645,8 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 212,
-    "close": 208,
-    "changePercent": -3.7037037037037033
+    "open": 210,
+    "close": 210,
+    "changePercent": 0.9615384615384616
   }
 ]
