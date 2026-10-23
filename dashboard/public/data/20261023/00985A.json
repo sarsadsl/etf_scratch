@@ -1,0 +1,452 @@
+[
+  {
+    "stockCode": "2330",
+    "stockName": "台灣積體電路製造",
+    "shares": 1680000,
+    "weight": 13.81,
+    "open": 2435,
+    "close": 2385,
+    "changePercent": -1.4462809917355373
+  },
+  {
+    "stockCode": "6669",
+    "stockName": "緯穎科技服務",
+    "shares": 537036,
+    "weight": 3.43,
+    "open": 1940,
+    "close": 1840,
+    "changePercent": -2.127659574468085
+  },
+  {
+    "stockCode": "3653",
+    "stockName": "健策精密工業",
+    "shares": 146000,
+    "weight": 3.24,
+    "open": 6555,
+    "close": 6070,
+    "changePercent": -7.115531752104055
+  },
+  {
+    "stockCode": "7769",
+    "stockName": "鴻勁精密",
+    "shares": 168000,
+    "weight": 2.93,
+    "open": 5250,
+    "close": 5275,
+    "changePercent": 2.8265107212475633
+  },
+  {
+    "stockCode": "2383",
+    "stockName": "台光電子材料",
+    "shares": 165000,
+    "weight": 2.8,
+    "open": 5335,
+    "close": 5070,
+    "changePercent": 1.6032064128256511
+  },
+  {
+    "stockCode": "4904",
+    "stockName": "遠傳電信",
+    "shares": 7183000,
+    "weight": 2.73,
+    "open": 111.5,
+    "close": 115,
+    "changePercent": 2.6785714285714284
+  },
+  {
+    "stockCode": "3036",
+    "stockName": "文曄科技",
+    "shares": 3650000,
+    "weight": 2.63,
+    "open": 213.5,
+    "close": 213,
+    "changePercent": 0.2352941176470588
+  },
+  {
+    "stockCode": "2308",
+    "stockName": "台達電子工業",
+    "shares": 462000,
+    "weight": 2.55,
+    "open": 1640,
+    "close": 1560,
+    "changePercent": -4
+  },
+  {
+    "stockCode": "2345",
+    "stockName": "智邦科技",
+    "shares": 403000,
+    "weight": 2.48,
+    "open": 1835,
+    "close": 1775,
+    "changePercent": -2.203856749311295
+  },
+  {
+    "stockCode": "1216",
+    "stockName": "統一企業",
+    "shares": 9243000,
+    "weight": 2.46,
+    "open": 77.6,
+    "close": 79.6,
+    "changePercent": 1.4012738853503186
+  },
+  {
+    "stockCode": "2059",
+    "stockName": "川湖科技",
+    "shares": 68000,
+    "weight": 2.33,
+    "open": 10100,
+    "close": 9755,
+    "changePercent": -3.2242063492063497
+  },
+  {
+    "stockCode": "6446",
+    "stockName": "藥華醫藥",
+    "shares": 550000,
+    "weight": 2.19,
+    "open": 1195,
+    "close": 1160,
+    "changePercent": -1.276595744680851
+  },
+  {
+    "stockCode": "2376",
+    "stockName": "技嘉科技",
+    "shares": 1769000,
+    "weight": 2.15,
+    "open": 362,
+    "close": 349,
+    "changePercent": -2.6499302649930265
+  },
+  {
+    "stockCode": "3037",
+    "stockName": "欣興電子",
+    "shares": 555000,
+    "weight": 2.07,
+    "open": 1160,
+    "close": 1085,
+    "changePercent": -1.3636363636363635
+  },
+  {
+    "stockCode": "3081",
+    "stockName": "聯亞光電工業",
+    "shares": 227000,
+    "weight": 2.02,
+    "open": 2600,
+    "close": 2375,
+    "changePercent": -9.523809523809524
+  },
+  {
+    "stockCode": "2317",
+    "stockName": "鴻海精密工業",
+    "shares": 2225000,
+    "weight": 1.89,
+    "open": 249.5,
+    "close": 245,
+    "changePercent": -2
+  },
+  {
+    "stockCode": "2327",
+    "stockName": "國巨",
+    "shares": 999000,
+    "weight": 1.84,
+    "open": 558,
+    "close": 507,
+    "changePercent": -6.4575645756457565
+  },
+  {
+    "stockCode": "2027",
+    "stockName": "大成不銹鋼工業",
+    "shares": 10874000,
+    "weight": 1.84,
+    "open": 49.85,
+    "close": 50.6,
+    "changePercent": 1.402805611222445
+  },
+  {
+    "stockCode": "3008",
+    "stockName": "大立光電",
+    "shares": 84000,
+    "weight": 1.76,
+    "open": 6300,
+    "close": 6175,
+    "changePercent": 0.08103727714748785
+  },
+  {
+    "stockCode": "3711",
+    "stockName": "日月光投資控股",
+    "shares": 704000,
+    "weight": 1.64,
+    "open": 690,
+    "close": 654,
+    "changePercent": -4.385964912280701
+  },
+  {
+    "stockCode": "2408",
+    "stockName": "南亞科技",
+    "shares": 1092000,
+    "weight": 1.62,
+    "open": 442.5,
+    "close": 414,
+    "changePercent": -5.154639175257731
+  },
+  {
+    "stockCode": "2610",
+    "stockName": "中華航空",
+    "shares": 23341000,
+    "weight": 1.61,
+    "open": 20.3,
+    "close": 20.5,
+    "changePercent": 0.7371007371007371
+  },
+  {
+    "stockCode": "3017",
+    "stockName": "奇鋐科技",
+    "shares": 145000,
+    "weight": 1.59,
+    "open": 3285,
+    "close": 3145,
+    "changePercent": -2.7820710973724885
+  },
+  {
+    "stockCode": "1402",
+    "stockName": "遠東新世紀",
+    "shares": 15953000,
+    "weight": 1.55,
+    "open": 28.55,
+    "close": 28.9,
+    "changePercent": 1.048951048951049
+  },
+  {
+    "stockCode": "2412",
+    "stockName": "中華電信",
+    "shares": 2818000,
+    "weight": 1.47,
+    "open": 153,
+    "close": 158,
+    "changePercent": 2.5974025974025974
+  },
+  {
+    "stockCode": "6488",
+    "stockName": "環球晶圓",
+    "shares": 492000,
+    "weight": 1.47,
+    "open": 896,
+    "close": 826,
+    "changePercent": -6.136363636363637
+  },
+  {
+    "stockCode": "2454",
+    "stockName": "聯發科技",
+    "shares": 102000,
+    "weight": 1.43,
+    "open": 4230,
+    "close": 4010,
+    "changePercent": -3.140096618357488
+  },
+  {
+    "stockCode": "3665",
+    "stockName": "貿聯控股（BizLink Holding In",
+    "shares": 211000,
+    "weight": 1.4,
+    "open": 1975,
+    "close": 1875,
+    "changePercent": -3.8461538461538463
+  },
+  {
+    "stockCode": "1605",
+    "stockName": "華新麗華",
+    "shares": 10998000,
+    "weight": 1.39,
+    "open": 38,
+    "close": 37,
+    "changePercent": -0.8042895442359249
+  },
+  {
+    "stockCode": "2603",
+    "stockName": "長榮海運",
+    "shares": 1569000,
+    "weight": 1.37,
+    "open": 256.5,
+    "close": 260,
+    "changePercent": 0.9708737864077669
+  },
+  {
+    "stockCode": "2609",
+    "stockName": "陽明海運",
+    "shares": 6482000,
+    "weight": 1.37,
+    "open": 62.1,
+    "close": 61.9,
+    "changePercent": -0.322061191626409
+  },
+  {
+    "stockCode": "2303",
+    "stockName": "聯華電子",
+    "shares": 3110000,
+    "weight": 1.35,
+    "open": 129,
+    "close": 125.5,
+    "changePercent": -1.953125
+  },
+  {
+    "stockCode": "1101",
+    "stockName": "臺灣水泥",
+    "shares": 14486000,
+    "weight": 1.32,
+    "open": 27.15,
+    "close": 27.95,
+    "changePercent": 4.291044776119403
+  },
+  {
+    "stockCode": "2368",
+    "stockName": "金像電子（股）公司",
+    "shares": 311000,
+    "weight": 1.26,
+    "open": 1220,
+    "close": 1115,
+    "changePercent": -6.694560669456067
+  },
+  {
+    "stockCode": "2344",
+    "stockName": "華邦電子",
+    "shares": 2294000,
+    "weight": 1.24,
+    "open": 160,
+    "close": 154.5,
+    "changePercent": -3.1347962382445136
+  },
+  {
+    "stockCode": "3105",
+    "stockName": "穩懋半導體",
+    "shares": 666000,
+    "weight": 1.16,
+    "open": 517,
+    "close": 486,
+    "changePercent": -5.078125
+  },
+  {
+    "stockCode": "6531",
+    "stockName": "愛普科技",
+    "shares": 389000,
+    "weight": 1.1,
+    "open": 841,
+    "close": 795,
+    "changePercent": -4.332129963898916
+  },
+  {
+    "stockCode": "6442",
+    "stockName": "光紅建聖",
+    "shares": 201000,
+    "weight": 1.02,
+    "open": 1510,
+    "close": 1410,
+    "changePercent": -6
+  },
+  {
+    "stockCode": "3231",
+    "stockName": "緯創資通",
+    "shares": 1538000,
+    "weight": 1.02,
+    "open": 198.5,
+    "close": 190,
+    "changePercent": -2.564102564102564
+  },
+  {
+    "stockCode": "2377",
+    "stockName": "微星科技",
+    "shares": 1576000,
+    "weight": 0.88,
+    "open": 166.5,
+    "close": 163,
+    "changePercent": -1.2121212121212122
+  },
+  {
+    "stockCode": "6526",
+    "stockName": "達發科技",
+    "shares": 314000,
+    "weight": 0.86,
+    "open": 812,
+    "close": 778,
+    "changePercent": -3.4739454094292808
+  },
+  {
+    "stockCode": "6285",
+    "stockName": "啟碁科技",
+    "shares": 934000,
+    "weight": 0.78,
+    "open": 248,
+    "close": 230,
+    "changePercent": -6.693711967545639
+  },
+  {
+    "stockCode": "3661",
+    "stockName": "世芯電子",
+    "shares": 51000,
+    "weight": 0.64,
+    "open": 3755,
+    "close": 3495,
+    "changePercent": -5.795148247978436
+  },
+  {
+    "stockCode": "7750",
+    "stockName": "新代科技",
+    "shares": 97000,
+    "weight": 0.62,
+    "open": 1920,
+    "close": 1810,
+    "changePercent": -4.232804232804233
+  },
+  {
+    "stockCode": "1504",
+    "stockName": "東元電機",
+    "shares": 2177000,
+    "weight": 0.52,
+    "open": 70.7,
+    "close": 69.7,
+    "changePercent": -1.2747875354107647
+  },
+  {
+    "stockCode": "3189",
+    "stockName": "景碩科技",
+    "shares": 149000,
+    "weight": 0.51,
+    "open": 1025,
+    "close": 986,
+    "changePercent": -2.376237623762376
+  },
+  {
+    "stockCode": "1301",
+    "stockName": "台灣塑膠工業",
+    "shares": 1724000,
+    "weight": 0.45,
+    "open": 77.9,
+    "close": 73.8,
+    "changePercent": -4.1558441558441555
+  },
+  {
+    "stockCode": "3491",
+    "stockName": "昇達科技",
+    "shares": 40000,
+    "weight": 0.19,
+    "open": 1460,
+    "close": 1320,
+    "changePercent": -7.6923076923076925
+  },
+  {
+    "stockCode": "8046",
+    "stockName": "南亞電路板",
+    "shares": 2000,
+    "weight": 0.01,
+    "open": 1370,
+    "close": 1265,
+    "changePercent": -5.597014925373134
+  },
+  {
+    "stockCode": "8996",
+    "stockName": "高力熱處理工業",
+    "shares": 1000,
+    "weight": 0.01,
+    "open": 1730,
+    "close": 1560,
+    "changePercent": -6.024096385542169
+  }
+]

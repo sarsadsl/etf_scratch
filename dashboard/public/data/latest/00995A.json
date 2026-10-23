@@ -6,11 +6,11 @@
     "weight": 9.18,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.12,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 2425,
-    "close": 2420,
-    "changePercent": 0.6237006237006237
+    "open": 2435,
+    "close": 2385,
+    "changePercent": -1.4462809917355373
   },
   {
     "stockCode": "2383",
@@ -19,11 +19,11 @@
     "weight": 8.62,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.38,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 5135,
-    "close": 4990,
-    "changePercent": 0.910010111223458
+    "open": 5335,
+    "close": 5070,
+    "changePercent": 1.6032064128256511
   },
   {
     "stockCode": "2454",
@@ -32,11 +32,11 @@
     "weight": 6.16,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 4215,
-    "close": 4140,
-    "changePercent": -0.24096385542168677
+    "open": 4230,
+    "close": 4010,
+    "changePercent": -3.140096618357488
   },
   {
     "stockCode": "3017",
@@ -45,11 +45,11 @@
     "weight": 5.94,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.01,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 3400,
-    "close": 3235,
-    "changePercent": -2.706766917293233
+    "open": 3285,
+    "close": 3145,
+    "changePercent": -2.7820710973724885
   },
   {
     "stockCode": "8046",
@@ -58,11 +58,11 @@
     "weight": 5.08,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.14,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 1380,
-    "close": 1340,
-    "changePercent": 2.681992337164751
+    "open": 1370,
+    "close": 1265,
+    "changePercent": -5.597014925373134
   },
   {
     "stockCode": "3653",
@@ -71,11 +71,11 @@
     "weight": 4.73,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.21,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 6835,
-    "close": 6535,
-    "changePercent": -1.7293233082706767
+    "open": 6555,
+    "close": 6070,
+    "changePercent": -7.115531752104055
   },
   {
     "stockCode": "6223",
@@ -84,8 +84,11 @@
     "weight": 4.39,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.03,
-    "isNew": false
+    "diffWeight": 0,
+    "isNew": false,
+    "open": 5095,
+    "close": 4890,
+    "changePercent": -2.2977022977022976
   },
   {
     "stockCode": "2308",
@@ -94,11 +97,11 @@
     "weight": 4.05,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.05,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 1625,
-    "close": 1625,
-    "changePercent": 1.2461059190031152
+    "open": 1640,
+    "close": 1560,
+    "changePercent": -4
   },
   {
     "stockCode": "3665",
@@ -107,11 +110,11 @@
     "weight": 3.59,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.03,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 2025,
-    "close": 1950,
-    "changePercent": 1.2987012987012987
+    "open": 1975,
+    "close": 1875,
+    "changePercent": -3.8461538461538463
   },
   {
     "stockCode": "3037",
@@ -120,11 +123,11 @@
     "weight": 3.54,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.06,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 1125,
-    "close": 1100,
-    "changePercent": 4.265402843601896
+    "open": 1160,
+    "close": 1085,
+    "changePercent": -1.3636363636363635
   },
   {
     "stockCode": "3711",
@@ -133,11 +136,11 @@
     "weight": 3.35,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.05,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 684,
-    "close": 684,
-    "changePercent": 3.6363636363636362
+    "open": 690,
+    "close": 654,
+    "changePercent": -4.385964912280701
   },
   {
     "stockCode": "5274",
@@ -147,7 +150,10 @@
     "diffShares": 0,
     "diffSharesPercent": 0,
     "diffWeight": 0,
-    "isNew": false
+    "isNew": false,
+    "open": 16790,
+    "close": 16010,
+    "changePercent": -3.0578262185891614
   },
   {
     "stockCode": "6510",
@@ -156,8 +162,11 @@
     "weight": 2.97,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.07,
-    "isNew": false
+    "diffWeight": 0,
+    "isNew": false,
+    "open": 3280,
+    "close": 3065,
+    "changePercent": -5.108359133126935
   },
   {
     "stockCode": "3443",
@@ -166,24 +175,24 @@
     "weight": 2.87,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.06,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 8005,
-    "close": 8000,
-    "changePercent": 3.29244673983215
+    "open": 8220,
+    "close": 7585,
+    "changePercent": -5.1875
   },
   {
     "stockCode": "1303",
     "stockName": "南亞塑膠工業",
     "shares": 340000,
     "weight": 2.42,
-    "diffShares": 120000,
-    "diffSharesPercent": 54.55,
-    "diffWeight": 0.8,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 308,
-    "close": 320.5,
-    "changePercent": 8.277027027027026
+    "open": 324,
+    "close": 301,
+    "changePercent": -6.084243369734789
   },
   {
     "stockCode": "4958",
@@ -192,11 +201,11 @@
     "weight": 2.41,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.03,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 584,
-    "close": 578,
-    "changePercent": 5.6672760511883
+    "open": 598,
+    "close": 567,
+    "changePercent": -1.9031141868512111
   },
   {
     "stockCode": "2360",
@@ -205,11 +214,11 @@
     "weight": 2.29,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.03,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 2030,
-    "close": 2010,
-    "changePercent": 0.5
+    "open": 2090,
+    "close": 1980,
+    "changePercent": -1.4925373134328357
   },
   {
     "stockCode": "6669",
@@ -218,11 +227,11 @@
     "weight": 2.18,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.01,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 1980,
-    "close": 1880,
-    "changePercent": -2.3376623376623376
+    "open": 1940,
+    "close": 1840,
+    "changePercent": -2.127659574468085
   },
   {
     "stockCode": "2345",
@@ -231,11 +240,11 @@
     "weight": 2.1,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.02,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 2045,
-    "close": 1815,
-    "changePercent": -7.868020304568528
+    "open": 1835,
+    "close": 1775,
+    "changePercent": -2.203856749311295
   },
   {
     "stockCode": "3008",
@@ -244,11 +253,11 @@
     "weight": 1.9,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.06,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 6185,
-    "close": 6170,
-    "changePercent": 3.2635983263598325
+    "open": 6300,
+    "close": 6175,
+    "changePercent": 0.08103727714748785
   },
   {
     "stockCode": "7769",
@@ -257,11 +266,11 @@
     "weight": 1.37,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.08,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 5400,
-    "close": 5130,
-    "changePercent": -1.440922190201729
+    "open": 5250,
+    "close": 5275,
+    "changePercent": 2.8265107212475633
   },
   {
     "stockCode": "8996",
@@ -270,11 +279,11 @@
     "weight": 1.11,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.03,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 1650,
-    "close": 1660,
-    "changePercent": 7.443365695792881
+    "open": 1730,
+    "close": 1560,
+    "changePercent": -6.024096385542169
   },
   {
     "stockCode": "2449",
@@ -283,11 +292,11 @@
     "weight": 1.06,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.03,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 265.5,
-    "close": 278,
-    "changePercent": 7.129094412331407
+    "open": 281.5,
+    "close": 262.5,
+    "changePercent": -5.575539568345324
   },
   {
     "stockCode": "2368",
@@ -296,11 +305,11 @@
     "weight": 1,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.04,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 1240,
-    "close": 1195,
-    "changePercent": 0.8438818565400843
+    "open": 1220,
+    "close": 1115,
+    "changePercent": -6.694560669456067
   },
   {
     "stockCode": "2303",
@@ -309,11 +318,11 @@
     "weight": 0.98,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.01,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 129.5,
-    "close": 128,
-    "changePercent": 0.7874015748031495
+    "open": 129,
+    "close": 125.5,
+    "changePercent": -1.953125
   },
   {
     "stockCode": "6213",
@@ -322,11 +331,11 @@
     "weight": 0.92,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.02,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 820,
-    "close": 823,
-    "changePercent": 9.879839786381844
+    "open": 863,
+    "close": 777,
+    "changePercent": -5.5893074119076545
   },
   {
     "stockCode": "3264",
@@ -335,8 +344,11 @@
     "weight": 0.89,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.03,
-    "isNew": false
+    "diffWeight": 0,
+    "isNew": false,
+    "open": 274.5,
+    "close": 246.5,
+    "changePercent": -6.981132075471698
   },
   {
     "stockCode": "6415",
@@ -345,11 +357,11 @@
     "weight": 0.78,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 478,
-    "close": 490,
-    "changePercent": 5.9459459459459465
+    "open": 495,
+    "close": 472,
+    "changePercent": -3.6734693877551026
   },
   {
     "stockCode": "6531",
@@ -358,11 +370,11 @@
     "weight": 0.77,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 836,
-    "close": 831,
-    "changePercent": 3.875
+    "open": 841,
+    "close": 795,
+    "changePercent": -4.332129963898916
   },
   {
     "stockCode": "6147",
@@ -371,8 +383,11 @@
     "weight": 0.77,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
-    "isNew": false
+    "diffWeight": 0,
+    "isNew": false,
+    "open": 215,
+    "close": 203,
+    "changePercent": -4.918032786885246
   },
   {
     "stockCode": "3661",
@@ -381,11 +396,11 @@
     "weight": 0.74,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.03,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 3730,
-    "close": 3710,
-    "changePercent": 1.9230769230769231
+    "open": 3755,
+    "close": 3495,
+    "changePercent": -5.795148247978436
   },
   {
     "stockCode": "3189",
@@ -396,9 +411,9 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 995,
-    "close": 1010,
-    "changePercent": 6.878306878306878
+    "open": 1025,
+    "close": 986,
+    "changePercent": -2.376237623762376
   },
   {
     "stockCode": "1326",
@@ -407,11 +422,11 @@
     "weight": 0.69,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 75.1,
-    "close": 76.2,
-    "changePercent": 3.2520325203252036
+    "open": 77.2,
+    "close": 73,
+    "changePercent": -4.199475065616798
   },
   {
     "stockCode": "6715",
@@ -420,11 +435,11 @@
     "weight": 0.68,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.02,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 470,
-    "close": 480,
-    "changePercent": 3.3369214208826694
+    "open": 494.5,
+    "close": 480.5,
+    "changePercent": 0.10416666666666667
   },
   {
     "stockCode": "8150",
@@ -433,23 +448,24 @@
     "weight": 0.68,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.02,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 102.5,
-    "close": 102.5,
-    "changePercent": 3.4308779011099904
+    "open": 104,
+    "close": 95.9,
+    "changePercent": -6.439024390243903
   },
   {
     "stockCode": "4770",
     "stockName": "上品綜合工業股份有限公司",
     "shares": 70000,
     "weight": 0.48,
-    "diffShares": 70000,
-    "diffWeight": 0.48,
-    "isNew": true,
-    "open": 299,
-    "close": 313.5,
-    "changePercent": 10
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false,
+    "open": 316,
+    "close": 292,
+    "changePercent": -6.8580542264752795
   },
   {
     "stockCode": "2059",
@@ -460,9 +476,9 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 10500,
-    "close": 10080,
-    "changePercent": -0.19801980198019803
+    "open": 10100,
+    "close": 9755,
+    "changePercent": -3.2242063492063497
   },
   {
     "stockCode": "2455",
@@ -471,21 +487,24 @@
     "weight": 0.44,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 500,
-    "close": 490.5,
-    "changePercent": 1.0298661174047374
+    "open": 498,
+    "close": 467,
+    "changePercent": -4.791029561671763
   },
   {
     "stockCode": "6274",
     "stockName": "台燿科技",
     "shares": 10000,
     "weight": 0.34,
-    "diffShares": -15000,
-    "diffSharesPercent": -60,
-    "diffWeight": -0.52,
-    "isNew": false
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false,
+    "open": 1520,
+    "close": 1420,
+    "changePercent": -5.333333333333334
   },
   {
     "stockCode": "3529",
@@ -494,8 +513,11 @@
     "weight": 0.29,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
-    "isNew": false
+    "diffWeight": 0,
+    "isNew": false,
+    "open": 2665,
+    "close": 2485,
+    "changePercent": -4.054054054054054
   },
   {
     "stockCode": "8358",
@@ -504,8 +526,11 @@
     "weight": 0.21,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
-    "isNew": false
+    "diffWeight": 0,
+    "isNew": false,
+    "open": 480.5,
+    "close": 438.5,
+    "changePercent": -9.024896265560166
   },
   {
     "stockCode": "2885",
@@ -514,21 +539,24 @@
     "weight": 0.19,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.01,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 71,
-    "close": 71.3,
-    "changePercent": 1.1347517730496455
+    "open": 70.9,
+    "close": 72.4,
+    "changePercent": 1.5427769985974753
   },
   {
     "stockCode": "6187",
     "stockName": "萬潤科技",
     "shares": 5000,
     "weight": 0.15,
-    "diffShares": -10000,
-    "diffSharesPercent": -66.67,
-    "diffWeight": -0.31,
-    "isNew": false
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false,
+    "open": 1350,
+    "close": 1260,
+    "changePercent": -5.263157894736842
   },
   {
     "stockCode": "3044",
@@ -539,22 +567,22 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 581,
-    "close": 583,
-    "changePercent": 2.821869488536155
+    "open": 588,
+    "close": 556,
+    "changePercent": -4.631217838765009
   },
   {
     "stockCode": "6515",
     "stockName": "穎崴科技",
     "shares": 1000,
     "weight": 0.11,
-    "diffShares": -2000,
-    "diffSharesPercent": -66.67,
-    "diffWeight": -0.23,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 5015,
-    "close": 4970,
-    "changePercent": 0.20161290322580644
+    "open": 5100,
+    "close": 4795,
+    "changePercent": -3.5211267605633805
   },
   {
     "stockCode": "6805",
@@ -563,11 +591,11 @@
     "weight": 0.06,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.01,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 2395,
-    "close": 2395,
-    "changePercent": 4.585152838427948
+    "open": 2490,
+    "close": 2335,
+    "changePercent": -2.5052192066805845
   },
   {
     "stockCode": "1560",
@@ -578,9 +606,9 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 878,
-    "close": 877,
-    "changePercent": 2.2144522144522143
+    "open": 882,
+    "close": 846,
+    "changePercent": -3.534777651083238
   },
   {
     "stockCode": "2313",
@@ -591,9 +619,9 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 265,
-    "close": 240.5,
-    "changePercent": -1.2320328542094456
+    "open": 242.5,
+    "close": 224.5,
+    "changePercent": -6.652806652806653
   },
   {
     "stockCode": "2327",
@@ -604,9 +632,9 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 543,
-    "close": 542,
-    "changePercent": 3.632887189292543
+    "open": 558,
+    "close": 507,
+    "changePercent": -6.4575645756457565
   },
   {
     "stockCode": "3023",
@@ -617,9 +645,9 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 307,
-    "close": 308,
-    "changePercent": 0.8183306055646482
+    "open": 308,
+    "close": 298,
+    "changePercent": -3.2467532467532463
   },
   {
     "stockCode": "3450",
@@ -630,9 +658,9 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 446,
-    "close": 450,
-    "changePercent": 4.529616724738676
+    "open": 455,
+    "close": 424,
+    "changePercent": -5.777777777777778
   },
   {
     "stockCode": "2472",
@@ -643,9 +671,9 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 219,
-    "close": 219.5,
-    "changePercent": 3.294117647058824
+    "open": 224,
+    "close": 202.5,
+    "changePercent": -7.744874715261959
   },
   {
     "stockCode": "5289",
@@ -655,7 +683,10 @@
     "diffShares": 0,
     "diffSharesPercent": 0,
     "diffWeight": 0,
-    "isNew": false
+    "isNew": false,
+    "open": 1110,
+    "close": 1065,
+    "changePercent": -2.73972602739726
   },
   {
     "stockCode": "2486",
@@ -666,9 +697,9 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 213,
-    "close": 212,
-    "changePercent": 1.9230769230769231
+    "open": 214,
+    "close": 201,
+    "changePercent": -5.188679245283019
   },
   {
     "stockCode": "2344",
@@ -679,36 +710,8 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 157.5,
-    "close": 159.5,
-    "changePercent": 4.590163934426229
-  },
-  {
-    "stockCode": "2467",
-    "stockName": "志聖工業",
-    "shares": 0,
-    "weight": 0,
-    "diffShares": -20000,
-    "diffWeight": -0.22,
-    "diffSharesPercent": -100,
-    "isNew": false,
-    "isSoldOut": true,
-    "open": 497,
-    "close": 480,
-    "changePercent": -0.6211180124223602
-  },
-  {
-    "stockCode": "8210",
-    "stockName": "勤誠興業",
-    "shares": 0,
-    "weight": 0,
-    "diffShares": -1000,
-    "diffWeight": -0.02,
-    "diffSharesPercent": -100,
-    "isNew": false,
-    "isSoldOut": true,
-    "open": 817,
-    "close": 802,
-    "changePercent": 0.12484394506866417
+    "open": 160,
+    "close": 154.5,
+    "changePercent": -3.1347962382445136
   }
 ]
