@@ -6,11 +6,11 @@
     "weight": 8.0156,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.14,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 2425,
-    "close": 2420,
-    "changePercent": 0.6237006237006237
+    "open": 2435,
+    "close": 2385,
+    "changePercent": -1.4462809917355373
   },
   {
     "stockCode": "2454",
@@ -19,11 +19,11 @@
     "weight": 6.8607,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.01,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 4215,
-    "close": 4140,
-    "changePercent": -0.24096385542168677
+    "open": 4230,
+    "close": 4010,
+    "changePercent": -3.140096618357488
   },
   {
     "stockCode": "3105",
@@ -32,8 +32,11 @@
     "weight": 6.0394,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.12,
-    "isNew": false
+    "diffWeight": 0,
+    "isNew": false,
+    "open": 517,
+    "close": 486,
+    "changePercent": -5.078125
   },
   {
     "stockCode": "6139",
@@ -42,11 +45,11 @@
     "weight": 5.2171,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.02,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 669,
-    "close": 659,
-    "changePercent": 2.0123839009287927
+    "open": 662,
+    "close": 640,
+    "changePercent": -2.8831562974203337
   },
   {
     "stockCode": "2360",
@@ -55,24 +58,24 @@
     "weight": 4.0987,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.07,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 2030,
-    "close": 2010,
-    "changePercent": 0.5
+    "open": 2090,
+    "close": 1980,
+    "changePercent": -1.4925373134328357
   },
   {
     "stockCode": "6531",
     "stockName": "愛普*",
     "shares": 2300000,
     "weight": 3.9801,
-    "diffShares": 10000,
-    "diffSharesPercent": 0.44,
-    "diffWeight": -0.03,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 836,
-    "close": 831,
-    "changePercent": 3.875
+    "open": 841,
+    "close": 795,
+    "changePercent": -4.332129963898916
   },
   {
     "stockCode": "4958",
@@ -81,24 +84,24 @@
     "weight": 3.8976,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.05,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 584,
-    "close": 578,
-    "changePercent": 5.6672760511883
+    "open": 598,
+    "close": 567,
+    "changePercent": -1.9031141868512111
   },
   {
     "stockCode": "6669",
     "stockName": "緯穎",
     "shares": 926225,
     "weight": 3.7096,
-    "diffShares": -90000,
-    "diffSharesPercent": -8.86,
-    "diffWeight": -0.32,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 1980,
-    "close": 1880,
-    "changePercent": -2.3376623376623376
+    "open": 1940,
+    "close": 1840,
+    "changePercent": -2.127659574468085
   },
   {
     "stockCode": "2383",
@@ -107,11 +110,11 @@
     "weight": 3.4101,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.16,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 5135,
-    "close": 4990,
-    "changePercent": 0.910010111223458
+    "open": 5335,
+    "close": 5070,
+    "changePercent": 1.6032064128256511
   },
   {
     "stockCode": "3008",
@@ -120,11 +123,11 @@
     "weight": 3.4006,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.11,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 6185,
-    "close": 6170,
-    "changePercent": 3.2635983263598325
+    "open": 6300,
+    "close": 6175,
+    "changePercent": 0.08103727714748785
   },
   {
     "stockCode": "3491",
@@ -133,8 +136,11 @@
     "weight": 3.3904,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.16,
-    "isNew": false
+    "diffWeight": 0,
+    "isNew": false,
+    "open": 1460,
+    "close": 1320,
+    "changePercent": -7.6923076923076925
   },
   {
     "stockCode": "6223",
@@ -143,8 +149,11 @@
     "weight": 3.2038,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.03,
-    "isNew": false
+    "diffWeight": 0,
+    "isNew": false,
+    "open": 5095,
+    "close": 4890,
+    "changePercent": -2.2977022977022976
   },
   {
     "stockCode": "2059",
@@ -155,9 +164,9 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 10500,
-    "close": 10080,
-    "changePercent": -0.19801980198019803
+    "open": 10100,
+    "close": 9755,
+    "changePercent": -3.2242063492063497
   },
   {
     "stockCode": "3017",
@@ -166,11 +175,11 @@
     "weight": 2.5603,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.01,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 3400,
-    "close": 3235,
-    "changePercent": -2.706766917293233
+    "open": 3285,
+    "close": 3145,
+    "changePercent": -2.7820710973724885
   },
   {
     "stockCode": "3231",
@@ -179,11 +188,11 @@
     "weight": 2.0008,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.01,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 193,
-    "close": 195,
-    "changePercent": 3.1746031746031744
+    "open": 198.5,
+    "close": 190,
+    "changePercent": -2.564102564102564
   },
   {
     "stockCode": "6488",
@@ -192,8 +201,11 @@
     "weight": 1.9615,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.06,
-    "isNew": false
+    "diffWeight": 0,
+    "isNew": false,
+    "open": 896,
+    "close": 826,
+    "changePercent": -6.136363636363637
   },
   {
     "stockCode": "2301",
@@ -204,9 +216,9 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 268,
-    "close": 263.5,
-    "changePercent": 0.5725190839694656
+    "open": 263.5,
+    "close": 255.5,
+    "changePercent": -3.0360531309297913
   },
   {
     "stockCode": "3265",
@@ -215,8 +227,11 @@
     "weight": 1.6585,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.11,
-    "isNew": false
+    "diffWeight": 0,
+    "isNew": false,
+    "open": 250,
+    "close": 226.5,
+    "changePercent": -9.036144578313253
   },
   {
     "stockCode": "6213",
@@ -225,11 +240,11 @@
     "weight": 1.5932,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.04,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 820,
-    "close": 823,
-    "changePercent": 9.879839786381844
+    "open": 863,
+    "close": 777,
+    "changePercent": -5.5893074119076545
   },
   {
     "stockCode": "2455",
@@ -238,11 +253,11 @@
     "weight": 1.5644,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.03,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 500,
-    "close": 490.5,
-    "changePercent": 1.0298661174047374
+    "open": 498,
+    "close": 467,
+    "changePercent": -4.791029561671763
   },
   {
     "stockCode": "6214",
@@ -251,11 +266,11 @@
     "weight": 1.5041,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.06,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 197,
-    "close": 199,
-    "changePercent": 1.2722646310432568
+    "open": 199,
+    "close": 201,
+    "changePercent": 1.0050251256281406
   },
   {
     "stockCode": "6672",
@@ -264,11 +279,11 @@
     "weight": 1.4859,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.07,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 615,
-    "close": 627,
-    "changePercent": 10
+    "open": 665,
+    "close": 581,
+    "changePercent": -7.336523125996811
   },
   {
     "stockCode": "2303",
@@ -277,11 +292,11 @@
     "weight": 1.4076,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.02,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 129.5,
-    "close": 128,
-    "changePercent": 0.7874015748031495
+    "open": 129,
+    "close": 125.5,
+    "changePercent": -1.953125
   },
   {
     "stockCode": "2395",
@@ -290,11 +305,11 @@
     "weight": 1.4058,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.02,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 697,
-    "close": 683,
-    "changePercent": -0.14619883040935672
+    "open": 685,
+    "close": 670,
+    "changePercent": -1.903367496339678
   },
   {
     "stockCode": "5483",
@@ -303,8 +318,11 @@
     "weight": 1.3923,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.05,
-    "isNew": false
+    "diffWeight": 0,
+    "isNew": false,
+    "open": 201,
+    "close": 186,
+    "changePercent": -6.532663316582915
   },
   {
     "stockCode": "2376",
@@ -313,11 +331,11 @@
     "weight": 1.3301,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.01,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 358.5,
-    "close": 358.5,
-    "changePercent": 0.9859154929577465
+    "open": 362,
+    "close": 349,
+    "changePercent": -2.6499302649930265
   },
   {
     "stockCode": "3711",
@@ -326,11 +344,11 @@
     "weight": 1.3281,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.02,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 684,
-    "close": 684,
-    "changePercent": 3.6363636363636362
+    "open": 690,
+    "close": 654,
+    "changePercent": -4.385964912280701
   },
   {
     "stockCode": "6274",
@@ -339,8 +357,11 @@
     "weight": 1.3012,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.03,
-    "isNew": false
+    "diffWeight": 0,
+    "isNew": false,
+    "open": 1520,
+    "close": 1420,
+    "changePercent": -5.333333333333334
   },
   {
     "stockCode": "8996",
@@ -349,11 +370,11 @@
     "weight": 1.2971,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.04,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 1650,
-    "close": 1660,
-    "changePercent": 7.443365695792881
+    "open": 1730,
+    "close": 1560,
+    "changePercent": -6.024096385542169
   },
   {
     "stockCode": "5274",
@@ -363,7 +384,10 @@
     "diffShares": 0,
     "diffSharesPercent": 0,
     "diffWeight": 0,
-    "isNew": false
+    "isNew": false,
+    "open": 16790,
+    "close": 16010,
+    "changePercent": -3.0578262185891614
   },
   {
     "stockCode": "5425",
@@ -372,8 +396,11 @@
     "weight": 1.2382,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.03,
-    "isNew": false
+    "diffWeight": 0,
+    "isNew": false,
+    "open": 95.5,
+    "close": 88.8,
+    "changePercent": -5.531914893617022
   },
   {
     "stockCode": "2428",
@@ -382,11 +409,11 @@
     "weight": 1.2072,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.04,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 257,
-    "close": 258,
-    "changePercent": 2.788844621513944
+    "open": 261.5,
+    "close": 242.5,
+    "changePercent": -6.007751937984496
   },
   {
     "stockCode": "6239",
@@ -395,11 +422,11 @@
     "weight": 1.031,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.04,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 261.5,
-    "close": 266,
-    "changePercent": 3.90625
+    "open": 268,
+    "close": 248,
+    "changePercent": -6.7669172932330826
   },
   {
     "stockCode": "3583",
@@ -408,11 +435,11 @@
     "weight": 1.0214,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 635,
-    "close": 620,
-    "changePercent": 0.9771986970684038
+    "open": 622,
+    "close": 594,
+    "changePercent": -4.193548387096775
   },
   {
     "stockCode": "6510",
@@ -421,8 +448,11 @@
     "weight": 1.0007,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.02,
-    "isNew": false
+    "diffWeight": 0,
+    "isNew": false,
+    "open": 3280,
+    "close": 3065,
+    "changePercent": -5.108359133126935
   },
   {
     "stockCode": "2467",
@@ -431,11 +461,11 @@
     "weight": 0.9838,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.03,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 497,
-    "close": 480,
-    "changePercent": -0.6211180124223602
+    "open": 489,
+    "close": 452,
+    "changePercent": -5.833333333333333
   },
   {
     "stockCode": "6472",
@@ -444,11 +474,11 @@
     "weight": 0.9052,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.01,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 413,
-    "close": 413.5,
-    "changePercent": 0.12106537530266344
+    "open": 416,
+    "close": 403,
+    "changePercent": -2.539298669891173
   },
   {
     "stockCode": "5536",
@@ -457,8 +487,11 @@
     "weight": 0.7824,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.01,
-    "isNew": false
+    "diffWeight": 0,
+    "isNew": false,
+    "open": 815,
+    "close": 790,
+    "changePercent": -1.8633540372670807
   },
   {
     "stockCode": "2486",
@@ -467,11 +500,11 @@
     "weight": 0.703,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 213,
-    "close": 212,
-    "changePercent": 1.9230769230769231
+    "open": 214,
+    "close": 201,
+    "changePercent": -5.188679245283019
   },
   {
     "stockCode": "8070",
@@ -482,9 +515,9 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 51.1,
-    "close": 50.6,
-    "changePercent": 0.998003992015968
+    "open": 51,
+    "close": 49.15,
+    "changePercent": -2.8656126482213438
   },
   {
     "stockCode": "6196",
@@ -495,9 +528,9 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 610,
-    "close": 615,
-    "changePercent": 3.709949409780776
+    "open": 622,
+    "close": 597,
+    "changePercent": -2.9268292682926833
   },
   {
     "stockCode": "2377",
@@ -506,11 +539,11 @@
     "weight": 0.3626,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.01,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 167,
-    "close": 165,
-    "changePercent": 0.303951367781155
+    "open": 166.5,
+    "close": 163,
+    "changePercent": -1.2121212121212122
   },
   {
     "stockCode": "2885",
@@ -519,11 +552,11 @@
     "weight": 0.3488,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.02,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 71,
-    "close": 71.3,
-    "changePercent": 1.1347517730496455
+    "open": 70.9,
+    "close": 72.4,
+    "changePercent": 1.5427769985974753
   },
   {
     "stockCode": "3617",
@@ -535,8 +568,8 @@
     "diffWeight": 0,
     "isNew": false,
     "open": 256,
-    "close": 254.5,
-    "changePercent": 1.1928429423459244
+    "close": 247,
+    "changePercent": -2.9469548133595285
   },
   {
     "stockCode": "3090",
@@ -547,9 +580,9 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 161,
-    "close": 164,
-    "changePercent": 4.45859872611465
+    "open": 165.5,
+    "close": 156.5,
+    "changePercent": -4.573170731707317
   },
   {
     "stockCode": "2478",
@@ -558,11 +591,11 @@
     "weight": 0.335,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 123,
-    "close": 126.5,
-    "changePercent": 5.416666666666667
+    "open": 127.5,
+    "close": 118.5,
+    "changePercent": -6.324110671936759
   },
   {
     "stockCode": "2476",
@@ -571,11 +604,11 @@
     "weight": 0.3203,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 123,
-    "close": 121,
-    "changePercent": -0.411522633744856
+    "open": 122,
+    "close": 114,
+    "changePercent": -5.785123966942149
   },
   {
     "stockCode": "6640",
@@ -585,7 +618,10 @@
     "diffShares": 0,
     "diffSharesPercent": 0,
     "diffWeight": 0,
-    "isNew": false
+    "isNew": false,
+    "open": 968,
+    "close": 926,
+    "changePercent": -3.441084462982273
   },
   {
     "stockCode": "6446",
@@ -596,9 +632,9 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 1180,
-    "close": 1175,
-    "changePercent": 1.7316017316017316
+    "open": 1195,
+    "close": 1160,
+    "changePercent": -1.276595744680851
   },
   {
     "stockCode": "6177",
@@ -609,9 +645,9 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 45.8,
-    "close": 45.5,
-    "changePercent": 0.330760749724366
+    "open": 45.55,
+    "close": 45.25,
+    "changePercent": -0.5494505494505495
   },
   {
     "stockCode": "3443",
@@ -622,9 +658,9 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 8005,
-    "close": 8000,
-    "changePercent": 3.29244673983215
+    "open": 8220,
+    "close": 7585,
+    "changePercent": -5.1875
   },
   {
     "stockCode": "3529",
@@ -634,7 +670,10 @@
     "diffShares": 0,
     "diffSharesPercent": 0,
     "diffWeight": 0,
-    "isNew": false
+    "isNew": false,
+    "open": 2665,
+    "close": 2485,
+    "changePercent": -4.054054054054054
   },
   {
     "stockCode": "4441",
@@ -645,9 +684,9 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 166,
-    "close": 162.5,
-    "changePercent": -1.5151515151515151
+    "open": 164,
+    "close": 165.5,
+    "changePercent": 1.8461538461538463
   },
   {
     "stockCode": "8358",
@@ -657,7 +696,10 @@
     "diffShares": 0,
     "diffSharesPercent": 0,
     "diffWeight": 0,
-    "isNew": false
+    "isNew": false,
+    "open": 480.5,
+    "close": 438.5,
+    "changePercent": -9.024896265560166
   },
   {
     "stockCode": "1519",
@@ -668,9 +710,9 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 643,
-    "close": 626,
-    "changePercent": -0.7923930269413629
+    "open": 633,
+    "close": 615,
+    "changePercent": -1.7571884984025559
   },
   {
     "stockCode": "2886",
@@ -681,9 +723,9 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 53.5,
-    "close": 53.6,
-    "changePercent": 0.7518796992481203
+    "open": 52.8,
+    "close": 55.2,
+    "changePercent": 2.9850746268656714
   },
   {
     "stockCode": "2881",
@@ -694,8 +736,8 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 155,
+    "open": 158.5,
     "close": 158.5,
-    "changePercent": 3.257328990228013
+    "changePercent": 0
   }
 ]

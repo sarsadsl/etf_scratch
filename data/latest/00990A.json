@@ -16,7 +16,7 @@
     "weight": 5.37,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.11,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -24,9 +24,9 @@
     "stockName": "BLOOM ENERGY CORP- A",
     "shares": 227500,
     "weight": 5.13,
-    "diffShares": 46200,
-    "diffSharesPercent": 25.48,
-    "diffWeight": 1.21,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -36,7 +36,7 @@
     "weight": 4.56,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.11,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -46,7 +46,7 @@
     "weight": 4.31,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -56,7 +56,7 @@
     "weight": 4.25,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -66,7 +66,7 @@
     "weight": 4.09,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.08,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -76,7 +76,7 @@
     "weight": 3.87,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.19,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -86,7 +86,7 @@
     "weight": 3.36,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.08,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -96,7 +96,7 @@
     "weight": 3.24,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -106,7 +106,7 @@
     "weight": 3.09,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.05,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -116,11 +116,11 @@
     "weight": 2.87,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.03,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 2425,
-    "close": 2420,
-    "changePercent": 0.6237006237006237
+    "open": 2435,
+    "close": 2385,
+    "changePercent": -1.4462809917355373
   },
   {
     "stockCode": "DDOG",
@@ -129,7 +129,7 @@
     "weight": 2.53,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.09,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -139,7 +139,7 @@
     "weight": 2.15,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.1,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -149,11 +149,11 @@
     "weight": 2.14,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.05,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 1125,
-    "close": 1100,
-    "changePercent": 4.265402843601896
+    "open": 1160,
+    "close": 1085,
+    "changePercent": -1.3636363636363635
   },
   {
     "stockCode": "NET",
@@ -162,7 +162,7 @@
     "weight": 2.12,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.06,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -172,11 +172,11 @@
     "weight": 1.99,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 1625,
-    "close": 1625,
-    "changePercent": 1.2461059190031152
+    "open": 1640,
+    "close": 1560,
+    "changePercent": -4
   },
   {
     "stockCode": "2454",
@@ -185,11 +185,11 @@
     "weight": 1.99,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.05,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 4215,
-    "close": 4140,
-    "changePercent": -0.24096385542168677
+    "open": 4230,
+    "close": 4010,
+    "changePercent": -3.140096618357488
   },
   {
     "stockCode": "TEAM",
@@ -198,7 +198,7 @@
     "weight": 1.98,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -208,11 +208,11 @@
     "weight": 1.95,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.02,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 5135,
-    "close": 4990,
-    "changePercent": 0.910010111223458
+    "open": 5335,
+    "close": 5070,
+    "changePercent": 1.6032064128256511
   },
   {
     "stockCode": "MU",
@@ -221,7 +221,7 @@
     "weight": 1.83,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -231,7 +231,7 @@
     "weight": 1.68,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.04,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -241,7 +241,7 @@
     "weight": 1.63,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.08,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -251,7 +251,7 @@
     "weight": 1.6,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -271,7 +271,7 @@
     "weight": 1.56,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -281,11 +281,11 @@
     "weight": 1.49,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.07,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 3400,
-    "close": 3235,
-    "changePercent": -2.706766917293233
+    "open": 3285,
+    "close": 3145,
+    "changePercent": -2.7820710973724885
   },
   {
     "stockCode": "TWST",
@@ -294,7 +294,7 @@
     "weight": 1.47,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -302,9 +302,9 @@
     "stockName": "AMAZON.COM INC",
     "shares": 59000,
     "weight": 1.46,
-    "diffShares": 19700,
-    "diffSharesPercent": 50.13,
-    "diffWeight": 0.46,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -314,7 +314,7 @@
     "weight": 1.43,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.02,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -324,20 +324,20 @@
     "weight": 1.36,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.01,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 1380,
-    "close": 1340,
-    "changePercent": 2.681992337164751
+    "open": 1370,
+    "close": 1265,
+    "changePercent": -5.597014925373134
   },
   {
     "stockCode": "GOOGL",
     "stockName": "ALPHABET INC-CL A",
     "shares": 39280,
     "weight": 1.24,
-    "diffShares": 15240,
-    "diffSharesPercent": 63.39,
-    "diffWeight": 0.45,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -347,7 +347,7 @@
     "weight": 1.22,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -357,11 +357,11 @@
     "weight": 1.21,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 1240,
-    "close": 1195,
-    "changePercent": 0.8438818565400843
+    "open": 1220,
+    "close": 1115,
+    "changePercent": -6.694560669456067
   },
   {
     "stockCode": "MRVL",
@@ -370,7 +370,7 @@
     "weight": 1.06,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -380,7 +380,7 @@
     "weight": 1.04,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -390,11 +390,11 @@
     "weight": 1.03,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.02,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 8005,
-    "close": 8000,
-    "changePercent": 3.29244673983215
+    "open": 8220,
+    "close": 7585,
+    "changePercent": -5.1875
   },
   {
     "stockCode": "2345",
@@ -403,11 +403,11 @@
     "weight": 1.02,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.11,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 2045,
-    "close": 1815,
-    "changePercent": -7.868020304568528
+    "open": 1835,
+    "close": 1775,
+    "changePercent": -2.203856749311295
   },
   {
     "stockCode": "INTC",
@@ -416,7 +416,7 @@
     "weight": 1.02,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -426,7 +426,7 @@
     "weight": 1,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.02,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -436,7 +436,7 @@
     "weight": 0.6,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -448,16 +448,5 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false
-  },
-  {
-    "stockCode": "AAPL",
-    "stockName": "APPLE INC",
-    "shares": 0,
-    "weight": 0,
-    "diffShares": -44640,
-    "diffWeight": -1.47,
-    "diffSharesPercent": -100,
-    "isNew": false,
-    "isSoldOut": true
   }
 ]

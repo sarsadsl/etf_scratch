@@ -4,9 +4,9 @@
     "stockName": "BLOOM ENERGY CORP- A",
     "shares": 450000,
     "weight": 7.38,
-    "diffShares": 30000,
-    "diffSharesPercent": 7.14,
-    "diffWeight": 0.74,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -16,11 +16,11 @@
     "weight": 6.07,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.1,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 1125,
-    "close": 1100,
-    "changePercent": 4.265402843601896
+    "open": 1160,
+    "close": 1085,
+    "changePercent": -1.3636363636363635
   },
   {
     "stockCode": "SPCX US",
@@ -29,7 +29,7 @@
     "weight": 6.03,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.26,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -37,9 +37,9 @@
     "stockName": "PALANTIR TECHNOLOGIES INC-A",
     "shares": 350000,
     "weight": 4.86,
-    "diffShares": 40000,
-    "diffSharesPercent": 12.9,
-    "diffWeight": 0.62,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -49,7 +49,7 @@
     "weight": 4.8,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -59,7 +59,7 @@
     "weight": 4.43,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -69,11 +69,11 @@
     "weight": 4.12,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.22,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 3400,
-    "close": 3235,
-    "changePercent": -2.706766917293233
+    "open": 3285,
+    "close": 3145,
+    "changePercent": -2.7820710973724885
   },
   {
     "stockCode": "PANW US",
@@ -82,7 +82,7 @@
     "weight": 3.94,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.05,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -90,9 +90,9 @@
     "stockName": "ADVANCED MICRO DEVICES.amd us(超微半導體公司)",
     "shares": 100000,
     "weight": 3.8,
-    "diffShares": 24000,
-    "diffSharesPercent": 31.58,
-    "diffWeight": 0.91,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -102,7 +102,7 @@
     "weight": 3.06,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.06,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -112,7 +112,7 @@
     "weight": 2.96,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.05,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -122,7 +122,7 @@
     "weight": 2.87,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.11,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -132,7 +132,7 @@
     "weight": 2.86,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.09,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -142,11 +142,11 @@
     "weight": 2.65,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.04,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 5135,
-    "close": 4990,
-    "changePercent": 0.910010111223458
+    "open": 5335,
+    "close": 5070,
+    "changePercent": 1.6032064128256511
   },
   {
     "stockCode": "INTC US",
@@ -155,7 +155,7 @@
     "weight": 2.56,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.04,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -165,7 +165,7 @@
     "weight": 2.53,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -175,7 +175,7 @@
     "weight": 2.43,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.04,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -185,7 +185,7 @@
     "weight": 2.42,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.02,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -195,7 +195,7 @@
     "weight": 2.28,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -205,7 +205,7 @@
     "weight": 2.22,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.05,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -225,7 +225,7 @@
     "weight": 1.96,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -235,7 +235,7 @@
     "weight": 1.73,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -245,11 +245,11 @@
     "weight": 1.64,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.03,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 2425,
-    "close": 2420,
-    "changePercent": 0.6237006237006237
+    "open": 2435,
+    "close": 2385,
+    "changePercent": -1.4462809917355373
   },
   {
     "stockCode": "1303",
@@ -258,11 +258,11 @@
     "weight": 1.53,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.08,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 308,
-    "close": 320.5,
-    "changePercent": 8.277027027027026
+    "open": 324,
+    "close": 301,
+    "changePercent": -6.084243369734789
   },
   {
     "stockCode": "6981 JP",
@@ -271,7 +271,7 @@
     "weight": 1.47,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.02,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -279,13 +279,13 @@
     "stockName": "創意",
     "shares": 80000,
     "weight": 1.36,
-    "diffShares": 32000,
-    "diffSharesPercent": 66.67,
-    "diffWeight": 0.55,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 8005,
-    "close": 8000,
-    "changePercent": 3.29244673983215
+    "open": 8220,
+    "close": 7585,
+    "changePercent": -5.1875
   },
   {
     "stockCode": "IFX GY",
@@ -294,7 +294,7 @@
     "weight": 1.23,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -304,7 +304,7 @@
     "weight": 1.2,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -312,9 +312,9 @@
     "stockName": "ZSCALER INC",
     "shares": 75145,
     "weight": 1.2,
-    "diffShares": 25145,
-    "diffSharesPercent": 50.29,
-    "diffWeight": 0.44,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -325,7 +325,10 @@
     "diffShares": 0,
     "diffSharesPercent": 0,
     "diffWeight": 0,
-    "isNew": false
+    "isNew": false,
+    "open": 5095,
+    "close": 4890,
+    "changePercent": -2.2977022977022976
   },
   {
     "stockCode": "MU US",
@@ -334,7 +337,7 @@
     "weight": 1.01,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -344,7 +347,7 @@
     "weight": 0.88,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -354,7 +357,7 @@
     "weight": 0.83,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -362,9 +365,9 @@
     "stockName": "Shengyi Technology Co Ltd-A.600183 ch",
     "shares": 660000,
     "weight": 0.81,
-    "diffShares": 260000,
-    "diffSharesPercent": 65,
-    "diffWeight": 0.31,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -374,7 +377,7 @@
     "weight": 0.78,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -382,13 +385,13 @@
     "stockName": "聯發科",
     "shares": 80000,
     "weight": 0.7,
-    "diffShares": -85000,
-    "diffSharesPercent": -51.52,
-    "diffWeight": -0.79,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 4215,
-    "close": 4140,
-    "changePercent": -0.24096385542168677
+    "open": 4230,
+    "close": 4010,
+    "changePercent": -3.140096618357488
   },
   {
     "stockCode": "2308",
@@ -397,32 +400,10 @@
     "weight": 0.69,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 1625,
-    "close": 1625,
-    "changePercent": 1.2461059190031152
-  },
-  {
-    "stockCode": "5801 JP",
-    "stockName": "FURUKAWA ELECTRIC CO LTD",
-    "shares": 0,
-    "weight": 0,
-    "diffShares": -400000,
-    "diffWeight": -0.56,
-    "diffSharesPercent": -100,
-    "isNew": false,
-    "isSoldOut": true
-  },
-  {
-    "stockCode": "COIN US",
-    "stockName": "COINBASE GLOBAL INC -CLASS A",
-    "shares": 0,
-    "weight": 0,
-    "diffShares": -35000,
-    "diffWeight": -0.42,
-    "diffSharesPercent": -100,
-    "isNew": false,
-    "isSoldOut": true
+    "open": 1640,
+    "close": 1560,
+    "changePercent": -4
   }
 ]
