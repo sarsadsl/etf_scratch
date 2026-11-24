@@ -58,9 +58,9 @@
     "stockName": "旺矽科技",
     "shares": 38000,
     "weight": 4.15,
-    "open": 3385,
-    "close": 3805,
-    "changePercent": 6.882022471910113
+    "open": 4185,
+    "close": 4185,
+    "changePercent": 9.986859395532194
   },
   {
     "stockCode": "3711",
@@ -76,9 +76,9 @@
     "stockName": "信驊科技",
     "shares": 8800,
     "weight": 3.38,
-    "open": 7605,
-    "close": 8310,
-    "changePercent": 5.7251908396946565
+    "open": 9140,
+    "close": 9140,
+    "changePercent": 9.987966305655837
   },
   {
     "stockCode": "3037",
@@ -148,9 +148,9 @@
     "stockName": "中華精測科技",
     "shares": 30000,
     "weight": 2.05,
-    "open": 2130,
-    "close": 2255,
-    "changePercent": -4.651162790697675
+    "open": 2480,
+    "close": 2480,
+    "changePercent": 9.977827050997783
   },
   {
     "stockCode": "2368",
@@ -202,9 +202,9 @@
     "stockName": "聯亞光電工業",
     "shares": 22000,
     "weight": 1.25,
-    "open": 1260,
-    "close": 1390,
-    "changePercent": 1.8315018315018317
+    "open": 1525,
+    "close": 1525,
+    "changePercent": 9.712230215827338
   },
   {
     "stockCode": "2449",
@@ -256,9 +256,9 @@
     "stockName": "欣銓科技",
     "shares": 152000,
     "weight": 0.77,
-    "open": 127.5,
-    "close": 141.5,
-    "changePercent": 4.044117647058823
+    "open": 155.5,
+    "close": 155.5,
+    "changePercent": 9.89399293286219
   },
   {
     "stockCode": "3661",
@@ -274,9 +274,9 @@
     "stockName": "頎邦科技",
     "shares": 160000,
     "weight": 0.72,
-    "open": 109,
-    "close": 123,
-    "changePercent": 6.0344827586206895
+    "open": 135,
+    "close": 135,
+    "changePercent": 9.75609756097561
   },
   {
     "stockCode": "1326",
@@ -355,18 +355,18 @@
     "stockName": "台燿科技",
     "shares": 10000,
     "weight": 0.28,
-    "open": 600,
-    "close": 685,
-    "changePercent": 9.951845906902086
+    "open": 753,
+    "close": 753,
+    "changePercent": 9.927007299270073
   },
   {
     "stockCode": "8358",
     "stockName": "金居開發",
     "shares": 20000,
     "weight": 0.2,
-    "open": 229,
-    "close": 243.5,
-    "changePercent": -1.417004048582996
+    "open": 267.5,
+    "close": 267.5,
+    "changePercent": 9.856262833675565
   },
   {
     "stockCode": "2885",
@@ -382,9 +382,9 @@
     "stockName": "萬潤科技",
     "shares": 5000,
     "weight": 0.14,
-    "open": 625,
-    "close": 673,
-    "changePercent": 7.68
+    "open": 740,
+    "close": 740,
+    "changePercent": 9.955423476968797
   },
   {
     "stockCode": "3044",
@@ -418,9 +418,9 @@
     "stockName": "宜鼎國際",
     "shares": 438,
     "weight": 0.01,
-    "open": 706,
-    "close": 776,
-    "changePercent": 9.91501416430595
+    "open": 853,
+    "close": 853,
+    "changePercent": 9.922680412371134
   },
   {
     "stockCode": "3450",
