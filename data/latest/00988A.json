@@ -6,7 +6,7 @@
     "weight": 7.6,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.14,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -14,9 +14,9 @@
     "stockName": "SPACE EXPLORATION TECHN-CL A",
     "shares": 570000,
     "weight": 7.05,
-    "diffShares": -60000,
-    "diffSharesPercent": -9.52,
-    "diffWeight": -0.4,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -26,7 +26,7 @@
     "weight": 6.51,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.3,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -36,8 +36,21 @@
     "weight": 6.21,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.22,
+    "diffWeight": 0,
     "isNew": false
+  },
+  {
+    "stockCode": "3017",
+    "stockName": "奇鋐",
+    "shares": 550000,
+    "weight": 4.5,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0.41,
+    "isNew": false,
+    "open": 2655,
+    "close": 2795,
+    "changePercent": 9.823182711198427
   },
   {
     "stockCode": "AMZN US",
@@ -56,7 +69,7 @@
     "weight": 4.4,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.21,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -66,21 +79,21 @@
     "weight": 4.32,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.17,
+    "diffWeight": 0,
     "isNew": false
   },
   {
-    "stockCode": "3017",
-    "stockName": "奇鋐",
-    "shares": 550000,
-    "weight": 4.09,
+    "stockCode": "3443",
+    "stockName": "創意",
+    "shares": 240000,
+    "weight": 3.78,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.02,
+    "diffWeight": 0.22,
     "isNew": false,
-    "open": 2475,
-    "close": 2545,
-    "changePercent": -2.1153846153846154
+    "open": 5000,
+    "close": 5390,
+    "changePercent": 6.31163708086785
   },
   {
     "stockCode": "NTSK US",
@@ -89,21 +102,21 @@
     "weight": 3.59,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.23,
+    "diffWeight": 0,
     "isNew": false
   },
   {
-    "stockCode": "3443",
-    "stockName": "創意",
-    "shares": 240000,
-    "weight": 3.56,
+    "stockCode": "1303",
+    "stockName": "南亞",
+    "shares": 4800000,
+    "weight": 3.43,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.29,
+    "diffWeight": 0.25,
     "isNew": false,
-    "open": 5170,
-    "close": 5070,
-    "changePercent": -9.946714031971581
+    "open": 236,
+    "close": 244,
+    "changePercent": 7.72626931567329
   },
   {
     "stockCode": "NET US",
@@ -112,30 +125,17 @@
     "weight": 3.3,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.06,
+    "diffWeight": 0,
     "isNew": false
-  },
-  {
-    "stockCode": "1303",
-    "stockName": "南亞",
-    "shares": 4800000,
-    "weight": 3.18,
-    "diffShares": 0,
-    "diffSharesPercent": 0,
-    "diffWeight": -0.22,
-    "isNew": false,
-    "open": 235,
-    "close": 226.5,
-    "changePercent": -9.036144578313253
   },
   {
     "stockCode": "AMD US",
     "stockName": "ADVANCED MICRO DEVICES.amd us(超微半導體公司)",
     "shares": 80000,
     "weight": 3.15,
-    "diffShares": -30000,
-    "diffSharesPercent": -27.27,
-    "diffWeight": -1.12,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -145,34 +145,34 @@
     "weight": 3.15,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.08,
+    "diffWeight": 0,
     "isNew": false
   },
   {
     "stockCode": "2330",
     "stockName": "台積電",
     "shares": 480000,
-    "weight": 3.02,
+    "weight": 3.01,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.03,
+    "diffWeight": -0.01,
     "isNew": false,
     "open": 2150,
-    "close": 2150,
-    "changePercent": -3.587443946188341
+    "close": 2145,
+    "changePercent": -0.23255813953488372
   },
   {
     "stockCode": "3037",
     "stockName": "欣興",
     "shares": 1350000,
-    "weight": 2.31,
-    "diffShares": -350000,
-    "diffSharesPercent": -20.59,
-    "diffWeight": -0.66,
+    "weight": 2.54,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0.23,
     "isNew": false,
-    "open": 570,
-    "close": 585,
-    "changePercent": -4.567699836867863
+    "open": 620,
+    "close": 643,
+    "changePercent": 9.914529914529915
   },
   {
     "stockCode": "ZS US",
@@ -181,21 +181,34 @@
     "weight": 2.24,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.06,
+    "diffWeight": 0,
     "isNew": false
   },
   {
     "stockCode": "2454",
     "stockName": "聯發科",
     "shares": 207000,
-    "weight": 2.21,
-    "diffShares": 40000,
-    "diffSharesPercent": 23.95,
-    "diffWeight": 0.28,
+    "weight": 2.24,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0.03,
     "isNew": false,
-    "open": 3855,
-    "close": 3645,
-    "changePercent": -10
+    "open": 3720,
+    "close": 3705,
+    "changePercent": 1.646090534979424
+  },
+  {
+    "stockCode": "3711",
+    "stockName": "日月光投控",
+    "shares": 1500000,
+    "weight": 2.24,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0.1,
+    "isNew": false,
+    "open": 500,
+    "close": 511,
+    "changePercent": 4.713114754098361
   },
   {
     "stockCode": "MRNA US",
@@ -208,26 +221,13 @@
     "isNew": false
   },
   {
-    "stockCode": "3711",
-    "stockName": "日月光投控",
-    "shares": 1500000,
-    "weight": 2.14,
-    "diffShares": 0,
-    "diffSharesPercent": 0,
-    "diffWeight": -0.12,
-    "isNew": false,
-    "open": 500,
-    "close": 488,
-    "changePercent": -7.9245283018867925
-  },
-  {
     "stockCode": "SNOW US",
     "stockName": "SNOWFLAKE INC-CLASS A(Snowflake公司)",
     "shares": 80000,
     "weight": 2.08,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.04,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -235,9 +235,9 @@
     "stockName": "BLOOM ENERGY CORP- A",
     "shares": 140000,
     "weight": 2.08,
-    "diffShares": -60000,
-    "diffSharesPercent": -30,
-    "diffWeight": -0.86,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -247,7 +247,7 @@
     "weight": 1.48,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.09,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -257,33 +257,34 @@
     "weight": 1.47,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.04,
+    "diffWeight": 0,
     "isNew": false
   },
   {
     "stockCode": "6223",
     "stockName": "旺矽",
     "shares": 110000,
-    "weight": 1.21,
+    "weight": 1.32,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.1,
+    "diffWeight": 0.11,
     "isNew": false,
-    "open": 3940,
-    "close": 4115,
-    "changePercent": 9.151193633952255
+    "open": 4105,
+    "close": 3930,
+    "changePercent": -4.495747266099635
   },
   {
     "stockCode": "3665",
     "stockName": "貿聯-KY",
     "shares": 200000,
-    "weight": 0.95,
-    "diffShares": 200000,
-    "diffWeight": 0.95,
-    "isNew": true,
-    "open": 1580,
-    "close": 1630,
-    "changePercent": 3.821656050955414
+    "weight": 1.05,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0.1,
+    "isNew": false,
+    "open": 1720,
+    "close": 1790,
+    "changePercent": 9.815950920245399
   },
   {
     "stockCode": "TSLA US",
@@ -292,37 +293,37 @@
     "weight": 0.92,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.02,
+    "diffWeight": 0,
     "isNew": false
   },
   {
     "stockCode": "6857 JP",
     "stockName": "ADVANTEST CORP",
     "shares": 60000,
-    "weight": 0.87,
+    "weight": 0.91,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.09,
-    "isNew": false
-  },
-  {
-    "stockCode": "009150 KS",
-    "stockName": "Samsung Electro-Mechanics co(009150 ks)",
-    "shares": 10000,
-    "weight": 0.55,
-    "diffShares": 0,
-    "diffSharesPercent": 0,
-    "diffWeight": -0.05,
+    "diffWeight": 0.04,
     "isNew": false
   },
   {
     "stockCode": "3697 JP",
     "stockName": "SHIFT INC",
     "shares": 800000,
-    "weight": 0.54,
+    "weight": 0.57,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.05,
+    "diffWeight": 0.03,
+    "isNew": false
+  },
+  {
+    "stockCode": "009150 KS",
+    "stockName": "Samsung Electro-Mechanics co(009150 ks)",
+    "shares": 10000,
+    "weight": 0.57,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0.02,
     "isNew": false
   },
   {
@@ -330,9 +331,9 @@
     "stockName": "DON QUIJOTE CO LTD",
     "shares": 1000000,
     "weight": 0.52,
-    "diffShares": 500000,
-    "diffSharesPercent": 100,
-    "diffWeight": 0.28,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -354,16 +355,5 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false
-  },
-  {
-    "stockCode": "IFX GY",
-    "stockName": "INFINEON TECHNOLOGIES AG",
-    "shares": 0,
-    "weight": 0,
-    "diffShares": -50000,
-    "diffWeight": -0.22,
-    "diffSharesPercent": -100,
-    "isNew": false,
-    "isSoldOut": true
   }
 ]
