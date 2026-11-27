@@ -1,0 +1,357 @@
+[
+  {
+    "stockCode": "MSFT",
+    "stockName": "MICROSOFT CORP",
+    "shares": 116560,
+    "weight": 7.22,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
+  },
+  {
+    "stockCode": "GOOGL",
+    "stockName": "ALPHABET INC-CL A",
+    "shares": 159480,
+    "weight": 5.5,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
+  },
+  {
+    "stockCode": "META",
+    "stockName": "META PLATFORMS INC-CLASS A",
+    "shares": 64600,
+    "weight": 4.98,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
+  },
+  {
+    "stockCode": "AMZN",
+    "stockName": "AMAZON.COM INC",
+    "shares": 151860,
+    "weight": 4.69,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
+  },
+  {
+    "stockCode": "2330",
+    "stockName": "台積電",
+    "shares": 518000,
+    "weight": 4.25,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false,
+    "open": 2150,
+    "close": 2145,
+    "changePercent": -0.23255813953488372
+  },
+  {
+    "stockCode": "AAPL",
+    "stockName": "APPLE INC",
+    "shares": 93320,
+    "weight": 4.19,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
+  },
+  {
+    "stockCode": "LLY",
+    "stockName": "ELI LILLY & CO",
+    "shares": 19380,
+    "weight": 3.41,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
+  },
+  {
+    "stockCode": "CRWD",
+    "stockName": "CROWDSTRIKE HOLDINGS INC - A",
+    "shares": 115363,
+    "weight": 3.05,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
+  },
+  {
+    "stockCode": "GE",
+    "stockName": "GENERAL ELECTRIC",
+    "shares": 75800,
+    "weight": 3.04,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
+  },
+  {
+    "stockCode": "PANW",
+    "stockName": "PALO ALTO NETWORKS INC",
+    "shares": 67000,
+    "weight": 3.01,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
+  },
+  {
+    "stockCode": "APP",
+    "stockName": "APPLOVIN CORP-CLASS A",
+    "shares": 62440,
+    "weight": 2.99,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
+  },
+  {
+    "stockCode": "SNOW",
+    "stockName": "SNOWFLAKE INC",
+    "shares": 84880,
+    "weight": 2.87,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
+  },
+  {
+    "stockCode": "NET",
+    "stockName": "CLOUDFLARE INC - CLASS A",
+    "shares": 79260,
+    "weight": 2.84,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
+  },
+  {
+    "stockCode": "PLTR",
+    "stockName": "PALANTIR TECHNOLOGIES INC-A",
+    "shares": 132642,
+    "weight": 2.74,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
+  },
+  {
+    "stockCode": "2454",
+    "stockName": "聯發科",
+    "shares": 193000,
+    "weight": 2.68,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false,
+    "open": 3720,
+    "close": 3705,
+    "changePercent": 1.646090534979424
+  },
+  {
+    "stockCode": "SHOP",
+    "stockName": "SHOPIFY INC - CLASS A",
+    "shares": 141600,
+    "weight": 2.39,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
+  },
+  {
+    "stockCode": "AVGO",
+    "stockName": "BROADCOM INC",
+    "shares": 60760,
+    "weight": 2.31,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
+  },
+  {
+    "stockCode": "FROG",
+    "stockName": "JFROG LTD",
+    "shares": 170308,
+    "weight": 2.26,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
+  },
+  {
+    "stockCode": "U",
+    "stockName": "UNITY SOFTWARE INC",
+    "shares": 351600,
+    "weight": 2.14,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
+  },
+  {
+    "stockCode": "BE",
+    "stockName": "BLOOM ENERGY CORP- A",
+    "shares": 105653,
+    "weight": 2.04,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
+  },
+  {
+    "stockCode": "3017",
+    "stockName": "奇鋐",
+    "shares": 190000,
+    "weight": 1.84,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false,
+    "open": 2655,
+    "close": 2795,
+    "changePercent": 9.823182711198427
+  },
+  {
+    "stockCode": "HWM",
+    "stockName": "HOWMET AEROSPACE INC",
+    "shares": 65100,
+    "weight": 1.74,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
+  },
+  {
+    "stockCode": "TTWO",
+    "stockName": "TAKE-TWO INTERACTIVE SOFTWRE",
+    "shares": 60200,
+    "weight": 1.73,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
+  },
+  {
+    "stockCode": "AMD",
+    "stockName": "ADVANCED MICRO DEVICES",
+    "shares": 33099,
+    "weight": 1.7,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
+  },
+  {
+    "stockCode": "ANET",
+    "stockName": "ARISTA NETWORKS INC",
+    "shares": 78500,
+    "weight": 1.63,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
+  },
+  {
+    "stockCode": "6098",
+    "stockName": "RECRUIT HOLDINGS CO LTD",
+    "shares": 100200,
+    "weight": 1.35,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
+  },
+  {
+    "stockCode": "6857",
+    "stockName": "ADVANTEST CORP",
+    "shares": 68500,
+    "weight": 1.29,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
+  },
+  {
+    "stockCode": "MU",
+    "stockName": "MICRON TECHNOLOGY INC",
+    "shares": 16425,
+    "weight": 1.25,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
+  },
+  {
+    "stockCode": "3443",
+    "stockName": "創意",
+    "shares": 57000,
+    "weight": 1.1,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false,
+    "open": 5000,
+    "close": 5390,
+    "changePercent": 6.31163708086785
+  },
+  {
+    "stockCode": "2383",
+    "stockName": "台光電",
+    "shares": 83000,
+    "weight": 1.06,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false,
+    "open": 3515,
+    "close": 3660,
+    "changePercent": 9.090909090909092
+  },
+  {
+    "stockCode": "COHR",
+    "stockName": "COHERENT CORP",
+    "shares": 31240,
+    "weight": 0.77,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
+  },
+  {
+    "stockCode": "SMTC",
+    "stockName": "SEMTECH CORP",
+    "shares": 60900,
+    "weight": 0.72,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
+  },
+  {
+    "stockCode": "4004",
+    "stockName": "RESONAC HOLDINGS CORP",
+    "shares": 78600,
+    "weight": 0.68,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
+  },
+  {
+    "stockCode": "7974",
+    "stockName": "NINTENDO CO LTD",
+    "shares": 80400,
+    "weight": 0.57,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
+    "isNew": false
+  }
+]

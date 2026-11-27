@@ -6,7 +6,7 @@
     "weight": 7.22,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -16,7 +16,7 @@
     "weight": 5.5,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -26,7 +26,7 @@
     "weight": 4.98,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.24,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -36,7 +36,7 @@
     "weight": 4.69,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.07,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -46,11 +46,11 @@
     "weight": 4.25,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.11,
+    "diffWeight": 0,
     "isNew": false,
     "open": 2150,
-    "close": 2150,
-    "changePercent": -3.587443946188341
+    "close": 2145,
+    "changePercent": -0.23255813953488372
   },
   {
     "stockCode": "AAPL",
@@ -59,7 +59,7 @@
     "weight": 4.19,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.08,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -69,7 +69,7 @@
     "weight": 3.41,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.02,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -79,7 +79,7 @@
     "weight": 3.05,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -89,7 +89,7 @@
     "weight": 3.04,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.04,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -99,7 +99,7 @@
     "weight": 3.01,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.07,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -109,7 +109,7 @@
     "weight": 2.99,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -119,7 +119,7 @@
     "weight": 2.87,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -129,7 +129,7 @@
     "weight": 2.84,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -139,7 +139,7 @@
     "weight": 2.74,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.08,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -149,11 +149,11 @@
     "weight": 2.68,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.27,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 3855,
-    "close": 3645,
-    "changePercent": -10
+    "open": 3720,
+    "close": 3705,
+    "changePercent": 1.646090534979424
   },
   {
     "stockCode": "SHOP",
@@ -162,7 +162,7 @@
     "weight": 2.39,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.06,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -172,7 +172,7 @@
     "weight": 2.31,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.04,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -182,7 +182,7 @@
     "weight": 2.26,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.05,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -192,7 +192,7 @@
     "weight": 2.14,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -200,9 +200,9 @@
     "stockName": "BLOOM ENERGY CORP- A",
     "shares": 105653,
     "weight": 2.04,
-    "diffShares": -51400,
-    "diffSharesPercent": -32.73,
-    "diffWeight": -1.01,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -212,11 +212,11 @@
     "weight": 1.84,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.03,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 2475,
-    "close": 2545,
-    "changePercent": -2.1153846153846154
+    "open": 2655,
+    "close": 2795,
+    "changePercent": 9.823182711198427
   },
   {
     "stockCode": "HWM",
@@ -225,7 +225,7 @@
     "weight": 1.74,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.03,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -235,7 +235,7 @@
     "weight": 1.73,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.08,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -253,9 +253,9 @@
     "stockName": "ARISTA NETWORKS INC",
     "shares": 78500,
     "weight": 1.63,
-    "diffShares": -47300,
-    "diffSharesPercent": -37.6,
-    "diffWeight": -1.01,
+    "diffShares": 0,
+    "diffSharesPercent": 0,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -265,7 +265,7 @@
     "weight": 1.35,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -275,7 +275,7 @@
     "weight": 1.29,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.17,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -285,7 +285,7 @@
     "weight": 1.25,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.04,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -295,11 +295,11 @@
     "weight": 1.1,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.11,
+    "diffWeight": 0,
     "isNew": false,
-    "open": 5170,
-    "close": 5070,
-    "changePercent": -9.946714031971581
+    "open": 5000,
+    "close": 5390,
+    "changePercent": 6.31163708086785
   },
   {
     "stockCode": "2383",
@@ -310,9 +310,9 @@
     "diffSharesPercent": 0,
     "diffWeight": 0,
     "isNew": false,
-    "open": 3235,
-    "close": 3355,
-    "changePercent": -1.1782032400589102
+    "open": 3515,
+    "close": 3660,
+    "changePercent": 9.090909090909092
   },
   {
     "stockCode": "COHR",
@@ -321,7 +321,7 @@
     "weight": 0.77,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.01,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -331,7 +331,7 @@
     "weight": 0.72,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.07,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -341,7 +341,7 @@
     "weight": 0.68,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": -0.07,
+    "diffWeight": 0,
     "isNew": false
   },
   {
@@ -351,21 +351,7 @@
     "weight": 0.57,
     "diffShares": 0,
     "diffSharesPercent": 0,
-    "diffWeight": 0.03,
+    "diffWeight": 0,
     "isNew": false
-  },
-  {
-    "stockCode": "3037",
-    "stockName": "欣興",
-    "shares": 0,
-    "weight": 0,
-    "diffShares": -444000,
-    "diffWeight": -1.03,
-    "diffSharesPercent": -100,
-    "isNew": false,
-    "isSoldOut": true,
-    "open": 570,
-    "close": 585,
-    "changePercent": -4.567699836867863
   }
 ]
