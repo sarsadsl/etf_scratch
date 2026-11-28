@@ -9,6 +9,8 @@ on:
 jobs:
   archive:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
@@ -31,46 +33,27 @@ jobs:
         id: run_archiver
         run: node src/archiver.js
 
-      - name: Get today's trading date
-        id: get_date
+      - name: Check archive manifest exists
+        id: check_manifest
+        env:
+          ARCHIVE_DATE: ${{ steps.run_archiver.outputs.date }}
         run: |
-          # 與 archiver.js 相同邏輯：台灣時間 18:00 前取前一交易日
-          HOUR_TW=$(( ($(date -u +%H) + 8) % 24 ))
-          DATE_REF=$(date -u +%Y%m%d)
-          if [ $HOUR_TW -lt 18 ]; then
-            DATE_REF=$(date -u -d "yesterday" +%Y%m%d)
-          fi
-          # 跳過週末
-          DAY_OF_WEEK=$(date -d "$DATE_REF" +%u)
-          if [ $DAY_OF_WEEK -eq 6 ]; then DATE_REF=$(date -d "$DATE_REF - 1 day" +%Y%m%d); fi
-          if [ $DAY_OF_WEEK -eq 7 ]; then DATE_REF=$(date -d "$DATE_REF - 2 days" +%Y%m%d); fi
-          echo "DATE=$DATE_REF" >> $GITHUB_OUTPUT
-          echo "Trading date: $DATE_REF"
-
-      - name: Check archive files exist
-        id: check_files
-        run: |
-          ARCHIVE_DIR="archives/${{ steps.get_date.outputs.DATE }}"
-          if [ -d "$ARCHIVE_DIR" ] && [ "$(ls -A $ARCHIVE_DIR/*.xlsx $ARCHIVE_DIR/*.csv 2>/dev/null | wc -l)" -gt 0 ]; then
-            echo "HAS_FILES=true" >> $GITHUB_OUTPUT
-            echo "Files found in $ARCHIVE_DIR:"
-            ls -lh "$ARCHIVE_DIR"
-          else
-            echo "HAS_FILES=false" >> $GITHUB_OUTPUT
-            echo "No archive files found, skipping release."
-          fi
+          ARCHIVE_DIR="archives/${ARCHIVE_DATE}"
+          test -f "$ARCHIVE_DIR/manifest.json"
+          echo "Archive manifest found in $ARCHIVE_DIR"
 
       - name: Create GitHub Release and upload files
-        if: steps.check_files.outputs.HAS_FILES == 'true'
+        if: steps.check_manifest.outcome == 'success'
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: "archive-${{ steps.get_date.outputs.DATE }}"
-          name: "📊 ETF 持股封存 ${{ steps.get_date.outputs.DATE }}"
+          tag_name: "archive-${{ steps.run_archiver.outputs.date }}"
+          name: "📊 ETF 持股封存 ${{ steps.run_archiver.outputs.date }}"
           body: |
             ## 📦 主動式 ETF 每日持股原始檔案封存
 
-            **封存日期**: ${{ steps.get_date.outputs.DATE }}
+            **封存日期**: ${{ steps.run_archiver.outputs.date }}
             **包含投信**: 復華 / 統一 / 元大 / 群益 / 野村（共 7 檔 ETF）
+            **完整性**: 請查看 `manifest.json` 的 `complete` 與 `missing` 欄位。
 
             ### 檔案說明
             | 檔案 | 投信 | ETF |
@@ -85,8 +68,11 @@ jobs:
 
             > 野村投信官網無提供檔案下載功能，由系統自動從 API 轉換為 CSV 格式。
           files: |
-            archives/${{ steps.get_date.outputs.DATE }}/*.xlsx
-            archives/${{ steps.get_date.outputs.DATE }}/*.csv
+            archives/${{ steps.run_archiver.outputs.date }}/release-assets/*
           fail_on_unmatched_files: false
           make_latest: false
           token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Verify archive completeness
+        if: steps.check_manifest.outcome == 'success'
+        run: node scripts/verify-archive.js "archives/${{ steps.run_archiver.outputs.date }}/manifest.json"
